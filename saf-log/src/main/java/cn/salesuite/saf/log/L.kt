@@ -59,6 +59,15 @@ object L {
         }
     }
 
+    @JvmStatic fun e(msg: String, tr: Throwable) {
+        if (LogLevel.ERROR.value <= logLevel.value) {
+
+            if (msg.isNotBlank()) {
+                Log.e(TAG, msg, tr)
+            }
+        }
+    }
+
     @JvmStatic fun w(msg: String) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
@@ -66,6 +75,15 @@ object L {
 
                 val s = getMethodNames()
                 Log.e(TAG, String.format(s, msg))
+            }
+        }
+    }
+
+    @JvmStatic fun w(msg: String, tr: Throwable) {
+        if (LogLevel.WARN.value <= logLevel.value) {
+
+            if (msg.isNotBlank()) {
+                Log.w(TAG, msg, tr)
             }
         }
     }
@@ -81,6 +99,31 @@ object L {
         }
     }
 
+    /**
+     * @param tag 自定义tag
+     * *
+     * @param msg
+     */
+    @JvmStatic fun i(tag: String, msg: String) {
+        if (LogLevel.INFO.value <= logLevel.value) {
+
+            if (tag.isNotBlank() && msg.isNotBlank()) {
+
+                val s = getMethodNames()
+                Log.i(tag, String.format(s, msg))
+            }
+        }
+    }
+
+    @JvmStatic fun i(msg: String, tr: Throwable) {
+        if (LogLevel.INFO.value <= logLevel.value) {
+
+            if (msg.isNotBlank()) {
+                Log.i(TAG, msg, tr)
+            }
+        }
+    }
+
     @JvmStatic fun d(msg: String) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
@@ -89,6 +132,47 @@ object L {
                 val s = getMethodNames()
                 Log.d(TAG, String.format(s, msg))
             }
+        }
+    }
+
+    /**
+     * @param tag 自定义tag
+     * *
+     * @param msg
+     */
+    fun d(tag: String, msg: String) {
+        if (LogLevel.DEBUG.value <= logLevel.value) {
+
+            if (tag.isNotBlank() && msg.isNotBlank()) {
+
+                val s = getMethodNames()
+                Log.d(tag, String.format(s, msg))
+            }
+        }
+    }
+
+    fun d(msg: String, tr: Throwable) {
+        if (LogLevel.DEBUG.value <= logLevel.value) {
+
+            if (msg.isNotBlank()) {
+                Log.d(TAG, msg, tr)
+            }
+        }
+    }
+
+    @JvmStatic fun json(map: Map<*, *>?) {
+        if (map != null) {
+
+            try {
+                val jsonObject = JSONObject(map)
+                var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+                message = message.replace("\n".toRegex(), "\n║ ")
+                val s = getMethodNames()
+                println(String.format(s, message))
+            } catch (e: JSONException) {
+                e("Invalid Json")
+            }
+
         }
     }
 
