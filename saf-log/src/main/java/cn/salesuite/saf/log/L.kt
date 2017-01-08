@@ -48,10 +48,10 @@ object L {
         TAG = tag
     }
 
-    @JvmStatic fun e(msg: String) {
+    @JvmStatic fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
                 Log.e(TAG, String.format(s, msg))
@@ -59,19 +59,19 @@ object L {
         }
     }
 
-    @JvmStatic fun e(msg: String, tr: Throwable) {
+    @JvmStatic fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
                 Log.e(TAG, msg, tr)
             }
         }
     }
 
-    @JvmStatic fun w(msg: String) {
+    @JvmStatic fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
                 Log.e(TAG, String.format(s, msg))
@@ -79,19 +79,19 @@ object L {
         }
     }
 
-    @JvmStatic fun w(msg: String, tr: Throwable) {
+    @JvmStatic fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
                 Log.w(TAG, msg, tr)
             }
         }
     }
 
-    @JvmStatic fun i(msg: String) {
+    @JvmStatic fun i(msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-           if (msg.isNotBlank()) {
+           if (msg!=null && msg.isNotBlank()) {
                val s = getMethodNames()
                Log.i(TAG, String.format(s,msg))
            }
@@ -104,10 +104,10 @@ object L {
      * *
      * @param msg
      */
-    @JvmStatic fun i(tag: String, msg: String) {
+    @JvmStatic fun i(tag: String?, msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (tag.isNotBlank() && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
                 Log.i(tag, String.format(s, msg))
@@ -115,19 +115,19 @@ object L {
         }
     }
 
-    @JvmStatic fun i(msg: String, tr: Throwable) {
+    @JvmStatic fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
                 Log.i(TAG, msg, tr)
             }
         }
     }
 
-    @JvmStatic fun d(msg: String) {
+    @JvmStatic fun d(msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
                 Log.d(TAG, String.format(s, msg))
@@ -140,10 +140,10 @@ object L {
      * *
      * @param msg
      */
-    fun d(tag: String, msg: String) {
+    fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (tag.isNotBlank() && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
                 Log.d(tag, String.format(s, msg))
@@ -151,10 +151,10 @@ object L {
         }
     }
 
-    fun d(msg: String, tr: Throwable) {
+    fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg.isNotBlank()) {
+            if (msg!=null && msg.isNotBlank()) {
                 Log.d(TAG, msg, tr)
             }
         }
@@ -261,7 +261,7 @@ object L {
 
     fun String.isBlank(msg:String):Boolean {
 
-        return msg==null || msg.length==0;
+        return msg.length==0;
     }
 
     fun String.isNotBlank(msg:String):Boolean {
