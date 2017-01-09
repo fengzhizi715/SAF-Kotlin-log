@@ -101,7 +101,7 @@ object L {
 
     /**
      * @param tag 自定义tag
-     * *
+     *
      * @param msg
      */
     @JvmStatic fun i(tag: String?, msg: String?) {
@@ -137,7 +137,7 @@ object L {
 
     /**
      * @param tag 自定义tag
-     * *
+     *
      * @param msg
      */
     fun d(tag: String?, msg: String?) {
@@ -196,10 +196,10 @@ object L {
 
     }
 
-    @JvmStatic fun json(json: String) {
+    @JvmStatic fun json(json: String?) {
         var json = json
 
-        if (json.isBlank()) {
+        if (json==null || json.isBlank()) {
             d("Empty/Null json content")
             return
         }
