@@ -229,7 +229,7 @@ object L {
 
     }
 
-    private fun getMethodNames(): String {
+    fun getMethodNames(): String {
         val sElements = Thread.currentThread().stackTrace
 
         var stackOffset = LoggerPrinter.getStackOffset(sElements)
