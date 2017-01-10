@@ -18,6 +18,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+//        maven{url 'https://dl.bintray.com/fengzhizi715/maven/'}
     }
     //加上这些
     tasks.withType(Javadoc) {
