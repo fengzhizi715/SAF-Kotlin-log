@@ -5,7 +5,7 @@ saf-log是完全基于Kotlin开发的Android日志框架，提供极简的日志
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.0.0'
+compile 'com.safframework.log:saf-log:1.0.1'
 ```
 
 Maven:
@@ -14,7 +14,7 @@ Maven:
 <dependency>
   <groupId>com.safframework.log</groupId>
   <artifactId>saf-log</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -52,7 +52,7 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
 ![](L_json.png)
 
 #使用方法
-首先，使用它无需添加kotlin的配置。它可以在任何android项目中使用，当然也可以在kotlin android的项目中使用。
+首先，使用它无需添加kotlin的配置。它可以在任何android项目中使用。
 
 如果不考虑显示日志的tag，可以直接使用
 
@@ -69,6 +69,19 @@ L.init(this.getClass());
 ```
 
 当然，init()除了支持传递class对象，还支持传String对象。
+
+除此之外，还可以设置全局的日志级别，最好在Application中进行全局的配置。
+
+java中的使用方法：
+
+```java
+L.setLogLevel(L.LogLevel.INFO);
+```
+kotlin中的使用方法：
+
+```kotlin
+L.logLevel= L.LogLevel.INFO
+```
 
 最后，json方法的使用
 
