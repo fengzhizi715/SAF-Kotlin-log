@@ -1,4 +1,4 @@
-package cn.salesuite.saf.log
+package com.safframework.log
 
 /**
  * Created by Tony Shen on 2017/1/2.

@@ -1,6 +1,7 @@
-package cn.salesuite.saf.log
+package com.safframework.log
 
 import android.util.Log
+import cn.salesuite.saf.log.LoggerPrinter
 import com.alibaba.fastjson.JSON
 import org.json.JSONArray
 import org.json.JSONException
