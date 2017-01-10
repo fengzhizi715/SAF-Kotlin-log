@@ -52,7 +52,7 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
 ![](L_json.png)
 
 #使用方法
-首先，无需添加kotlin的配置，可以在任何android项目中使用。
+首先，使用它无需添加kotlin的配置。它可以在任何android项目中使用，当然也可以在kotlin android的项目中使用。
 
 如果不考虑显示日志的tag，可以直接使用
 
