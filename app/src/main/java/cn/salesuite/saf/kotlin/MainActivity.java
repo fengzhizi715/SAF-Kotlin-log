@@ -15,6 +15,11 @@ public class MainActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         L.init(this.getClass());
-        L.i("test");
+        L.setLogLevel(L.LogLevel.INFO);
+        L.d("test","haha");
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        L.json(u);
     }
 }

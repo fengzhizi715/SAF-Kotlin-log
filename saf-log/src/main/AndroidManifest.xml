@@ -1,4 +1,4 @@
-<manifest package="cn.salesuite.saf.log"
+<manifest package="com.safframework.log"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application android:allowBackup="true"

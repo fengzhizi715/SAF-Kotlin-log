@@ -34,7 +34,7 @@ object L {
 
     private var TAG = "SAF_L"
 
-    var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
+    @JvmStatic var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
     @JvmStatic fun init(clazz: Class<*>) {
         TAG = clazz.simpleName
@@ -140,7 +140,7 @@ object L {
      *
      * @param msg
      */
-    fun d(tag: String?, msg: String?) {
+    @JvmStatic fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
@@ -151,7 +151,7 @@ object L {
         }
     }
 
-    fun d(msg: String?, tr: Throwable) {
+    @JvmStatic fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
