@@ -31,7 +31,7 @@ Maven:
 | d()        |Debug级别打印日志|       |
 |json()      |将日志以json格式打印出来|       |
 
-以e、w、i、d打印的日志风格如下：
+以e、w、i、d打印的日志风格如下：<br>
 第一行显示线程名<br>
 第二行显示类中打印的行数<br>
 第三行显示打印的具体内容
@@ -50,3 +50,32 @@ Maven:
 json方法可以将String、Map、对象打印成json风格，具体可以参照下图：
 
 ![](L_json.png)
+
+#使用方法
+首先，无需添加kotlin的配置，可以在任何android项目中使用。
+
+如果不考虑显示日志的tag，可以直接使用
+
+```java
+String s = "abcd";
+L.i(s);
+```
+
+如果需要使用tag，可以在Activity的onCreate()中添加如下的代码，类名则对应是tag的名称
+
+```java
+L.init(this.getClass());
+
+```
+
+当然，init()除了支持传递class对象，还支持传String对象。
+
+最后，json方法的使用
+
+```java
+Object obj = ...
+L.json(obj);
+```
+
+
+
