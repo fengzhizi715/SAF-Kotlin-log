@@ -59,6 +59,22 @@ object L {
         }
     }
 
+    /**
+     * @param tag 使用自定义tag
+     *
+     * @param msg
+     */
+    @JvmStatic fun e(tag: String?, msg: String?) {
+        if (LogLevel.ERROR.value <= logLevel.value) {
+
+            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+
+                val s = getMethodNames()
+                Log.e(tag, String.format(s, msg))
+            }
+        }
+    }
+
     @JvmStatic fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
@@ -74,7 +90,23 @@ object L {
             if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.e(TAG, String.format(s, msg))
+                Log.w(TAG, String.format(s, msg))
+            }
+        }
+    }
+
+    /**
+     * @param tag 使用自定义tag
+     *
+     * @param msg
+     */
+    @JvmStatic fun w(tag: String?, msg: String?) {
+        if (LogLevel.WARN.value <= logLevel.value) {
+
+            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+
+                val s = getMethodNames()
+                Log.w(tag, String.format(s, msg))
             }
         }
     }
@@ -100,7 +132,7 @@ object L {
     }
 
     /**
-     * @param tag 自定义tag
+     * @param tag 使用自定义tag
      *
      * @param msg
      */
@@ -136,7 +168,7 @@ object L {
     }
 
     /**
-     * @param tag 自定义tag
+     * @param tag 使用自定义tag
      *
      * @param msg
      */
