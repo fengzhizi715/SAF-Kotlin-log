@@ -54,7 +54,12 @@ object L {
             if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.e(TAG, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.e(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.e(TAG, String.format(s, msg))
+                }
             }
         }
     }
@@ -70,7 +75,12 @@ object L {
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.e(tag, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.e(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.e(tag, String.format(s, msg))
+                }
             }
         }
     }
@@ -90,7 +100,12 @@ object L {
             if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.w(TAG, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.w(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.w(TAG, String.format(s, msg))
+                }
             }
         }
     }
@@ -106,7 +121,12 @@ object L {
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.w(tag, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.w(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.w(tag, String.format(s, msg))
+                }
             }
         }
     }
@@ -125,7 +145,12 @@ object L {
 
            if (msg!=null && msg.isNotBlank()) {
                val s = getMethodNames()
-               Log.i(TAG, String.format(s,msg))
+
+               if (msg.contains("\n")) {
+                   Log.i(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+               } else {
+                   Log.i(TAG, String.format(s, msg))
+               }
            }
 
         }
@@ -142,7 +167,12 @@ object L {
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.i(tag, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.i(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.i(tag, String.format(s, msg))
+                }
             }
         }
     }
@@ -162,7 +192,12 @@ object L {
             if (msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.d(TAG, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.d(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.d(TAG, String.format(s, msg))
+                }
             }
         }
     }
@@ -178,7 +213,12 @@ object L {
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
 
                 val s = getMethodNames()
-                Log.d(tag, String.format(s, msg))
+
+                if (msg.contains("\n")) {
+                    Log.d(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    Log.d(tag, String.format(s, msg))
+                }
             }
         }
     }
