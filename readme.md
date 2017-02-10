@@ -94,5 +94,7 @@ Object obj = ...
 L.json(obj);
 ```
 
-
+ChangeLog
+===
+[版本更新记录](CHANGELOG.md)
 
