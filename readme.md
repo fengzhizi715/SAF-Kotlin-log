@@ -18,7 +18,7 @@ Maven:
 <dependency>
   <groupId>com.safframework.log</groupId>
   <artifactId>saf-log</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
