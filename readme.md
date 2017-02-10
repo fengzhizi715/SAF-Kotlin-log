@@ -9,7 +9,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.0.2'
+compile 'com.safframework.log:saf-log:1.0.4'
 ```
 
 Maven:
