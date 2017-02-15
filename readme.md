@@ -1,5 +1,8 @@
 #SAF-Kotlin-log
 
+[![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+
+
 ![](logo.JPG)
 
 它是完全基于Kotlin开发的Android日志框架，提供极简的日志风格
