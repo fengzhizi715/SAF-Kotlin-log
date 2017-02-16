@@ -1,5 +1,7 @@
 #SAF-Kotlin-log
 
+[![Download](https://img.shields.io/badge/Download-1.0.4-red.svg)](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
+[![GitHub release](https://img.shields.io/badge/release-1.0.4-blue.svg)](https://github.com/fengzhizi715/SAF-Kotlin-log/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
