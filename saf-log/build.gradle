@@ -39,7 +39,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.anko:anko-common:$anko_version"
     compile 'com.alibaba:fastjson:1.1.56.android'
 }
 repositories {
@@ -63,7 +62,7 @@ publish{
     userOrg = 'fengzhizi715'
     groupId = 'com.safframework.log'
     artifactId = 'saf-log'
-    publishVersion = '1.0.4'
+    publishVersion = '1.0.5'
     desc = 'this is a log library for android,written by kotlin'
     website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
 }
