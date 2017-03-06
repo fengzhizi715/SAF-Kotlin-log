@@ -22,5 +22,6 @@ public class MainActivity extends Activity{
         u.userName = "tony";
         u.password = "123456";
         L.json(u);
+        L.json("dsafds");
     }
 }

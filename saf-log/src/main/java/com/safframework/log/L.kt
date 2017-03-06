@@ -249,6 +249,9 @@ object L {
         }
     }
 
+    /**
+     * 将任何对象转换成json字符串进行打印
+     */
     @JvmStatic fun json(obj: Any?) {
 
         if (obj == null) {
@@ -269,6 +272,9 @@ object L {
 
     }
 
+    /**
+     * 打印json字符串
+     */
     @JvmStatic fun json(json: String?) {
         var json = json
 
@@ -295,9 +301,9 @@ object L {
                 println(String.format(s, message))
                 return
             }
-            e("Invalid Json")
+            e("Invalid Json: "+ json)
         } catch (e: JSONException) {
-            e("Invalid Json")
+            e("Invalid Json: "+ json)
         }
 
     }
