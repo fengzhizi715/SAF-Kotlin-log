@@ -144,6 +144,7 @@ object L {
         if (LogLevel.INFO.value <= logLevel.value) {
 
            if (msg!=null && msg.isNotBlank()) {
+
                val s = getMethodNames()
 
                if (msg.contains("\n")) {

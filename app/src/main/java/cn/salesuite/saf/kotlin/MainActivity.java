@@ -16,10 +16,11 @@ public class MainActivity extends Activity{
         super.onCreate(savedInstanceState);
         L.init(this.getClass());
 //        L.setLogLevel(L.LogLevel.INFO);
-        L.d("test","haha");
-//        User u = new User();
-//        u.userName = "tony";
-//        u.password = "123456";
-//        L.json(u);
+        L.i("test","haha");
+        L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        L.json(u);
     }
 }

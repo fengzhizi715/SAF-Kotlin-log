@@ -26,6 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
-//    compile project(":saf-log")
-    compile 'com.safframework.log:saf-log:1.0.5'
+    compile project(":saf-log")
+//    compile 'com.safframework.log:saf-log:1.0.5'
 }
