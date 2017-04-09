@@ -1,6 +1,10 @@
 SAF-Kotlin-log
 ===
 
+Version 1.0.5
+---
+2017-03-03
+ *  依赖的Kotlin版本升级到1.1.0
 
 Version 1.0.4
 ---
