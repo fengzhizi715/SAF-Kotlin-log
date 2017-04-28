@@ -1,4 +1,4 @@
-#SAF-Kotlin-log
+# SAF-Kotlin-log
 
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [![Download](https://img.shields.io/badge/Download-1.0.5-red.svg)](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
@@ -120,5 +120,3 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-
