@@ -33,19 +33,31 @@ object L {
     }
 
     private var TAG = "SAF_L"
+    private var header:String = ""
 
     @JvmStatic var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
-    @JvmStatic fun init(clazz: Class<*>) {
+    @JvmStatic fun init(clazz: Class<*>):L {
         TAG = clazz.simpleName
+        return this
     }
 
     /**
      * 支持用户自己传tag，可扩展性更好
      * @param tag
      */
-    @JvmStatic fun init(tag: String) {
+    @JvmStatic fun init(tag: String):L {
         TAG = tag
+        return this
+    }
+
+    /**
+     * header是自定义的内容，可以放App的信息版本号等，方便查找和调试
+     * @param tag
+     */
+    @JvmStatic fun header(header: String):L {
+        this.header = header
+        return this
     }
 
     @JvmStatic fun e(msg: String?) {
@@ -315,26 +327,54 @@ object L {
 
         stackOffset++
         val builder = StringBuilder()
-        builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
-                // 添加当前线程名
-                .append("║ " + "Thread: " + Thread.currentThread().name).append("\r\n")
-                .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
-                // 添加类名、方法名、行数
-                .append("║ ")
-                .append(sElements[stackOffset].className)
-                .append(".")
-                .append(sElements[stackOffset].methodName)
-                .append(" ")
-                .append(" (")
-                .append(sElements[stackOffset].fileName)
-                .append(":")
-                .append(sElements[stackOffset].lineNumber)
-                .append(")")
-                .append("\r\n")
-                .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
-                // 添加打印的日志信息
-                .append("║ ").append("%s").append("\r\n")
-                .append(LoggerPrinter.BOTTOM_BORDER).append("\r\n")
+
+        if (header.isNotBlank()) {
+            builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
+                    // 添加当前线程名
+                    .append("║ " + "header: " + header).append("\r\n")
+                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    // 添加当前线程名
+                    .append("║ " + "Thread: " + Thread.currentThread().name).append("\r\n")
+                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    // 添加类名、方法名、行数
+                    .append("║ ")
+                    .append(sElements[stackOffset].className)
+                    .append(".")
+                    .append(sElements[stackOffset].methodName)
+                    .append(" ")
+                    .append(" (")
+                    .append(sElements[stackOffset].fileName)
+                    .append(":")
+                    .append(sElements[stackOffset].lineNumber)
+                    .append(")")
+                    .append("\r\n")
+                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    // 添加打印的日志信息
+                    .append("║ ").append("%s").append("\r\n")
+                    .append(LoggerPrinter.BOTTOM_BORDER).append("\r\n")
+        } else {
+            builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
+                    // 添加当前线程名
+                    .append("║ " + "Thread: " + Thread.currentThread().name).append("\r\n")
+                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    // 添加类名、方法名、行数
+                    .append("║ ")
+                    .append(sElements[stackOffset].className)
+                    .append(".")
+                    .append(sElements[stackOffset].methodName)
+                    .append(" ")
+                    .append(" (")
+                    .append(sElements[stackOffset].fileName)
+                    .append(":")
+                    .append(sElements[stackOffset].lineNumber)
+                    .append(")")
+                    .append("\r\n")
+                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    // 添加打印的日志信息
+                    .append("║ ").append("%s").append("\r\n")
+                    .append(LoggerPrinter.BOTTOM_BORDER).append("\r\n")
+        }
+
         return builder.toString()
     }
 
