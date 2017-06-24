@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.0.6
+---
+2017-06-24
+ *  日志增加可以自定义的Header，Header可以放app的版本信息等等，方便调试
+
 Version 1.0.5
 ---
 2017-03-03
