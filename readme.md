@@ -15,7 +15,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.0.7'
+compile 'com.safframework.log:saf-log:1.0.8'
 ```
 
 Maven:
@@ -24,7 +24,7 @@ Maven:
 <dependency>
   <groupId>com.safframework.log</groupId>
   <artifactId>saf-log</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <type>pom</type>
 </dependency>
 ```
