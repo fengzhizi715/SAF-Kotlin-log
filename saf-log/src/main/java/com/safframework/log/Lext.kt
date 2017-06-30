@@ -13,3 +13,13 @@ fun Any.i(text: String)  = L.d(text)
 fun Any.d(text: String)  = L.i(text)
 
 fun Any.json()  = L.json(this)
+
+fun String.e() = L.e(this)
+
+fun String.w() = L.w(this)
+
+fun String.i() = L.i(this)
+
+fun String.d() = L.d(this)
+
+fun String.json() = L.json(this)
