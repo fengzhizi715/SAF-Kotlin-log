@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.0.7
+---
+2017-06-30
+ *  增加Lext.kt，方便Kotlin项目使用
+
 Version 1.0.6
 ---
 2017-06-24
