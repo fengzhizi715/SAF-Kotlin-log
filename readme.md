@@ -4,6 +4,8 @@
 [![Download](https://img.shields.io/badge/Download-1.0.8-red.svg)](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
 [![GitHub release](https://img.shields.io/badge/release-1.0.8-blue.svg)](https://github.com/fengzhizi715/SAF-Kotlin-log/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.0.8"><img src="https://img.shields.io/badge/Methods and size-core: 106 | deps: 23961 | 27 KB-e91e63.svg"/></a>
+
 
 
 ![](logo.JPG)
