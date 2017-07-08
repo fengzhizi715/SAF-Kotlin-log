@@ -33,7 +33,7 @@ object L {
     }
 
     private var TAG = "SAF_L"
-    private var header:String = ""
+    private var header:String? = ""
 
     @JvmStatic var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
@@ -55,7 +55,7 @@ object L {
      * header是自定义的内容，可以放App的信息版本号等，方便查找和调试
      * @param tag
      */
-    @JvmStatic fun header(header: String):L {
+    @JvmStatic fun header(header: String?):L {
         this.header = header
         return this
     }
@@ -328,7 +328,7 @@ object L {
         stackOffset++
         val builder = StringBuilder()
 
-        if (header.isNotBlank()) {
+        if (header!=null && header!!.isNotBlank()) {
             builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
                     // 添加当前线程名
                     .append("║ " + "header: " + header).append("\r\n")
