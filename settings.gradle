@@ -1,1 +1,3 @@
-include ':app', ':saf-log'
+include ':app'
+include ':saf-log'
+include':saf-logginginterceptor'
