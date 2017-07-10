@@ -1,6 +1,5 @@
 package com.safframework.http.interceptor
 
-import android.text.TextUtils
 import okhttp3.*
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -34,7 +33,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             request = requestBuilder.build()
         }
 
-        if (!isDebug || builder.getLevel() === Level.NONE) {
+        if (!isDebug) {
             return chain.proceed(request)
         }
 
@@ -94,16 +93,6 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
                 || subtype.contains("html"))
     }
 
-    fun String.isBlank(msg:String):Boolean {
-
-        return msg.length==0;
-    }
-
-    fun String.isNotBlank(msg:String):Boolean {
-
-        return !msg.isBlank();
-    }
-
     class Builder {
 
         var TAG = "SAF_Logging_Interceptor"
@@ -111,15 +100,11 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
         var isDebug: Boolean = false
         private var requestTag: String? = null
         private var responseTag: String? = null
-        var level = Level.BASIC
+
         private val builder: Headers.Builder
 
         init {
             builder = Headers.Builder()
-        }
-
-        internal fun getLevel(): Level {
-            return level
         }
 
         internal val headers: Headers
@@ -127,9 +112,9 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
         internal fun getTag(isRequest: Boolean): String {
             if (isRequest) {
-                return if (TextUtils.isEmpty(requestTag)) TAG else requestTag!!
+                return if (requestTag.isNullOrBlank()) TAG else requestTag!!
             } else {
-                return if (TextUtils.isEmpty(responseTag)) TAG else responseTag!!
+                return if (responseTag.isNullOrBlank()) TAG else responseTag!!
             }
         }
 
@@ -143,18 +128,6 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
          */
         fun addHeader(name: String, value: String): Builder {
             builder.set(name, value)
-            return this
-        }
-
-        /**
-         * @param level set log level
-         * *
-         * @return Builder
-         * *
-         * @see Level
-         */
-        fun setLevel(level: Level): Builder {
-            this.level = level
             return this
         }
 

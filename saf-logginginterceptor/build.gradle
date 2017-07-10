@@ -31,6 +31,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    compile project(":saf-log")
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 }
