@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -21,6 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -32,4 +40,30 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+}
+
+repositories {
+    jcenter()
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    //加上这些
+    tasks.withType(Javadoc) {
+        options{ encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+
+publish{
+    userOrg = 'fengzhizi715'
+    groupId = 'com.safframework.log'
+    artifactId = 'saf-logginginterceptor'
+    publishVersion = '1.0.0'
+    desc = 'this is a log interceptor for okhttp,written by kotlin'
+    website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
 }

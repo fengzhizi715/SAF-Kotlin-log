@@ -41,6 +41,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.alibaba:fastjson:1.1.56.android'
 }
+
 repositories {
     jcenter()
 }
