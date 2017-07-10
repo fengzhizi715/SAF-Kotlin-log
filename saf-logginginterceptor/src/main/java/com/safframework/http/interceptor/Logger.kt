@@ -2,7 +2,6 @@ package com.safframework.http.interceptor
 
 import android.text.TextUtils
 import android.util.Log
-import cn.magicwindow.toutiao.http.interceptor.LoggingInterceptor
 import okhttp3.Request
 import okio.Buffer
 import org.json.JSONArray
@@ -14,10 +13,6 @@ import java.io.IOException
  * Created by Tony Shen on 2017/7/9.
  */
 class Logger protected constructor() {
-
-    init {
-        throw UnsupportedOperationException()
-    }
 
     companion object {
 
@@ -34,64 +29,56 @@ class Logger protected constructor() {
             return TextUtils.isEmpty(line) || N == line || T == line || TextUtils.isEmpty(line.trim { it <= ' ' })
         }
 
-        @JvmStatic fun printJsonRequest(builder: LoggingInterceptor.Builder, request: Request) {
+        @JvmStatic
+        fun printJsonRequest(builder: LoggingInterceptor.Builder, request: Request) {
             val requestBody = LINE_SEPARATOR + "Body:" + LINE_SEPARATOR + bodyToString(request)
             val tag = builder.getTag(true)
-            Log.i(tag,
-                    "╔══════ Request ════════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╔══════ Request ════════════════════════════════════════════════════════════════════════")
 
-            logLines(builder.type, tag, getRequest(request, builder.level))
+            logLines(tag, getRequest(request, builder.level))
             if (builder.level === Level.BASIC || builder.level === Level.BODY) {
-                logLines(builder.type, tag, requestBody.split(LINE_SEPARATOR.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+                logLines(tag, requestBody.split(LINE_SEPARATOR.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
             }
-            Log.i(tag,
-
-                    "╚═══════════════════════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════")
         }
 
-        @JvmStatic fun printFileRequest(builder: LoggingInterceptor.Builder, request: Request) {
+        @JvmStatic
+        fun printFileRequest(builder: LoggingInterceptor.Builder, request: Request) {
             val tag = builder.getTag(true)
-            Log.i(tag,
-                    "╔══════ Request ════════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╔══════ Request ════════════════════════════════════════════════════════════════════════")
 
-            logLines(builder.type, tag, getRequest(request, builder.level))
+            logLines(tag, getRequest(request, builder.level))
             if (builder.level === Level.BASIC || builder.level === Level.BODY) {
-                logLines(builder.type, tag, OMITTED_REQUEST)
+                logLines(tag, OMITTED_REQUEST)
             }
-            Log.i(tag,
-
-                    "╚═══════════════════════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════")
         }
 
-        @JvmStatic fun printJsonResponse(builder: LoggingInterceptor.Builder, chainMs: Long, isSuccessful: Boolean,
+        @JvmStatic
+        fun printJsonResponse(builder: LoggingInterceptor.Builder, chainMs: Long, isSuccessful: Boolean,
                                        code: Int, headers: String, bodyString: String, segments: List<String>) {
             val responseBody = LINE_SEPARATOR + "Body:" + LINE_SEPARATOR + getJsonString(bodyString)
             val tag = builder.getTag(false)
-            Log.i(tag,
-                    "╔══════ Response ═══════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╔══════ Response ═══════════════════════════════════════════════════════════════════════")
 
-            logLines(builder.type, tag, getResponse(headers, chainMs, code, isSuccessful,
+            logLines(tag, getResponse(headers, chainMs, code, isSuccessful,
                     builder.level, segments))
             if (builder.level === Level.BASIC || builder.level === Level.BODY) {
-                logLines(builder.type, tag, responseBody.split(LINE_SEPARATOR.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+                logLines(tag, responseBody.split(LINE_SEPARATOR.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
             }
-            Log.i(tag,
-
-                    "╚═══════════════════════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════")
         }
 
-        @JvmStatic fun printFileResponse(builder: LoggingInterceptor.Builder, chainMs: Long, isSuccessful: Boolean,
+        @JvmStatic
+        fun printFileResponse(builder: LoggingInterceptor.Builder, chainMs: Long, isSuccessful: Boolean,
                                        code: Int, headers: String, segments: List<String>) {
             val tag = builder.getTag(false)
-            Log.i(tag,
-                    "╔══════ Response ═══════════════════════════════════════════════════════════════════════")
+            Log.i(tag, "╔══════ Response ═══════════════════════════════════════════════════════════════════════")
 
-            logLines(builder.type, tag, getResponse(headers, chainMs, code, isSuccessful,
+            logLines(tag, getResponse(headers, chainMs, code, isSuccessful,
                     builder.level, segments))
-            logLines(builder.type, tag, OMITTED_RESPONSE)
-            Log.i(tag,
-
-                    "╚═══════════════════════════════════════════════════════════════════════════════════════")
+            logLines(tag, OMITTED_RESPONSE)
+            Log.i(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════")
         }
 
         private fun getRequest(request: Request, level: Level): Array<String> {
@@ -136,7 +123,7 @@ class Logger protected constructor() {
             return builder.toString()
         }
 
-        private fun logLines(type: Int, tag: String, lines: Array<String>) {
+        private fun logLines(tag: String, lines: Array<String>) {
             for (line in lines) {
                 val lineLength = line.length
                 for (i in 0..lineLength / MAX_LONG_SIZE) {
@@ -152,8 +139,8 @@ class Logger protected constructor() {
             try {
                 val copy = request.newBuilder().build()
                 val buffer = Buffer()
-                if (copy.body() == null)
-                    return ""
+                if (copy.body() == null) return ""
+
                 copy.body()!!.writeTo(buffer)
                 return getJsonString(buffer.readUtf8())
             } catch (e: IOException) {
@@ -162,7 +149,9 @@ class Logger protected constructor() {
 
         }
 
-        @JvmStatic fun getJsonString(msg: String): String {
+        @JvmStatic
+        fun getJsonString(msg: String): String {
+
             var message: String
             try {
                 if (msg.startsWith("{")) {

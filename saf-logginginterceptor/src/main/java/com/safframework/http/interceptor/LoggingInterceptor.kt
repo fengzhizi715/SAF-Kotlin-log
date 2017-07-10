@@ -2,7 +2,6 @@ package com.safframework.http.interceptor
 
 import android.text.TextUtils
 import okhttp3.*
-import okhttp3.internal.platform.Platform
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
@@ -19,6 +18,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
+
         var request = chain.request()
 
         if (builder.headers.size() > 0) {
@@ -29,7 +29,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             requestBuilder.headers(builder.headers)
             while (iterator.hasNext()) {
                 val name = iterator.next()
-                requestBuilder.addHeader(name, headers.get(name)!!)
+                requestBuilder.addHeader(name, headers.get(name))
             }
             request = requestBuilder.build()
         }
@@ -37,6 +37,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
         if (!isDebug || builder.getLevel() === Level.NONE) {
             return chain.proceed(request)
         }
+
         val requestBody = request.body()
 
         var rContentType: MediaType? = null
@@ -49,10 +50,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             rSubtype = rContentType.subtype()
         }
 
-        if (rSubtype != null && (rSubtype.contains("json")
-                || rSubtype.contains("xml")
-                || rSubtype.contains("plain")
-                || rSubtype.contains("html"))) {
+        if (subtypeIsNotFile(rSubtype)) {
             Logger.printJsonRequest(builder, request)
         } else {
             Logger.printFileRequest(builder, request)
@@ -76,10 +74,7 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             subtype = contentType.subtype()
         }
 
-        if (subtype != null && (subtype.contains("json")
-                || subtype.contains("xml")
-                || subtype.contains("plain")
-                || subtype.contains("html"))) {
+        if (subtypeIsNotFile(subtype)) {
             val bodyString = Logger.getJsonString(responseBody.string())
             Logger.printJsonResponse(builder, chainMs, isSuccessful, code, header, bodyString, segmentList)
             body = ResponseBody.create(contentType, bodyString)
@@ -91,13 +86,29 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
         return response.newBuilder().body(body).build()
     }
 
+    private fun subtypeIsNotFile(subtype:String?):Boolean {
+
+        return subtype != null && (subtype.contains("json")
+                || subtype.contains("xml")
+                || subtype.contains("plain")
+                || subtype.contains("html"))
+    }
+
+    fun String.isBlank(msg:String):Boolean {
+
+        return msg.length==0;
+    }
+
+    fun String.isNotBlank(msg:String):Boolean {
+
+        return !msg.isBlank();
+    }
+
     class Builder {
 
         var TAG = "SAF_Logging_Interceptor"
 
         var isDebug: Boolean = false
-        internal var type = Platform.INFO
-            private set
         private var requestTag: String? = null
         private var responseTag: String? = null
         var level = Level.BASIC
@@ -190,18 +201,6 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
          */
         fun loggable(isDebug: Boolean): Builder {
             this.isDebug = isDebug
-            return this
-        }
-
-        /**
-         * @param type set sending log output type
-         * *
-         * @return Builder
-         * *
-         * @see Platform
-         */
-        fun log(type: Int): Builder {
-            this.type = type
             return this
         }
 
