@@ -49,40 +49,47 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             rSubtype = rContentType.subtype()
         }
 
-        if (subtypeIsNotFile(rSubtype)) {
-            Logger.printJsonRequest(builder, request)
-        } else {
-            Logger.printFileRequest(builder, request)
+        if (builder.requestFlag) {
+            if (subtypeIsNotFile(rSubtype)) {
+                Logger.printJsonRequest(builder, request)
+            } else {
+                Logger.printFileRequest(builder, request)
+            }
         }
 
         val st = System.nanoTime()
         val response = chain.proceed(request)
 
-        val segmentList = (request.tag() as Request).url().encodedPathSegments()
-        val chainMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - st)
-        val header = response.headers().toString()
-        val code = response.code()
-        val isSuccessful = response.isSuccessful
-        val responseBody = response.body()
-        val contentType = responseBody!!.contentType()
+        if (builder.responseFlag) {
+            val segmentList = (request.tag() as Request).url().encodedPathSegments()
+            val chainMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - st)
+            val header = response.headers().toString()
+            val code = response.code()
+            val isSuccessful = response.isSuccessful
+            val responseBody = response.body()
+            val contentType = responseBody!!.contentType()
 
-        var subtype: String? = null
-        val body: ResponseBody
+            var subtype: String? = null
+            val body: ResponseBody
 
-        if (contentType != null) {
-            subtype = contentType.subtype()
-        }
+            if (contentType != null) {
+                subtype = contentType.subtype()
+            }
 
-        if (subtypeIsNotFile(subtype)) {
-            val bodyString = Logger.getJsonString(responseBody.string())
-            Logger.printJsonResponse(builder, chainMs, isSuccessful, code, header, bodyString, segmentList)
-            body = ResponseBody.create(contentType, bodyString)
+            if (subtypeIsNotFile(subtype)) {
+                val bodyString = Logger.getJsonString(responseBody.string())
+                Logger.printJsonResponse(builder, chainMs, isSuccessful, code, header, bodyString, segmentList)
+                body = ResponseBody.create(contentType, bodyString)
+            } else {
+                Logger.printFileResponse(builder, chainMs, isSuccessful, code, header, segmentList)
+                return response
+            }
+
+            return response.newBuilder().body(body).build()
         } else {
-            Logger.printFileResponse(builder, chainMs, isSuccessful, code, header, segmentList)
+
             return response
         }
-
-        return response.newBuilder().body(body).build()
     }
 
     private fun subtypeIsNotFile(subtype:String?):Boolean {
@@ -98,9 +105,11 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
         var TAG = "SAF_Logging_Interceptor"
 
         var isDebug: Boolean = false
+        var requestFlag:Boolean = false
+        var responseFlag:Boolean = false
+
         private var requestTag: String? = null
         private var responseTag: String? = null
-
         private val builder: Headers.Builder
 
         init {
@@ -120,9 +129,9 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
         /**
          * @param name  Filed
-         * *
+         *
          * @param value Value
-         * *
+         *
          * @return Builder
          * * Add a field with the specified value
          */
@@ -133,9 +142,8 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
         /**
          * Set request and response each log tag
-
          * @param tag general log tag
-         * *
+         *
          * @return Builder
          */
         fun tag(tag: String): Builder {
@@ -145,31 +153,53 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
         /**
          * Set request log tag
-
+         *
          * @param tag request log tag
-         * *
+         *
          * @return Builder
          */
-        fun request(tag: String): Builder {
+        fun requestTag(tag: String): Builder {
             this.requestTag = tag
             return this
         }
 
         /**
          * Set response log tag
-
+         *
          * @param tag response log tag
          * *
          * @return Builder
          */
-        fun response(tag: String): Builder {
+        fun responseTag(tag: String): Builder {
             this.responseTag = tag
             return this
         }
 
         /**
+         * Set request log flag
+         *
+         *
+         * @return Builder
+         */
+        fun request(): Builder {
+            this.requestFlag = true
+            return this
+        }
+
+        /**
+         * Set response log flag
+         *
+         *
+         * @return Builder
+         */
+        fun response(): Builder {
+            this.responseFlag = true
+            return this
+        }
+
+        /**
          * @param isDebug set can sending log output
-         * *
+         *
          * @return Builder
          */
         fun loggable(isDebug: Boolean): Builder {
