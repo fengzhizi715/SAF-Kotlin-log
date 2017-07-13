@@ -1,4 +1,4 @@
-package toutiao.magicwindow.cn.saf_logginginterceptor;
+package com.safframework.log;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,7 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("toutiao.magicwindow.cn.saf_logginginterceptor.test", appContext
-                .getPackageName());
+        assertEquals("com.safframework.log.test", appContext.getPackageName());
     }
 }

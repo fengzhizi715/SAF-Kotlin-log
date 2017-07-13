@@ -1,3 +1,4 @@
 include ':app'
 include ':saf-log'
-include':saf-logginginterceptor'
+include ':saf-logginginterceptor'
+include ':saf-rxtrace'
