@@ -37,7 +37,8 @@ object L {
 
     @JvmStatic var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
-    @JvmStatic fun init(clazz: Class<*>):L {
+    @JvmStatic
+    fun init(clazz: Class<*>):L {
         TAG = clazz.simpleName
         return this
     }
@@ -46,7 +47,8 @@ object L {
      * 支持用户自己传tag，可扩展性更好
      * @param tag
      */
-    @JvmStatic fun init(tag: String):L {
+    @JvmStatic
+    fun init(tag: String):L {
         TAG = tag
         return this
     }
@@ -55,12 +57,14 @@ object L {
      * header是自定义的内容，可以放App的信息版本号等，方便查找和调试
      * @param tag
      */
-    @JvmStatic fun header(header: String?):L {
+    @JvmStatic
+    fun header(header: String?):L {
         this.header = header
         return this
     }
 
-    @JvmStatic fun e(msg: String?) {
+    @JvmStatic
+    fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -81,7 +85,8 @@ object L {
      *
      * @param msg
      */
-    @JvmStatic fun e(tag: String?, msg: String?) {
+    @JvmStatic
+    fun e(tag: String?, msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
@@ -97,7 +102,8 @@ object L {
         }
     }
 
-    @JvmStatic fun e(msg: String?, tr: Throwable) {
+    @JvmStatic
+    fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -106,7 +112,8 @@ object L {
         }
     }
 
-    @JvmStatic fun w(msg: String?) {
+    @JvmStatic
+    fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -127,7 +134,8 @@ object L {
      *
      * @param msg
      */
-    @JvmStatic fun w(tag: String?, msg: String?) {
+    @JvmStatic
+    fun w(tag: String?, msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
@@ -143,7 +151,8 @@ object L {
         }
     }
 
-    @JvmStatic fun w(msg: String?, tr: Throwable) {
+    @JvmStatic
+    fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -152,7 +161,8 @@ object L {
         }
     }
 
-    @JvmStatic fun i(msg: String?) {
+    @JvmStatic
+    fun i(msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
            if (msg!=null && msg.isNotBlank()) {
@@ -174,7 +184,8 @@ object L {
      *
      * @param msg
      */
-    @JvmStatic fun i(tag: String?, msg: String?) {
+    @JvmStatic
+    fun i(tag: String?, msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
@@ -190,7 +201,8 @@ object L {
         }
     }
 
-    @JvmStatic fun i(msg: String?, tr: Throwable) {
+    @JvmStatic
+    fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -199,7 +211,8 @@ object L {
         }
     }
 
-    @JvmStatic fun d(msg: String?) {
+    @JvmStatic
+    fun d(msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -220,7 +233,8 @@ object L {
      *
      * @param msg
      */
-    @JvmStatic fun d(tag: String?, msg: String?) {
+    @JvmStatic
+    fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
@@ -236,7 +250,8 @@ object L {
         }
     }
 
-    @JvmStatic fun d(msg: String?, tr: Throwable) {
+    @JvmStatic
+    fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             if (msg!=null && msg.isNotBlank()) {
@@ -245,7 +260,8 @@ object L {
         }
     }
 
-    @JvmStatic fun json(map: Map<*, *>?) {
+    @JvmStatic
+    fun json(map: Map<*, *>?) {
         if (map != null) {
 
             try {
@@ -261,10 +277,35 @@ object L {
         }
     }
 
+    @JvmStatic
+    fun json(list: List<*>?) {
+        if (list != null) {
+
+            try {
+                val jsonArray = JSONArray()
+
+                list.map {
+                    it ->
+                    val objStr = JSON.toJSONString(it)
+                    val jsonObject = JSONObject(objStr)
+                    jsonArray.put(jsonObject)
+                }
+
+                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
+                message = message.replace("\n".toRegex(), "\n║ ")
+                val s = getMethodNames()
+                println(String.format(s, message))
+            } catch (e: JSONException) {
+                e("Invalid Json")
+            }
+        }
+    }
+
     /**
      * 将任何对象转换成json字符串进行打印
      */
-    @JvmStatic fun json(obj: Any?) {
+    @JvmStatic
+    fun json(obj: Any?) {
 
         if (obj == null) {
             d("object is null")
@@ -287,7 +328,8 @@ object L {
     /**
      * 打印json字符串
      */
-    @JvmStatic fun json(json: String?) {
+    @JvmStatic
+    fun json(json: String?) {
         var json = json
 
         if (json==null || json.isBlank()) {
