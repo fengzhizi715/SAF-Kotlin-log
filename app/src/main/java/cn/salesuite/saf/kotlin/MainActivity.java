@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.safframework.log.L;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tony Shen on 2017/1/7.
  */
@@ -24,7 +27,12 @@ public class MainActivity extends Activity{
         User u = new User();
         u.userName = "tony";
         u.password = "123456";
-        L.json(u);
-        L.json("dsafds");
+//        L.json(u);
+//        L.json("dsafds");
+
+        List<User> list = new ArrayList<>();
+        list.add(u);
+        list.add(u);
+        L.json(list);
     }
 }
