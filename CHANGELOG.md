@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.0.9
+---
+2017-07-26
+ *  json()增加对List对象对打印
+
 Version 1.0.8
 ---
 2017-06-30
