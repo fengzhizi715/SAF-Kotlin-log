@@ -34,5 +34,3 @@ task clean(type: Delete) {
 
 tasks.getByPath(":saf-log:releaseAndroidJavadocs").enabled = false
 tasks.getByPath(":saf-log:bintrayUpload").enabled = false
-tasks.getByPath(":saf-logginginterceptor:releaseAndroidJavadocs").enabled = false
-tasks.getByPath(":saf-logginginterceptor:bintrayUpload").enabled = false
