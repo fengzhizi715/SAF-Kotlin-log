@@ -1,7 +1,8 @@
-package cn.magicwindow.toutiao.http.interceptor
+package com.safframework.http.interceptor
 
 import android.text.TextUtils
 import android.util.Log
+import cn.magicwindow.toutiao.http.interceptor.LoggingInterceptor
 import okhttp3.Request
 import okio.Buffer
 import org.json.JSONArray
