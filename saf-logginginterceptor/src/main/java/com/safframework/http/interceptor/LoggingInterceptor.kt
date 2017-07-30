@@ -1,4 +1,4 @@
-package com.safframework.http.interceptor
+package cn.magicwindow.toutiao.http.interceptor
 
 import okhttp3.*
 import java.io.IOException

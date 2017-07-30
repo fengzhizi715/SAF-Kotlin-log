@@ -1,4 +1,4 @@
-package com.safframework.http.interceptor
+package cn.magicwindow.toutiao.http.interceptor
 
 import android.text.TextUtils
 import android.util.Log
@@ -12,7 +12,7 @@ import java.io.IOException
 /**
  * Created by Tony Shen on 2017/7/9.
  */
-class Logger protected constructor() {
+class Logger {
 
     companion object {
 
@@ -29,9 +29,7 @@ class Logger protected constructor() {
         private val LINE_SEPARATOR = System.getProperty("line.separator")
         private val DOUBLE_SEPARATOR = LINE_SEPARATOR + LINE_SEPARATOR
 
-        private fun isEmpty(line: String): Boolean {
-            return line.isEmpty() || N == line || T == line || line.trim { it <= ' ' }.isEmpty()
-        }
+        private fun isEmpty(line: String) = line.isEmpty() || N == line || T == line || line.trim { it <= ' ' }.isEmpty()
 
         @JvmStatic
         fun printJsonRequest(builder: LoggingInterceptor.Builder, request: Request) {
@@ -47,9 +45,15 @@ class Logger protected constructor() {
 
         @JvmStatic
         fun printFileRequest(builder: LoggingInterceptor.Builder, request: Request) {
+
+            val requestBody = LINE_SEPARATOR + binaryBodyToString(request)
+
             val tag = builder.getTag(true)
             Log.i(tag, TOP_BORDER)
+
             logLines(tag, getRequest(request))
+            logLines(tag, requestBody.split(LINE_SEPARATOR.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+
             Log.i(tag, BOTTOM_BORDER)
         }
 
@@ -133,6 +137,26 @@ class Logger protected constructor() {
             } catch (e: IOException) {
                 return "{\"err\": \"" + e.message + "\"}"
             }
+        }
+
+        private fun binaryBodyToString(request: Request): String {
+
+            val copy = request.newBuilder().build()
+            val requestBody = copy.body()
+            if (requestBody == null) return ""
+
+            var buffer:String?
+            if (requestBody.contentType()!=null) {
+                buffer = "Content-Type: "+requestBody.contentType().toString()
+            } else {
+                buffer  = ""
+            }
+
+            if (requestBody.contentLength()>0) {
+                buffer += LINE_SEPARATOR + "Content-Length: "+requestBody.contentLength()
+            }
+
+            return buffer
         }
 
         @JvmStatic
