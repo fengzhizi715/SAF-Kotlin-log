@@ -104,7 +104,7 @@ object RxTrace {
 
     private fun <T> oLogError(tag: String): ObservableTransformer<T, T> {
 
-        val message = Function<Throwable, String> { throwable -> if (throwable.message != null) throwable.message else throwable.javaClass.simpleName }
+        val message = Function<Throwable, String> { throwable -> if (throwable.message != null) throwable.message!! else throwable.javaClass.simpleName }
 
         return ObservableTransformer {
             upstream -> upstream.doOnError {
