@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.1.0
+---
+2017-09-03
+ *  json()修复对List的String、Integer、Float、Double等类型的支持
+
 Version 1.0.9
 ---
 2017-07-26
