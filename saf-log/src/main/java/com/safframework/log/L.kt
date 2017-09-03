@@ -285,10 +285,44 @@ object L {
                 val jsonArray = JSONArray()
 
                 list.map {
-                    it ->
-                    val objStr = JSON.toJSONString(it)
-                    val jsonObject = JSONObject(objStr)
-                    jsonArray.put(jsonObject)
+
+                    when(it) {
+
+                        is String -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, list.toString()))
+                            return
+                        }
+
+                        is Int -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, list.toString()))
+                            return
+                        }
+
+                        is Float -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, list.toString()))
+                            return
+                        }
+
+                        is Double -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, list.toString()))
+                            return
+                        }
+
+                        else -> {
+                            val objStr = JSON.toJSONString(it)
+                            val jsonObject = JSONObject(objStr)
+                            jsonArray.put(jsonObject)
+                        }
+                    }
+
                 }
 
                 var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
