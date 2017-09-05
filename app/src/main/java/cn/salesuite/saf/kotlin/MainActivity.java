@@ -34,5 +34,15 @@ public class MainActivity extends Activity{
         list.add(u);
         list.add(u);
         L.json(list);
+
+        List<String> ids = new ArrayList<>();
+        ids.add("123");
+        ids.add("456");
+        L.json(ids);
+
+        List<Double> idd = new ArrayList<>();
+        idd.add(123D);
+        idd.add(456D);
+        L.json(idd);
     }
 }
