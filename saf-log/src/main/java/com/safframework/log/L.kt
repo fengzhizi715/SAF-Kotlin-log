@@ -335,6 +335,64 @@ object L {
         }
     }
 
+    @JvmStatic
+    fun json(set: Set<*>?) {
+        if (set != null) {
+            try {
+                val jsonArray = JSONArray()
+
+                set.map {
+
+                    when(it) {
+
+                        is String -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, set.toString()))
+                            return
+                        }
+
+                        is Int -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, set.toString()))
+                            return
+                        }
+
+                        is Float -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, set.toString()))
+                            return
+                        }
+
+                        is Double -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, set.toString()))
+                            return
+                        }
+
+                        else -> {
+                            val objStr = JSON.toJSONString(it)
+                            val jsonObject = JSONObject(objStr)
+                            jsonArray.put(jsonObject)
+                        }
+                    }
+
+                }
+
+                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
+                message = message.replace("\n".toRegex(), "\n║ ")
+                val s = getMethodNames()
+                println(String.format(s, message))
+            } catch (e: JSONException) {
+                e("Invalid Json")
+            }
+        }
+    }
+
+
     /**
      * 将任何对象转换成json字符串进行打印
      */
