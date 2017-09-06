@@ -6,7 +6,11 @@ import android.os.Bundle;
 import com.safframework.log.L;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Tony Shen on 2017/1/7.
@@ -27,8 +31,16 @@ public class MainActivity extends Activity{
         User u = new User();
         u.userName = "tony";
         u.password = "123456";
-//        L.json(u);
-//        L.json("dsafds");
+
+        Map<String,User> map = new HashMap<>();
+        map.put("tony",u);
+        map.put("tt",u);
+        L.json(map);
+
+        Map<String,String> map2 = new HashMap<>();
+        map2.put("tony","shen");
+        map2.put("tt","ziyu");
+        L.json(map2);
 
         List<User> list = new ArrayList<>();
         list.add(u);

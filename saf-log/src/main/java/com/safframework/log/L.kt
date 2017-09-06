@@ -264,17 +264,55 @@ object L {
     fun json(map: Map<*, *>?) {
         if (map != null) {
 
-            try {
-                val jsonObject = JSONObject(map)
-                var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
-            } catch (e: JSONException) {
-                e("Invalid Json")
+            val keys = map.keys
+            val values = map.values
+            val value = values.firstOrNull()
+            val isPrimitiveType = isPrimitiveType(value)
+
+            val jsonObject = JSONObject()
+            keys.map {
+
+                it ->
+
+                try {
+
+                    if (isPrimitiveType) {
+                        jsonObject.put(it.toString(), map.get(it))
+                    } else {
+                        jsonObject.put(it.toString(), JSONObject(JSON.toJSONString(map.get(it))))
+                    }
+                } catch (e: JSONException) {
+                    e("Invalid Json")
+                }
             }
 
+            var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+            message = message.replace("\n".toRegex(), "\n║ ")
+            val s = getMethodNames()
+            println(String.format(s, message))
         }
+    }
+
+    fun isPrimitiveType(value: Any?):Boolean {
+
+        var result:Boolean = false
+
+        when (value) {
+
+            is String -> result = true
+
+            is Int -> result = true
+
+            is Float -> result = true
+
+            is Double -> result = true
+
+            is Boolean -> result = true
+
+            else -> result = false
+        }
+
+        return result
     }
 
     @JvmStatic
