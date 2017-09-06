@@ -42,6 +42,11 @@ public class MainActivity extends Activity{
         map2.put("tt","ziyu");
         L.json(map2);
 
+        Map<String,Boolean> map3 = new HashMap<>();
+        map3.put("tony",true);
+        map3.put("tt",false);
+        L.json(map3);
+
         List<User> list = new ArrayList<>();
         list.add(u);
         list.add(u);
@@ -56,5 +61,10 @@ public class MainActivity extends Activity{
         idd.add(123D);
         idd.add(456D);
         L.json(idd);
+
+        List<Boolean> idb = new ArrayList<>();
+        idb.add(true);
+        idb.add(false);
+        L.json(idb);
     }
 }

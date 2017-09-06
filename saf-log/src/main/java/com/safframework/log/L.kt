@@ -299,6 +299,8 @@ object L {
 
         when (value) {
 
+            is Boolean -> result = true
+
             is String -> result = true
 
             is Int -> result = true
@@ -306,8 +308,6 @@ object L {
             is Float -> result = true
 
             is Double -> result = true
-
-            is Boolean -> result = true
 
             else -> result = false
         }
@@ -325,6 +325,13 @@ object L {
                 list.map {
 
                     when(it) {
+
+                        is Boolean -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, list.toString()))
+                            return
+                        }
 
                         is String -> {
 
@@ -382,6 +389,13 @@ object L {
                 set.map {
 
                     when(it) {
+
+                        is Boolean -> {
+
+                            val s = getMethodNames()
+                            println(String.format(s, set.toString()))
+                            return
+                        }
 
                         is String -> {
 
