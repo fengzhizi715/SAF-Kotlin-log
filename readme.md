@@ -104,9 +104,11 @@ L.json(obj);
 json方法可以将String、Map、对象打印成json风格，具体可以参照下图：
 
 ![](L_json.png)
-## 4.自定义Header
 
-## 5.针对Kotlin项目的优化
+## 4.支持List、Map、Set类型的打印
+## 5.自定义Header
+
+## 6.针对Kotlin项目的优化
 
 
 
