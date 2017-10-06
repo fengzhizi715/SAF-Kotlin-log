@@ -38,6 +38,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile "io.reactivex.rxjava2:rxandroid:2.0.1"
-    compile "io.reactivex.rxjava2:rxjava:2.1.0"
-    compile 'com.safframework.log:saf-log:1.0.9'
+    compile "io.reactivex.rxjava2:rxjava:2.1.5"
+    compile 'com.safframework.log:saf-log:1.2.0'
 }
