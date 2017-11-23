@@ -35,7 +35,8 @@ object L {
     private var TAG = "SAF_L"
     private var header:String? = ""
 
-    @JvmStatic var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
+    @JvmStatic
+    var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
     @JvmStatic
     fun init(clazz: Class<*>):L {

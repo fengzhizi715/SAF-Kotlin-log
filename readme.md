@@ -32,7 +32,7 @@ Maven:
 
 # 使用方法
 
-使用本库无需添加kotlin的配置。它可以在任何android项目中使用。
+使用本库时，无需添加kotlin的配置。它可以在任何android项目中使用。
 
 ## 1.tag使用
 
@@ -50,7 +50,7 @@ L.init(this.getClass());
 
 ```
 
-当然，init()除了支持传递class对象，还支持传String对象。
+当然，init()除了支持传递Class对象，还支持传String对象。
 
 ## 2.日志级别
 
@@ -106,7 +106,10 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
 ![](L_json.png)
 
 ## 4.支持List、Map、Set类型的打印
+List、Map、Set等类型也可以使用json()打印成json风格。
+
 ## 5.自定义Header
+通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机等机型、操作系统版本号、App版本号等。
 
 ## 6.针对Kotlin项目的优化
 
