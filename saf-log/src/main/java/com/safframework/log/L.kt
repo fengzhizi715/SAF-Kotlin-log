@@ -294,26 +294,19 @@ object L {
         }
     }
 
-    fun isPrimitiveType(value: Any?):Boolean {
+    fun isPrimitiveType(value: Any?):Boolean = when(value){
 
-        var result:Boolean = false
+        is Boolean  -> true
 
-        when (value) {
+        is String -> true
 
-            is Boolean -> result = true
+        is Int -> true
 
-            is String -> result = true
+        is Float -> true
 
-            is Int -> result = true
+        is Double ->  true
 
-            is Float -> result = true
-
-            is Double -> result = true
-
-            else -> result = false
-        }
-
-        return result
+        else -> false
     }
 
     @JvmStatic
