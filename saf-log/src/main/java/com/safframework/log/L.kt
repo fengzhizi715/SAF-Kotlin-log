@@ -369,24 +369,6 @@ object L {
     }
 
     /**
-     * 判断是否基本类型
-     */
-    private fun isPrimitiveType(value: Any?):Boolean = when(value){
-
-        is Boolean -> true
-
-        is String -> true
-
-        is Int -> true
-
-        is Float -> true
-
-        is Double ->  true
-
-        else -> false
-    }
-
-    /**
      * 将list打印成json字符串
      */
     private fun list2JSONString(list: List<*>?) {
@@ -394,51 +376,26 @@ object L {
 
             try {
                 val jsonArray = JSONArray()
+                val value = list.firstOrNull()
+                val isPrimitiveType = isPrimitiveType(value)
 
                 list.map {
 
-                    when(it) {
+                    it ->
 
-                        is Boolean -> {
+                    try {
 
+                        if (isPrimitiveType) {
                             val s = getMethodNames()
                             println(String.format(s, list.toString()))
                             return
-                        }
-
-                        is String -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, list.toString()))
-                            return
-                        }
-
-                        is Int -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, list.toString()))
-                            return
-                        }
-
-                        is Float -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, list.toString()))
-                            return
-                        }
-
-                        is Double -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, list.toString()))
-                            return
-                        }
-
-                        else -> {
+                        } else {
                             val objStr = JSON.toJSONString(it)
                             val jsonObject = JSONObject(objStr)
                             jsonArray.put(jsonObject)
                         }
+                    } catch (e: JSONException) {
+                        e("Invalid Json")
                     }
 
                 }
@@ -575,6 +532,24 @@ object L {
         }
 
         return builder.toString()
+    }
+    
+    /**
+     * 判断是否基本类型
+     */
+    private fun isPrimitiveType(value: Any?):Boolean = when(value){
+
+        is Boolean -> true
+
+        is String -> true
+
+        is Int -> true
+
+        is Float -> true
+
+        is Double ->  true
+
+        else -> false
     }
 
     fun String.isBlank(msg:String):Boolean {
