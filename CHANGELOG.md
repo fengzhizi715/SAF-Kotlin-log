@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.2.2
+---
+2017-11-24
+* 对L.kt进行重构
+
 Version 1.2.1
 ---
 2017-11-24
