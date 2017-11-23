@@ -418,21 +418,20 @@ object L {
                 val value = set.firstOrNull()
                 val isPrimitiveType = isPrimitiveType(value)
 
+                if (isPrimitiveType) {
+                    val s = getMethodNames()
+                    println(String.format(s, set.toString()))
+                    return
+                }
+
                 set.map {
 
                     it ->
 
                     try {
-
-                        if (isPrimitiveType) {
-                            val s = getMethodNames()
-                            println(String.format(s, set.toString()))
-                            return
-                        } else {
-                            val objStr = JSON.toJSONString(it)
-                            val jsonObject = JSONObject(objStr)
-                            jsonArray.put(jsonObject)
-                        }
+                        val objStr = JSON.toJSONString(it)
+                        val jsonObject = JSONObject(objStr)
+                        jsonArray.put(jsonObject)
                     } catch (e: JSONException) {
                         e("Invalid Json")
                     }
