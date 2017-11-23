@@ -379,25 +379,23 @@ object L {
                 val value = list.firstOrNull()
                 val isPrimitiveType = isPrimitiveType(value)
 
+                if (isPrimitiveType) {
+                    val s = getMethodNames()
+                    println(String.format(s, list.toString()))
+                    return
+                }
+
                 list.map {
 
                     it ->
 
                     try {
-
-                        if (isPrimitiveType) {
-                            val s = getMethodNames()
-                            println(String.format(s, list.toString()))
-                            return
-                        } else {
-                            val objStr = JSON.toJSONString(it)
-                            val jsonObject = JSONObject(objStr)
-                            jsonArray.put(jsonObject)
-                        }
+                        val objStr = JSON.toJSONString(it)
+                        val jsonObject = JSONObject(objStr)
+                        jsonArray.put(jsonObject)
                     } catch (e: JSONException) {
                         e("Invalid Json")
                     }
-
                 }
 
                 var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
