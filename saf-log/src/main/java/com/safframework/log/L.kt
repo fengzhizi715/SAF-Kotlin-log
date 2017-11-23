@@ -261,8 +261,79 @@ object L {
         }
     }
 
+    /**
+     * 将任何对象转换成json字符串进行打印
+     */
     @JvmStatic
-    fun json(map: Map<*, *>?) {
+    fun json(obj: Any?) {
+
+        if (obj == null) {
+            d("object is null")
+            return
+        }
+
+        when(obj) {
+
+            is String -> string2Json(obj)
+
+            is Map<*, *> -> map2Json(obj)
+
+            is List<*> -> list2Json(obj)
+
+            is Set<*> -> set2Json(obj)
+
+            else -> {
+                
+                try {
+                    val objStr = JSON.toJSONString(obj)
+                    val jsonObject = JSONObject(objStr)
+                    var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+                    message = message.replace("\n".toRegex(), "\n║ ")
+                    val s = getMethodNames()
+                    println(String.format(s, message))
+                } catch (e: JSONException) {
+                    e("Invalid Json")
+                }
+            }
+        }
+    }
+
+    /**
+     * 打印json字符串
+     */
+    private fun string2Json(json: String?) {
+        var json = json
+
+        if (json==null || json.isBlank()) {
+            d("Empty/Null json content")
+            return
+        }
+
+        try {
+            json = json.trim { it <= ' ' }
+            if (json.startsWith("{")) {
+                val jsonObject = JSONObject(json)
+                var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+                message = message.replace("\n".toRegex(), "\n║ ")
+                val s = getMethodNames()
+                println(String.format(s, message))
+                return
+            }
+            if (json.startsWith("[")) {
+                val jsonArray = JSONArray(json)
+                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
+                message = message.replace("\n".toRegex(), "\n║ ")
+                val s = getMethodNames()
+                println(String.format(s, message))
+                return
+            }
+            e("Invalid Json: "+ json)
+        } catch (e: JSONException) {
+            e("Invalid Json: "+ json)
+        }
+    }
+
+    private fun map2Json(map: Map<*, *>?) {
         if (map != null) {
 
             val keys = map.keys
@@ -294,7 +365,10 @@ object L {
         }
     }
 
-    fun isPrimitiveType(value: Any?):Boolean = when(value){
+    /**
+     * 判断是否基本类型
+     */
+    private fun isPrimitiveType(value: Any?):Boolean = when(value){
 
         is Boolean  -> true
 
@@ -309,8 +383,7 @@ object L {
         else -> false
     }
 
-    @JvmStatic
-    fun json(list: List<*>?) {
+    private fun list2Json(list: List<*>?) {
         if (list != null) {
 
             try {
@@ -374,8 +447,7 @@ object L {
         }
     }
 
-    @JvmStatic
-    fun json(set: Set<*>?) {
+    private fun set2Json(set: Set<*>?) {
         if (set != null) {
             try {
                 val jsonArray = JSONArray()
@@ -436,68 +508,6 @@ object L {
                 e("Invalid Json")
             }
         }
-    }
-
-
-    /**
-     * 将任何对象转换成json字符串进行打印
-     */
-    @JvmStatic
-    fun json(obj: Any?) {
-
-        if (obj == null) {
-            d("object is null")
-            return
-        }
-
-        try {
-            val objStr = JSON.toJSONString(obj)
-            val jsonObject = JSONObject(objStr)
-            var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-            message = message.replace("\n".toRegex(), "\n║ ")
-            val s = getMethodNames()
-            println(String.format(s, message))
-        } catch (e: JSONException) {
-            e("Invalid Json")
-        }
-
-    }
-
-    /**
-     * 打印json字符串
-     */
-    @JvmStatic
-    fun json(json: String?) {
-        var json = json
-
-        if (json==null || json.isBlank()) {
-            d("Empty/Null json content")
-            return
-        }
-
-        try {
-            json = json.trim { it <= ' ' }
-            if (json.startsWith("{")) {
-                val jsonObject = JSONObject(json)
-                var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
-                return
-            }
-            if (json.startsWith("[")) {
-                val jsonArray = JSONArray(json)
-                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
-                return
-            }
-            e("Invalid Json: "+ json)
-        } catch (e: JSONException) {
-            e("Invalid Json: "+ json)
-        }
-
     }
 
     fun getMethodNames(): String {
