@@ -417,53 +417,27 @@ object L {
         if (set != null) {
             try {
                 val jsonArray = JSONArray()
+                val value = set.firstOrNull()
+                val isPrimitiveType = isPrimitiveType(value)
 
                 set.map {
 
-                    when(it) {
+                    it ->
 
-                        is Boolean -> {
+                    try {
 
+                        if (isPrimitiveType) {
                             val s = getMethodNames()
                             println(String.format(s, set.toString()))
                             return
-                        }
-
-                        is String -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, set.toString()))
-                            return
-                        }
-
-                        is Int -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, set.toString()))
-                            return
-                        }
-
-                        is Float -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, set.toString()))
-                            return
-                        }
-
-                        is Double -> {
-
-                            val s = getMethodNames()
-                            println(String.format(s, set.toString()))
-                            return
-                        }
-
-                        else -> {
+                        } else {
                             val objStr = JSON.toJSONString(it)
                             val jsonObject = JSONObject(objStr)
                             jsonArray.put(jsonObject)
                         }
+                    } catch (e: JSONException) {
+                        e("Invalid Json")
                     }
-
                 }
 
                 var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
@@ -533,7 +507,7 @@ object L {
 
         return builder.toString()
     }
-    
+
     /**
      * 判断是否基本类型
      */
