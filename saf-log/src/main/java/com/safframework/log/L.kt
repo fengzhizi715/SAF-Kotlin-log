@@ -274,16 +274,16 @@ object L {
 
         when(obj) {
 
-            is String -> string2Json(obj)
+            is String -> string2JSONString(obj)
 
-            is Map<*, *> -> map2Json(obj)
+            is Map<*, *> -> map2JSONString(obj)
 
-            is List<*> -> list2Json(obj)
+            is List<*> -> list2JSONString(obj)
 
-            is Set<*> -> set2Json(obj)
+            is Set<*> -> set2JSONString(obj)
 
             else -> {
-                
+
                 try {
                     val objStr = JSON.toJSONString(obj)
                     val jsonObject = JSONObject(objStr)
@@ -301,7 +301,7 @@ object L {
     /**
      * 打印json字符串
      */
-    private fun string2Json(json: String?) {
+    private fun string2JSONString(json: String?) {
         var json = json
 
         if (json==null || json.isBlank()) {
@@ -333,7 +333,10 @@ object L {
         }
     }
 
-    private fun map2Json(map: Map<*, *>?) {
+    /**
+     * 将map打印成json字符串
+     */
+    private fun map2JSONString(map: Map<*, *>?) {
         if (map != null) {
 
             val keys = map.keys
@@ -370,7 +373,7 @@ object L {
      */
     private fun isPrimitiveType(value: Any?):Boolean = when(value){
 
-        is Boolean  -> true
+        is Boolean -> true
 
         is String -> true
 
@@ -383,7 +386,10 @@ object L {
         else -> false
     }
 
-    private fun list2Json(list: List<*>?) {
+    /**
+     * 将list打印成json字符串
+     */
+    private fun list2JSONString(list: List<*>?) {
         if (list != null) {
 
             try {
@@ -447,7 +453,10 @@ object L {
         }
     }
 
-    private fun set2Json(set: Set<*>?) {
+    /**
+     * 将set打印成json字符串
+     */
+    private fun set2JSONString(set: Set<*>?) {
         if (set != null) {
             try {
                 val jsonArray = JSONArray()
