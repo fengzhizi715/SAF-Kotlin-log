@@ -4,6 +4,7 @@ import android.util.Log
 import com.alibaba.fastjson.JSON
 import com.safframework.log.parse.CollectionParser
 import com.safframework.log.parse.MapParser
+import com.safframework.log.parse.StringParser
 import com.safframework.log.utils.Utils
 import org.json.JSONArray
 import org.json.JSONException
@@ -305,28 +306,10 @@ object L {
     private fun string2JSONString(json: String) {
         var json = json
 
-        try {
-            json = json.trim { it <= ' ' }
-            if (json.startsWith("{")) {
-                val jsonObject = JSONObject(json)
-                var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
-                return
-            }
-            if (json.startsWith("[")) {
-                val jsonArray = JSONArray(json)
-                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
-                return
-            }
-            e("Invalid Json: "+ json)
-        } catch (e: JSONException) {
-            e("Invalid Json: "+ json)
-        }
+        json = json.trim { it <= ' ' }
+        val s = getMethodNames()
+        val parser = StringParser()
+        println(String.format(s, parser.parseString(json)))
     }
 
     /**
@@ -359,7 +342,7 @@ object L {
         println(String.format(s, parser.parseString(collection)))
     }
 
-    fun getMethodNames(): String {
+    private fun getMethodNames(): String {
         val sElements = Thread.currentThread().stackTrace
 
         var stackOffset = LoggerPrinter.getStackOffset(sElements)
