@@ -279,9 +279,7 @@ object L {
 
             is Map<*, *> -> map2JSONString(obj)
 
-            is List<*> -> list2JSONString(obj)
-
-            is Set<*> -> set2JSONString(obj)
+            is Collection<*> -> collection2JSONString(obj)
 
             else -> {
 
@@ -372,66 +370,27 @@ object L {
     /**
      * 将list打印成json字符串
      */
-    private fun list2JSONString(list: List<*>?) {
-        if (list != null) {
+    private fun collection2JSONString(collection: Collection<*>?) {
+        if (collection != null) {
 
             try {
 
-                val value = list.firstOrNull()
+                val value = collection.firstOrNull()
                 val isPrimitiveType = isPrimitiveType(value)
 
                 if (isPrimitiveType) {
-                    val simpleName = list.javaClass
+                    val simpleName = collection.javaClass
                     var msg = "%s size = %d" + LoggerPrinter.BR
-                    msg = String.format(msg, simpleName, list.size) + "║ "
+                    msg = String.format(msg, simpleName, collection.size) + "║ "
                     val s = getMethodNames()
-                    println(String.format(s, msg + list.toString()))
+                    println(String.format(s, msg + collection.toString()))
                     return
                 }
 
                 val parser = CollectionParse()
 
                 val s = getMethodNames()
-                println(String.format(s, parser.parseString(list)))
-            } catch (e: JSONException) {
-                e("Invalid Json")
-            }
-        }
-    }
-
-    /**
-     * 将set打印成json字符串
-     */
-    private fun set2JSONString(set: Set<*>?) {
-        if (set != null) {
-            try {
-                val jsonArray = JSONArray()
-                val value = set.firstOrNull()
-                val isPrimitiveType = isPrimitiveType(value)
-
-                if (isPrimitiveType) {
-                    val s = getMethodNames()
-                    println(String.format(s, set.toString()))
-                    return
-                }
-
-                set.map {
-
-                    it ->
-
-                    try {
-                        val objStr = JSON.toJSONString(it)
-                        val jsonObject = JSONObject(objStr)
-                        jsonArray.put(jsonObject)
-                    } catch (e: JSONException) {
-                        e("Invalid Json")
-                    }
-                }
-
-                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
-                val s = getMethodNames()
-                println(String.format(s, message))
+                println(String.format(s, parser.parseString(collection)))
             } catch (e: JSONException) {
                 e("Invalid Json")
             }
