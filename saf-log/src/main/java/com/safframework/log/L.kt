@@ -2,7 +2,9 @@ package com.safframework.log
 
 import android.util.Log
 import com.alibaba.fastjson.JSON
-import com.safframework.log.parse.CollectionParse
+import com.safframework.log.parse.CollectionParser
+import com.safframework.log.parse.MapParser
+import com.safframework.log.utils.Utils
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -338,37 +340,14 @@ object L {
     private fun map2JSONString(map: Map<*, *>?) {
         if (map != null) {
 
-            val keys = map.keys
-            val values = map.values
-            val value = values.firstOrNull()
-            val isPrimitiveType = isPrimitiveType(value)
-
-            val jsonObject = JSONObject()
-            keys.map {
-
-                it ->
-
-                try {
-
-                    if (isPrimitiveType) {
-                        jsonObject.put(it.toString(), map.get(it))
-                    } else {
-                        jsonObject.put(it.toString(), JSONObject(JSON.toJSONString(map.get(it))))
-                    }
-                } catch (e: JSONException) {
-                    e("Invalid Json")
-                }
-            }
-
-            var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-            message = message.replace("\n".toRegex(), "\n║ ")
             val s = getMethodNames()
-            println(String.format(s, message))
+            val parser = MapParser()
+            println(String.format(s, parser.parseString(map)))
         }
     }
 
     /**
-     * 将list打印成json字符串
+     * 将list、set打印成json字符串
      */
     private fun collection2JSONString(collection: Collection<*>?) {
         if (collection != null) {
@@ -376,7 +355,7 @@ object L {
             try {
 
                 val value = collection.firstOrNull()
-                val isPrimitiveType = isPrimitiveType(value)
+                val isPrimitiveType = Utils.isPrimitiveType(value)
 
                 if (isPrimitiveType) {
                     val simpleName = collection.javaClass
@@ -387,9 +366,8 @@ object L {
                     return
                 }
 
-                val parser = CollectionParse()
-
                 val s = getMethodNames()
+                val parser = CollectionParser()
                 println(String.format(s, parser.parseString(collection)))
             } catch (e: JSONException) {
                 e("Invalid Json")
@@ -453,24 +431,6 @@ object L {
         }
 
         return builder.toString()
-    }
-
-    /**
-     * 判断是否基本类型
-     */
-    private fun isPrimitiveType(value: Any?):Boolean = when(value){
-
-        is Boolean -> true
-
-        is String -> true
-
-        is Int -> true
-
-        is Float -> true
-
-        is Double ->  true
-
-        else -> false
     }
 
     fun String.isBlank(msg:String):Boolean {

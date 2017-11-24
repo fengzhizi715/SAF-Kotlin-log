@@ -10,7 +10,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/24.
  */
-class CollectionParse : Parser<Collection<*>> {
+class CollectionParser : Parser<Collection<*>> {
 
     override fun parseString(collection: Collection<*>): String {
 
