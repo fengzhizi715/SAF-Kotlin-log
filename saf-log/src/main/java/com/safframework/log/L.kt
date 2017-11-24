@@ -375,16 +375,23 @@ object L {
         if (list != null) {
 
             try {
-                val jsonArray = JSONArray()
+
                 val value = list.firstOrNull()
                 val isPrimitiveType = isPrimitiveType(value)
 
                 if (isPrimitiveType) {
+                    val simpleName = list.javaClass
+                    var msg = "%s size = %d" + LoggerPrinter.BR
+                    msg = String.format(msg, simpleName, list.size) + "║ "
                     val s = getMethodNames()
-                    println(String.format(s, list.toString()))
+                    println(String.format(s, msg + list.toString()))
                     return
                 }
 
+                val jsonArray = JSONArray()
+                val simpleName = list.javaClass
+                var msg = "%s size = %d" + LoggerPrinter.BR
+                msg = String.format(msg, simpleName, list.size) + "║ "
                 list.map {
 
                     it ->
@@ -401,7 +408,7 @@ object L {
                 var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
                 message = message.replace("\n".toRegex(), "\n║ ")
                 val s = getMethodNames()
-                println(String.format(s, message))
+                println(String.format(s, msg + message))
             } catch (e: JSONException) {
                 e("Invalid Json")
             }
