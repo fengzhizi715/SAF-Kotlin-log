@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.3.0
+---
+2017-11-25
+* 对整个项目进行重构，增加Parser层
+
 Version 1.2.2
 ---
 2017-11-24
