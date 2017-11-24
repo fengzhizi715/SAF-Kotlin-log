@@ -6,7 +6,6 @@ import com.safframework.log.parse.CollectionParser
 import com.safframework.log.parse.MapParser
 import com.safframework.log.parse.StringParser
 import com.safframework.log.utils.Utils
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -287,12 +286,15 @@ object L {
             else -> {
 
                 try {
+                    val s = getMethodNames()
+
+                    var msg = obj.javaClass.toString() + LoggerPrinter.BR + "║ "
                     val objStr = JSON.toJSONString(obj)
                     val jsonObject = JSONObject(objStr)
                     var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
                     message = message.replace("\n".toRegex(), "\n║ ")
-                    val s = getMethodNames()
-                    println(String.format(s, message))
+
+                    println(String.format(s, msg+ message))
                 } catch (e: JSONException) {
                     e("Invalid Json")
                 }
