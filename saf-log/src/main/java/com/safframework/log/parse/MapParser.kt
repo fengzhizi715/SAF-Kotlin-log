@@ -19,6 +19,8 @@ class MapParser : Parser<Map<*,*>> {
         val value = values.firstOrNull()
         val isPrimitiveType = Utils.isPrimitiveType(value)
 
+        var msg = map.javaClass.toString() + LoggerPrinter.BR + "║ "
+
         val jsonObject = JSONObject()
         keys.map {
 
@@ -39,7 +41,7 @@ class MapParser : Parser<Map<*,*>> {
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")
 
-        return message
+        return msg + message
     }
 
 }
