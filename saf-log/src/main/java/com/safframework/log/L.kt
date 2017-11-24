@@ -71,7 +71,7 @@ object L {
     fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -93,7 +93,7 @@ object L {
     fun e(tag: String?, msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -110,7 +110,7 @@ object L {
     fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
                 Log.e(TAG, msg, tr)
             }
         }
@@ -120,7 +120,7 @@ object L {
     fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -142,7 +142,7 @@ object L {
     fun w(tag: String?, msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -159,7 +159,7 @@ object L {
     fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
                 Log.w(TAG, msg, tr)
             }
         }
@@ -169,7 +169,7 @@ object L {
     fun i(msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-           if (msg!=null && msg.isNotBlank()) {
+           if (msg!=null && msg.isNotEmpty()) {
 
                val s = getMethodNames()
 
@@ -192,7 +192,7 @@ object L {
     fun i(tag: String?, msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -209,7 +209,7 @@ object L {
     fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
                 Log.i(TAG, msg, tr)
             }
         }
@@ -219,7 +219,7 @@ object L {
     fun d(msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -241,7 +241,7 @@ object L {
     fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotBlank() && msg!=null && msg.isNotBlank()) {
+            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
@@ -258,7 +258,7 @@ object L {
     fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotBlank()) {
+            if (msg!=null && msg.isNotEmpty()) {
                 Log.d(TAG, msg, tr)
             }
         }
@@ -302,13 +302,8 @@ object L {
     /**
      * 打印json字符串
      */
-    private fun string2JSONString(json: String?) {
+    private fun string2JSONString(json: String) {
         var json = json
-
-        if (json==null || json.isBlank()) {
-            d("Empty/Null json content")
-            return
-        }
 
         try {
             json = json.trim { it <= ' ' }
@@ -337,41 +332,35 @@ object L {
     /**
      * 将map打印成json字符串
      */
-    private fun map2JSONString(map: Map<*, *>?) {
-        if (map != null) {
-
-            val s = getMethodNames()
-            val parser = MapParser()
-            println(String.format(s, parser.parseString(map)))
-        }
+    private fun map2JSONString(map: Map<*, *>) {
+        val s = getMethodNames()
+        val parser = MapParser()
+        println(String.format(s, parser.parseString(map)))
     }
 
     /**
      * 将list、set打印成json字符串
      */
-    private fun collection2JSONString(collection: Collection<*>?) {
-        if (collection != null) {
+    private fun collection2JSONString(collection: Collection<*>) {
+        try {
 
-            try {
+            val value = collection.firstOrNull()
+            val isPrimitiveType = Utils.isPrimitiveType(value)
 
-                val value = collection.firstOrNull()
-                val isPrimitiveType = Utils.isPrimitiveType(value)
-
-                if (isPrimitiveType) {
-                    val simpleName = collection.javaClass
-                    var msg = "%s size = %d" + LoggerPrinter.BR
-                    msg = String.format(msg, simpleName, collection.size) + "║ "
-                    val s = getMethodNames()
-                    println(String.format(s, msg + collection.toString()))
-                    return
-                }
-
+            if (isPrimitiveType) {
+                val simpleName = collection.javaClass
+                var msg = "%s size = %d" + LoggerPrinter.BR
+                msg = String.format(msg, simpleName, collection.size) + "║ "
                 val s = getMethodNames()
-                val parser = CollectionParser()
-                println(String.format(s, parser.parseString(collection)))
-            } catch (e: JSONException) {
-                e("Invalid Json")
+                println(String.format(s, msg + collection.toString()))
+                return
             }
+
+            val s = getMethodNames()
+            val parser = CollectionParser()
+            println(String.format(s, parser.parseString(collection)))
+        } catch (e: JSONException) {
+            e("Invalid Json")
         }
     }
 
@@ -431,15 +420,5 @@ object L {
         }
 
         return builder.toString()
-    }
-
-    fun String.isBlank(msg:String):Boolean {
-
-        return msg.length==0;
-    }
-
-    fun String.isNotBlank(msg:String):Boolean {
-
-        return !msg.isBlank();
     }
 }
