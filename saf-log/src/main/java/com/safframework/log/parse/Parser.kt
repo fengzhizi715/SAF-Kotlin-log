@@ -6,7 +6,5 @@ package com.safframework.log.parse
  */
 interface Parser<T> {
 
-    fun parseClassType(): Class<T>
-
     fun parseString(t: T): String
 }

@@ -2,6 +2,7 @@ package com.safframework.log
 
 import android.util.Log
 import com.alibaba.fastjson.JSON
+import com.safframework.log.parse.CollectionParse
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -388,27 +389,10 @@ object L {
                     return
                 }
 
-                val jsonArray = JSONArray()
-                val simpleName = list.javaClass
-                var msg = "%s size = %d" + LoggerPrinter.BR
-                msg = String.format(msg, simpleName, list.size) + "║ "
-                list.map {
+                val parser = CollectionParse()
 
-                    it ->
-
-                    try {
-                        val objStr = JSON.toJSONString(it)
-                        val jsonObject = JSONObject(objStr)
-                        jsonArray.put(jsonObject)
-                    } catch (e: JSONException) {
-                        e("Invalid Json")
-                    }
-                }
-
-                var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-                message = message.replace("\n".toRegex(), "\n║ ")
                 val s = getMethodNames()
-                println(String.format(s, msg + message))
+                println(String.format(s, parser.parseString(list)))
             } catch (e: JSONException) {
                 e("Invalid Json")
             }
