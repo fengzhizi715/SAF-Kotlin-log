@@ -342,26 +342,21 @@ object L {
      * 将list、set打印成json字符串
      */
     private fun collection2JSONString(collection: Collection<*>) {
-        try {
+        val value = collection.firstOrNull()
+        val isPrimitiveType = Utils.isPrimitiveType(value)
 
-            val value = collection.firstOrNull()
-            val isPrimitiveType = Utils.isPrimitiveType(value)
-
-            if (isPrimitiveType) {
-                val simpleName = collection.javaClass
-                var msg = "%s size = %d" + LoggerPrinter.BR
-                msg = String.format(msg, simpleName, collection.size) + "║ "
-                val s = getMethodNames()
-                println(String.format(s, msg + collection.toString()))
-                return
-            }
-
+        if (isPrimitiveType) {
+            val simpleName = collection.javaClass
+            var msg = "%s size = %d" + LoggerPrinter.BR
+            msg = String.format(msg, simpleName, collection.size) + "║ "
             val s = getMethodNames()
-            val parser = CollectionParser()
-            println(String.format(s, parser.parseString(collection)))
-        } catch (e: JSONException) {
-            e("Invalid Json")
+            println(String.format(s, msg + collection.toString()))
+            return
         }
+
+        val s = getMethodNames()
+        val parser = CollectionParser()
+        println(String.format(s, parser.parseString(collection)))
     }
 
     fun getMethodNames(): String {
@@ -372,7 +367,7 @@ object L {
         stackOffset++
         val builder = StringBuilder()
 
-        if (header!=null && header!!.isNotBlank()) {
+        if (header!=null && header!!.isNotEmpty()) {
             builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
                     // 添加当前线程名
                     .append("║ " + "header: " + header).append(LoggerPrinter.BR)
