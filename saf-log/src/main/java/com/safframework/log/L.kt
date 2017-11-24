@@ -456,13 +456,13 @@ object L {
         val builder = StringBuilder()
 
         if (header!=null && header!!.isNotBlank()) {
-            builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
+            builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
                     // 添加当前线程名
-                    .append("║ " + "header: " + header).append("\r\n")
-                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    .append("║ " + "header: " + header).append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加当前线程名
-                    .append("║ " + "Thread: " + Thread.currentThread().name).append("\r\n")
-                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    .append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加类名、方法名、行数
                     .append("║ ")
                     .append(sElements[stackOffset].className)
@@ -474,16 +474,16 @@ object L {
                     .append(":")
                     .append(sElements[stackOffset].lineNumber)
                     .append(")")
-                    .append("\r\n")
-                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加打印的日志信息
-                    .append("║ ").append("%s").append("\r\n")
-                    .append(LoggerPrinter.BOTTOM_BORDER).append("\r\n")
+                    .append("║ ").append("%s").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
         } else {
-            builder.append(LoggerPrinter.TOP_BORDER).append("\r\n")
+            builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
                     // 添加当前线程名
-                    .append("║ " + "Thread: " + Thread.currentThread().name).append("\r\n")
-                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    .append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加类名、方法名、行数
                     .append("║ ")
                     .append(sElements[stackOffset].className)
@@ -495,11 +495,11 @@ object L {
                     .append(":")
                     .append(sElements[stackOffset].lineNumber)
                     .append(")")
-                    .append("\r\n")
-                    .append(LoggerPrinter.MIDDLE_BORDER).append("\r\n")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加打印的日志信息
-                    .append("║ ").append("%s").append("\r\n")
-                    .append(LoggerPrinter.BOTTOM_BORDER).append("\r\n")
+                    .append("║ ").append("%s").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
         }
 
         return builder.toString()
