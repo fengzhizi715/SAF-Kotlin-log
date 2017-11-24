@@ -3,8 +3,7 @@
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.2.2"><img src="https://img.shields.io/badge/Methods and size-core: 124 | deps: 23979 | 29 KB-e91e63.svg"/></a>
-
+<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.3.0"><img src="https://img.shields.io/badge/Methods and size-core: 136 | deps: 23979 | 35 KB-e91e63.svg"/></a>
 
 ![](logo.JPG)
 
@@ -15,7 +14,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.2.2'
+compile 'com.safframework.log:saf-log:1.3.0'
 ```
 
 Maven:
@@ -24,7 +23,7 @@ Maven:
 <dependency>
   <groupId>com.safframework.log</groupId>
   <artifactId>saf-log</artifactId>
-  <version>1.2.2</version>
+  <version>1.3.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -108,7 +107,7 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
 List、Map、Set等类型也可以使用json()打印成json风格。
 
 ## 5.自定义Header
-通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机等机型、操作系统版本号、App版本号等。
+通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。
 
 ## 6.针对Kotlin项目的优化
 
