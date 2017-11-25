@@ -33,7 +33,7 @@ Maven:
 * 支持多种日志级别
 * 打印的日志，除了可以显示日志内容之外，还能显示当前线程名称、在程序中所打印日志的位置
 * 支持自定义Header
-* 支持对象的打印，将对象打印成json风格，方便阅读。还针对集合、Bundle、Intent、Reference、Throwable、Uri等类型的打印做了优化。
+* 支持对象的打印，将对象打印成json风格，方便阅读。还针对集合、Bundle、Intent、Reference、Throwable、Uri等类型的打印做了特别的优化。
 
 # 使用方法
 
@@ -110,7 +110,7 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
 
 ![](L_json.png)
 
-## 4.支持List、Map、Set类型的打印
+## 4.支持各种对象类型的打印
 List、Map、Set等类型也可以使用json()打印成json风格。
 
 ## 5.自定义Header
