@@ -359,7 +359,7 @@ object L {
     private fun throwable2JSONString(throwable: Throwable) {
         val s = getMethodNames()
         val parser = ThrowableParser()
-        println(String.format(s, parser.parseString(throwable)))
+        System.err.println(String.format(s, parser.parseString(throwable)))
     }
 
     private fun getMethodNames(): String {
