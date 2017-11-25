@@ -3,10 +3,7 @@ package com.safframework.log
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.fastjson.JSON
-import com.safframework.log.parse.BundleParser
-import com.safframework.log.parse.CollectionParser
-import com.safframework.log.parse.MapParser
-import com.safframework.log.parse.StringParser
+import com.safframework.log.parse.*
 import com.safframework.log.utils.Utils
 import org.json.JSONException
 import org.json.JSONObject
@@ -287,6 +284,8 @@ object L {
 
             is Bundle -> bundle2JSONString(obj)
 
+            is Throwable -> throwable2JSONString(obj)
+
             else -> {
 
                 try {
@@ -348,10 +347,19 @@ object L {
         println(String.format(s, parser.parseString(collection)))
     }
 
+    /**
+     * 将bundle打印成json字符串
+     */
     private fun bundle2JSONString(bundle: Bundle) {
         val s = getMethodNames()
         val parser = BundleParser()
         println(String.format(s, parser.parseString(bundle)))
+    }
+
+    private fun throwable2JSONString(throwable: Throwable) {
+        val s = getMethodNames()
+        val parser = ThrowableParser()
+        println(String.format(s, parser.parseString(throwable)))
     }
 
     private fun getMethodNames(): String {
