@@ -32,8 +32,9 @@ Maven:
 * 支持自定义tag
 * 支持多种日志级别
 * 打印的日志，除了可以显示日志内容之外，还能显示当前线程名称、在程序中所打印日志的位置
+* 支持跳转到源码处
 * 支持自定义Header
-* 支持对象的打印，将对象打印成json风格，方便阅读。还针对集合、Bundle、Intent、Reference、Throwable、Uri等类型的打印做了特别的优化。
+* 支持对象的打印，将对象打印成json风格，方便阅读。还针对集合、Bundle、Intent、Reference、Throwable、Uri等类型的打印做了特别的格式化处理。
 
 # 使用方法
 
@@ -106,10 +107,6 @@ Object obj = ...
 L.json(obj);
 ```
 
-json方法可以将String、Map、对象打印成json风格，具体可以参照下图：
-
-![](images/L_json.png)
-
 ## 4.支持各种对象类型的打印
 多种对象类型都可以使用json()打印成json风格。
 ### 4.1 List、Set
@@ -158,7 +155,31 @@ json方法可以将String、Map、对象打印成json风格，具体可以参照
         L.json(map3);
 ```
 打印效果：
-![](images/Map.png)     
+![](images/Map.png)
+
+### 4.3 JSON字符串
+```java
+        String jsonString = "{\n" +
+                "    \"employees\": [\n" +
+                "        {\n" +
+                "            \"firstName\": \"Bill\",\n" +
+                "            \"lastName\": \"Gates\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"firstName\": \"George\",\n" +
+                "            \"lastName\": \"Bush\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"firstName\": \"Thomas\",\n" +
+                "            \"lastName\": \"Carter\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+
+        L.json(jsonString);
+``` 
+打印效果：
+![](images/Json_String.png)
 
 ## 5.自定义Header
 通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。
