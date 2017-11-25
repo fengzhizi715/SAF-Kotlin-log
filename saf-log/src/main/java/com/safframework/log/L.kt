@@ -1,6 +1,7 @@
 package com.safframework.log
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.fastjson.JSON
@@ -290,6 +291,8 @@ object L {
 
             is Intent -> intent2JSON(obj)
 
+            is Uri -> uri2JSON(obj)
+
             is Throwable -> throwable2JSONString(obj)
 
             else -> {
@@ -378,6 +381,12 @@ object L {
         val s = getMethodNames()
         val parser = IntentParser()
         println(String.format(s, parser.parseString(intent)))
+    }
+
+    private fun uri2JSON(uri: Uri) {
+        val s = getMethodNames()
+        val parser = UriParser()
+        println(String.format(s, parser.parseString(uri)))
     }
 
     /**
