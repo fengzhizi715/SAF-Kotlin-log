@@ -371,6 +371,9 @@ object L {
         println(String.format(s, parser.parseString(reference)))
     }
 
+    /**
+     * 将intent打印成json字符串
+     */
     private fun intent2JSON(intent: Intent) {
         val s = getMethodNames()
         val parser = IntentParser()
