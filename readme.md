@@ -181,6 +181,43 @@ L.json(obj);
 打印效果：
 ![](images/Json_String.png)
 
+### 4.4 Reference
+```java
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        
+        L.json(new WeakReference<User>(u));
+```
+打印效果：
+![](images/Reference.png)
+
+### 4.5 Throwable
+```java
+L.json(new NullPointerException("this object is null"));
+```
+打印效果：
+![](images/Throwable.png)
+
+### 4.6 Bundle
+```java
+
+```
+打印效果：
+
+### 4.7 Intent
+```java
+
+```
+打印效果：
+
+### 4.8 Uri
+```java
+
+```
+打印效果：
+
+
 ## 5.自定义Header
 通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。
 
