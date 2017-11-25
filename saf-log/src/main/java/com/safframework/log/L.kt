@@ -373,52 +373,31 @@ object L {
         stackOffset++
         val builder = StringBuilder()
 
+        builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
         if (header!=null && header!!.isNotEmpty()) {
-            builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
-                    // 添加Header
-                    .append("║ " + "header: " + header).append(LoggerPrinter.BR)
+            // 添加Header
+            builder.append("║ " + "Header: " + header).append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                    // 添加当前线程名
-                    .append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                    // 添加类名、方法名、行数
-                    .append("║ ")
-                    .append(sElements[stackOffset].className)
-                    .append(".")
-                    .append(sElements[stackOffset].methodName)
-                    .append(" ")
-                    .append(" (")
-                    .append(sElements[stackOffset].fileName)
-                    .append(":")
-                    .append(sElements[stackOffset].lineNumber)
-                    .append(")")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                    // 添加打印的日志信息
-                    .append("║ ").append("%s").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
-        } else {
-            builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
-                    // 添加当前线程名
-                    .append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                    // 添加类名、方法名、行数
-                    .append("║ ")
-                    .append(sElements[stackOffset].className)
-                    .append(".")
-                    .append(sElements[stackOffset].methodName)
-                    .append(" ")
-                    .append(" (")
-                    .append(sElements[stackOffset].fileName)
-                    .append(":")
-                    .append(sElements[stackOffset].lineNumber)
-                    .append(")")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                    // 添加打印的日志信息
-                    .append("║ ").append("%s").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
         }
+        // 添加当前线程名
+        builder.append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
+                .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                // 添加类名、方法名、行数
+                .append("║ ")
+                .append(sElements[stackOffset].className)
+                .append(".")
+                .append(sElements[stackOffset].methodName)
+                .append(" ")
+                .append(" (")
+                .append(sElements[stackOffset].fileName)
+                .append(":")
+                .append(sElements[stackOffset].lineNumber)
+                .append(")")
+                .append(LoggerPrinter.BR)
+                .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                // 添加打印的日志信息
+                .append("║ ").append("%s").append(LoggerPrinter.BR)
+                .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
 
         return builder.toString()
     }
