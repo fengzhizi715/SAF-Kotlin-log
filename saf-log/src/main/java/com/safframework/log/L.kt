@@ -7,6 +7,7 @@ import com.safframework.log.parse.*
 import com.safframework.log.utils.Utils
 import org.json.JSONException
 import org.json.JSONObject
+import java.lang.ref.Reference
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -284,6 +285,8 @@ object L {
 
             is Bundle -> bundle2JSONString(obj)
 
+            is Reference<*> -> reference2JSON(obj)
+
             is Throwable -> throwable2JSONString(obj)
 
             else -> {
@@ -354,6 +357,15 @@ object L {
         val s = getMethodNames()
         val parser = BundleParser()
         println(String.format(s, parser.parseString(bundle)))
+    }
+
+    /**
+     * 将reference打印成json字符串
+     */
+    private fun reference2JSON(reference: Reference<*>) {
+        val s = getMethodNames()
+        val parser = ReferenceParser()
+        println(String.format(s, parser.parseString(reference)))
     }
 
     /**
