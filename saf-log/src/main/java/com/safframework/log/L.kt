@@ -1,5 +1,6 @@
 package com.safframework.log
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.fastjson.JSON
@@ -287,6 +288,8 @@ object L {
 
             is Reference<*> -> reference2JSON(obj)
 
+            is Intent -> intent2JSON(obj)
+
             is Throwable -> throwable2JSONString(obj)
 
             else -> {
@@ -366,6 +369,12 @@ object L {
         val s = getMethodNames()
         val parser = ReferenceParser()
         println(String.format(s, parser.parseString(reference)))
+    }
+
+    private fun intent2JSON(intent: Intent) {
+        val s = getMethodNames()
+        val parser = IntentParser()
+        println(String.format(s, parser.parseString(intent)))
     }
 
     /**
