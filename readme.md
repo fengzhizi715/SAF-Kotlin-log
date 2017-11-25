@@ -28,6 +28,13 @@ Maven:
 </dependency>
 ```
 
+# 功能：
+* 支持tag使用
+* 支持多种日志级别
+* 打印的日志，除了可以显示日志内容，还能显示当前线程名称、在程序中所需打印日志的位置
+* 支持自定义Header
+* 支持对象的打印，特别是针对集合、Bundle、Intent、Reference、Throwable、Uri等类型可以单独打印成json风格
+
 # 使用方法
 
 使用本库时，无需添加kotlin的配置。它可以在任何android项目中使用。
