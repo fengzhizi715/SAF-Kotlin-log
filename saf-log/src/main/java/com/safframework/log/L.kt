@@ -356,6 +356,9 @@ object L {
         println(String.format(s, parser.parseString(bundle)))
     }
 
+    /**
+     * 将throwable打印成json字符串
+     */
     private fun throwable2JSONString(throwable: Throwable) {
         val s = getMethodNames()
         val parser = ThrowableParser()
