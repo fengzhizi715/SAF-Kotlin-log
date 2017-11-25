@@ -201,22 +201,46 @@ L.json(new NullPointerException("this object is null"));
 
 ### 4.6 Bundle
 ```java
-
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        
+        Bundle bundle = new Bundle();
+        bundle.putString("key1","this is key1");
+        bundle.putInt("key2",100);
+        bundle.putBoolean("key3",true);
+        bundle.putSerializable("key4",u);
+        L.json(bundle);
 ```
 打印效果：
+![](images/Bundle.png)
 
 ### 4.7 Intent
 ```java
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        
+        Bundle bundle = new Bundle();
+        bundle.putString("key1","this is key1");
+        bundle.putInt("key2",100);
+        bundle.putBoolean("key3",true);
+        bundle.putSerializable("key4",u);
 
+        Intent i = new Intent(this,MainActivity.class);
+        i.putExtras(bundle);
+        L.json(i);
 ```
 打印效果：
+![](images/Intent.png)
 
 ### 4.8 Uri
 ```java
-
+        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
+        L.json(uri);
 ```
 打印效果：
-
+![](images/Uri.png)
 
 ## 5.自定义Header
 通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。

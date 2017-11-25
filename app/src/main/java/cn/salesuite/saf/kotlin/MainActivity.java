@@ -1,10 +1,13 @@
 package cn.salesuite.saf.kotlin;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.safframework.log.L;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,16 +24,18 @@ public class MainActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        L.init(this.getClass()).header("app version 1.1");
+//        L.init(this.getClass()).header("app version 1.1");
 //        L.setLogLevel(L.LogLevel.INFO);
-        L.i("test","haha");
-        L.w("test","haha");
-        L.d("test","haha");
-        L.e("test","haha");
-        L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
+//        L.i("test","haha");
+//        L.w("test","haha");
+//        L.d("test","haha");
+//        L.e("test","haha");
+//        L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
+
         User u = new User();
         u.userName = "tony";
         u.password = "123456";
+        L.json(u);
 
         Map<String,User> map = new HashMap<>();
         map.put("tony",u);
@@ -62,9 +67,8 @@ public class MainActivity extends Activity{
         idd.add(456D);
         L.json(idd);
 
-        List<Boolean> idb = new ArrayList<>();
-        idb.add(true);
-        idb.add(false);
-        L.json(idb);
+        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
+        L.json(uri);
+
     }
 }
