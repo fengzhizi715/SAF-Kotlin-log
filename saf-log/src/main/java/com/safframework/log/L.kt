@@ -1,7 +1,9 @@
 package com.safframework.log
 
+import android.os.Bundle
 import android.util.Log
 import com.alibaba.fastjson.JSON
+import com.safframework.log.parse.BundleParser
 import com.safframework.log.parse.CollectionParser
 import com.safframework.log.parse.MapParser
 import com.safframework.log.parse.StringParser
@@ -283,6 +285,8 @@ object L {
 
             is Collection<*> -> collection2JSONString(obj)
 
+            is Bundle -> bundle2JSONString(obj)
+
             else -> {
 
                 try {
@@ -344,6 +348,12 @@ object L {
         println(String.format(s, parser.parseString(collection)))
     }
 
+    private fun bundle2JSONString(bundle: Bundle) {
+        val s = getMethodNames()
+        val parser = BundleParser()
+        println(String.format(s, parser.parseString(bundle)))
+    }
+
     private fun getMethodNames(): String {
         val sElements = Thread.currentThread().stackTrace
 
@@ -354,7 +364,7 @@ object L {
 
         if (header!=null && header!!.isNotEmpty()) {
             builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
-                    // 添加当前线程名
+                    // 添加Header
                     .append("║ " + "header: " + header).append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加当前线程名
