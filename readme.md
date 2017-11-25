@@ -108,10 +108,57 @@ L.json(obj);
 
 json方法可以将String、Map、对象打印成json风格，具体可以参照下图：
 
-![](L_json.png)
+![](images/L_json.png)
 
 ## 4.支持各种对象类型的打印
-List、Map、Set等类型也可以使用json()打印成json风格。
+多种对象类型都可以使用json()打印成json风格。
+### 4.1 List、Set
+```java
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+
+        List<User> list = new ArrayList<>();
+        list.add(u);
+        list.add(u);
+        L.json(list);
+
+        List<String> ids = new ArrayList<>();
+        ids.add("123");
+        ids.add("456");
+        L.json(ids);
+
+        List<Double> idd = new ArrayList<>();
+        idd.add(123D);
+        idd.add(456D);
+        L.json(idd);
+```
+打印效果：
+![](images/List.png)
+
+### 4.2 Map
+```java
+        User u = new User();
+        u.userName = "tony";
+        u.password = "123456";
+        
+        Map<String,User> map = new HashMap<>();
+        map.put("tony",u);
+        map.put("tt",u);
+        L.json(map);
+
+        Map<String,String> map2 = new HashMap<>();
+        map2.put("tony","shen");
+        map2.put("tt","ziyu");
+        L.json(map2);
+
+        Map<String,Boolean> map3 = new HashMap<>();
+        map3.put("tony",true);
+        map3.put("tt",false);
+        L.json(map3);
+```
+打印效果：
+![](images/Map.png)     
 
 ## 5.自定义Header
 通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。
