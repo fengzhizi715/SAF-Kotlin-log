@@ -19,7 +19,6 @@ class IntentParser : Parser<Intent> {
         var msg = intent.javaClass.toString() + LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject()
-
         jsonObject.put("Scheme", intent.scheme)
         jsonObject.put("Action", intent.action)
         jsonObject.put("DataString", intent.dataString)
