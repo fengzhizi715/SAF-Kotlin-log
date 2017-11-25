@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.4.0
+---
+2017-11-26
+* json()增加对Bundle、Intent、Reference、Throwable、Uri类型的支持
+
 Version 1.3.0
 ---
 2017-11-25
@@ -21,7 +26,6 @@ Version 1.2.0
 2017-09-03
  *  Kotlin版本升级到1.1.4
  * json()优化对Map、Set类型的支持
-
 
 Version 1.1.0
 ---
