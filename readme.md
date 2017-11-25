@@ -3,7 +3,7 @@
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.3.0"><img src="https://img.shields.io/badge/Methods and size-core: 136 | deps: 23979 | 35 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.4.0"><img src="https://img.shields.io/badge/Methods and size-core: 185 | deps: 23979 | 43 KB-e91e63.svg"/></a>
 
 ![](logo.JPG)
 
@@ -14,7 +14,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.3.0'
+compile 'com.safframework.log:saf-log:1.4.0'
 ```
 
 Maven:
@@ -23,7 +23,7 @@ Maven:
 <dependency>
   <groupId>com.safframework.log</groupId>
   <artifactId>saf-log</artifactId>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <type>pom</type>
 </dependency>
 ```
