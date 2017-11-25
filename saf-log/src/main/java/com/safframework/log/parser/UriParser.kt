@@ -15,7 +15,11 @@ class UriParser : Parser<Uri> {
 
         val jsonObject = JSONObject()
         jsonObject.put("Scheme", uri.scheme)
-        jsonObject.put("Authority", uri.authority)
+        jsonObject.put("Host", uri.host)
+        jsonObject.put("Port", uri.port)
+        jsonObject.put("Path", uri.path)
+        jsonObject.put("Query", uri.query)
+        jsonObject.put("Fragment", uri.fragment)
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")
