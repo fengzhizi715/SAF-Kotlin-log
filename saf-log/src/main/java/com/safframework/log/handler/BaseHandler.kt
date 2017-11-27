@@ -9,7 +9,7 @@ abstract class BaseHandler {
     private var nextHandler: BaseHandler? = null
 
     // 捕获具体请求并进行处理，或是将请求传递到责任链的下一级别
-    fun handleRequest(obj: Any) {
+    fun handleObject(obj: Any) {
 
         if (obj == null) {
             return
@@ -18,8 +18,7 @@ abstract class BaseHandler {
         if (!handle(obj)) {
             // 当前处理者不能胜任，则传递至责任链的下一节点
             if (this.nextHandler != null) {
-                // 这里使用了递归调用
-                this.nextHandler!!.handleRequest(obj)
+                this.nextHandler!!.handleObject(obj)
             }
         }
     }
