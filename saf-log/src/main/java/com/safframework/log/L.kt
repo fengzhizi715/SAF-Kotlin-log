@@ -85,6 +85,40 @@ object L {
     }
 
     @JvmStatic
+    fun addCustomerHandler(handler: BaseHandler):L {
+
+        val size = handlers.size
+        handlers.add(size-1,handler) // 插入在ObjectHandler之前
+
+        val len = handlers.size
+
+        for (i in 0..len - 1) {
+            if (i > 0) {
+                handlers[i - 1].setNextHandler(handlers[i])
+            }
+        }
+
+        return this
+    }
+
+    @JvmStatic
+    fun addCustomerHandler(handler: BaseHandler,index:Int):L {
+
+        val size = handlers.size
+        handlers.add(index,handler)
+
+        val len = handlers.size
+
+        for (i in 0..len - 1) {
+            if (i > 0) {
+                handlers[i - 1].setNextHandler(handlers[i])
+            }
+        }
+
+        return this
+    }
+
+    @JvmStatic
     fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
@@ -295,6 +329,7 @@ object L {
         firstHandler.handleObject(obj)
     }
 
+    @JvmStatic
     fun getMethodNames(): String {
         val sElements = Thread.currentThread().stackTrace
 
