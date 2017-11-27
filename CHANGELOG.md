@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.5.0
+---
+2017-11-27
+* 对整个项目重构，增加addCustomerHandler()可以自定义Handler来解析Object，然后将其打印处出来。
+
 Version 1.4.0
 ---
 2017-11-26
