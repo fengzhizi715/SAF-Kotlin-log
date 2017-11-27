@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.fastjson.JSON
+import com.safframework.log.handler.*
 import com.safframework.log.parser.*
 import com.safframework.log.utils.Utils
 import org.json.JSONException
@@ -39,9 +40,33 @@ object L {
 
     private var TAG = "SAF_L"
     private var header:String? = ""
+    private val handlers = ArrayList<BaseHandler>()
+    private var firstHandler:BaseHandler
 
     @JvmStatic
     var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
+
+
+    init{
+        handlers.add(StringHandler())
+        handlers.add(CollectionHandler())
+        handlers.add(MapHandler())
+        handlers.add(BundleHandler())
+        handlers.add(IntentHandler())
+        handlers.add(UriHandler())
+        handlers.add(ThrowableHandler())
+        handlers.add(ReferenceHandler())
+        handlers.add(ObjectHandler())
+
+        val len = handlers.size
+        for (i in 0..len - 1) {
+            if (i > 0) {
+                handlers[i - 1].setNextHandler(handlers[i])
+            }
+        }
+
+        firstHandler = handlers[0]
+    }
 
     @JvmStatic
     fun init(clazz: Class<*>):L {
@@ -277,50 +302,50 @@ object L {
             return
         }
 
-        when(obj) {
+        firstHandler.handleRequest(obj)
 
-            is String -> string2JSONString(obj)
-
-            is Map<*, *> -> map2JSONString(obj)
-
-            is Collection<*> -> collection2JSONString(obj)
-
-            is Bundle -> bundle2JSONString(obj)
-
-            is Reference<*> -> reference2JSON(obj)
-
-            is Intent -> intent2JSON(obj)
-
-            is Uri -> uri2JSON(obj)
-
-            is Throwable -> throwable2JSONString(obj)
-
-            else -> {
-
-                try {
-                    val s = getMethodNames()
-
-                    var msg = obj.javaClass.toString() + LoggerPrinter.BR + "║ "
-                    val objStr = JSON.toJSONString(obj)
-                    val jsonObject = JSONObject(objStr)
-                    var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-                    message = message.replace("\n".toRegex(), "\n║ ")
-
-                    println(String.format(s, msg+ message))
-                } catch (e: JSONException) {
-                    e("Invalid Json")
-                }
-            }
-        }
+//        when(obj) {
+//
+//            is String -> string2JSONString(obj)
+//
+//            is Map<*, *> -> map2JSONString(obj)
+//
+//            is Collection<*> -> collection2JSONString(obj)
+//
+//            is Bundle -> bundle2JSONString(obj)
+//
+//            is Reference<*> -> reference2JSON(obj)
+//
+//            is Intent -> intent2JSON(obj)
+//
+//            is Uri -> uri2JSON(obj)
+//
+//            is Throwable -> throwable2JSONString(obj)
+//
+//            else -> {
+//
+//                try {
+//                    val s = getMethodNames()
+//
+//                    var msg = obj.javaClass.toString() + LoggerPrinter.BR + "║ "
+//                    val objStr = JSON.toJSONString(obj)
+//                    val jsonObject = JSONObject(objStr)
+//                    var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+//                    message = message.replace("\n".toRegex(), "\n║ ")
+//
+//                    println(String.format(s, msg+ message))
+//                } catch (e: JSONException) {
+//                    e("Invalid Json")
+//                }
+//            }
+//        }
     }
 
     /**
      * 打印json字符串
      */
     private fun string2JSONString(json: String) {
-        var json = json
-
-        json = json.trim { it <= ' ' }
+        var json = json.trim { it <= ' ' }
         val s = getMethodNames()
         val parser = StringParser()
         println(String.format(s, parser.parseString(json)))
@@ -383,6 +408,9 @@ object L {
         println(String.format(s, parser.parseString(intent)))
     }
 
+    /**
+     * 将uri打印成json字符串
+     */
     private fun uri2JSON(uri: Uri) {
         val s = getMethodNames()
         val parser = UriParser()
@@ -398,7 +426,7 @@ object L {
         System.err.println(String.format(s, parser.parseString(throwable)))
     }
 
-    private fun getMethodNames(): String {
+    fun getMethodNames(): String {
         val sElements = Thread.currentThread().stackTrace
 
         var stackOffset = LoggerPrinter.getStackOffset(sElements)
