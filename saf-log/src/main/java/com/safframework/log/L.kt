@@ -1,13 +1,7 @@
 package com.safframework.log
 
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
 import android.util.Log
 import com.safframework.log.handler.*
-import com.safframework.log.parser.*
-import com.safframework.log.utils.Utils
-import java.lang.ref.Reference
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -299,91 +293,6 @@ object L {
         }
 
         firstHandler.handleObject(obj)
-    }
-
-    /**
-     * 打印json字符串
-     */
-    private fun string2JSONString(json: String) {
-        var json = json.trim { it <= ' ' }
-        val s = getMethodNames()
-        val parser = StringParser()
-        println(String.format(s, parser.parseString(json)))
-    }
-
-    /**
-     * 将map打印成json字符串
-     */
-    private fun map2JSONString(map: Map<*, *>) {
-        val s = getMethodNames()
-        val parser = MapParser()
-        println(String.format(s, parser.parseString(map)))
-    }
-
-    /**
-     * 将list、set打印成json字符串
-     */
-    private fun collection2JSONString(collection: Collection<*>) {
-        val value = collection.firstOrNull()
-        val isPrimitiveType = Utils.isPrimitiveType(value)
-
-        if (isPrimitiveType) {
-            val simpleName = collection.javaClass
-            var msg = "%s size = %d" + LoggerPrinter.BR
-            msg = String.format(msg, simpleName, collection.size) + "║ "
-            val s = getMethodNames()
-            println(String.format(s, msg + collection.toString()))
-            return
-        }
-
-        val s = getMethodNames()
-        val parser = CollectionParser()
-        println(String.format(s, parser.parseString(collection)))
-    }
-
-    /**
-     * 将bundle打印成json字符串
-     */
-    private fun bundle2JSONString(bundle: Bundle) {
-        val s = getMethodNames()
-        val parser = BundleParser()
-        println(String.format(s, parser.parseString(bundle)))
-    }
-
-    /**
-     * 将reference打印成json字符串
-     */
-    private fun reference2JSON(reference: Reference<*>) {
-        val s = getMethodNames()
-        val parser = ReferenceParser()
-        println(String.format(s, parser.parseString(reference)))
-    }
-
-    /**
-     * 将intent打印成json字符串
-     */
-    private fun intent2JSON(intent: Intent) {
-        val s = getMethodNames()
-        val parser = IntentParser()
-        println(String.format(s, parser.parseString(intent)))
-    }
-
-    /**
-     * 将uri打印成json字符串
-     */
-    private fun uri2JSON(uri: Uri) {
-        val s = getMethodNames()
-        val parser = UriParser()
-        println(String.format(s, parser.parseString(uri)))
-    }
-
-    /**
-     * 将throwable打印成json字符串
-     */
-    private fun throwable2JSONString(throwable: Throwable) {
-        val s = getMethodNames()
-        val parser = ThrowableParser()
-        System.err.println(String.format(s, parser.parseString(throwable)))
     }
 
     fun getMethodNames(): String {
