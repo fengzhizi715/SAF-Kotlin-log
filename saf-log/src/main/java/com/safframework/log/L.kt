@@ -58,6 +58,8 @@ object L {
     @JvmStatic
     var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
 
+    /******************* L 的配置方法 Start *******************/
+
     @JvmStatic
     fun init(clazz: Class<*>):L {
         TAG = clazz.simpleName
@@ -84,27 +86,23 @@ object L {
         return this
     }
 
+    /**
+     * 自定义Handler来解析Object
+     */
     @JvmStatic
     fun addCustomerHandler(handler: BaseHandler):L {
 
         val size = handlers.size
-        handlers.add(size-1,handler) // 插入在ObjectHandler之前
 
-        val len = handlers.size
-
-        for (i in 0..len - 1) {
-            if (i > 0) {
-                handlers[i - 1].setNextHandler(handlers[i])
-            }
-        }
-
-        return this
+        return addCustomerHandler(handler,size-1) // 插入在ObjectHandler之前
     }
 
+    /**
+     * 自定义Handler来解析Object，并指定Handler的位置
+     */
     @JvmStatic
     fun addCustomerHandler(handler: BaseHandler,index:Int):L {
 
-        val size = handlers.size
         handlers.add(index,handler)
 
         val len = handlers.size
@@ -117,6 +115,8 @@ object L {
 
         return this
     }
+
+    /******************* L 的配置方法 End *******************/
 
     @JvmStatic
     fun e(msg: String?) {
