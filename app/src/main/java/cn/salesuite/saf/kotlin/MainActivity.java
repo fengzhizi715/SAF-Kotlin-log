@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.safframework.log.L;
+import com.safframework.log.handler.BaseHandler;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -67,8 +68,10 @@ public class MainActivity extends Activity{
         idd.add(456D);
         L.json(idd);
 
-        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
-        L.json(uri);
+//        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
+//        L.json(uri);
 
+        L.addCustomerHandler(new UserHandler());
+        L.json(u);
     }
 }
