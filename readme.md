@@ -32,17 +32,17 @@ Maven:
 * 支持自定义tag
 * 支持多种日志级别
 * 打印的日志，除了可以显示日志内容之外，还能显示当前线程名称、在程序中所打印日志的位置
-* 支持跳转到源码处
 * 支持自定义Header
-* 支持对象的打印，将对象打印成json风格，方便阅读。还针对集合、Bundle、Intent、Reference、Throwable、Uri等类型的打印做了特别的格式化处理。
+* 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
+* 支持自定义对象的解析处理，将其打印成自己想要的风格。
 
 # 使用方法
 
-使用本库时，无需添加kotlin的配置。它可以在任何android项目中使用。
+使用本库时，无需添加kotlin的配置。它可以在任何Android项目中使用。
 
 ## 1.tag使用
 
-如果不考虑显示日志的tag，可以直接使用
+如果不考虑显示日志的tag，可以直接使用，L会提供默认的tag。
 
 ```java
 String s = "abcd";
@@ -108,7 +108,7 @@ L.json(obj);
 ```
 
 ## 4.支持各种对象类型的打印
-多种对象类型都可以使用json()打印成json风格。
+多种对象类型都可以使用json()方法打印成json风格。
 ### 4.1 List、Set
 ```java
         User u = new User();
@@ -243,7 +243,7 @@ L.json(new NullPointerException("this object is null"));
 ![](images/Uri.png)
 
 ## 5.自定义Header
-通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机的机型、操作系统版本号、App版本号等。
+通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。
 
 一旦定义好Header，所有的日志上都会显示Header的内容。
 
