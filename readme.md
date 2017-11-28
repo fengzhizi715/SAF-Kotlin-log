@@ -131,6 +131,7 @@ L.json(obj);
         L.json(idd);
 ```
 打印效果：
+
 ![](images/List.png)
 
 ### 4.2 Map
@@ -155,6 +156,7 @@ L.json(obj);
         L.json(map3);
 ```
 打印效果：
+
 ![](images/Map.png)
 
 ### 4.3 JSON字符串
@@ -179,6 +181,7 @@ L.json(obj);
         L.json(jsonString);
 ``` 
 打印效果：
+
 ![](images/Json_String.png)
 
 ### 4.4 Reference
@@ -190,6 +193,7 @@ L.json(obj);
         L.json(new WeakReference<User>(u));
 ```
 打印效果：
+
 ![](images/Reference.png)
 
 ### 4.5 Throwable
@@ -197,6 +201,7 @@ L.json(obj);
 L.json(new NullPointerException("this object is null"));
 ```
 打印效果：
+
 ![](images/Throwable.png)
 
 ### 4.6 Bundle
@@ -213,6 +218,7 @@ L.json(new NullPointerException("this object is null"));
         L.json(bundle);
 ```
 打印效果：
+
 ![](images/Bundle.png)
 
 ### 4.7 Intent
@@ -232,6 +238,7 @@ L.json(new NullPointerException("this object is null"));
         L.json(i);
 ```
 打印效果：
+
 ![](images/Intent.png)
 
 ### 4.8 Uri
@@ -240,6 +247,7 @@ L.json(new NullPointerException("this object is null"));
         L.json(uri);
 ```
 打印效果：
+
 ![](images/Uri.png)
 
 ## 5.自定义Header
