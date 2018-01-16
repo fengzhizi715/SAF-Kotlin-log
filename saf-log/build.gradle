@@ -39,7 +39,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.0.2'
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.alibaba:fastjson:1.1.63.android'
+    implementation 'com.alibaba:fastjson:1.1.68.android'
 }
 
 repositories {
