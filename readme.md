@@ -3,29 +3,18 @@
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.5.0"><img src="https://img.shields.io/badge/Methods and size-core: 198 | deps: 23979 | 48 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.5.1"><img src="https://img.shields.io/badge/Methods and size-198 | 49 KB-e91e63.svg"/></a>
 
 ![](logo.JPG)
 
-它是完全基于Kotlin开发的Android日志框架，提供极简的日志风格
+它是完全基于Kotlin开发的Android日志框架，提供极简的日志。它基于最新的Android Studio版本、Kotlin版本和Gradle版本构建。
 
 
 # 下载安装
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.5.0'
-```
-
-Maven:
-
-```groovy
-<dependency>
-  <groupId>com.safframework.log</groupId>
-  <artifactId>saf-log</artifactId>
-  <version>1.5.0</version>
-  <type>pom</type>
-</dependency>
+compile 'com.safframework.log:saf-log:1.5.1'
 ```
 
 # 功能：
@@ -251,7 +240,7 @@ L.json(new NullPointerException("this object is null"));
 ![](images/Uri.png)
 
 ## 5.自定义Header
-通常情况下，可以在Header中传递一些手机等信息，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。
+通常情况下，可以在L的Header中传递一些手机等信息，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。
 
 一旦定义好Header，所有的日志上都会显示Header的内容。
 

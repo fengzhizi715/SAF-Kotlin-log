@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.5.1
+---
+2018-01-16
+* 使用最新版本的gradle
+
 Version 1.5.0
 ---
 2017-11-27
