@@ -3,8 +3,6 @@ package cn.salesuite.saf.kotlin;
 import com.safframework.log.L;
 import com.safframework.log.handler.BaseHandler;
 
-import org.jetbrains.annotations.NotNull;
-
 
 /**
  * Created by tony on 2017/11/27.
@@ -13,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class UserHandler extends BaseHandler {
 
     @Override
-    protected boolean handle(@NotNull Object obj) {
+    protected boolean handle(Object obj) {
 
         if (obj instanceof User) {
 

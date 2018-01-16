@@ -36,7 +36,7 @@ public class MainActivity extends Activity{
         User u = new User();
         u.userName = "tony";
         u.password = "123456";
-        L.json(u);
+//        L.json(u);
 
         Map<String,User> map = new HashMap<>();
         map.put("tony",u);
@@ -53,25 +53,26 @@ public class MainActivity extends Activity{
         map3.put("tt",false);
         L.json(map3);
 
-        List<User> list = new ArrayList<>();
-        list.add(u);
-        list.add(u);
-        L.json(list);
+//        List<User> list = new ArrayList<>();
+//        list.add(u);
+//        list.add(u);
+//        L.json(list);
+//
+//        List<String> ids = new ArrayList<>();
+//        ids.add("123");
+//        ids.add("456");
+//        L.json(ids);
+//
+//        List<Double> idd = new ArrayList<>();
+//        idd.add(123D);
+//        idd.add(456D);
+//        L.json(idd);
 
-        List<String> ids = new ArrayList<>();
-        ids.add("123");
-        ids.add("456");
-        L.json(ids);
+        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
+        L.json(uri);
 
-        List<Double> idd = new ArrayList<>();
-        idd.add(123D);
-        idd.add(456D);
-        L.json(idd);
+//        L.addCustomerHandler(new UserHandler());
+//        L.json(u);
 
-//        Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
-//        L.json(uri);
-
-        L.addCustomerHandler(new UserHandler());
-        L.json(u);
     }
 }
