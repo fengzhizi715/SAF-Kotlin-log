@@ -1,6 +1,7 @@
 package com.safframework.log
 
 import android.util.Log
+import com.safframework.log.LoggerPrinter.BR
 import com.safframework.log.handler.*
 
 /**
@@ -338,7 +339,7 @@ object L {
         stackOffset++
         val builder = StringBuilder()
 
-        builder.append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+        builder.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
         if (header!=null && header!!.isNotEmpty()) {
             // 添加Header
             builder.append("║ " + "Header: " + header).append(LoggerPrinter.BR)
