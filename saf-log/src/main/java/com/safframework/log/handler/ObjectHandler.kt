@@ -9,7 +9,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class ObjectHandler():BaseHandler() {
+class ObjectHandler:BaseHandler() {
 
     override fun handle(obj: Any): Boolean {
 

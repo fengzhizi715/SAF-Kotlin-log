@@ -8,7 +8,7 @@ import java.io.StringWriter
 /**
  * Created by tony on 2017/11/27.
  */
-class ThrowableHandler():BaseHandler(), Parser<Throwable> {
+class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
     override fun handle(obj: Any): Boolean {
 

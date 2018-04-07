@@ -2,7 +2,7 @@
 
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
-    ext.kotlin_version = '1.2.10'
+    ext.kotlin_version = '1.2.31'
 
     repositories {
         jcenter()

@@ -11,7 +11,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class MapHandler():BaseHandler(),Parser<Map<*,*>>{
+class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
     override fun handle(obj: Any): Boolean {
 

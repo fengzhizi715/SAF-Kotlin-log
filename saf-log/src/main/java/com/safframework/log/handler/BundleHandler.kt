@@ -12,7 +12,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class BundleHandler():BaseHandler(), Parser<Bundle> {
+class BundleHandler:BaseHandler(), Parser<Bundle> {
 
     override fun handle(obj: Any): Boolean {
 

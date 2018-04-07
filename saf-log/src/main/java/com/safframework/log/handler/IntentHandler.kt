@@ -13,7 +13,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class IntentHandler():BaseHandler(), Parser<Intent> {
+class IntentHandler:BaseHandler(), Parser<Intent> {
 
     override fun handle(obj: Any): Boolean {
 

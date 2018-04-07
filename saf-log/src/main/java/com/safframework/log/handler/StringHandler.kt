@@ -10,7 +10,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class StringHandler():BaseHandler(), Parser<String> {
+class StringHandler:BaseHandler(), Parser<String> {
 
     override fun handle(obj: Any): Boolean {
 

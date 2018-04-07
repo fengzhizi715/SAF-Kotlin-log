@@ -11,7 +11,7 @@ import java.lang.ref.Reference
 /**
  * Created by tony on 2017/11/27.
  */
-class ReferenceHandler():BaseHandler(), Parser<Reference<*>> {
+class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
 
     override fun handle(obj: Any): Boolean {
 

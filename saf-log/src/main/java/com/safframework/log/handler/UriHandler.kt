@@ -9,7 +9,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class UriHandler():BaseHandler(), Parser<Uri> {
+class UriHandler:BaseHandler(), Parser<Uri> {
 
     override fun handle(obj: Any): Boolean {
 
