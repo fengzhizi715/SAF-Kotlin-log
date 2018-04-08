@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 1.5.2
+---
+2018-04-08
+* 升级Kotlin版本，修复bug
+
 Version 1.5.1
 ---
 2018-01-16
