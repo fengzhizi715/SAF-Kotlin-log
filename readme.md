@@ -25,9 +25,9 @@ compile 'com.safframework.log:saf-log:1.5.3'
 * 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
 
-# 使用方法
+# 使用方法：
 
-使用本库时，无需添加kotlin的配置。它可以在任何Android项目中使用。
+它可以在任何使用Java、Kotlin开发的Android项目中使用。如果您的项目中只使用Java，也无需额外添加kotlin的配置。
 
 ## 1.tag使用
 
@@ -51,13 +51,13 @@ L.init(this.getClass());
 
 支持以下几种日志级别，除此之外还能将任何对象打印成json格式
 
-| 方法名        | 作用          | 备注          |
-| ------------- |:-------------:| :-------------:|
-| e()       |Error级别打印日志|       |
-| w()        |Warn级别打印日志|       |
-| i()        |Info级别打印日志|       |
-| d()        |Debug级别打印日志|       |
-|json()      |将日志以json格式打印出来|       |
+| 方法名        | 作用          |
+| ------------- |:-------------:|
+| e()       |Error级别打印日志|
+| w()        |Warn级别打印日志|
+| i()        |Info级别打印日志|
+| d()        |Debug级别打印日志|
+|json()      |将日志以json格式打印出来|
 
 还可以设置全局的日志级别，最好在Application中进行全局的配置。
 
@@ -66,6 +66,7 @@ java中的使用方法：
 ```java
 L.setLogLevel(L.LogLevel.INFO);
 ```
+
 kotlin中的使用方法：
 
 ```kotlin
@@ -98,7 +99,7 @@ L.json(obj);
 
 ## 4.支持各种对象类型的打印
 多种对象类型都可以使用json()方法打印成json风格。
-### 4.1 List、Set
+### 4.1 将List、Set格式化打印
 ```java
         User u = new User();
         u.userName = "tony";
@@ -123,7 +124,7 @@ L.json(obj);
 
 ![](images/List.png)
 
-### 4.2 Map
+### 4.2 将Map格式化打印
 ```java
         User u = new User();
         u.userName = "tony";
@@ -148,7 +149,7 @@ L.json(obj);
 
 ![](images/Map.png)
 
-### 4.3 JSON字符串
+### 4.3 将JSON字符串格式化打印
 ```java
         String jsonString = "{\n" +
                 "    \"employees\": [\n" +
@@ -173,7 +174,7 @@ L.json(obj);
 
 ![](images/Json_String.png)
 
-### 4.4 Reference
+### 4.4 将Reference格式化打印
 ```java
         User u = new User();
         u.userName = "tony";
@@ -185,7 +186,7 @@ L.json(obj);
 
 ![](images/Reference.png)
 
-### 4.5 Throwable
+### 4.5 将Throwable格式化打印
 ```java
 L.json(new NullPointerException("this object is null"));
 ```
@@ -193,7 +194,7 @@ L.json(new NullPointerException("this object is null"));
 
 ![](images/Throwable.png)
 
-### 4.6 Bundle
+### 4.6 将Bundle格式化打印
 ```java
         User u = new User();
         u.userName = "tony";
@@ -210,7 +211,7 @@ L.json(new NullPointerException("this object is null"));
 
 ![](images/Bundle.png)
 
-### 4.7 Intent
+### 4.7 将Intent格式化打印
 ```java
         User u = new User();
         u.userName = "tony";
@@ -230,7 +231,7 @@ L.json(new NullPointerException("this object is null"));
 
 ![](images/Intent.png)
 
-### 4.8 Uri
+### 4.8 将Uri格式化打印
 ```java
         Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
         L.json(uri);
