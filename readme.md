@@ -245,7 +245,7 @@ L.json(new NullPointerException("this object is null"));
 一旦定义好Header，所有的日志上都会显示Header的内容。
 
 ## 6.针对Kotlin项目的优化
-增加了扩展函数，任何对象都可以使用json()
+借助Kotlin的扩展函数的特性，任何对象都可以使用json()方法来打印其自身。
 
 
 
