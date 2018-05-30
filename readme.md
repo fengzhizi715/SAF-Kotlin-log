@@ -241,9 +241,10 @@ L.json(new NullPointerException("this object is null"));
 ![](images/Uri.png)
 
 ## 5.自定义Header
-通常情况下，可以在L的Header中传递一些手机等信息，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。
 
-一旦定义好Header，所有的日志上都会显示Header的内容。
+我们公司之前的产品是做deep link以及移动端广告相关的sdk。从开发这些产品中，我们获得的经验是日志里要是能够记录手机的一些信息，方便根据机型和操作系统版本来调试bug就好了。
+
+由此产生了L的Header。通常情况下，把手机的一些信息放入Header中，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。一旦定义好Header，所有使用L的日志上都会显示Header的内容。
 
 ## 6.针对Kotlin项目的优化
 借助Kotlin的扩展函数的特性，任何对象都可以使用json()方法来打印其自身。
