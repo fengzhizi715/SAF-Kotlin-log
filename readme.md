@@ -7,7 +7,7 @@
 
 ![](logo.JPG)
 
-它是完全基于Kotlin开发的Android日志框架，提供极简的日志。它基于最新的Android Studio版本、Kotlin版本和Gradle版本构建。
+它是完全基于Kotlin开发的Android日志框架，提供极简的API，能够打印出漂亮的日志格式。它基于最新的Android Studio版本、Kotlin版本和Gradle版本构建。
 
 
 # 下载安装
