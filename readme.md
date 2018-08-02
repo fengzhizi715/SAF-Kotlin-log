@@ -250,6 +250,16 @@ L.json(new NullPointerException("this object is null"));
 借助Kotlin的扩展函数的特性，任何对象都可以使用json()方法来打印其自身。
 
 
+联系方式
+===
+
+Wechat：fengzhizi715
+
+
+> Java与Android技术栈：每周更新推送原创技术文章，欢迎扫描下方的公众号二维码并关注，期待与您的共同成长和进步。
+
+![](https://user-gold-cdn.xitu.io/2018/7/24/164cc729c7c69ac1?w=344&h=344&f=jpeg&s=9082)
+
 
 ChangeLog
 ===
