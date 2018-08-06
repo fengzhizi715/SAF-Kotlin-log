@@ -1,7 +1,6 @@
 package com.safframework.log
 
 import android.util.Log
-import com.safframework.log.LoggerPrinter.BR
 import com.safframework.log.handler.*
 
 /**
