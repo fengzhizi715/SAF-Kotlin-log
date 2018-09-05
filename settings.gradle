@@ -1,4 +1,3 @@
 include ':app'
 include ':saf-log'
-include ':mmap'
 include ':saf-rxtrace'
