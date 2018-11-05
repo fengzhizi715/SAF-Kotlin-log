@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 1.5.4
+---
+2018-05-25
+* 升级Kotlin版本
+* appcompat-v7 改成 compileOnly
+
 Version 1.5.3
 ---
 2018-05-25
