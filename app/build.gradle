@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
+def cfg = rootProject.ext.configuration // 配置
+def libs = rootProject.ext.libraries // 库
+
 android {
 
-    compileSdkVersion 28
-    buildToolsVersion "28.0.0"
+    compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
 
     defaultConfig {
         applicationId "cn.salesuite.saf.kotlin"
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,7 +44,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:28.0.0'
-    testCompile 'junit:junit:4.12'
-    compile project(":saf-log")
+    implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
+    testImplementation 'junit:junit:4.12'
+    implementation project(":saf-log")
 }
