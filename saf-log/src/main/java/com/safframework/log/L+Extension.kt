@@ -13,3 +13,7 @@ fun String?.i() = L.i(this)
 fun String?.d() = L.d(this)
 
 fun Any?.json()  = L.json(this)
+
+inline fun <reified T> T.logTag() = T::class.java.simpleName
+
+inline fun <reified T> Class<T>.logTag() = simpleName
