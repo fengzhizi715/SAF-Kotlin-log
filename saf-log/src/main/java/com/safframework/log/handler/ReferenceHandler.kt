@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.Utils
+import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONObject
 import java.lang.ref.Reference
 
@@ -29,7 +29,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
 
         var msg = reference.javaClass.canonicalName + "<" + actual?.javaClass?.simpleName + ">"+ LoggerPrinter.BR + "║ "
 
-        val isPrimitiveType = Utils.isPrimitiveType(actual)
+        val isPrimitiveType = isPrimitiveType(actual)
 
         if (isPrimitiveType) {
 

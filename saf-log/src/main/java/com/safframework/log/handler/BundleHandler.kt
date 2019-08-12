@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.Utils
+import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -33,7 +33,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
         val jsonObject = JSONObject()
         for (key in bundle.keySet()) {
 
-            val isPrimitiveType = Utils.isPrimitiveType(bundle.get(key))
+            val isPrimitiveType = isPrimitiveType(bundle.get(key))
 
             try {
 

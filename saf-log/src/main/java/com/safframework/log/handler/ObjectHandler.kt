@@ -3,7 +3,6 @@ package com.safframework.log.handler
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
-import org.json.JSONException
 import org.json.JSONObject
 
 /**

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.Utils
+import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -19,7 +19,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         if (obj is Collection<*>) {
 
             val value = obj.firstOrNull()
-            val isPrimitiveType = Utils.isPrimitiveType(value)
+            val isPrimitiveType = isPrimitiveType(value)
 
             if (isPrimitiveType) {
                 val simpleName = obj.javaClass

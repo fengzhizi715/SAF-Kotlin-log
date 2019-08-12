@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.Utils
+import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -29,7 +29,7 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
         val keys = map.keys
         val values = map.values
         val value = values.firstOrNull()
-        val isPrimitiveType = Utils.isPrimitiveType(value)
+        val isPrimitiveType = isPrimitiveType(value)
 
         var msg = map.javaClass.toString() + LoggerPrinter.BR + "║ "
 

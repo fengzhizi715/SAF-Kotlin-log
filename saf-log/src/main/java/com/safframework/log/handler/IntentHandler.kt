@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.Utils
+import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -55,7 +55,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         val jsonObject = JSONObject()
         for (key in extras.keySet()) {
 
-            val isPrimitiveType = Utils.isPrimitiveType(extras.get(key))
+            val isPrimitiveType = isPrimitiveType(extras.get(key))
 
             try {
 
