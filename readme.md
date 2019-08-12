@@ -247,7 +247,21 @@ L.json(new NullPointerException("this object is null"));
 由此产生了L的Header。通常情况下，把手机的一些信息放入Header中，方便调试时一眼识别手机出的机型、操作系统版本号、App版本号等等。一旦定义好Header，所有使用L的日志上都会显示Header的内容。
 
 ## 6.针对Kotlin项目的优化
-借助Kotlin的扩展函数的特性，任何对象都可以使用json()方法来打印其自身。
+借助Kotlin的扩展函数的特性，任何对象都可以使用`json()`方法来打印其自身。
+
+也支持形如：
+
+```kotlin
+L.i {
+   "hi $name" 
+}
+```
+
+```kotlin
+L.i("customerTag") {
+   "hi $name" 
+}
+```
 
 
 ## TODO List：
