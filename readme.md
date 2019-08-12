@@ -14,7 +14,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.5.5'
+compile 'com.safframework.log:saf-log:1.5.6'
 ```
 
 # 功能：
