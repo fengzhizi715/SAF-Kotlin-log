@@ -6,6 +6,8 @@ import com.safframework.log.handler.*
 /**
  * Created by Tony Shen on 2017/1/2.
  */
+typealias msgFunction = () -> String
+
 object L {
 
     enum class LogLevel {
@@ -235,7 +237,7 @@ object L {
     }
 
     @JvmStatic
-    fun i(msg: ()->String) {
+    fun i(msg: msgFunction) {
 
         i(msg.invoke())
     }
@@ -263,7 +265,7 @@ object L {
     }
 
     @JvmStatic
-    fun i(tag: String?, msg: () -> String) {
+    fun i(tag: String?, msg: msgFunction) {
 
         i(tag, msg.invoke())
     }
@@ -342,7 +344,7 @@ object L {
     }
 
     @JvmStatic
-    fun json(msg: ()-> Any) {
+    fun json(msg: msgFunction) {
 
         json(obj = msg.invoke())
     }
