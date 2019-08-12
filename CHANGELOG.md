@@ -1,7 +1,14 @@
 SAF-Kotlin-log
 ===
 
-Version 1.5.4
+Version 1.5.6
+---
+2019-08-13
+* 升级Kotlin版本
+* 优化代码
+* 增加 L 的方法
+
+Version 1.5.5
 ---
 2018-12-31
 * 升级Kotlin版本
