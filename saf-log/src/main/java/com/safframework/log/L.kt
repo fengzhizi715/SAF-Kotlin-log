@@ -236,7 +236,6 @@ object L {
         }
     }
 
-    @JvmStatic
     fun i(msg: msgFunction) {
 
         i(msg.invoke())
@@ -264,7 +263,6 @@ object L {
         }
     }
 
-    @JvmStatic
     fun i(tag: String?, msg: msgFunction) {
 
         i(tag, msg.invoke())
@@ -341,12 +339,6 @@ object L {
         }
 
         firstHandler.handleObject(obj)
-    }
-
-    @JvmStatic
-    fun json(msg: msgFunction) {
-
-        json(obj = msg.invoke())
     }
 
     @JvmStatic
