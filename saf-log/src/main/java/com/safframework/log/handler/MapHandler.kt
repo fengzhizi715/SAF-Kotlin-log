@@ -36,8 +36,6 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
         val jsonObject = JSONObject()
         keys.map {
 
-            it ->
-
             try {
 
                 if (isPrimitiveType) {

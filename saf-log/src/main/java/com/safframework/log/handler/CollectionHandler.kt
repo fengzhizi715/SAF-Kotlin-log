@@ -50,8 +50,6 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
 
         collection.map {
 
-            it ->
-
             try {
                 val objStr = JSON.toJSONString(it)
                 val jsonObject = JSONObject(objStr)
