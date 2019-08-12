@@ -137,6 +137,11 @@ object L {
         }
     }
 
+    fun e(msg: msgFunction) {
+
+        e(msg.invoke())
+    }
+
     /**
      * @param tag 使用自定义tag
      *
@@ -169,6 +174,11 @@ object L {
         }
     }
 
+    fun e(tag: String?, msg: msgFunction) {
+
+        e(tag, msg.invoke())
+    }
+
     @JvmStatic
     fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
@@ -184,6 +194,11 @@ object L {
                 }
             }
         }
+    }
+
+    fun w(msg: msgFunction) {
+
+        w(msg.invoke())
     }
 
     /**
@@ -206,6 +221,11 @@ object L {
                 }
             }
         }
+    }
+
+    fun w(tag: String?, msg: msgFunction) {
+
+        w(tag, msg.invoke())
     }
 
     @JvmStatic
@@ -295,6 +315,11 @@ object L {
         }
     }
 
+    fun d(msg: msgFunction) {
+
+        d(msg.invoke())
+    }
+
     /**
      * @param tag 使用自定义tag
      *
@@ -315,6 +340,11 @@ object L {
                 }
             }
         }
+    }
+
+    fun d(tag: String?, msg: msgFunction) {
+
+        d(tag, msg.invoke())
     }
 
     @JvmStatic
