@@ -234,6 +234,12 @@ object L {
         }
     }
 
+    @JvmStatic
+    fun i(msg: ()->String) {
+
+        i(msg.invoke())
+    }
+
     /**
      * @param tag 使用自定义tag
      *
@@ -254,6 +260,12 @@ object L {
                 }
             }
         }
+    }
+
+    @JvmStatic
+    fun i(tag: String?, msg: () -> String) {
+
+        i(tag, msg.invoke())
     }
 
     @JvmStatic
@@ -327,6 +339,12 @@ object L {
         }
 
         firstHandler.handleObject(obj)
+    }
+
+    @JvmStatic
+    fun json(msg: ()-> Any) {
+
+        json(obj = msg.invoke())
     }
 
     @JvmStatic

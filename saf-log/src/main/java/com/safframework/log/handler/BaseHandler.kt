@@ -17,9 +17,7 @@ abstract class BaseHandler {
 
         if (!handle(obj)) {
             // 当前处理者不能胜任，则传递至责任链的下一节点
-            if (this.nextHandler != null) {
-                this.nextHandler!!.handleObject(obj)
-            }
+            this.nextHandler?.handleObject(obj)
         }
     }
 
