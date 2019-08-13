@@ -14,7 +14,7 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework.log:saf-log:1.5.6'
+implementation 'com.safframework.log:saf-log:1.5.6'
 ```
 
 # 功能：
@@ -253,13 +253,13 @@ L.json(new NullPointerException("this object is null"));
 
 ```kotlin
 L.i {
-   "hi $name" 
+   "hi $message"
 }
 ```
 
 ```kotlin
 L.i("customerTag") {
-   "hi $name" 
+   "hi $message"
 }
 ```
 
