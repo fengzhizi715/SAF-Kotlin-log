@@ -1,5 +1,7 @@
 package com.safframework.log.printer
 
+import com.safframework.log.LogLevel
+
 /**
  *
  * @FileName:
@@ -10,5 +12,5 @@ package com.safframework.log.printer
  */
 interface Printer {
 
-    fun println(logLevel: Int, tag: String, msg: String)
+    fun println(logLevel: LogLevel, tag: String, msg: String)
 }

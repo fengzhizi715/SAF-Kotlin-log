@@ -2,6 +2,8 @@ package com.safframework.log
 
 import android.util.Log
 import com.safframework.log.handler.*
+import com.safframework.log.printer.ConsolePrinter
+import com.safframework.log.printer.Printer
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -10,31 +12,11 @@ typealias msgFunction = () -> String
 
 object L {
 
-    enum class LogLevel {
-        ERROR {
-            override val value: Int
-                get() = 0
-        },
-        WARN {
-            override val value: Int
-                get() = 1
-        },
-        INFO {
-            override val value: Int
-                get() = 2
-        },
-        DEBUG {
-            override val value: Int
-                get() = 3
-        };
-
-        abstract val value: Int
-    }
-
     private var TAG = "SAF_L"
     private var header:String? = ""
     private val handlers = ArrayList<BaseHandler>()
     private var firstHandler:BaseHandler
+    private var printer:Printer = ConsolePrinter
 
     init{
         handlers.add(StringHandler())
@@ -115,6 +97,13 @@ object L {
             }
         }
 
+        return this
+    }
+
+    @JvmStatic
+    fun printer(printer:Printer):L {
+
+        this.printer = printer
         return this
     }
 
@@ -249,9 +238,9 @@ object L {
                val s = getMethodNames()
 
                if (msg.contains("\n")) {
-                   Log.i(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                   printer.println(logLevel, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                } else {
-                   Log.i(TAG, String.format(s, msg))
+                   printer.println(logLevel, TAG,String.format(s, msg))
                }
            }
 
@@ -382,14 +371,17 @@ object L {
         var stackOffset = LoggerPrinter.getStackOffset(sElements)
 
         stackOffset++
+
         val builder = StringBuilder()
 
         builder.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+
         if (header!=null && header!!.isNotEmpty()) {
             // 添加Header
             builder.append("║ " + "Header: " + header).append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
         }
+
         // 添加当前线程名
         builder.append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
                 .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
