@@ -120,6 +120,8 @@ object L {
 
     /******************* L 的配置方法 End *******************/
 
+    /******************* L 打印的方法 Start *******************/
+
     @JvmStatic
     fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
@@ -370,6 +372,8 @@ object L {
 
         firstHandler.handleObject(obj)
     }
+
+    /******************* L 打印的方法 End *******************/
 
     @JvmStatic
     fun getMethodNames(): String {
