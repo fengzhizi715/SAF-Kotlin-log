@@ -8,7 +8,7 @@ import com.safframework.log.printer.Printer
 /**
  * Created by Tony Shen on 2017/1/2.
  */
-typealias msgFunction = () -> String
+//typealias msgFunction = () -> String
 
 object L {
 
@@ -128,11 +128,6 @@ object L {
         }
     }
 
-    fun e(msg: msgFunction) {
-
-        e(msg.invoke())
-    }
-
     /**
      * @param tag 使用自定义tag
      *
@@ -165,11 +160,6 @@ object L {
         }
     }
 
-    fun e(tag: String?, msg: msgFunction) {
-
-        e(tag, msg.invoke())
-    }
-
     @JvmStatic
     fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
@@ -185,11 +175,6 @@ object L {
                 }
             }
         }
-    }
-
-    fun w(msg: msgFunction) {
-
-        w(msg.invoke())
     }
 
     /**
@@ -212,11 +197,6 @@ object L {
                 }
             }
         }
-    }
-
-    fun w(tag: String?, msg: msgFunction) {
-
-        w(tag, msg.invoke())
     }
 
     @JvmStatic
@@ -247,11 +227,6 @@ object L {
         }
     }
 
-    fun i(msg: msgFunction) {
-
-        i(msg.invoke())
-    }
-
     /**
      * @param tag 使用自定义tag
      *
@@ -272,11 +247,6 @@ object L {
                 }
             }
         }
-    }
-
-    fun i(tag: String?, msg: msgFunction) {
-
-        i(tag, msg.invoke())
     }
 
     @JvmStatic
@@ -306,11 +276,6 @@ object L {
         }
     }
 
-    fun d(msg: msgFunction) {
-
-        d(msg.invoke())
-    }
-
     /**
      * @param tag 使用自定义tag
      *
@@ -331,11 +296,6 @@ object L {
                 }
             }
         }
-    }
-
-    fun d(tag: String?, msg: msgFunction) {
-
-        d(tag, msg.invoke())
     }
 
     @JvmStatic
