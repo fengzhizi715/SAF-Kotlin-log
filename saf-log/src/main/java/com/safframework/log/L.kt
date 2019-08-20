@@ -217,9 +217,9 @@ object L {
                val s = getMethodNames()
 
                if (msg.contains("\n")) {
-                   printer.println(logLevel, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                   printer.println(LogLevel.INFO, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                } else {
-                   printer.println(logLevel, TAG,String.format(s, msg))
+                   printer.println(LogLevel.INFO, TAG,String.format(s, msg))
                }
            }
 
@@ -240,9 +240,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(logLevel,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.INFO,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(logLevel,tag,String.format(s, msg))
+                    printer.println(LogLevel.INFO,tag,String.format(s, msg))
                 }
             }
         }
@@ -267,9 +267,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.d(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.DEBUG, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.d(TAG, String.format(s, msg))
+                    printer.println(LogLevel.DEBUG, TAG,String.format(s, msg))
                 }
             }
         }
@@ -289,9 +289,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.d(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.DEBUG,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.d(tag, String.format(s, msg))
+                    printer.println(LogLevel.DEBUG,tag,String.format(s, msg))
                 }
             }
         }
