@@ -28,6 +28,7 @@ object L {
         handlers.add(ObjectHandler())
 
         val len = handlers.size
+
         for (i in 0 until len) {
             if (i > 0) {
                 handlers[i - 1].setNextHandler(handlers[i])
@@ -89,7 +90,7 @@ object L {
 
         val len = handlers.size
 
-        for (i in 0..len - 1) {
+        for (i in 0 until len) {
             if (i > 0) {
                 handlers[i - 1].setNextHandler(handlers[i])
             }
@@ -239,9 +240,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.i(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(logLevel,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.i(tag, String.format(s, msg))
+                    printer.println(logLevel,tag,String.format(s, msg))
                 }
             }
         }
