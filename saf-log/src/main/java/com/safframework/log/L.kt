@@ -119,9 +119,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.e(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.ERROR, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.e(TAG, String.format(s, msg))
+                    printer.println(LogLevel.ERROR, TAG,String.format(s, msg))
                 }
             }
         }
@@ -141,9 +141,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.e(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.ERROR,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.e(tag, String.format(s, msg))
+                    printer.println(LogLevel.ERROR,tag,String.format(s, msg))
                 }
             }
         }
@@ -168,9 +168,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.w(TAG, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.WARN, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.w(TAG, String.format(s, msg))
+                    printer.println(LogLevel.WARN, TAG,String.format(s, msg))
                 }
             }
         }
@@ -190,9 +190,9 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    Log.w(tag, String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.WARN,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    Log.w(tag, String.format(s, msg))
+                    printer.println(LogLevel.WARN,tag,String.format(s, msg))
                 }
             }
         }
