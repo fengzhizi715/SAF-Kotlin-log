@@ -8,8 +8,6 @@ import com.safframework.log.printer.Printer
 /**
  * Created by Tony Shen on 2017/1/2.
  */
-//typealias msgFunction = () -> String
-
 object L {
 
     private var TAG = "SAF_L"
@@ -30,7 +28,7 @@ object L {
         handlers.add(ObjectHandler())
 
         val len = handlers.size
-        for (i in 0..len - 1) {
+        for (i in 0 until len) {
             if (i > 0) {
                 handlers[i - 1].setNextHandler(handlers[i])
             }
