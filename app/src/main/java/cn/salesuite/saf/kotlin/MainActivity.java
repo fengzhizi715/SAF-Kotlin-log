@@ -31,7 +31,7 @@ public class MainActivity extends Activity{
 //        L.w("test","haha");
 //        L.d("test","haha");
 //        L.e("test","haha");
-//        L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
+        L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
 
         User u = new User();
         u.userName = "tony";

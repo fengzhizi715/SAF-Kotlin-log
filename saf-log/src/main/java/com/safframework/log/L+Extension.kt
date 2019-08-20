@@ -19,48 +19,18 @@ inline fun <reified T> T.logTag() = T::class.java.simpleName
 
 inline fun <reified T> Class<T>.logTag() = simpleName
 
-fun L.e(msg: msgFunction) {
+fun L.e(msg: msgFunction)  = e(msg.invoke())
 
-    L.e(msg.invoke())
-}
+fun L.e(tag: String?, msg: msgFunction) = e(tag, msg.invoke())
 
+fun L.w(msg: msgFunction) = w(msg.invoke())
 
-fun L.e(tag: String?, msg: msgFunction) {
+fun L.w(tag: String?, msg: msgFunction) = w(tag, msg.invoke())
 
-    L.e(tag, msg.invoke())
-}
+fun L.i(msg: msgFunction) = i(msg.invoke())
 
+fun L.i(tag: String?, msg: msgFunction) = i(tag, msg.invoke())
 
-fun L.w(msg: msgFunction) {
+fun L.d(msg: msgFunction) = d(msg.invoke())
 
-    L.w(msg.invoke())
-}
-
-
-fun L.w(tag: String?, msg: msgFunction) {
-
-    L.w(tag, msg.invoke())
-}
-
-
-fun L.i(msg: msgFunction) {
-
-    L.i(msg.invoke())
-}
-
-fun L.i(tag: String?, msg: msgFunction) {
-
-    L.i(tag, msg.invoke())
-}
-
-
-fun L.d(msg: msgFunction) {
-
-    L.d(msg.invoke())
-}
-
-
-fun L.d(tag: String?, msg: msgFunction) {
-
-    L.d(tag, msg.invoke())
-}
+fun L.d(tag: String?, msg: msgFunction) = d(tag, msg.invoke())
