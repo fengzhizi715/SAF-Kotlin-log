@@ -10,6 +10,8 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import com.safframework.log.printer.file.FileNameGenerator
+import com.alibaba.fastjson.JSON
 
 
 /**
@@ -23,7 +25,9 @@ import java.io.IOException
 class FilePrinter(fileBuilder: FileBuilder):Printer{
 
     private val channel = Channel<LogItem>()
-    private var folderPath:String?=null
+    private val folderPath:String
+    private val fileNameGenerator: FileNameGenerator
+    private val writer: Writer
 
     init {
         GlobalScope.launch {
@@ -34,6 +38,9 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
         }
 
         folderPath = fileBuilder.folderPath
+        fileNameGenerator = fileBuilder.fileNameGenerator!!
+
+        writer = Writer(folderPath)
     }
 
     override fun println(logLevel: LogLevel, tag: String, msg: String) {
@@ -47,13 +54,32 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
     private fun doWrite(logItem:LogItem) {
 
+        var lastFileName = writer.lastFileName
+        if (lastFileName == null || fileNameGenerator.isFileNameChangeable()) {
 
+            val newFileName = fileNameGenerator.generateFileName(logItem.level.value, System.currentTimeMillis())
+            if (newFileName == null || newFileName.trim { it <= ' ' }.length == 0) {
+                throw IllegalArgumentException("File name should not be empty.")
+            }
+            if (newFileName != lastFileName) {
+                if (writer.isOpened) {
+                    writer.close()
+                }
+
+                if (!writer.open(newFileName)) {
+                    return
+                }
+                lastFileName = newFileName
+            }
+        }
+
+        writer.appendLog(JSON.toJSONString(logItem))
     }
 
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
 
-    private class Writer(private val folderPath:String) {
+    private class Writer(var folderPath:String) {
 
         var lastFileName: String? = null
             private set
@@ -123,5 +149,4 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
         }
     }
-
 }
