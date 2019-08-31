@@ -99,6 +99,9 @@ object L {
         return this
     }
 
+    /**
+     * 自定义的 Printer
+     */
     @JvmStatic
     fun printer(printer:Printer):L {
 
