@@ -5,6 +5,12 @@ package com.safframework.log
  */
 typealias msgFunction = () -> String
 
+
+inline fun <reified T> T.logTag() = T::class.java.simpleName
+
+inline fun <reified T> Class<T>.logTag() = simpleName
+
+
 fun String?.e() = L.e(this)
 
 fun String?.w() = L.w(this)
@@ -15,9 +21,6 @@ fun String?.d() = L.d(this)
 
 fun Any?.json()  = L.json(this)
 
-inline fun <reified T> T.logTag() = T::class.java.simpleName
-
-inline fun <reified T> Class<T>.logTag() = simpleName
 
 fun L.e(msg: msgFunction)  = e(msg.invoke())
 
