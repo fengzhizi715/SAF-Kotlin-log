@@ -87,7 +87,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
         var file: File? = null
             private set
 
-        lateinit var bufferedWriter: BufferedWriter
+        var bufferedWriter: BufferedWriter?=null
 
         val isOpened: Boolean
             get() = bufferedWriter != null
@@ -125,9 +125,11 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
         }
 
         fun close(): Boolean {
-            if (bufferedWriter != null) {
+
+            bufferedWriter?.let {
+
                 try {
-                    bufferedWriter.close()
+                    it.close()
                 } catch (e: IOException) {
                     e.printStackTrace()
                     return false
@@ -136,17 +138,20 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
                     file = null
                 }
             }
+
             return true
         }
 
         fun appendLog(log: String) {
-            try {
-                bufferedWriter.write(log)
-                bufferedWriter.newLine()
-                bufferedWriter.flush()
-            } catch (e: IOException) {
-            }
 
+            bufferedWriter?.let {
+                try {
+                    it.write(log)
+                    it.newLine()
+                    it.flush()
+                } catch (e: IOException) {
+                }
+            }
         }
     }
 }
