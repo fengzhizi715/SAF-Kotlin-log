@@ -1,6 +1,7 @@
 package com.safframework.log.printer
 
 import com.safframework.log.LogLevel
+import com.safframework.log.printer.file.FileBuilder
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
@@ -19,7 +20,7 @@ import java.io.IOException
  * @date: 2019-08-31 10:58
  * @version: V1.0 <描述当前版本功能>
  */
-object FilePrinter:Printer{
+class FilePrinter(fileBuilder: FileBuilder):Printer{
 
     private val channel = Channel<LogItem>()
     private var folderPath:String?=null
@@ -31,6 +32,8 @@ object FilePrinter:Printer{
                 doWrite(it)
             }
         }
+
+        folderPath = fileBuilder.folderPath
     }
 
     override fun println(logLevel: LogLevel, tag: String, msg: String) {
@@ -50,7 +53,7 @@ object FilePrinter:Printer{
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
 
-    private class Writer {
+    private class Writer(private val folderPath:String) {
 
         var lastFileName: String? = null
             private set
@@ -63,7 +66,7 @@ object FilePrinter:Printer{
         val isOpened: Boolean
             get() = bufferedWriter != null
 
-         fun open(newFileName: String): Boolean {
+        fun open(newFileName: String): Boolean {
             lastFileName = newFileName
             file = File(folderPath, newFileName)
 
