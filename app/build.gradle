@@ -37,6 +37,11 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
 }
 
 dependencies {
@@ -47,4 +52,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
     testImplementation 'junit:junit:4.12'
     implementation project(":saf-log")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
 }
