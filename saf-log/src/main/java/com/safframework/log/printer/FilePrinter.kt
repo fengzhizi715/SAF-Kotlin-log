@@ -69,7 +69,6 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
                 if (!writer.open(newFileName)) {
                     return
                 }
-                lastFileName = newFileName
             }
         }
 
@@ -109,7 +108,6 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
                     file = null
                     return false
                 }
-
             }
 
             try {
@@ -144,7 +142,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
         fun appendLog(log: String) {
 
-            bufferedWriter?.let {
+            bufferedWriter?.use {
                 try {
                     it.write(log)
                     it.newLine()

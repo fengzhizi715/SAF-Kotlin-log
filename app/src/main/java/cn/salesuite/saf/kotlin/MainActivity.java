@@ -43,13 +43,11 @@ public class MainActivity extends Activity{
 
         int permissionCheck = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            //有权限
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        } else {
             FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
             L.printer(filePrinter);
-        } else {
-            //没权限
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
 
 
