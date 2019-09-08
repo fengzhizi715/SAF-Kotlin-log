@@ -14,9 +14,13 @@ object L {
     private var header:String? = ""
     private val handlers = ArrayList<BaseHandler>()
     private var firstHandler:BaseHandler
-    private var printer:Printer = ConsolePrinter
+
+    @JvmStatic
+    var printer:Printer
 
     init{
+        printer = ConsolePrinter
+
         handlers.add(StringHandler())
         handlers.add(CollectionHandler())
         handlers.add(MapHandler())

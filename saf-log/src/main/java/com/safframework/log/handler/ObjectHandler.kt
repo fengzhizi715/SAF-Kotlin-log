@@ -2,7 +2,9 @@ package com.safframework.log.handler
 
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
+import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.logTag
 import org.json.JSONObject
 
 /**
@@ -20,7 +22,8 @@ class ObjectHandler:BaseHandler() {
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")
 
-        println(String.format(s, msg + message))
+//        println(String.format(s, msg + message))
+        printer.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
 
         return true
     }

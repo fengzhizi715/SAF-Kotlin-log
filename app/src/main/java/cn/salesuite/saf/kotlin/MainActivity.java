@@ -41,14 +41,14 @@ public class MainActivity extends Activity{
 //        L.d("test","haha");
 //        L.e("test","haha");
 
-        int permissionCheck = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-        } else {
-            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
-            L.printer(filePrinter);
-        }
+//        int permissionCheck = ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+//        } else {
+//            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
+//            L.printer(filePrinter);
+//        }
 
 
         L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
@@ -96,13 +96,13 @@ public class MainActivity extends Activity{
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-
-        if (requestCode==0) {
-
-            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
-            L.printer(filePrinter);
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+//
+//        if (requestCode==0) {
+//
+//            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
+//            L.printer(filePrinter);
+//        }
+//    }
 }

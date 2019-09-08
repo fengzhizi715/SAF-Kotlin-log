@@ -1,7 +1,9 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
+import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import org.json.JSONArray
 import org.json.JSONException
@@ -18,7 +20,8 @@ class StringHandler:BaseHandler(), Parser<String> {
 
             var json = obj.trim { it <= ' ' }
             val s = L.getMethodNames()
-            println(String.format(s, parseString(json)))
+//            println(String.format(s, parseString(json)))
+            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 

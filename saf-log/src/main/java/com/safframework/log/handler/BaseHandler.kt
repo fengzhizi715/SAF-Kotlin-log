@@ -1,5 +1,8 @@
 package com.safframework.log.handler
 
+import com.safframework.log.L
+import com.safframework.log.printer.Printer
+
 /**
  * Created by tony on 2017/11/27.
  */
@@ -7,6 +10,8 @@ abstract class BaseHandler {
 
     // 责任链的下一个节点，即处理者
     private var nextHandler: BaseHandler? = null
+
+    protected val printer: Printer = L.printer
 
     // 捕获具体请求并进行处理，或是将请求传递到责任链的下一级别
     fun handleObject(obj: Any) {

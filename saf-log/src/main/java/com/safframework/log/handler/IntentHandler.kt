@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
+import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.isPrimitiveType
 import org.json.JSONException
@@ -20,7 +22,8 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         if (obj is Intent) {
 
             val s = L.getMethodNames()
-            println(String.format(s, parseString(obj)))
+//            println(String.format(s, parseString(obj)))
+            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -38,7 +41,6 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         jsonObject.put("Type", intent.type)
         jsonObject.put("Package", intent.`package`)
         jsonObject.put("ComponentInfo", intent.component)
-//        jsonObject.put("Flags", getFlags(intent.flags))
         jsonObject.put("Categories", intent.categories)
         if (intent.extras!=null) {
             jsonObject.put("Extras", JSONObject(parseBundleString(intent.extras)))
