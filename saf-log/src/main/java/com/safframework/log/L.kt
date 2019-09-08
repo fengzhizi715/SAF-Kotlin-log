@@ -342,10 +342,13 @@ object L {
 
         builder.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
 
-        if (header!=null && header!!.isNotEmpty()) {
-            // 添加Header
-            builder.append("║ Header: $header").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+        header?.let {
+
+            if (it.isNotEmpty()) {
+                // 添加Header
+                builder.append("║ Header: $header").append(LoggerPrinter.BR)
+                       .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+            }
         }
 
         // 添加当前线程名
