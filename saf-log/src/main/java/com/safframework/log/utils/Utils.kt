@@ -3,8 +3,6 @@ package com.safframework.log.utils
 import android.os.Bundle
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
-import com.safframework.log.LoggerPrinter
-import com.safframework.log.json
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -13,7 +11,7 @@ import org.json.JSONObject
  */
 
 /**
- * 判断是否基本类型
+ * 判断 Any 是否为基本类型
  */
 fun isPrimitiveType(value: Any?):Boolean = when(value){
 
@@ -30,8 +28,11 @@ fun isPrimitiveType(value: Any?):Boolean = when(value){
     else -> false
 }
 
-fun Any?.toJavaClass() = this?.let { it.javaClass.toString() }
+fun Any.toJavaClass() = this.javaClass.toString()
 
+/**
+ * 解析 bundle ，并存储到 JSONObject
+ */
 fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
 
     for (key in bundle.keySet()) {
@@ -53,6 +54,9 @@ fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
     return this
 }
 
+/**
+ * 解析 map ，并存储到 JSONObject
+ */
 fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
 
     val keys = map.keys

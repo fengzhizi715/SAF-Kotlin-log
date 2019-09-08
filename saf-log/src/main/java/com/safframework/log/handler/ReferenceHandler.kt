@@ -7,6 +7,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.isPrimitiveType
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 import java.lang.ref.Reference
 
@@ -30,7 +31,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
     override fun parseString(reference: Reference<*>): String {
         val actual = reference.get()
 
-        var msg = reference.javaClass.canonicalName + "<" + actual?.javaClass?.simpleName + ">"+ LoggerPrinter.BR + "║ "
+        var msg = reference.javaClass.canonicalName + "<" + actual?.toJavaClass() + ">"+ LoggerPrinter.BR + "║ "
 
         val isPrimitiveType = isPrimitiveType(actual)
 
