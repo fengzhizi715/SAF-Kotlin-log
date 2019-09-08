@@ -1,15 +1,12 @@
 package com.safframework.log.handler
 
 import android.os.Bundle
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.isPrimitiveType
 import com.safframework.log.utils.parseBundle
-import org.json.JSONException
 import org.json.JSONObject
 
 /**
