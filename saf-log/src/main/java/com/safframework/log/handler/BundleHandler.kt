@@ -8,6 +8,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.isPrimitiveType
+import com.safframework.log.utils.parseBundle
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -33,23 +34,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
         var msg = bundle.javaClass.toString() + LoggerPrinter.BR + "║ "
 
-        val jsonObject = JSONObject()
-        for (key in bundle.keySet()) {
-
-            val isPrimitiveType = isPrimitiveType(bundle.get(key))
-
-            try {
-
-                if (isPrimitiveType) {
-                    jsonObject.put(key.toString(), bundle.get(key))
-                } else {
-                    jsonObject.put(key.toString(), JSONObject(JSON.toJSONString(bundle.get(key))))
-                }
-            } catch (e: JSONException) {
-                L.e("Invalid Json")
-            }
-
-        }
+        val jsonObject = JSONObject().parseBundle(bundle)
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")

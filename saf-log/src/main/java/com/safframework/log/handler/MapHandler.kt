@@ -7,6 +7,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.isPrimitiveType
+import com.safframework.log.utils.parseMap
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -29,27 +30,9 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
     override fun parseString(map: Map<*, *>): String {
 
-        val keys = map.keys
-        val values = map.values
-        val value = values.firstOrNull()
-        val isPrimitiveType = isPrimitiveType(value)
-
         var msg = map.javaClass.toString() + LoggerPrinter.BR + "║ "
 
-        val jsonObject = JSONObject()
-        keys.map {
-
-            try {
-
-                if (isPrimitiveType) {
-                    jsonObject.put(it.toString(), map.get(it))
-                } else {
-                    jsonObject.put(it.toString(), JSONObject(JSON.toJSONString(map.get(it))))
-                }
-            } catch (e: JSONException) {
-                L.e("Invalid Json")
-            }
-        }
+        val jsonObject = JSONObject().parseMap(map)
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")

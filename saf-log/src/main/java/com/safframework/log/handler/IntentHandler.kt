@@ -2,14 +2,12 @@ package com.safframework.log.handler
 
 import android.content.Intent
 import android.os.Bundle
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
-import com.safframework.log.utils.isPrimitiveType
-import org.json.JSONException
+import com.safframework.log.utils.parseBundle
 import org.json.JSONObject
 
 /**
@@ -52,26 +50,5 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         return msg + message
     }
 
-    private fun parseBundleString(extras: Bundle): String {
-
-        val jsonObject = JSONObject()
-        for (key in extras.keySet()) {
-
-            val isPrimitiveType = isPrimitiveType(extras.get(key))
-
-            try {
-
-                if (isPrimitiveType) {
-                    jsonObject.put(key.toString(), extras.get(key))
-                } else {
-                    jsonObject.put(key.toString(), JSONObject(JSON.toJSONString(extras.get(key))))
-                }
-            } catch (e: JSONException) {
-                L.e("Invalid Json")
-            }
-
-        }
-
-        return jsonObject.toString(LoggerPrinter.JSON_INDENT)
-    }
+    private fun parseBundleString(extras: Bundle) = JSONObject().parseBundle(extras).toString(LoggerPrinter.JSON_INDENT)
 }
