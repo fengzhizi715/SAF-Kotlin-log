@@ -7,8 +7,7 @@
 
 ![](logo.JPG)
 
-它是完全基于Kotlin开发的Android日志框架，提供极简的API，能够打印出漂亮的日志格式。它基于最新的Android Studio版本、Kotlin版本和Gradle版本构建。
-
+它是完全基于 Kotlin 开发的 Android 日志框架，提供极简的 API，能够打印出漂亮的日志格式。
 
 # 下载安装
 Gradle:
@@ -278,7 +277,7 @@ Wechat：fengzhizi715
 
 > Java与Android技术栈：每周更新推送原创技术文章，欢迎扫描下方的公众号二维码并关注，期待与您的共同成长和进步。
 
-![](https://user-gold-cdn.xitu.io/2018/7/24/164cc729c7c69ac1?w=344&h=344&f=jpeg&s=9082)
+![](https://github.com/fengzhizi715/NetDiscovery/blob/master/images/gzh.jpeg)
 
 
 ChangeLog
