@@ -32,12 +32,15 @@ class UriHandler:BaseHandler(), Parser<Uri> {
         var msg = uri.toJavaClass() + LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject()
-        jsonObject.put("Scheme", uri.scheme)
-        jsonObject.put("Host", uri.host)
-        jsonObject.put("Port", uri.port)
-        jsonObject.put("Path", uri.path)
-        jsonObject.put("Query", uri.query)
-        jsonObject.put("Fragment", uri.fragment)
+
+        with(jsonObject) {
+            put("Scheme", uri.scheme)
+            put("Host", uri.host)
+            put("Port", uri.port)
+            put("Path", uri.path)
+            put("Query", uri.query)
+            put("Fragment", uri.fragment)
+        }
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")

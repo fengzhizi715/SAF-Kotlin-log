@@ -137,7 +137,7 @@ object L {
     fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            throwable(LogLevel.ERROR,msg,tr)
+            printThrowable(LogLevel.ERROR,msg,tr)
         }
     }
 
@@ -161,7 +161,7 @@ object L {
     fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            throwable(LogLevel.WARN,msg,tr)
+            printThrowable(LogLevel.WARN,msg,tr)
         }
     }
 
@@ -185,7 +185,7 @@ object L {
     fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            throwable(LogLevel.INFO,msg,tr)
+            printThrowable(LogLevel.INFO,msg,tr)
         }
     }
 
@@ -209,7 +209,7 @@ object L {
     fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            throwable(LogLevel.DEBUG,msg,tr)
+            printThrowable(LogLevel.DEBUG,msg,tr)
         }
     }
 
@@ -227,7 +227,7 @@ object L {
         }
     }
 
-    private fun throwable(logLevel: LogLevel, msg: String?, tr: Throwable) {
+    private fun printThrowable(logLevel: LogLevel, msg: String?, tr: Throwable) {
 
         if (msg != null && msg.isNotEmpty()) {
 
@@ -251,7 +251,7 @@ object L {
     fun json(obj: Any?) {
 
         if (obj == null) {
-            d("object is null")
+            e("object is null")
             return
         }
 
@@ -271,24 +271,24 @@ object L {
 
         return StringBuilder().apply {
 
-            this.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+            append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
         }.apply {
 
             header?.let {
 
                 if (it.isNotEmpty()) {
                     // 添加Header
-                    this.append("║ Header: $header").append(LoggerPrinter.BR)
-                            .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                    append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} Header: $header").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                 }
             }
         }.apply {
 
             // 添加当前线程名
-            this.append("║ Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
+            append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加类名、方法名、行数
-                    .append("║ ")
+                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} ")
                     .append(sElements[stackOffset].className)
                     .append(".")
                     .append(sElements[stackOffset].methodName)
@@ -301,7 +301,7 @@ object L {
                     .append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加打印的日志信息
-                    .append("║ ").append("%s").append(LoggerPrinter.BR)
+                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} ").append("%s").append(LoggerPrinter.BR)
                     .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
         }.toString()
     }
