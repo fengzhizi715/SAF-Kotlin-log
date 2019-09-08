@@ -160,9 +160,7 @@ object L {
     fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg != null && msg.isNotEmpty()) {
-                Log.e(TAG, msg, tr)
-            }
+            throwable(LogLevel.ERROR,msg,tr)
         }
     }
 
@@ -209,9 +207,7 @@ object L {
     fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg != null && msg.isNotEmpty()) {
-                Log.w(TAG, msg, tr)
-            }
+            throwable(LogLevel.WARN,msg,tr)
         }
     }
 
@@ -259,9 +255,7 @@ object L {
     fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (msg != null && msg.isNotEmpty()) {
-                Log.i(TAG, msg, tr)
-            }
+            throwable(LogLevel.INFO,msg,tr)
         }
     }
 
@@ -308,8 +302,23 @@ object L {
     fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg != null && msg.isNotEmpty()) {
-                Log.d(TAG, msg, tr)
+            throwable(LogLevel.DEBUG,msg,tr)
+        }
+    }
+
+    private fun throwable(logLevel: LogLevel, msg: String?, tr: Throwable) {
+
+        if (msg != null && msg.isNotEmpty()) {
+
+            when(logLevel) {
+
+                LogLevel.ERROR -> Log.e(TAG, msg, tr)
+
+                LogLevel.WARN  -> Log.w(TAG, msg, tr)
+
+                LogLevel.INFO  -> Log.i(TAG, msg, tr)
+
+                LogLevel.DEBUG -> Log.d(TAG, msg, tr)
             }
         }
     }
