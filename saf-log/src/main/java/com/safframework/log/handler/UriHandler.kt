@@ -6,6 +6,7 @@ import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
 /**
@@ -28,7 +29,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
 
     override fun parseString(uri: Uri): String {
 
-        var msg = uri.javaClass.toString() + LoggerPrinter.BR + "║ "
+        var msg = uri.toJavaClass() + LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject()
         jsonObject.put("Scheme", uri.scheme)

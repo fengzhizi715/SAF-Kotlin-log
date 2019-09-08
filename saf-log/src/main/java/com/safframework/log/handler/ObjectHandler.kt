@@ -5,6 +5,7 @@ import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
 /**
@@ -16,7 +17,7 @@ class ObjectHandler:BaseHandler() {
 
         val s = L.getMethodNames()
 
-        var msg = obj.javaClass.toString() + LoggerPrinter.BR + "║ "
+        var msg = obj.toJavaClass() + LoggerPrinter.BR + "║ "
         val objStr = JSON.toJSONString(obj)
         val jsonObject = JSONObject(objStr)
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)

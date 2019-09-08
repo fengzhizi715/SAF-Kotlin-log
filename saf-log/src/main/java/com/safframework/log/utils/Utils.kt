@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.json
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -28,6 +29,8 @@ fun isPrimitiveType(value: Any?):Boolean = when(value){
 
     else -> false
 }
+
+fun Any?.toJavaClass() = this?.let { it.javaClass.toString() }
 
 fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
 

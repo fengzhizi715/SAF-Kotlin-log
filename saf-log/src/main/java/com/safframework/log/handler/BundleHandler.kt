@@ -7,6 +7,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.parseBundle
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
 /**
@@ -29,7 +30,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
     override fun parseString(bundle: Bundle): String {
 
-        var msg = bundle.javaClass.toString() + LoggerPrinter.BR + "║ "
+        var msg = bundle.toJavaClass() + LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject().parseBundle(bundle)
 

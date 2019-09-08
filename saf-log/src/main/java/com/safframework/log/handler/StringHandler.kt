@@ -21,7 +21,7 @@ class StringHandler:BaseHandler(), Parser<String> {
             var json = obj.trim { it <= ' ' }
             val s = L.getMethodNames()
 //            println(String.format(s, parseString(json)))
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json)))
             return true
         }
 
@@ -42,7 +42,7 @@ class StringHandler:BaseHandler(), Parser<String> {
                 message = message.replace("\n".toRegex(), "\n║ ")
             }
         } catch (e: JSONException) {
-            L.e("Invalid Json: " + json)
+            L.e("Invalid Json: $json")
             message = ""
         }
 

@@ -6,6 +6,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.parseMap
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
 /**
@@ -27,7 +28,7 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
     override fun parseString(map: Map<*, *>): String {
 
-        var msg = map.javaClass.toString() + LoggerPrinter.BR + "║ "
+        var msg = map.toJavaClass() + LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject().parseMap(map)
 

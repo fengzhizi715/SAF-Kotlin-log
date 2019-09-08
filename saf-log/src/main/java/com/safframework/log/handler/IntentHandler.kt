@@ -8,6 +8,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.parseBundle
+import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
 /**
@@ -30,7 +31,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
     override fun parseString(intent: Intent): String {
 
-        var msg = intent.javaClass.toString() + LoggerPrinter.BR + "║ "
+        var msg = intent.toJavaClass()+ LoggerPrinter.BR + "║ "
 
         val jsonObject = JSONObject()
         jsonObject.put("Scheme", intent.scheme)
