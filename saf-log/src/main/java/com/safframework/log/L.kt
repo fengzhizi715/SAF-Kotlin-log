@@ -344,12 +344,12 @@ object L {
 
         if (header!=null && header!!.isNotEmpty()) {
             // 添加Header
-            builder.append("║ " + "Header: " + header).append(LoggerPrinter.BR)
+            builder.append("║ Header: $header").append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
         }
 
         // 添加当前线程名
-        builder.append("║ " + "Thread: " + Thread.currentThread().name).append(LoggerPrinter.BR)
+        builder.append("║ Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
                 .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                 // 添加类名、方法名、行数
                 .append("║ ")
