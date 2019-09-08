@@ -118,21 +118,7 @@ object L {
     /******************* L 打印的方法 Start *******************/
 
     @JvmStatic
-    fun e(msg: String?) {
-        if (LogLevel.ERROR.value <= logLevel.value) {
-
-            if (msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.ERROR, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.ERROR, TAG, String.format(s, msg))
-                }
-            }
-        }
-    }
+    fun e(msg: String?) = e(TAG,msg)
 
     /**
      * @param tag 使用自定义tag
@@ -143,16 +129,7 @@ object L {
     fun e(tag: String?, msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.ERROR, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.ERROR, tag, String.format(s, msg))
-                }
-            }
+            print(LogLevel.ERROR,tag,msg)
         }
     }
 
@@ -165,21 +142,7 @@ object L {
     }
 
     @JvmStatic
-    fun w(msg: String?) {
-        if (LogLevel.WARN.value <= logLevel.value) {
-
-            if (msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.WARN, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.WARN, TAG, String.format(s, msg))
-                }
-            }
-        }
-    }
+    fun w(msg: String?) = w(TAG,msg)
 
     /**
      * @param tag 使用自定义tag
@@ -190,16 +153,7 @@ object L {
     fun w(tag: String?, msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.WARN, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.WARN, tag, String.format(s, msg))
-                }
-            }
+            print(LogLevel.WARN,tag,msg)
         }
     }
 
@@ -212,22 +166,7 @@ object L {
     }
 
     @JvmStatic
-    fun i(msg: String?) {
-        if (LogLevel.INFO.value <= logLevel.value) {
-
-            if (msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.INFO, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.INFO, TAG, String.format(s, msg))
-                }
-            }
-
-        }
-    }
+    fun i(msg: String?) = i(TAG,msg)
 
     /**
      * @param tag 使用自定义tag
@@ -238,16 +177,7 @@ object L {
     fun i(tag: String?, msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.INFO, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.INFO, tag, String.format(s, msg))
-                }
-            }
+            print(LogLevel.INFO,tag,msg)
         }
     }
 
@@ -260,21 +190,7 @@ object L {
     }
 
     @JvmStatic
-    fun d(msg: String?) {
-        if (LogLevel.DEBUG.value <= logLevel.value) {
-
-            if (msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.DEBUG, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.DEBUG, TAG, String.format(s, msg))
-                }
-            }
-        }
-    }
+    fun d(msg: String?) = d(TAG,msg)
 
     /**
      * @param tag 使用自定义tag
@@ -285,16 +201,7 @@ object L {
     fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                val s = getMethodNames()
-
-                if (msg.contains("\n")) {
-                    printer.println(LogLevel.DEBUG, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-                } else {
-                    printer.println(LogLevel.DEBUG, tag, String.format(s, msg))
-                }
-            }
+            print(LogLevel.DEBUG,tag,msg)
         }
     }
 
@@ -303,6 +210,20 @@ object L {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
             throwable(LogLevel.DEBUG,msg,tr)
+        }
+    }
+
+    private fun print(logLevel: LogLevel, tag: String?, msg: String?) {
+
+        if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
+
+            val s = getMethodNames()
+
+            if (msg.contains("\n")) {
+                printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+            } else {
+                printer.println(logLevel, tag, String.format(s, msg))
+            }
         }
     }
 
