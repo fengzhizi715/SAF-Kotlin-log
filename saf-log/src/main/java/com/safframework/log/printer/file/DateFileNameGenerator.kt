@@ -15,21 +15,21 @@ class DateFileNameGenerator : FileNameGenerator {
 
     var mLocalDateFormat: ThreadLocal<SimpleDateFormat> = object : ThreadLocal<SimpleDateFormat>() {
 
-        override fun initialValue(): SimpleDateFormat {
-            return SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
-        }
+        override fun initialValue() = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
     }
 
-    override fun isFileNameChangeable(): Boolean {
-        return true
-    }
+    override fun isFileNameChangeable() = true
 
     /**
      * Generate a file name which represent a specific date.
      */
     override fun generateFileName(logLevel: Int, timestamp: Long): String {
         val sdf = mLocalDateFormat.get()
-        sdf!!.timeZone = TimeZone.getDefault()
-        return sdf!!.format(Date(timestamp))
+
+        return sdf?.let {
+
+            it.timeZone = TimeZone.getDefault()
+            it.format(Date(timestamp))
+        }?:""
     }
 }
