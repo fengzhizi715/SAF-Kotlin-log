@@ -64,7 +64,7 @@ fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
             if (isPrimitiveType) {
                 this.put(it.toString(), map[it])
             } else {
-                this.put(it.toString(), JSONObject(JSON.toJSONString(map.get(it))))
+                this.put(it.toString(), JSONObject(JSON.toJSONString(map[it])))
             }
         } catch (e: JSONException) {
             L.e("Invalid Json")
