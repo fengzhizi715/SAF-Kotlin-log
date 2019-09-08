@@ -11,14 +11,14 @@ import com.safframework.log.printer.Printer
 object L {
 
     private var TAG = "SAF_L"
-    private var header:String? = ""
+    private var header: String? = ""
     private val handlers = ArrayList<BaseHandler>()
-    private var firstHandler:BaseHandler
+    private var firstHandler: BaseHandler
 
     @JvmStatic
-    var printer:Printer
+    var printer: Printer
 
-    init{
+    init {
         printer = ConsolePrinter
 
         handlers.add(StringHandler())
@@ -48,7 +48,7 @@ object L {
     /******************* L 的配置方法 Start *******************/
 
     @JvmStatic
-    fun init(clazz: Class<*>):L {
+    fun init(clazz: Class<*>): L {
         TAG = clazz.simpleName
         return this
     }
@@ -58,7 +58,7 @@ object L {
      * @param tag
      */
     @JvmStatic
-    fun init(tag: String):L {
+    fun init(tag: String): L {
         TAG = tag
         return this
     }
@@ -68,7 +68,7 @@ object L {
      * @param tag
      */
     @JvmStatic
-    fun header(header: String?):L {
+    fun header(header: String?): L {
         this.header = header
         return this
     }
@@ -77,20 +77,20 @@ object L {
      * 自定义Handler来解析Object
      */
     @JvmStatic
-    fun addCustomerHandler(handler: BaseHandler):L {
+    fun addCustomerHandler(handler: BaseHandler): L {
 
         val size = handlers.size
 
-        return addCustomerHandler(handler,size-1) // 插入在ObjectHandler之前
+        return addCustomerHandler(handler, size - 1) // 插入在ObjectHandler之前
     }
 
     /**
      * 自定义Handler来解析Object，并指定Handler的位置
      */
     @JvmStatic
-    fun addCustomerHandler(handler: BaseHandler,index:Int):L {
+    fun addCustomerHandler(handler: BaseHandler, index: Int): L {
 
-        handlers.add(index,handler)
+        handlers.add(index, handler)
 
         val len = handlers.size
 
@@ -107,7 +107,7 @@ object L {
      * 自定义的 Printer
      */
     @JvmStatic
-    fun printer(printer:Printer):L {
+    fun printer(printer: Printer): L {
 
         this.printer = printer
         return this
@@ -121,14 +121,14 @@ object L {
     fun e(msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.ERROR, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.ERROR, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.ERROR, TAG,String.format(s, msg))
+                    printer.println(LogLevel.ERROR, TAG, String.format(s, msg))
                 }
             }
         }
@@ -143,14 +143,14 @@ object L {
     fun e(tag: String?, msg: String?) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.ERROR,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.ERROR, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.ERROR,tag,String.format(s, msg))
+                    printer.println(LogLevel.ERROR, tag, String.format(s, msg))
                 }
             }
         }
@@ -160,7 +160,7 @@ object L {
     fun e(msg: String?, tr: Throwable) {
         if (LogLevel.ERROR.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
                 Log.e(TAG, msg, tr)
             }
         }
@@ -170,14 +170,14 @@ object L {
     fun w(msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.WARN, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.WARN, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.WARN, TAG,String.format(s, msg))
+                    printer.println(LogLevel.WARN, TAG, String.format(s, msg))
                 }
             }
         }
@@ -192,14 +192,14 @@ object L {
     fun w(tag: String?, msg: String?) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.WARN,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.WARN, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.WARN,tag,String.format(s, msg))
+                    printer.println(LogLevel.WARN, tag, String.format(s, msg))
                 }
             }
         }
@@ -209,7 +209,7 @@ object L {
     fun w(msg: String?, tr: Throwable) {
         if (LogLevel.WARN.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
                 Log.w(TAG, msg, tr)
             }
         }
@@ -219,16 +219,16 @@ object L {
     fun i(msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-           if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
 
-               val s = getMethodNames()
+                val s = getMethodNames()
 
-               if (msg.contains("\n")) {
-                   printer.println(LogLevel.INFO, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
-               } else {
-                   printer.println(LogLevel.INFO, TAG,String.format(s, msg))
-               }
-           }
+                if (msg.contains("\n")) {
+                    printer.println(LogLevel.INFO, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    printer.println(LogLevel.INFO, TAG, String.format(s, msg))
+                }
+            }
 
         }
     }
@@ -242,14 +242,14 @@ object L {
     fun i(tag: String?, msg: String?) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.INFO,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.INFO, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.INFO,tag,String.format(s, msg))
+                    printer.println(LogLevel.INFO, tag, String.format(s, msg))
                 }
             }
         }
@@ -259,7 +259,7 @@ object L {
     fun i(msg: String?, tr: Throwable) {
         if (LogLevel.INFO.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
                 Log.i(TAG, msg, tr)
             }
         }
@@ -269,14 +269,14 @@ object L {
     fun d(msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.DEBUG, TAG,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.DEBUG, TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.DEBUG, TAG,String.format(s, msg))
+                    printer.println(LogLevel.DEBUG, TAG, String.format(s, msg))
                 }
             }
         }
@@ -291,14 +291,14 @@ object L {
     fun d(tag: String?, msg: String?) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (tag!=null && tag.isNotEmpty() && msg!=null && msg.isNotEmpty()) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(LogLevel.DEBUG,tag,String.format(s,msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(LogLevel.DEBUG, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
                 } else {
-                    printer.println(LogLevel.DEBUG,tag,String.format(s, msg))
+                    printer.println(LogLevel.DEBUG, tag, String.format(s, msg))
                 }
             }
         }
@@ -308,7 +308,7 @@ object L {
     fun d(msg: String?, tr: Throwable) {
         if (LogLevel.DEBUG.value <= logLevel.value) {
 
-            if (msg!=null && msg.isNotEmpty()) {
+            if (msg != null && msg.isNotEmpty()) {
                 Log.d(TAG, msg, tr)
             }
         }
@@ -332,45 +332,47 @@ object L {
 
     @JvmStatic
     fun getMethodNames(): String {
+
         val sElements = Thread.currentThread().stackTrace
 
         var stackOffset = LoggerPrinter.getStackOffset(sElements)
 
         stackOffset++
 
-        val builder = StringBuilder()
+        return StringBuilder().apply {
 
-        builder.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+            this.append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+        }.apply {
 
-        header?.let {
+            header?.let {
 
-            if (it.isNotEmpty()) {
-                // 添加Header
-                builder.append("║ Header: $header").append(LoggerPrinter.BR)
-                       .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                if (it.isNotEmpty()) {
+                    // 添加Header
+                    this.append("║ Header: $header").append(LoggerPrinter.BR)
+                            .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                }
             }
-        }
+        }.apply {
 
-        // 添加当前线程名
-        builder.append("║ Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
-                .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                // 添加类名、方法名、行数
-                .append("║ ")
-                .append(sElements[stackOffset].className)
-                .append(".")
-                .append(sElements[stackOffset].methodName)
-                .append(" ")
-                .append(" (")
-                .append(sElements[stackOffset].fileName)
-                .append(":")
-                .append(sElements[stackOffset].lineNumber)
-                .append(")")
-                .append(LoggerPrinter.BR)
-                .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
-                // 添加打印的日志信息
-                .append("║ ").append("%s").append(LoggerPrinter.BR)
-                .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
-
-        return builder.toString()
+            // 添加当前线程名
+            this.append("║ Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                    // 添加类名、方法名、行数
+                    .append("║ ")
+                    .append(sElements[stackOffset].className)
+                    .append(".")
+                    .append(sElements[stackOffset].methodName)
+                    .append(" ")
+                    .append(" (")
+                    .append(sElements[stackOffset].fileName)
+                    .append(":")
+                    .append(sElements[stackOffset].lineNumber)
+                    .append(")")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                    // 添加打印的日志信息
+                    .append("║ ").append("%s").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
+        }.toString()
     }
 }
