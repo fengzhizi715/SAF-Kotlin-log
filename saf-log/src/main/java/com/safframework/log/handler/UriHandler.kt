@@ -30,9 +30,8 @@ class UriHandler:BaseHandler(), Parser<Uri> {
 
         var msg = uri.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
-        val jsonObject = JSONObject()
+        return msg + JSONObject().apply {
 
-        with(jsonObject) {
             put("Scheme", uri.scheme)
             put("Host", uri.host)
             put("Port", uri.port)
@@ -40,11 +39,10 @@ class UriHandler:BaseHandler(), Parser<Uri> {
             put("Query", uri.query)
             put("Fragment", uri.fragment)
         }
-
-        var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
-
-        return msg + message
+        .toString(LoggerPrinter.JSON_INDENT)
+        .let {
+            it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+         }
     }
 
 }

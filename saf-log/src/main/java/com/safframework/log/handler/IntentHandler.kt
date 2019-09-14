@@ -32,22 +32,23 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
         var msg = intent.toJavaClass()+ LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
-        val jsonObject = JSONObject()
-        jsonObject.put("Scheme", intent.scheme)
-        jsonObject.put("Action", intent.action)
-        jsonObject.put("DataString", intent.dataString)
-        jsonObject.put("Type", intent.type)
-        jsonObject.put("Package", intent.`package`)
-        jsonObject.put("ComponentInfo", intent.component)
-        jsonObject.put("Categories", intent.categories)
-        if (intent.extras!=null) {
-            jsonObject.put("Extras", JSONObject(parseBundleString(intent.extras)))
+        return msg + JSONObject().apply {
+
+            put("Scheme", intent.scheme)
+            put("Action", intent.action)
+            put("DataString", intent.dataString)
+            put("Type", intent.type)
+            put("Package", intent.`package`)
+            put("ComponentInfo", intent.component)
+            put("Categories", intent.categories)
+            if (intent.extras!=null) {
+                put("Extras", JSONObject(parseBundleString(intent.extras)))
+            }
         }
-
-        var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
-
-        return msg + message
+        .toString(LoggerPrinter.JSON_INDENT)
+        .let {
+            it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+        }
     }
 
     private fun parseBundleString(extras: Bundle) = JSONObject().parseBundle(extras).toString(LoggerPrinter.JSON_INDENT)
