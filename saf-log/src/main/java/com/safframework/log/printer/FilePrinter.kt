@@ -97,7 +97,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
             if (!file!!.exists()) {
                 try {
-                    val parent = file!!.getParentFile()
+                    val parent = file!!.parentFile
                     if (!parent.exists()) {
                         parent.mkdirs()
                     }

@@ -19,7 +19,6 @@ class UriHandler:BaseHandler(), Parser<Uri> {
         if (obj is Uri) {
 
             val s = L.getMethodNames()
-//            println(String.format(s, parseString(obj)))
             printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }

@@ -23,9 +23,7 @@ class ObjectHandler:BaseHandler() {
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
         message = message.replace("\n".toRegex(), "\n║ ")
 
-//        println(String.format(s, msg + message))
         printer.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
-
         return true
     }
 }
