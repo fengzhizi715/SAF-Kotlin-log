@@ -29,12 +29,12 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
     override fun parseString(bundle: Bundle): String {
 
-        var msg = bundle.toJavaClass() + LoggerPrinter.BR + "║ "
+        var msg = bundle.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         val jsonObject = JSONObject().parseBundle(bundle)
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return msg + message
     }

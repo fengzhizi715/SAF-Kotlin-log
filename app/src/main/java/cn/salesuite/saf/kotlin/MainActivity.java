@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.safframework.log.L;
+import com.safframework.log.LogLevel;
 import com.safframework.log.handler.BaseHandler;
 import com.safframework.log.printer.FilePrinter;
 import com.safframework.log.printer.file.DateFileNameGenerator;
@@ -49,7 +50,6 @@ public class MainActivity extends Activity{
 //            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
 //            L.printer(filePrinter);
 //        }
-
 
         L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
 

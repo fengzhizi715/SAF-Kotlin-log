@@ -28,7 +28,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
 
     override fun parseString(uri: Uri): String {
 
-        var msg = uri.toJavaClass() + LoggerPrinter.BR + "║ "
+        var msg = uri.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         val jsonObject = JSONObject()
 
@@ -42,7 +42,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
         }
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return msg + message
     }

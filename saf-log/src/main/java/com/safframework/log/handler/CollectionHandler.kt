@@ -26,7 +26,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
             if (isPrimitiveType) {
                 val simpleName = obj.javaClass
                 var msg = "%s size = %d" + LoggerPrinter.BR
-                msg = String.format(msg, simpleName, obj.size) + "║ "
+                msg = String.format(msg, simpleName, obj.size) + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
                 val s = L.getMethodNames()
                 printer.println(LogLevel.INFO, this.logTag(),String.format(s, msg + obj.toString()))
                 return true
@@ -47,7 +47,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         val simpleName = collection.javaClass
 
         var msg = "%s size = %d" + LoggerPrinter.BR
-        msg = String.format(msg, simpleName, collection.size) + "║ "
+        msg = String.format(msg, simpleName, collection.size) + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         collection.map {
 
@@ -61,7 +61,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         }
 
         var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return msg + message
     }

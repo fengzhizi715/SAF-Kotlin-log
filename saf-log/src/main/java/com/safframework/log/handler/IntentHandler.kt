@@ -30,7 +30,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
     override fun parseString(intent: Intent): String {
 
-        var msg = intent.toJavaClass()+ LoggerPrinter.BR + "║ "
+        var msg = intent.toJavaClass()+ LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         val jsonObject = JSONObject()
         jsonObject.put("Scheme", intent.scheme)
@@ -45,7 +45,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         }
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return msg + message
     }

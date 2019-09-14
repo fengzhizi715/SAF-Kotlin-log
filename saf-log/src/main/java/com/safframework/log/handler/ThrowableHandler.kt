@@ -2,6 +2,7 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.LogLevel
+import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import java.io.PrintWriter
@@ -30,7 +31,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return message
     }

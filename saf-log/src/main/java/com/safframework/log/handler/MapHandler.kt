@@ -27,12 +27,12 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
     override fun parseString(map: Map<*, *>): String {
 
-        var msg = map.toJavaClass() + LoggerPrinter.BR + "║ "
+        var msg = map.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         val jsonObject = JSONObject().parseMap(map)
 
         var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n║ ")
+        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
 
         return msg + message
     }
