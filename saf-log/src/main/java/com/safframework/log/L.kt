@@ -43,7 +43,7 @@ object L {
     }
 
     @JvmStatic
-    var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在Application中进行全局的配置
+    var logLevel = LogLevel.DEBUG // 日志的等级，可以进行配置，最好在 Application 中进行全局的配置
 
     /******************* L 的配置方法 Start *******************/
 
@@ -54,7 +54,7 @@ object L {
     }
 
     /**
-     * 支持用户自己传tag，可扩展性更好
+     * 支持用户自己传 tag，可扩展性更好
      * @param tag
      */
     @JvmStatic
@@ -64,7 +64,7 @@ object L {
     }
 
     /**
-     * header是自定义的内容，可以放App的信息版本号等，方便查找和调试
+     * header 是自定义的内容，可以放App的信息版本号等，方便查找和调试
      * @param tag
      */
     @JvmStatic
@@ -74,7 +74,7 @@ object L {
     }
 
     /**
-     * 自定义Handler来解析Object
+     * 自定义 Handler 来解析 Object
      */
     @JvmStatic
     fun addCustomerHandler(handler: BaseHandler): L {
@@ -85,7 +85,7 @@ object L {
     }
 
     /**
-     * 自定义Handler来解析Object，并指定Handler的位置
+     * 自定义 Handler 来解析 Object，并指定 Handler 的位置
      */
     @JvmStatic
     fun addCustomerHandler(handler: BaseHandler, index: Int): L {
@@ -126,20 +126,10 @@ object L {
      * @param msg
      */
     @JvmStatic
-    fun e(tag: String?, msg: String?) {
-        if (LogLevel.ERROR.value <= logLevel.value) {
-
-            print(LogLevel.ERROR,tag,msg)
-        }
-    }
+    fun e(tag: String?, msg: String?) = print(LogLevel.ERROR,tag,msg)
 
     @JvmStatic
-    fun e(msg: String?, tr: Throwable) {
-        if (LogLevel.ERROR.value <= logLevel.value) {
-
-            printThrowable(LogLevel.ERROR,msg,tr)
-        }
-    }
+    fun e(msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,msg,tr)
 
     @JvmStatic
     fun w(msg: String?) = w(TAG,msg)
@@ -150,20 +140,10 @@ object L {
      * @param msg
      */
     @JvmStatic
-    fun w(tag: String?, msg: String?) {
-        if (LogLevel.WARN.value <= logLevel.value) {
-
-            print(LogLevel.WARN,tag,msg)
-        }
-    }
+    fun w(tag: String?, msg: String?) = print(LogLevel.WARN,tag,msg)
 
     @JvmStatic
-    fun w(msg: String?, tr: Throwable) {
-        if (LogLevel.WARN.value <= logLevel.value) {
-
-            printThrowable(LogLevel.WARN,msg,tr)
-        }
-    }
+    fun w(msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,msg,tr)
 
     @JvmStatic
     fun i(msg: String?) = i(TAG,msg)
@@ -174,20 +154,10 @@ object L {
      * @param msg
      */
     @JvmStatic
-    fun i(tag: String?, msg: String?) {
-        if (LogLevel.INFO.value <= logLevel.value) {
-
-            print(LogLevel.INFO,tag,msg)
-        }
-    }
+    fun i(tag: String?, msg: String?) = print(LogLevel.INFO,tag,msg)
 
     @JvmStatic
-    fun i(msg: String?, tr: Throwable) {
-        if (LogLevel.INFO.value <= logLevel.value) {
-
-            printThrowable(LogLevel.INFO,msg,tr)
-        }
-    }
+    fun i(msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,msg,tr)
 
     @JvmStatic
     fun d(msg: String?) = d(TAG,msg)
@@ -198,48 +168,45 @@ object L {
      * @param msg
      */
     @JvmStatic
-    fun d(tag: String?, msg: String?) {
-        if (LogLevel.DEBUG.value <= logLevel.value) {
-
-            print(LogLevel.DEBUG,tag,msg)
-        }
-    }
+    fun d(tag: String?, msg: String?) = print(LogLevel.DEBUG,tag,msg)
 
     @JvmStatic
-    fun d(msg: String?, tr: Throwable) {
-        if (LogLevel.DEBUG.value <= logLevel.value) {
+    fun d(msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,msg,tr)
 
-            printThrowable(LogLevel.DEBUG,msg,tr)
-        }
-    }
 
     private fun print(logLevel: LogLevel, tag: String?, msg: String?) {
 
-        if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
+        if (logLevel.value <= L.logLevel.value) {
 
-            val s = getMethodNames()
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
-            if (msg.contains("\n")) {
-                printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-            } else {
-                printer.println(logLevel, tag, String.format(s, msg))
+                val s = getMethodNames()
+
+                if (msg.contains("\n")) {
+                    printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+                } else {
+                    printer.println(logLevel, tag, String.format(s, msg))
+                }
             }
         }
     }
 
     private fun printThrowable(logLevel: LogLevel, msg: String?, tr: Throwable) {
 
-        if (msg != null && msg.isNotEmpty()) {
+        if (logLevel.value <= L.logLevel.value) {
 
-            when(logLevel) {
+            if (msg != null && msg.isNotEmpty()) {
 
-                LogLevel.ERROR -> Log.e(TAG, msg, tr)
+                when(logLevel) {
 
-                LogLevel.WARN  -> Log.w(TAG, msg, tr)
+                    LogLevel.ERROR -> Log.e(TAG, msg, tr)
 
-                LogLevel.INFO  -> Log.i(TAG, msg, tr)
+                    LogLevel.WARN  -> Log.w(TAG, msg, tr)
 
-                LogLevel.DEBUG -> Log.d(TAG, msg, tr)
+                    LogLevel.INFO  -> Log.i(TAG, msg, tr)
+
+                    LogLevel.DEBUG -> Log.d(TAG, msg, tr)
+                }
             }
         }
     }
