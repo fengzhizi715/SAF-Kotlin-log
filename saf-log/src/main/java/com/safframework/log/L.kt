@@ -245,8 +245,10 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加Header
-                    append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} Header: $header").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                    append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} Header: $header")
+                            .append(LoggerPrinter.BR)
+                            .append(LoggerPrinter.MIDDLE_BORDER)
+                            .append(LoggerPrinter.BR)
                 }
             }
         }.apply {
@@ -268,8 +270,11 @@ object L {
                     .append(LoggerPrinter.BR)
                     .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
                     // 添加打印的日志信息
-                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} ").append("%s").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.BOTTOM_BORDER).append(LoggerPrinter.BR)
+                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE} ")
+                    .append("%s")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BOTTOM_BORDER)
+                    .append(LoggerPrinter.BR)
         }.toString()
     }
 }
