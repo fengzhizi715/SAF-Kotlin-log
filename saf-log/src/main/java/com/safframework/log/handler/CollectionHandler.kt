@@ -2,7 +2,6 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
