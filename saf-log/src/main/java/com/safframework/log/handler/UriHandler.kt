@@ -2,8 +2,6 @@ package com.safframework.log.handler
 
 import android.net.Uri
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -24,7 +22,7 @@ class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
         if (obj is Uri) {
 
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -33,7 +31,7 @@ class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
 
     override fun parseString(uri: Uri): String {
 
-        var msg = uri.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+        var msg = uri.toJavaClass() + LoggerPrinter.BR + spliter()
 
         return msg + JSONObject().apply {
 
@@ -46,7 +44,7 @@ class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            it.replace("\n".toRegex(), "\n${spliter()}")
          }
     }
 

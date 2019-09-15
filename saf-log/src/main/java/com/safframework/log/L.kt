@@ -16,12 +16,8 @@ object L {
     private var header: String? = ""
     private val handlers = ArrayList<BaseHandler>()
     private var firstHandler: BaseHandler
-
-    @JvmStatic
-    var printer: Printer
-
-    @JvmStatic
-    var formatter:Formatter
+    private var printer: Printer
+    private var formatter:Formatter
 
     init {
         printer = ConsolePrinter()
@@ -282,4 +278,10 @@ object L {
                     .append(formatter.bottom())
         }.toString()
     }
+
+    @JvmStatic
+    fun printer() = printer
+
+    @JvmStatic
+    fun formatter() = formatter
 }

@@ -1,8 +1,6 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -23,7 +21,7 @@ class MapHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
 
         if (obj is Map<*,*>) {
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -32,12 +30,12 @@ class MapHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
 
     override fun parseString(map: Map<*, *>): String {
 
-        var msg = map.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+        var msg = map.toJavaClass() + LoggerPrinter.BR + spliter()
 
         return msg + JSONObject().parseMap(map)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n".toRegex(), "\n${spliter()}")
                 }
     }
 

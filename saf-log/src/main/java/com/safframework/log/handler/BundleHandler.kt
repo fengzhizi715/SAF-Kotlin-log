@@ -2,8 +2,6 @@ package com.safframework.log.handler
 
 import android.os.Bundle
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -25,7 +23,7 @@ class BundleHandler(printer: Printer,formatter: Formatter):BaseHandler(printer,f
         if (obj is Bundle) {
 
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
+            println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
             return true
         }
 
@@ -34,12 +32,12 @@ class BundleHandler(printer: Printer,formatter: Formatter):BaseHandler(printer,f
 
     override fun parseString(bundle: Bundle): String {
 
-        var msg = bundle.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+        var msg = bundle.toJavaClass() + LoggerPrinter.BR + spliter()
 
         return msg + JSONObject().parseBundle(bundle)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n".toRegex(), "\n${spliter()}")
                 }
     }
 }

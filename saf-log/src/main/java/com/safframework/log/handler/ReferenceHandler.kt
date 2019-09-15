@@ -2,8 +2,6 @@ package com.safframework.log.handler
 
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -25,7 +23,7 @@ class ReferenceHandler(printer: Printer, formatter: Formatter):BaseHandler(print
 
         if (obj is Reference<*>) {
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -35,7 +33,7 @@ class ReferenceHandler(printer: Printer, formatter: Formatter):BaseHandler(print
     override fun parseString(reference: Reference<*>): String {
         val actual = reference.get()
 
-        var msg = reference.javaClass.canonicalName + "<" + actual?.toJavaClass() + ">"+ LoggerPrinter.BR + formatter.spliter()
+        var msg = reference.javaClass.canonicalName + "<" + actual?.toJavaClass() + ">"+ LoggerPrinter.BR + spliter()
 
         val isPrimitiveType = isPrimitiveType(actual)
 
@@ -47,7 +45,7 @@ class ReferenceHandler(printer: Printer, formatter: Formatter):BaseHandler(print
             msg += JSONObject(JSON.toJSONString(actual))
                     .formatJSON()
                     .let {
-                        it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                        it.replace("\n".toRegex(), "\n${spliter()}")
                     }
         }
 

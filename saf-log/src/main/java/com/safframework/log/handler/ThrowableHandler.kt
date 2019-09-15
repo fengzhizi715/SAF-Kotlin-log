@@ -1,8 +1,6 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
@@ -21,7 +19,7 @@ class ThrowableHandler(printer: Printer, formatter: Formatter):BaseHandler(print
         if (obj is Throwable) {
 
             val s = L.getMethodNames()
-            printer.println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
+            println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -34,7 +32,7 @@ class ThrowableHandler(printer: Printer, formatter: Formatter):BaseHandler(print
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
+        message = message.replace("\n".toRegex(), "\n${spliter()}")
 
         return message
     }

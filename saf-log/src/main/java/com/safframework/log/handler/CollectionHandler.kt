@@ -1,7 +1,6 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.L.formatter
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -49,12 +48,12 @@ class CollectionHandler(printer: Printer, formatter: Formatter):BaseHandler(prin
         val simpleName = collection.javaClass
 
         var msg = "%s size = %d" + LoggerPrinter.BR
-        msg = String.format(msg, simpleName, collection.size) + formatter.spliter()
+        msg = String.format(msg, simpleName, collection.size) + spliter()
 
         return msg + collection.parseToJSONArray(jsonArray)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n".toRegex(), "\n${spliter()}")
                 }
     }
 

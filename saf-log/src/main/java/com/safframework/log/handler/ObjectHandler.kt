@@ -2,8 +2,6 @@ package com.safframework.log.handler
 
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -22,17 +20,17 @@ class ObjectHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
 
         val s = L.getMethodNames()
 
-        var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+        var msg = obj.toJavaClass() + LoggerPrinter.BR + spliter()
 
         val message = JSON.toJSONString(obj).run {
             JSONObject(this)
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            it.replace("\n".toRegex(), "\n${spliter()}")
          }
 
-        printer.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
+        println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
         return true
     }
 }

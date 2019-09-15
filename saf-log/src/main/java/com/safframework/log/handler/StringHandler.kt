@@ -1,8 +1,6 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
@@ -24,7 +22,7 @@ class StringHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
 
             var json = obj.trim { it <= ' ' }
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json)))
+            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json)))
             return true
         }
 
@@ -38,11 +36,11 @@ class StringHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
             if (json.startsWith("{")) {
                 val jsonObject = JSONObject(json)
                 message = jsonObject.formatJSON()
-                message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                message = message.replace("\n".toRegex(), "\n${spliter()}")
             } else if (json.startsWith("[")) {
                 val jsonArray = JSONArray(json)
                 message = jsonArray.formatJSON()
-                message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                message = message.replace("\n".toRegex(), "\n${spliter()}")
             }
         } catch (e: JSONException) {
             L.e("Invalid Json: $json")

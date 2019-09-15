@@ -3,8 +3,6 @@ package com.safframework.log.handler
 import android.content.Intent
 import android.os.Bundle
 import com.safframework.log.L
-import com.safframework.log.L.formatter
-import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
@@ -26,7 +24,7 @@ class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
         if (obj is Intent) {
 
             val s = L.getMethodNames()
-            printer.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -35,7 +33,7 @@ class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
 
     override fun parseString(intent: Intent): String {
 
-        var msg = intent.toJavaClass()+ LoggerPrinter.BR + formatter.spliter()
+        var msg = intent.toJavaClass()+ LoggerPrinter.BR + spliter()
 
         return msg + JSONObject().apply {
 
@@ -52,7 +50,7 @@ class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            it.replace("\n".toRegex(), "\n${spliter()}")
         }
     }
 
