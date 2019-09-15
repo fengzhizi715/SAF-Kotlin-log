@@ -41,16 +41,17 @@ fun JSONArray.formatJSON() = this.toString(LoggerPrinter.JSON_INDENT)
  */
 fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
 
-    for (key in bundle.keySet()) {
+    val keys =  bundle.keySet()
 
-        val isPrimitiveType = isPrimitiveType(bundle.get(key))
+    keys.map {
+
+        val isPrimitiveType = isPrimitiveType(bundle.get(it))
 
         try {
-
             if (isPrimitiveType) {
-                this.put(key.toString(), bundle.get(key))
+                this.put(it, bundle.get(it))
             } else {
-                this.put(key.toString(), JSONObject(JSON.toJSONString(bundle.get(key))))
+                this.put(it, JSONObject(JSON.toJSONString(bundle.get(it))))
             }
         } catch (e: JSONException) {
             L.e("Invalid Json")
@@ -73,7 +74,6 @@ fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
     keys.map {
 
         try {
-
             if (isPrimitiveType) {
                 this.put(it.toString(), map[it])
             } else {
