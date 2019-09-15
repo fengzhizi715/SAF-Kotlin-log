@@ -36,13 +36,14 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
 
         if (isPrimitiveType) {
 
-            msg += "{" + actual + "}"
+            msg += "{$actual}"
         } else {
 
-            val jsonObject = JSONObject(JSON.toJSONString(actual))
-            var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-            message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
-            msg += message
+            msg += JSONObject(JSON.toJSONString(actual))
+                    .toString(LoggerPrinter.JSON_INDENT)
+                    .let {
+                        it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                    }
         }
 
         return msg

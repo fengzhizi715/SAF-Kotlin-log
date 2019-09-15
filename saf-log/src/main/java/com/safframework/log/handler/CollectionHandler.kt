@@ -50,7 +50,8 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         var msg = "%s size = %d" + LoggerPrinter.BR
         msg = String.format(msg, simpleName, collection.size) + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
-        return msg + collection.parseToJSONArray(jsonArray).toString(LoggerPrinter.JSON_INDENT)
+        return msg + collection.parseToJSONArray(jsonArray)
+                .toString(LoggerPrinter.JSON_INDENT)
                 .let {
                     it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
                 }

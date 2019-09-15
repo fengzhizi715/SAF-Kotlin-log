@@ -21,15 +21,18 @@ object L {
     init {
         printer = ConsolePrinter
 
-        handlers.add(StringHandler())
-        handlers.add(CollectionHandler())
-        handlers.add(MapHandler())
-        handlers.add(BundleHandler())
-        handlers.add(IntentHandler())
-        handlers.add(UriHandler())
-        handlers.add(ThrowableHandler())
-        handlers.add(ReferenceHandler())
-        handlers.add(ObjectHandler())
+        handlers.apply {
+
+            add(StringHandler())
+            add(CollectionHandler())
+            add(MapHandler())
+            add(BundleHandler())
+            add(IntentHandler())
+            add(UriHandler())
+            add(ThrowableHandler())
+            add(ReferenceHandler())
+            add(ObjectHandler())
+        }
 
         val len = handlers.size
 
