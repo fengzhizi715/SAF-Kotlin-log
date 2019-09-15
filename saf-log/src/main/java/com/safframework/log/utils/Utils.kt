@@ -41,9 +41,7 @@ fun JSONArray.formatJSON()  = this.toString(LoggerPrinter.JSON_INDENT)
  */
 fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
 
-    val keys =  bundle.keySet()
-
-    keys.map {
+    bundle.keySet().map {
 
         val isPrimitiveType = isPrimitiveType(bundle.get(it))
 
