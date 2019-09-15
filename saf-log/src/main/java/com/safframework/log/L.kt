@@ -132,7 +132,7 @@ object L {
     fun e(tag: String?, msg: String?) = print(LogLevel.ERROR,tag,msg)
 
     @JvmStatic
-    fun e(msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,msg,tr)
+    fun e(msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,TAG,msg,tr)
 
     @JvmStatic
     fun w(msg: String?) = w(TAG,msg)
@@ -146,7 +146,7 @@ object L {
     fun w(tag: String?, msg: String?) = print(LogLevel.WARN,tag,msg)
 
     @JvmStatic
-    fun w(msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,msg,tr)
+    fun w(msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,TAG,msg,tr)
 
     @JvmStatic
     fun i(msg: String?) = i(TAG,msg)
@@ -160,7 +160,7 @@ object L {
     fun i(tag: String?, msg: String?) = print(LogLevel.INFO,tag,msg)
 
     @JvmStatic
-    fun i(msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,msg,tr)
+    fun i(msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,TAG,msg,tr)
 
     @JvmStatic
     fun d(msg: String?) = d(TAG,msg)
@@ -174,7 +174,7 @@ object L {
     fun d(tag: String?, msg: String?) = print(LogLevel.DEBUG,tag,msg)
 
     @JvmStatic
-    fun d(msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,msg,tr)
+    fun d(msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,TAG,msg,tr)
 
 
     private fun print(logLevel: LogLevel, tag: String?, msg: String?) {
@@ -194,21 +194,21 @@ object L {
         }
     }
 
-    private fun printThrowable(logLevel: LogLevel, msg: String?, tr: Throwable) {
+    private fun printThrowable(logLevel: LogLevel, tag: String?, msg: String?, tr: Throwable) {
 
         if (logLevel.value <= L.logLevel.value) {
 
-            if (msg != null && msg.isNotEmpty()) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 when(logLevel) {
 
-                    LogLevel.ERROR -> Log.e(TAG, msg, tr)
+                    LogLevel.ERROR -> Log.e(tag, msg, tr)
 
-                    LogLevel.WARN  -> Log.w(TAG, msg, tr)
+                    LogLevel.WARN  -> Log.w(tag, msg, tr)
 
-                    LogLevel.INFO  -> Log.i(TAG, msg, tr)
+                    LogLevel.INFO  -> Log.i(tag, msg, tr)
 
-                    LogLevel.DEBUG -> Log.d(TAG, msg, tr)
+                    LogLevel.DEBUG -> Log.d(tag, msg, tr)
                 }
             }
         }
@@ -241,7 +241,8 @@ object L {
 
         return StringBuilder().apply {
 
-            append("  ").append(LoggerPrinter.BR).append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+            append("  ").append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
         }.apply {
 
             header?.let {
