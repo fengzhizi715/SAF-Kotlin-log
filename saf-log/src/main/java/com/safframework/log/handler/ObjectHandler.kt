@@ -18,14 +18,14 @@ class ObjectHandler:BaseHandler() {
 
         val s = L.getMethodNames()
 
-        var msg = obj.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
         val message = JSON.toJSONString(obj).run {
             JSONObject(this)
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
          }
 
         printer.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))

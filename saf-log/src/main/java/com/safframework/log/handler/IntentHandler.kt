@@ -31,7 +31,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
     override fun parseString(intent: Intent): String {
 
-        var msg = intent.toJavaClass()+ LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = intent.toJavaClass()+ LoggerPrinter.BR + formatter.spliter()
 
         return msg + JSONObject().apply {
 
@@ -48,9 +48,9 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
         }
     }
 
-    private fun parseBundleString(extras: Bundle) = JSONObject().parseBundle(extras).toString(LoggerPrinter.JSON_INDENT)
+    private fun parseBundleString(extras: Bundle) = JSONObject().parseBundle(extras).formatJSON()
 }

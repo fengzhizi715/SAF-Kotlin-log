@@ -28,12 +28,12 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
     override fun parseString(map: Map<*, *>): String {
 
-        var msg = map.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = map.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
         return msg + JSONObject().parseMap(map)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
                 }
     }
 

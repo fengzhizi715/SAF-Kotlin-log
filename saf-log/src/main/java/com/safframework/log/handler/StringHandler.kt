@@ -35,11 +35,11 @@ class StringHandler:BaseHandler(), Parser<String> {
             if (json.startsWith("{")) {
                 val jsonObject = JSONObject(json)
                 message = jsonObject.formatJSON()
-                message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
             } else if (json.startsWith("[")) {
                 val jsonArray = JSONArray(json)
                 message = jsonArray.formatJSON()
-                message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
             }
         } catch (e: JSONException) {
             L.e("Invalid Json: $json")

@@ -31,7 +31,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+        message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
 
         return message
     }

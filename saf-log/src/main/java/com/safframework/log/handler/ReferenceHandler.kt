@@ -31,7 +31,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
     override fun parseString(reference: Reference<*>): String {
         val actual = reference.get()
 
-        var msg = reference.javaClass.canonicalName + "<" + actual?.toJavaClass() + ">"+ LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = reference.javaClass.canonicalName + "<" + actual?.toJavaClass() + ">"+ LoggerPrinter.BR + formatter.spliter()
 
         val isPrimitiveType = isPrimitiveType(actual)
 
@@ -43,7 +43,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
             msg += JSONObject(JSON.toJSONString(actual))
                     .formatJSON()
                     .let {
-                        it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                        it.replace("\n".toRegex(), "\n${formatter.spliter()}")
                     }
         }
 

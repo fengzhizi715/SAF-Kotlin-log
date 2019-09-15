@@ -29,7 +29,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
 
     override fun parseString(uri: Uri): String {
 
-        var msg = uri.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = uri.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
         return msg + JSONObject().apply {
 
@@ -42,7 +42,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
          }
     }
 

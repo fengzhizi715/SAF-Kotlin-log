@@ -30,12 +30,12 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
     override fun parseString(bundle: Bundle): String {
 
-        var msg = bundle.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
+        var msg = bundle.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
         return msg + JSONObject().parseBundle(bundle)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
                 }
     }
 }
