@@ -5,10 +5,8 @@ import android.os.Bundle
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
-import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
-import com.safframework.log.printer.Printer
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.parseBundle
 import com.safframework.log.utils.toJavaClass
@@ -17,14 +15,14 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,formatter), Parser<Intent> {
+class IntentHandler:BaseHandler(), Parser<Intent> {
 
     override fun handle(obj: Any): Boolean {
 
         if (obj is Intent) {
 
             val s = L.getMethodNames()
-            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            L.printer().println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -33,7 +31,7 @@ class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
 
     override fun parseString(intent: Intent): String {
 
-        var msg = intent.toJavaClass()+ LoggerPrinter.BR + spliter()
+        var msg = intent.toJavaClass()+ LoggerPrinter.BR + L.formatter().spliter()
 
         return msg + JSONObject().apply {
 
@@ -50,7 +48,7 @@ class IntentHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${spliter()}")
+            it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
         }
     }
 

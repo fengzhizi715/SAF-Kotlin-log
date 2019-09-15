@@ -25,15 +25,15 @@ object L {
 
         handlers.apply {
 
-            add(StringHandler(printer,formatter))
-            add(CollectionHandler(printer,formatter))
-            add(MapHandler(printer,formatter))
-            add(BundleHandler(printer,formatter))
-            add(IntentHandler(printer,formatter))
-            add(UriHandler(printer,formatter))
-            add(ThrowableHandler(printer,formatter))
-            add(ReferenceHandler(printer,formatter))
-            add(ObjectHandler(printer,formatter))
+            add(StringHandler())
+            add(CollectionHandler())
+            add(MapHandler())
+            add(BundleHandler())
+            add(IntentHandler())
+            add(UriHandler())
+            add(ThrowableHandler())
+            add(ReferenceHandler())
+            add(ObjectHandler())
         }
 
         val len = handlers.size

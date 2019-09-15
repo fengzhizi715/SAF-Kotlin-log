@@ -12,14 +12,14 @@ import java.io.StringWriter
 /**
  * Created by tony on 2017/11/27.
  */
-class ThrowableHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,formatter), Parser<Throwable> {
+class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
     override fun handle(obj: Any): Boolean {
 
         if (obj is Throwable) {
 
             val s = L.getMethodNames()
-            println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
+            L.printer().println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -32,7 +32,7 @@ class ThrowableHandler(printer: Printer, formatter: Formatter):BaseHandler(print
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n${spliter()}")
+        message = message.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
 
         return message
     }

@@ -15,14 +15,14 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,formatter), Parser<Uri> {
+class UriHandler:BaseHandler(), Parser<Uri> {
 
     override fun handle(obj: Any): Boolean {
 
         if (obj is Uri) {
 
             val s = L.getMethodNames()
-            println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            L.printer().println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
             return true
         }
 
@@ -31,7 +31,7 @@ class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
 
     override fun parseString(uri: Uri): String {
 
-        var msg = uri.toJavaClass() + LoggerPrinter.BR + spliter()
+        var msg = uri.toJavaClass() + LoggerPrinter.BR + L.formatter().spliter()
 
         return msg + JSONObject().apply {
 
@@ -44,7 +44,7 @@ class UriHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,for
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${spliter()}")
+            it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
          }
     }
 

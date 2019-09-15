@@ -1,12 +1,9 @@
 package com.safframework.log.handler
 
-import com.safframework.log.formatter.Formatter
-import com.safframework.log.printer.Printer
-
 /**
  * Created by tony on 2017/11/27.
  */
-abstract class BaseHandler(printer: Printer,formatter: Formatter): Printer by printer, Formatter by formatter {
+abstract class BaseHandler() {
 
     // 责任链的下一个节点，即处理者
     private var nextHandler: BaseHandler? = null
