@@ -12,7 +12,7 @@ import com.safframework.log.LoggerPrinter
  */
 class BorderFormatter:Formatter {
 
-    override fun top()    = LoggerPrinter.BR + LoggerPrinter.TOP_BORDER + LoggerPrinter.BR
+    override fun top()    = LoggerPrinter.BR + LoggerPrinter.TOP_BORDER + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
     override fun middle() = LoggerPrinter.BR + LoggerPrinter.MIDDLE_BORDER + LoggerPrinter.BR
 

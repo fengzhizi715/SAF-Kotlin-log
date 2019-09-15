@@ -255,16 +255,14 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                    append(formatter.spliter())
-                            .append("Header: $header")
+                   append("Header: $header")
                             .append(formatter.middle())
                 }
             }
         }.apply {
 
             // 添加当前线程名
-            append(formatter.spliter())
-                    .append("Thread: ${Thread.currentThread().name}")
+            append("Thread: ${Thread.currentThread().name}")
                     .append(formatter.middle())
                     // 添加类名、方法名、行数
                     .append(formatter.spliter())
