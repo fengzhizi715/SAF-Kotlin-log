@@ -24,20 +24,20 @@ object L {
     var formatter:Formatter
 
     init {
-        printer = ConsolePrinter
+        printer = ConsolePrinter()
         formatter = BorderFormatter()
 
         handlers.apply {
 
-            add(StringHandler())
-            add(CollectionHandler())
-            add(MapHandler())
-            add(BundleHandler())
-            add(IntentHandler())
-            add(UriHandler())
-            add(ThrowableHandler())
-            add(ReferenceHandler())
-            add(ObjectHandler())
+            add(StringHandler(printer,formatter))
+            add(CollectionHandler(printer,formatter))
+            add(MapHandler(printer,formatter))
+            add(BundleHandler(printer,formatter))
+            add(IntentHandler(printer,formatter))
+            add(UriHandler(printer,formatter))
+            add(ThrowableHandler(printer,formatter))
+            add(ReferenceHandler(printer,formatter))
+            add(ObjectHandler(printer,formatter))
         }
 
         val len = handlers.size
@@ -193,7 +193,7 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+                    printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${formatter.spliter()}")))
                 } else {
                     printer.println(logLevel, tag, String.format(s, msg))
                 }

@@ -2,9 +2,13 @@ package com.safframework.log.handler
 
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
+import com.safframework.log.L.formatter
+import com.safframework.log.L.printer
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
+import com.safframework.log.printer.Printer
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -12,7 +16,7 @@ import org.json.JSONObject
 /**
  * Created by tony on 2017/11/27.
  */
-class ObjectHandler:BaseHandler() {
+class ObjectHandler(printer: Printer, formatter: Formatter):BaseHandler(printer,formatter) {
 
     override fun handle(obj: Any): Boolean {
 
