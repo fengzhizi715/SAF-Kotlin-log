@@ -15,7 +15,7 @@ import org.json.JSONObject
 /**
  * 判断 Any 是否为基本类型
  */
-fun isPrimitiveType(value: Any?):Boolean = when(value){
+fun isPrimitiveType(value: Any?) = when(value){
 
     is Boolean -> true
 
@@ -30,7 +30,7 @@ fun isPrimitiveType(value: Any?):Boolean = when(value){
     else -> false
 }
 
-fun Any.toJavaClass() = this.javaClass.toString()
+fun Any.toJavaClass()        = this.javaClass.toString()
 
 fun JSONObject.formatJSON() = this.toString(LoggerPrinter.JSON_INDENT)
 
