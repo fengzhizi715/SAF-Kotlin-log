@@ -56,7 +56,6 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
         var lastFileName = writer.lastFileName
         if (lastFileName == null || fileNameGenerator.isFileNameChangeable()) {
-
             val newFileName = fileNameGenerator.generateFileName(logItem.level.value, System.currentTimeMillis())
             if (newFileName == null || newFileName.trim { it <= ' ' }.length == 0) {
                 throw IllegalArgumentException("File name should not be empty.")
@@ -143,11 +142,11 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
         fun appendLog(log: String) {
 
-            bufferedWriter?.use {
+            bufferedWriter?.run {
                 try {
-                    it.write(log)
-                    it.newLine()
-                    it.flush()
+                    write(log)
+                    newLine()
+                    flush()
                 } catch (e: IOException) {
                 }
             }

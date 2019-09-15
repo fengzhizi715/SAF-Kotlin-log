@@ -4,10 +4,8 @@ import android.net.Uri
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
-import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
-import com.safframework.log.printer.Printer
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
