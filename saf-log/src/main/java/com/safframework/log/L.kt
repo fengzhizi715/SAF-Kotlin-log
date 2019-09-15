@@ -232,15 +232,18 @@ object L {
 
         return StringBuilder().apply {
 
-            append("  ").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.TOP_BORDER).append(LoggerPrinter.BR)
+            append("  ")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.TOP_BORDER)
+                    .append(LoggerPrinter.BR)
         }.apply {
 
             header?.let {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                    append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}Header: $header")
+                    append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+                            .append("Header: $header")
                             .append(LoggerPrinter.BR)
                             .append(LoggerPrinter.MIDDLE_BORDER)
                             .append(LoggerPrinter.BR)
@@ -249,10 +252,13 @@ object L {
         }.apply {
 
             // 添加当前线程名
-            append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}Thread: ${Thread.currentThread().name}").append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+            append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+                    .append("Thread: ${Thread.currentThread().name}")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER)
+                    .append(LoggerPrinter.BR)
                     // 添加类名、方法名、行数
-                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                    .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                     .append(sElements[stackOffset].className)
                     .append(".")
                     .append(sElements[stackOffset].methodName)
@@ -263,9 +269,10 @@ object L {
                     .append(sElements[stackOffset].lineNumber)
                     .append(")")
                     .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER).append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.MIDDLE_BORDER)
+                    .append(LoggerPrinter.BR)
                     // 添加打印的日志信息
-                    .append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                    .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                     .append("%s")
                     .append(LoggerPrinter.BR)
                     .append(LoggerPrinter.BOTTOM_BORDER)
