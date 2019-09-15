@@ -120,6 +120,16 @@ object L {
         return this
     }
 
+    /**
+     * 自定义的 Formatter
+     */
+    @JvmStatic
+    fun formatter(formatter: Formatter): L {
+
+        this.formatter = formatter
+        return this
+    }
+
     /******************* L 的配置方法 End *******************/
 
     /******************* L 打印的方法 Start *******************/
