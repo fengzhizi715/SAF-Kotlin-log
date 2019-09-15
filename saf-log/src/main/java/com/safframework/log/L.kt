@@ -25,7 +25,7 @@ object L {
 
     init {
         printer = ConsolePrinter
-        formatter = BorderFormatter
+        formatter = BorderFormatter()
 
         handlers.apply {
 

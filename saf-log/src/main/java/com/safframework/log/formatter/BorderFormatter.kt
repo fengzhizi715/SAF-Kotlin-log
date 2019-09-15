@@ -10,7 +10,7 @@ import com.safframework.log.LoggerPrinter
  * @date: 2019-09-15 15:14
  * @version: V1.0 <描述当前版本功能>
  */
-object BorderFormatter:Formatter {
+class BorderFormatter:Formatter {
 
     override fun top()    = LoggerPrinter.BR + LoggerPrinter.TOP_BORDER + LoggerPrinter.BR
 
