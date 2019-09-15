@@ -1,6 +1,8 @@
 package com.safframework.log
 
 import android.util.Log
+import com.safframework.log.formatter.BorderFormatter
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
 import com.safframework.log.printer.ConsolePrinter
 import com.safframework.log.printer.Printer
@@ -14,12 +16,14 @@ object L {
     private var header: String? = ""
     private val handlers = ArrayList<BaseHandler>()
     private var firstHandler: BaseHandler
+    private var formatter:Formatter
 
     @JvmStatic
     var printer: Printer
 
     init {
         printer = ConsolePrinter
+        formatter = BorderFormatter
 
         handlers.apply {
 
@@ -124,7 +128,7 @@ object L {
     fun e(msg: String?) = e(TAG,msg)
 
     @JvmStatic
-    fun e(tag: String?, msg: String?) = print(LogLevel.ERROR,tag,msg)
+    fun e(tag: String?, msg: String?) = printLog(LogLevel.ERROR,tag,msg)
 
     @JvmStatic
     fun e(msg: String?, tr: Throwable) = e(TAG,msg,tr)
@@ -136,7 +140,7 @@ object L {
     fun w(msg: String?) = w(TAG,msg)
 
     @JvmStatic
-    fun w(tag: String?, msg: String?) = print(LogLevel.WARN,tag,msg)
+    fun w(tag: String?, msg: String?) = printLog(LogLevel.WARN,tag,msg)
 
     @JvmStatic
     fun w(msg: String?, tr: Throwable) = w(TAG,msg,tr)
@@ -148,7 +152,7 @@ object L {
     fun i(msg: String?) = i(TAG,msg)
 
     @JvmStatic
-    fun i(tag: String?, msg: String?) = print(LogLevel.INFO,tag,msg)
+    fun i(tag: String?, msg: String?) = printLog(LogLevel.INFO,tag,msg)
 
     @JvmStatic
     fun i(msg: String?, tr: Throwable) = i(TAG,msg,tr)
@@ -160,7 +164,7 @@ object L {
     fun d(msg: String?) = d(TAG,msg)
 
     @JvmStatic
-    fun d(tag: String?, msg: String?) = print(LogLevel.DEBUG,tag,msg)
+    fun d(tag: String?, msg: String?) = printLog(LogLevel.DEBUG,tag,msg)
 
     @JvmStatic
     fun d(msg: String?, tr: Throwable) = d(TAG,msg,tr)
@@ -168,7 +172,7 @@ object L {
     @JvmStatic
     fun d(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,tag,msg,tr)
 
-    private fun print(logLevel: LogLevel, tag: String?, msg: String?) {
+    private fun printLog(logLevel: LogLevel, tag: String?, msg: String?) {
 
         if (logLevel.value <= L.logLevel.value) {
 
@@ -232,10 +236,7 @@ object L {
 
         return StringBuilder().apply {
 
-            append("  ")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.TOP_BORDER)
-                    .append(LoggerPrinter.BR)
+            append("  ").append(formatter.top())
         }.apply {
 
             header?.let {
@@ -244,9 +245,7 @@ object L {
                     // 添加 Header
                     append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                             .append("Header: $header")
-                            .append(LoggerPrinter.BR)
-                            .append(LoggerPrinter.MIDDLE_BORDER)
-                            .append(LoggerPrinter.BR)
+                            .append(formatter.middle())
                 }
             }
         }.apply {
@@ -254,9 +253,7 @@ object L {
             // 添加当前线程名
             append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                     .append("Thread: ${Thread.currentThread().name}")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER)
-                    .append(LoggerPrinter.BR)
+                    .append(formatter.middle())
                     // 添加类名、方法名、行数
                     .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                     .append(sElements[stackOffset].className)
@@ -268,15 +265,11 @@ object L {
                     .append(":")
                     .append(sElements[stackOffset].lineNumber)
                     .append(")")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.MIDDLE_BORDER)
-                    .append(LoggerPrinter.BR)
+                    .append(formatter.middle())
                     // 添加打印的日志信息
                     .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
                     .append("%s")
-                    .append(LoggerPrinter.BR)
-                    .append(LoggerPrinter.BOTTOM_BORDER)
-                    .append(LoggerPrinter.BR)
+                    .append(formatter.bottom())
         }.toString()
     }
 }

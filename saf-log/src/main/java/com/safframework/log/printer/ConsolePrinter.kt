@@ -11,7 +11,7 @@ import com.safframework.log.LogLevel
  * @date: 2019-08-15 00:51
  * @version: V1.0 <描述当前版本功能>
  */
-object ConsolePrinter:Printer{
+object ConsolePrinter:Printer {
 
     override fun println(logLevel: LogLevel, tag: String, msg: String) {
 
