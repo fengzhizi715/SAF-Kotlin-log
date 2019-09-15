@@ -16,10 +16,12 @@ object L {
     private var header: String? = ""
     private val handlers = ArrayList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private var formatter:Formatter
 
     @JvmStatic
     var printer: Printer
+
+    @JvmStatic
+    var formatter:Formatter
 
     init {
         printer = ConsolePrinter
@@ -253,7 +255,7 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                    append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+                    append(formatter.spliter())
                             .append("Header: $header")
                             .append(formatter.middle())
                 }
@@ -261,11 +263,11 @@ object L {
         }.apply {
 
             // 添加当前线程名
-            append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+            append(formatter.spliter())
                     .append("Thread: ${Thread.currentThread().name}")
                     .append(formatter.middle())
                     // 添加类名、方法名、行数
-                    .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+                    .append(formatter.spliter())
                     .append(sElements[stackOffset].className)
                     .append(".")
                     .append(sElements[stackOffset].methodName)
@@ -277,7 +279,7 @@ object L {
                     .append(")")
                     .append(formatter.middle())
                     // 添加打印的日志信息
-                    .append(LoggerPrinter.HORIZONTAL_DOUBLE_LINE)
+                    .append(formatter.spliter())
                     .append("%s")
                     .append(formatter.bottom())
         }.toString()

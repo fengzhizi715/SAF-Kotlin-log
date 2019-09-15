@@ -34,7 +34,7 @@ fun Any.toJavaClass() = this.javaClass.toString()
 
 fun JSONObject.formatJSON() = this.toString(LoggerPrinter.JSON_INDENT)
 
-fun JSONArray.formatJSON() = this.toString(LoggerPrinter.JSON_INDENT)
+fun JSONArray.formatJSON()  = this.toString(LoggerPrinter.JSON_INDENT)
 
 /**
  * 解析 bundle ，并存储到 JSONObject

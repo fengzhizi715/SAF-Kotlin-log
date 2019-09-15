@@ -18,5 +18,5 @@ object BorderFormatter:Formatter {
 
     override fun bottom() = LoggerPrinter.BR + LoggerPrinter.BOTTOM_BORDER + LoggerPrinter.BR
 
-
+    override fun spliter()= LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 }

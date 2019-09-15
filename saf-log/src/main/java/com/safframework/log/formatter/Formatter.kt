@@ -17,4 +17,6 @@ interface Formatter {
     fun middle():String
 
     fun bottom():String
+
+    fun spliter():String
 }

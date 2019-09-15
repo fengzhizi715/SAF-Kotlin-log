@@ -1,6 +1,7 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.printer.Printer
 
 /**
@@ -12,6 +13,8 @@ abstract class BaseHandler {
     private var nextHandler: BaseHandler? = null
 
     protected val printer: Printer = L.printer
+
+    protected val formatter: Formatter = L.formatter
 
     // 捕获具体请求并进行处理，或是将请求传递到责任链的下一级别
     fun handleObject(obj: Any) {
