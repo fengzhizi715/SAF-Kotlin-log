@@ -5,6 +5,7 @@ import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.parseMap
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -30,7 +31,7 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
         var msg = map.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         return msg + JSONObject().parseMap(map)
-                .toString(LoggerPrinter.JSON_INDENT)
+                .formatJSON()
                 .let {
                     it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
                 }

@@ -1,16 +1,14 @@
 package com.safframework.log.handler
 
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.isPrimitiveType
 import com.safframework.log.utils.parseToJSONArray
 import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 
 /**
  * Created by tony on 2017/11/27.
@@ -51,7 +49,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         msg = String.format(msg, simpleName, collection.size) + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
         return msg + collection.parseToJSONArray(jsonArray)
-                .toString(LoggerPrinter.JSON_INDENT)
+                .formatJSON()
                 .let {
                     it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
                 }

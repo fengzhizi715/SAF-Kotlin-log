@@ -75,6 +75,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
         writer.appendLog(JSON.toJSONString(logItem))
     }
 
+
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
 

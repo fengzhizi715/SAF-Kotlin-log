@@ -5,6 +5,7 @@ import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.formatJSON
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -33,11 +34,11 @@ class StringHandler:BaseHandler(), Parser<String> {
         try {
             if (json.startsWith("{")) {
                 val jsonObject = JSONObject(json)
-                message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+                message = jsonObject.formatJSON()
                 message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
             } else if (json.startsWith("[")) {
                 val jsonArray = JSONArray(json)
-                message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
+                message = jsonArray.formatJSON()
                 message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
             }
         } catch (e: JSONException) {

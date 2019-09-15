@@ -6,6 +6,7 @@ import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.isPrimitiveType
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -40,7 +41,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
         } else {
 
             msg += JSONObject(JSON.toJSONString(actual))
-                    .toString(LoggerPrinter.JSON_INDENT)
+                    .formatJSON()
                     .let {
                         it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
                     }

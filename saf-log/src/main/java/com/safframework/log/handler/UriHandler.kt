@@ -6,6 +6,7 @@ import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
+import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 
@@ -39,7 +40,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
             put("Query", uri.query)
             put("Fragment", uri.fragment)
         }
-        .toString(LoggerPrinter.JSON_INDENT)
+        .formatJSON()
         .let {
             it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
          }
