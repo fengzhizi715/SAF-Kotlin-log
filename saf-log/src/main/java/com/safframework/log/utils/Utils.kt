@@ -3,6 +3,8 @@ package com.safframework.log.utils
 import android.os.Bundle
 import com.alibaba.fastjson.JSON
 import com.safframework.log.L
+import com.safframework.log.LoggerPrinter
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -79,4 +81,23 @@ fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
     }
 
     return this
+}
+
+/**
+ * 解析 collection ，并存储到 JSONArray
+ */
+fun Collection<*>.parseToJSONArray(jsonArray: JSONArray):JSONArray {
+
+    this.map {
+
+        try {
+            val objStr = JSON.toJSONString(it)
+            val jsonObject = JSONObject(objStr)
+            jsonArray.put(jsonObject)
+        } catch (e: JSONException) {
+            L.e("Invalid Json")
+        }
+    }
+
+    return jsonArray
 }

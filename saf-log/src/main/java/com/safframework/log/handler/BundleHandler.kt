@@ -31,11 +31,10 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
         var msg = bundle.toJavaClass() + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
-        val jsonObject = JSONObject().parseBundle(bundle)
-
-        var message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
-
-        return msg + message
+        return msg + JSONObject().parseBundle(bundle)
+                .toString(LoggerPrinter.JSON_INDENT)
+                .let {
+                    it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                }
     }
 }

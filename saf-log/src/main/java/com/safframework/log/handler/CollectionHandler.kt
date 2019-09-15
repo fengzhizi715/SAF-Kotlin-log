@@ -7,6 +7,7 @@ import com.safframework.log.LoggerPrinter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.isPrimitiveType
+import com.safframework.log.utils.parseToJSONArray
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -49,21 +50,10 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         var msg = "%s size = %d" + LoggerPrinter.BR
         msg = String.format(msg, simpleName, collection.size) + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
-        collection.map {
-
-            try {
-                val objStr = JSON.toJSONString(it)
-                val jsonObject = JSONObject(objStr)
-                jsonArray.put(jsonObject)
-            } catch (e: JSONException) {
-                L.e("Invalid Json")
-            }
-        }
-
-        var message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
-        message = message.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
-
-        return msg + message
+        return msg + collection.parseToJSONArray(jsonArray).toString(LoggerPrinter.JSON_INDENT)
+                .let {
+                    it.replace("\n".toRegex(), "\n${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}")
+                }
     }
 
 }
