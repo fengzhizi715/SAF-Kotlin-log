@@ -123,59 +123,50 @@ object L {
     @JvmStatic
     fun e(msg: String?) = e(TAG,msg)
 
-    /**
-     * @param tag 使用自定义tag
-     *
-     * @param msg
-     */
     @JvmStatic
     fun e(tag: String?, msg: String?) = print(LogLevel.ERROR,tag,msg)
 
     @JvmStatic
-    fun e(msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,TAG,msg,tr)
+    fun e(msg: String?, tr: Throwable) = e(TAG,msg,tr)
+
+    @JvmStatic
+    fun e(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,tag,msg,tr)
 
     @JvmStatic
     fun w(msg: String?) = w(TAG,msg)
 
-    /**
-     * @param tag 使用自定义tag
-     *
-     * @param msg
-     */
     @JvmStatic
     fun w(tag: String?, msg: String?) = print(LogLevel.WARN,tag,msg)
 
     @JvmStatic
-    fun w(msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,TAG,msg,tr)
+    fun w(msg: String?, tr: Throwable) = w(TAG,msg,tr)
+
+    @JvmStatic
+    fun w(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,tag,msg,tr)
 
     @JvmStatic
     fun i(msg: String?) = i(TAG,msg)
 
-    /**
-     * @param tag 使用自定义tag
-     *
-     * @param msg
-     */
     @JvmStatic
     fun i(tag: String?, msg: String?) = print(LogLevel.INFO,tag,msg)
 
     @JvmStatic
-    fun i(msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,TAG,msg,tr)
+    fun i(msg: String?, tr: Throwable) = i(TAG,msg,tr)
+
+    @JvmStatic
+    fun i(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,tag,msg,tr)
 
     @JvmStatic
     fun d(msg: String?) = d(TAG,msg)
 
-    /**
-     * @param tag 使用自定义tag
-     *
-     * @param msg
-     */
     @JvmStatic
     fun d(tag: String?, msg: String?) = print(LogLevel.DEBUG,tag,msg)
 
     @JvmStatic
-    fun d(msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,TAG,msg,tr)
+    fun d(msg: String?, tr: Throwable) = d(TAG,msg,tr)
 
+    @JvmStatic
+    fun d(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,tag,msg,tr)
 
     private fun print(logLevel: LogLevel, tag: String?, msg: String?) {
 
@@ -248,7 +239,7 @@ object L {
             header?.let {
 
                 if (it.isNotEmpty()) {
-                    // 添加Header
+                    // 添加 Header
                     append("${LoggerPrinter.HORIZONTAL_DOUBLE_LINE}Header: $header")
                             .append(LoggerPrinter.BR)
                             .append(LoggerPrinter.MIDDLE_BORDER)
