@@ -6,6 +6,7 @@ import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
 import com.safframework.log.printer.ConsolePrinter
 import com.safframework.log.printer.Printer
+import java.util.*
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -14,7 +15,7 @@ object L {
 
     private var TAG = "SAF_L"
     private var header: String? = ""
-    private val handlers = ArrayList<BaseHandler>()
+    private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
     private var printer: Printer
     private var formatter:Formatter
