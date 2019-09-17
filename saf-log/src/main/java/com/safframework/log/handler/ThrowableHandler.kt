@@ -2,10 +2,8 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.LogLevel
-import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
-import com.safframework.log.printer.Printer
 import java.io.PrintWriter
 import java.io.StringWriter
 
@@ -19,7 +17,9 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
         if (obj is Throwable) {
 
             val s = L.getMethodNames()
-            L.printer().println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
+            L.printers().map {
+                it.println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
+            }
             return true
         }
 

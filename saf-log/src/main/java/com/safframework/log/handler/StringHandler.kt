@@ -20,7 +20,9 @@ class StringHandler:BaseHandler(), Parser<String> {
 
             var json = obj.trim { it <= ' ' }
             val s = L.getMethodNames()
-            L.printer().println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json)))
+            L.printers().map {
+                it.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json)))
+            }
             return true
         }
 

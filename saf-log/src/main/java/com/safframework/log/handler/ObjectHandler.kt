@@ -30,7 +30,9 @@ class ObjectHandler:BaseHandler() {
             it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
          }
 
-        L.printer().println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
+        L.printers().map {
+            it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
+        }
         return true
     }
 }

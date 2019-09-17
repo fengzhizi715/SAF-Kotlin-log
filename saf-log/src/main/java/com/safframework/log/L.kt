@@ -7,6 +7,7 @@ import com.safframework.log.handler.*
 import com.safframework.log.printer.ConsolePrinter
 import com.safframework.log.printer.Printer
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -17,11 +18,11 @@ object L {
     private var header: String? = ""
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private var printer: Printer
+    private var printers = ArrayList<Printer>()
     private var formatter:Formatter
 
     init {
-        printer = ConsolePrinter()
+        printers.add(ConsolePrinter())
         formatter = BorderFormatter()
 
         handlers.apply {
@@ -115,7 +116,7 @@ object L {
     @JvmStatic
     fun printer(printer: Printer): L {
 
-        this.printer = printer
+        this.printers.add(printer)
         return this
     }
 
@@ -190,9 +191,14 @@ object L {
                 val s = getMethodNames()
 
                 if (msg.contains("\n")) {
-                    printer.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${formatter.spliter()}")))
+                    printers.map {
+
+                        it.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${formatter.spliter()}")))
+                    }
                 } else {
-                    printer.println(logLevel, tag, String.format(s, msg))
+                    printers.map {
+                        it.println(logLevel, tag, String.format(s, msg))
+                    }
                 }
             }
         }
@@ -281,7 +287,7 @@ object L {
     }
 
     @JvmStatic
-    fun printer() = printer
+    fun printers() = printers
 
     @JvmStatic
     fun formatter() = formatter

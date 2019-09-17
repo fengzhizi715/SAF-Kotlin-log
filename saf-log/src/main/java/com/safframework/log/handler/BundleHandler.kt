@@ -21,7 +21,10 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
         if (obj is Bundle) {
 
             val s = L.getMethodNames()
-            L.printer().println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
+            L.printers().map {
+                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
+            }
+
             return true
         }
 

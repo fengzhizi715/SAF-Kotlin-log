@@ -22,7 +22,9 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         if (obj is Intent) {
 
             val s = L.getMethodNames()
-            L.printer().println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            L.printers().map {
+                it.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj)))
+            }
             return true
         }
 
