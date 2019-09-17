@@ -3,6 +3,7 @@ package com.safframework.log.handler
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.formatJSON
@@ -35,7 +36,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
 
             val s = L.getMethodNames()
             L.printers().map {
-                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
+                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }
@@ -43,19 +44,19 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         return false
     }
 
-    override fun parseString(collection: Collection<*>): String {
+    override fun parseString(collection: Collection<*>,formatter: Formatter): String {
 
         val jsonArray = JSONArray()
 
         val simpleName = collection.javaClass
 
         var msg = "%s size = %d" + LoggerPrinter.BR
-        msg = String.format(msg, simpleName, collection.size) + L.formatter().spliter()
+        msg = String.format(msg, simpleName, collection.size) + formatter.spliter()
 
         return msg + collection.parseToJSONArray(jsonArray)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
+                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
                 }
     }
 

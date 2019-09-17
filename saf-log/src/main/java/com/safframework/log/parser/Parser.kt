@@ -1,5 +1,7 @@
 package com.safframework.log.parser
 
+import com.safframework.log.formatter.Formatter
+
 
 /**
  * 将对象解析成特定的字符串
@@ -7,5 +9,5 @@ package com.safframework.log.parser
  */
 interface Parser<T> {
 
-    fun parseString(t: T): String
+    fun parseString(t: T,formatter: Formatter): String
 }

@@ -2,6 +2,7 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.LogLevel
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import java.io.PrintWriter
@@ -18,7 +19,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
             val s = L.getMethodNames()
             L.printers().map {
-                it.println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj)))
+                it.println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }
@@ -26,13 +27,13 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
         return false
     }
 
-    override fun parseString(throwable: Throwable): String {
+    override fun parseString(throwable: Throwable,formatter: Formatter): String {
         val sw = StringWriter(256)
         val pw = PrintWriter(sw, false)
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
+        message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
 
         return message
     }

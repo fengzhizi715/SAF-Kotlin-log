@@ -12,6 +12,9 @@ import java.io.FileWriter
 import java.io.IOException
 import com.safframework.log.printer.file.FileNameGenerator
 import com.alibaba.fastjson.JSON
+import com.safframework.log.formatter.BorderFormatter
+import com.safframework.log.formatter.Formatter
+import com.safframework.log.formatter.SimpleFormatter
 
 
 /**
@@ -20,9 +23,9 @@ import com.alibaba.fastjson.JSON
  *          com.safframework.log.printer.FilePrinter
  * @author: Tony Shen
  * @date: 2019-08-31 10:58
- * @version: V1.0 <描述当前版本功能>
+ * @version: V1.0 打印到文件的Printer
  */
-class FilePrinter(fileBuilder: FileBuilder):Printer{
+class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter = SimpleFormatter()):Printer{
 
     private val channel = Channel<LogItem>()
     private val folderPath:String

@@ -1,6 +1,7 @@
 package com.safframework.log.printer
 
 import com.safframework.log.LogLevel
+import com.safframework.log.formatter.Formatter
 
 /**
  *
@@ -11,6 +12,8 @@ import com.safframework.log.LogLevel
  * @version: V1.0 <描述当前版本功能>
  */
 interface Printer {
+
+    val formatter: Formatter
 
     fun println(logLevel: LogLevel, tag: String, msg: String)
 }

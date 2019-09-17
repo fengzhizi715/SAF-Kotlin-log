@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.formatJSON
@@ -22,7 +23,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
             val s = L.getMethodNames()
             L.printers().map {
-                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj)))
+                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj,it.formatter)))
             }
 
             return true
@@ -31,14 +32,14 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
         return false
     }
 
-    override fun parseString(bundle: Bundle): String {
+    override fun parseString(bundle: Bundle,formatter:Formatter): String {
 
-        var msg = bundle.toJavaClass() + LoggerPrinter.BR + L.formatter().spliter()
+        var msg = bundle.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
         return msg + JSONObject().parseBundle(bundle)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
+                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
                 }
     }
 }
