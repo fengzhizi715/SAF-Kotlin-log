@@ -1,7 +1,10 @@
 package com.safframework.log.printer
 
+import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
+import com.safframework.log.formatter.Formatter
 import com.safframework.log.printer.file.FileBuilder
+import com.safframework.log.printer.file.FileNameGenerator
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
@@ -10,11 +13,6 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import com.safframework.log.printer.file.FileNameGenerator
-import com.alibaba.fastjson.JSON
-import com.safframework.log.formatter.BorderFormatter
-import com.safframework.log.formatter.Formatter
-import com.safframework.log.formatter.SimpleFormatter
 
 
 /**
@@ -25,7 +23,7 @@ import com.safframework.log.formatter.SimpleFormatter
  * @date: 2019-08-31 10:58
  * @version: V1.0 打印到文件的Printer
  */
-class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter = SimpleFormatter()):Printer{
+class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Printer{
 
     private val channel = Channel<LogItem>()
     private val folderPath:String

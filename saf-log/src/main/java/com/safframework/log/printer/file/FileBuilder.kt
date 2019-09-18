@@ -1,5 +1,7 @@
 package com.safframework.log.printer.file
 
+import com.safframework.log.formatter.Formatter
+import com.safframework.log.formatter.SimpleFormatter
 import com.safframework.log.printer.FilePrinter
 
 
@@ -18,13 +20,20 @@ class FileBuilder(var folderPath: String) {
      */
     var fileNameGenerator: FileNameGenerator? = null
 
+    var formatter:Formatter? = null
+
     fun fileNameGenerator(fileNameGenerator: FileNameGenerator): FileBuilder {
         this.fileNameGenerator = fileNameGenerator
         return this
     }
 
+    fun formatter(formatter:Formatter): FileBuilder {
+        this.formatter = formatter
+        return this
+    }
+
     fun build(): FilePrinter {
 
-        return FilePrinter(this)
+        return FilePrinter(this,this.formatter?: SimpleFormatter())
     }
 }
