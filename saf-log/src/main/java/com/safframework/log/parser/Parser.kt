@@ -9,5 +9,8 @@ import com.safframework.log.formatter.Formatter
  */
 interface Parser<T> {
 
+    /**
+     * 将对象解析成字符串
+     */
     fun parseString(t: T,formatter: Formatter): String
 }

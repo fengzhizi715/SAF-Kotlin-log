@@ -271,7 +271,7 @@ object L {
                     .append(".")
                     .append(sElements[stackOffset].methodName)
                     .append(" ")
-                    .append(" (")
+                    .append("(")
                     .append(sElements[stackOffset].fileName)
                     .append(":")
                     .append(sElements[stackOffset].lineNumber)
