@@ -19,11 +19,9 @@ object L {
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
     private var printers = ArrayList<Printer>()
-    private var formatter:Formatter
 
     init {
         printers.add(ConsolePrinter())
-        formatter = BorderFormatter()
 
         handlers.apply {
 
@@ -111,22 +109,12 @@ object L {
     }
 
     /**
-     * 自定义的 Printer
+     * 添加自定义的 Printer
      */
     @JvmStatic
     fun printer(printer: Printer): L {
 
         this.printers.add(printer)
-        return this
-    }
-
-    /**
-     * 自定义的 Formatter
-     */
-    @JvmStatic
-    fun formatter(formatter: Formatter): L {
-
-        this.formatter = formatter
         return this
     }
 
@@ -188,15 +176,14 @@ object L {
 
             if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
-                val s = getMethodNames()
-
                 if (msg.contains("\n")) {
                     printers.map {
-
-                        it.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${formatter.spliter()}")))
+                        val s = getMethodNames(it.formatter)
+                        it.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${it.formatter.spliter()}")))
                     }
                 } else {
                     printers.map {
+                        val s = getMethodNames(it.formatter)
                         it.println(logLevel, tag, String.format(s, msg))
                     }
                 }
@@ -289,7 +276,4 @@ object L {
 
     @JvmStatic
     fun printers() = printers
-
-    @JvmStatic
-    fun formatter() = formatter
 }

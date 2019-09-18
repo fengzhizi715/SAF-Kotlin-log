@@ -26,9 +26,10 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
             if (isPrimitiveType) {
                 val simpleName = obj.javaClass
                 var msg = "%s size = %d" + LoggerPrinter.BR
-                msg = String.format(msg, simpleName, obj.size) + L.formatter().spliter()
 
                 L.printers().map {
+                    msg = String.format(msg, simpleName, obj.size) + it.formatter.spliter()
+
                     val s = L.getMethodNames(it.formatter)
                     it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + obj.toString()))
                 }

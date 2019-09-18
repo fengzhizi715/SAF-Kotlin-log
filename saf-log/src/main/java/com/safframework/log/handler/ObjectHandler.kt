@@ -16,18 +16,21 @@ class ObjectHandler:BaseHandler() {
 
     override fun handle(obj: Any): Boolean {
 
-        var msg = obj.toJavaClass() + LoggerPrinter.BR + L.formatter().spliter()
-
-        val message = JSON.toJSONString(obj).run {
-            JSONObject(this)
-        }
-        .formatJSON()
-        .let {
-            it.replace("\n".toRegex(), "\n${L.formatter().spliter()}")
-         }
-
         L.printers().map {
-            val s = L.getMethodNames(it.formatter)
+
+            val formatter = it.formatter
+
+            var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+
+            val message = JSON.toJSONString(obj).run {
+                JSONObject(this)
+            }
+            .formatJSON()
+            .let {
+                it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            }
+
+            val s = L.getMethodNames(formatter)
             it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
         }
         return true
