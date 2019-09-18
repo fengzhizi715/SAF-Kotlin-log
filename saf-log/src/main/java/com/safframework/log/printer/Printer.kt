@@ -9,7 +9,7 @@ import com.safframework.log.formatter.Formatter
  *          com.safframework.log.printer.Printer
  * @author: Tony Shen
  * @date: 2019-08-15 00:26
- * @version: V1.0 <描述当前版本功能>
+ * @version: V1.0 打印日志，支持打印日志输出到 Console、File
  */
 interface Printer {
 

@@ -3,7 +3,7 @@ package com.safframework.log.handler
 /**
  * Created by tony on 2017/11/27.
  */
-abstract class BaseHandler() {
+abstract class BaseHandler {
 
     // 责任链的下一个节点，即处理者
     private var nextHandler: BaseHandler? = null

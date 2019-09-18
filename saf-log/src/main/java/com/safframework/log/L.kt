@@ -189,7 +189,7 @@ object L {
                 if (msg.contains("\n")) {
                     printers.map {
                         val s = getMethodNames(it.formatter)
-                        it.println(logLevel, tag, String.format(s, msg.replace("\n".toRegex(), "\n${it.formatter.spliter()}")))
+                        it.println(logLevel, tag, String.format(s, msg.replace("\n", "\n${it.formatter.spliter()}")))
                     }
                 } else {
                     printers.map {
