@@ -51,7 +51,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            it.replace("\n", "\n${formatter.spliter()}")
         }
     }
 

@@ -47,7 +47,7 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
             msg += JSONObject(JSON.toJSONString(actual))
                     .formatJSON()
                     .let {
-                        it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                        it.replace("\n", "\n${formatter.spliter()}")
                     }
         }
 

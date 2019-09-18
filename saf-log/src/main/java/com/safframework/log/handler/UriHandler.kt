@@ -45,7 +45,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
         }
         .formatJSON()
         .let {
-            it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+            it.replace("\n", "\n${formatter.spliter()}")
          }
     }
 

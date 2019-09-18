@@ -37,7 +37,7 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
         return msg + JSONObject().parseMap(map)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n", "\n${formatter.spliter()}")
                 }
     }
 

@@ -58,7 +58,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
         return msg + collection.parseToJSONArray(jsonArray)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n", "\n${formatter.spliter()}")
                 }
     }
 

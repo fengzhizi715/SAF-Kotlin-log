@@ -39,7 +39,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
         return msg + JSONObject().parseBundle(bundle)
                 .formatJSON()
                 .let {
-                    it.replace("\n".toRegex(), "\n${formatter.spliter()}")
+                    it.replace("\n", "\n${formatter.spliter()}")
                 }
     }
 }

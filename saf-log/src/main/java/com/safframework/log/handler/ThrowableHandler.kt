@@ -33,7 +33,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
         throwable.printStackTrace(pw)
         pw.flush()
         var message = sw.toString()
-        message = message.replace("\n".toRegex(), "\n${formatter.spliter()}")
+        message = message.replace("\n", "\n${formatter.spliter()}")
 
         return message
     }
