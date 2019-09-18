@@ -17,8 +17,8 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
         if (obj is Throwable) {
 
-            val s = L.getMethodNames()
             L.printers().map {
+                val s = L.getMethodNames(it.formatter)
                 it.println(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj,it.formatter)))
             }
             return true

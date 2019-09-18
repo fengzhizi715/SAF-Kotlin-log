@@ -19,8 +19,9 @@ class MapHandler:BaseHandler(),Parser<Map<*,*>>{
     override fun handle(obj: Any): Boolean {
 
         if (obj is Map<*,*>) {
-            val s = L.getMethodNames()
+
             L.printers().map {
+                val s = L.getMethodNames(it.formatter)
                 it.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj,it.formatter)))
             }
             return true

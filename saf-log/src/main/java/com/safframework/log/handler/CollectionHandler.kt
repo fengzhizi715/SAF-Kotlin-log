@@ -27,15 +27,16 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
                 val simpleName = obj.javaClass
                 var msg = "%s size = %d" + LoggerPrinter.BR
                 msg = String.format(msg, simpleName, obj.size) + L.formatter().spliter()
-                val s = L.getMethodNames()
+
                 L.printers().map {
+                    val s = L.getMethodNames(it.formatter)
                     it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + obj.toString()))
                 }
                 return true
             }
 
-            val s = L.getMethodNames()
             L.printers().map {
+                val s = L.getMethodNames(it.formatter)
                 it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj,it.formatter)))
             }
             return true

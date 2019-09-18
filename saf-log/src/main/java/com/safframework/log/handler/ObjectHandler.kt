@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
-import com.safframework.log.formatter.Formatter
 import com.safframework.log.logTag
-import com.safframework.log.printer.Printer
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -17,8 +15,6 @@ import org.json.JSONObject
 class ObjectHandler:BaseHandler() {
 
     override fun handle(obj: Any): Boolean {
-
-        val s = L.getMethodNames()
 
         var msg = obj.toJavaClass() + LoggerPrinter.BR + L.formatter().spliter()
 
@@ -31,6 +27,7 @@ class ObjectHandler:BaseHandler() {
          }
 
         L.printers().map {
+            val s = L.getMethodNames(it.formatter)
             it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
         }
         return true

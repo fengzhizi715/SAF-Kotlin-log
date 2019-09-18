@@ -240,8 +240,9 @@ object L {
 
     /******************* L 打印的方法 End *******************/
 
+    @JvmOverloads
     @JvmStatic
-    fun getMethodNames(): String {
+    fun getMethodNames(formatter: Formatter = BorderFormatter()): String {
 
         val sElements = Thread.currentThread().stackTrace
 
