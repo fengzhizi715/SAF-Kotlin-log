@@ -1,7 +1,5 @@
 package com.safframework.log.formatter
 
-import com.safframework.log.LogLevel
-
 /**
  *
  * @FileName:

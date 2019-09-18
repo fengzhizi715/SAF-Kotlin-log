@@ -14,7 +14,7 @@ class SimpleFormatter:Formatter {
 
     override fun top()    = LoggerPrinter.BR
 
-    override fun middle() = ", "
+    override fun middle() = "," + LoggerPrinter.BLANK
 
     override fun bottom() = LoggerPrinter.BR
 

@@ -22,6 +22,7 @@ object LoggerPrinter {
 
     val BR                 = System.getProperty("line.separator")     // 换行符
     val HORIZONTAL_DOUBLE_LINE     = "║ "
+    val BLANK                      = " "
 
     /**
      * It is used for json pretty print
