@@ -21,7 +21,7 @@ object L {
     private var printers = ArrayList<Printer>()
 
     init {
-        printers.add(ConsolePrinter())
+        printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
 
         handlers.apply {
 
@@ -112,9 +112,19 @@ object L {
      * 添加自定义的 Printer
      */
     @JvmStatic
-    fun printer(printer: Printer): L {
+    fun addPrinter(printer: Printer): L {
 
         this.printers.add(printer)
+        return this
+    }
+
+    /**
+     * 删除 Printer
+     */
+    @JvmStatic
+    fun removePrinter(printer: Printer): L {
+
+        this.printers.remove(printer)
         return this
     }
 
