@@ -48,7 +48,7 @@ public class MainActivity extends Activity{
 //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 //        } else {
 //            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
-//            L.printer(filePrinter);
+//            L.addPrinter(filePrinter);
 //        }
 
         L.i("111321frehtyjuyikuloil'0[xwrgrtehcytbk8ynfggrgr4hytj");
@@ -91,8 +91,8 @@ public class MainActivity extends Activity{
         Uri uri = Uri.parse("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
         L.json(uri);
 
-//        L.addCustomerHandler(new UserHandler());
-//        L.json(u);
+        L.addCustomerHandler(new UserHandler());
+        L.json(u);
 
     }
 
@@ -102,7 +102,7 @@ public class MainActivity extends Activity{
 //        if (requestCode==0) {
 //
 //            FilePrinter filePrinter = new FileBuilder("/storage/emulated/0").fileNameGenerator(new DateFileNameGenerator()).build();
-//            L.printer(filePrinter);
+//            L.addPrinter(filePrinter);
 //        }
 //    }
 }

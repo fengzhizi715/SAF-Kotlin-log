@@ -1,7 +1,9 @@
 package cn.salesuite.saf.kotlin;
 
 import com.safframework.log.L;
+import com.safframework.log.LogLevel;
 import com.safframework.log.handler.BaseHandler;
+import com.safframework.log.printer.Printer;
 
 
 /**
@@ -18,7 +20,11 @@ public class UserHandler extends BaseHandler {
             User u = (User)obj;
 
             String s = L.getMethodNames();
-            System.out.println(String.format(s, u.userName+":"+u.password));
+            for(Printer printer:L.printers()) {
+
+                printer.println(LogLevel.INFO,"UserHandler",String.format(s, u.userName+":"+u.password));
+            }
+
             return true;
         }
 
