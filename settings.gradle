@@ -1,2 +1,3 @@
-include ':app', ':saf_log_file', ':saf_log_core'
-include ':saf-log'
+include ':app'
+include ':saf_log_file'
+include ':saf_log_core'

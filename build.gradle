@@ -46,5 +46,5 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.getByPath(":saf-log:releaseAndroidJavadocs").enabled = false
-tasks.getByPath(":saf-log:bintrayUpload").enabled = true
+//tasks.getByPath(":saf-log:releaseAndroidJavadocs").enabled = false
+//tasks.getByPath(":saf-log:bintrayUpload").enabled = true
