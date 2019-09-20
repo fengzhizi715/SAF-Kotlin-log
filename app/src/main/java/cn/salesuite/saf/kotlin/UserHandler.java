@@ -19,9 +19,8 @@ public class UserHandler extends BaseHandler {
 
             User u = (User)obj;
 
-            String s = L.getMethodNames();
             for(Printer printer:L.printers()) {
-
+                String s = L.getMethodNames(printer.getFormatter());
                 printer.println(LogLevel.INFO,"UserHandler",String.format(s, u.userName+":"+u.password));
             }
 
