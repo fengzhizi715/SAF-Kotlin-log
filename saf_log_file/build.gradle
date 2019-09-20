@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android'
 
 def cfg = rootProject.ext.configuration // 配置
@@ -46,4 +47,31 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
 
     implementation project(":saf_log_core")
+}
+
+
+repositories {
+    jcenter()
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    //加上这些
+    tasks.withType(Javadoc) {
+        options{ encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+
+publish{
+    userOrg = 'fengzhizi715'
+    groupId = 'com.safframework.log'
+    artifactId = 'saf-log-file'
+    publishVersion = '1.2.0'
+    desc = 'this is a log library for android,written by kotlin'
+    website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
 }
