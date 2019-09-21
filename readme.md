@@ -3,11 +3,11 @@
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-core/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-core/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-<a href="http://www.methodscount.com/?lib=com.safframework.log%3Asaf-log%3A1.5.1"><img src="https://img.shields.io/badge/Methods and size-198 | 49 KB-e91e63.svg"/></a>
 
 ![](logo.JPG)
 
-它是完全基于 Kotlin 开发的 Android 日志框架，提供极简的 API，能够打印出漂亮的日志格式。
+完全基于 Kotlin 开发的 Android 日志框架，提供极简的 API，不仅能够打印出漂亮的日志格式，还支持高度定制日志格式。
+
 
 # 下载安装
 
@@ -25,10 +25,12 @@ implementation 'com.safframework.log:saf-log-file:2.0.0'
 
 * 支持自定义tag
 * 支持多种日志级别
-* 打印的日志，除了可以显示日志内容之外，还能显示当前线程名称、在程序中所打印日志的位置
+* 支持显示当前线程名称
 * 支持自定义Header
 * 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
+* 支持保存日志到文件，底层基于 Kotlin Coroutines
+* 支持自定义日志格式
 
 # 使用方法：
 
