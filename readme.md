@@ -10,6 +10,7 @@
 它是完全基于 Kotlin 开发的 Android 日志框架，提供极简的 API，能够打印出漂亮的日志格式。
 
 # 下载安装
+
 Gradle:
 
 ```groovy
@@ -21,6 +22,7 @@ implementation 'com.safframework.log:saf-log-file:2.0.0'
 ```
 
 # 功能：
+
 * 支持自定义tag
 * 支持多种日志级别
 * 打印的日志，除了可以显示日志内容之外，还能显示当前线程名称、在程序中所打印日志的位置
@@ -30,7 +32,7 @@ implementation 'com.safframework.log:saf-log-file:2.0.0'
 
 # 使用方法：
 
-它可以在任何使用Java、Kotlin开发的Android项目中使用。如果您的项目中只使用Java，也无需额外添加kotlin的配置。
+它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。如果您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
 
 ## 1.tag使用
 
@@ -269,7 +271,6 @@ L.i("customerTag") {
 
 ## TODO List：
 
-* 增加日志导入到文件
 * 迁移到 androidX
 
 
