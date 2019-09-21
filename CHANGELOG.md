@@ -1,6 +1,13 @@
 SAF-Kotlin-log
 ===
 
+Version 2.0.0
+---
+2019-09-21
+* 升级Kotlin版本
+* 重构 L，增加 Printer、Formatter
+* 增加对文件的保存
+
 Version 1.5.6
 ---
 2019-08-13
