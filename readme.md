@@ -71,13 +71,13 @@ L.init(this.getClass());
 java中的使用方法：
 
 ```java
-L.setLogLevel(L.LogLevel.INFO);
+L.setLogLevel(LogLevel.INFO);
 ```
 
 kotlin中的使用方法：
 
 ```kotlin
-L.logLevel= L.LogLevel.INFO
+L.logLevel= LogLevel.INFO
 ```
 ## 3.打印日志
 
