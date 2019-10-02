@@ -57,6 +57,8 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     private fun doWrite(logItem:LogItem) {
 
         var lastFileName = writer.lastFileName
+        println("lastFileName = " +lastFileName)
+        println("fileNameGenerator.isFileNameChangeable() = " +fileNameGenerator.isFileNameChangeable())
         if (lastFileName == null || fileNameGenerator.isFileNameChangeable()) {
 
             val newFileName = fileNameGenerator.generateFileName(logItem.level.value, System.currentTimeMillis())
