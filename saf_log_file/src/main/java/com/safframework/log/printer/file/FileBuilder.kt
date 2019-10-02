@@ -12,7 +12,7 @@ import com.safframework.log.printer.file.name.FileNameGenerator
  *          com.safframework.log.printer.file.FileBuilder
  * @author: Tony Shen
  * @date: 2019-08-31 21:53
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.0 生成文件的 Builder
  */
 class FileBuilder{
 
@@ -37,8 +37,5 @@ class FileBuilder{
         return this
     }
 
-    fun build(): FilePrinter {
-
-        return FilePrinter(this,this.formatter?: SimpleFormatter())
-    }
+    fun build() = FilePrinter(this,this.formatter?: SimpleFormatter())
 }

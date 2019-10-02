@@ -7,7 +7,6 @@ import com.safframework.log.handler.*
 import com.safframework.log.printer.ConsolePrinter
 import com.safframework.log.printer.Printer
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Created by Tony Shen on 2017/1/2.
@@ -18,7 +17,7 @@ object L {
     private var header: String? = ""
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private var printers = ArrayList<Printer>()
+    private var printers = LinkedHashSet<Printer>()
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
