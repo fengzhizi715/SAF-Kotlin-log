@@ -14,6 +14,8 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import com.safframework.log.printer.file.clean.CleanStrategy
+import com.safframework.log.printer.file.clean.NeverCleanStrategy
 
 
 /**
@@ -29,6 +31,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     private val channel = Channel<LogItem>()
     private val folderPath:String
     private val fileNameGenerator: FileNameGenerator
+    private val cleanStrategy: CleanStrategy
     private val writer: Writer
 
     init {
@@ -41,6 +44,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
 
         folderPath = fileBuilder.folderPath?:"/sdcard/"
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
+        cleanStrategy = fileBuilder.cleanStrategy?: NeverCleanStrategy()
 
         writer = Writer(folderPath)
     }
@@ -72,6 +76,8 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
                     writer.close()
                 }
 
+                cleanLogFilesIfNecessary()
+
                 if (!writer.open(newFileName)) {
                     return
                 }
@@ -81,6 +87,19 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         writer.appendLog(JSON.toJSONString(logItem))
     }
 
+    private fun cleanLogFilesIfNecessary() {
+
+        val logDir = File(folderPath)
+        val files = logDir.listFiles() ?: return
+
+        files.map {
+
+            if (cleanStrategy.shouldClean(it)) {
+                it.delete()
+            }
+        }
+    }
+    
 
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
