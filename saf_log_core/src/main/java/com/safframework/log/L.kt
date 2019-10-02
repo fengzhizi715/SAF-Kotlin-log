@@ -17,7 +17,7 @@ object L {
     private var header: String? = ""
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private var printers = LinkedHashSet<Printer>()
+    private val printers = LinkedHashSet<Printer>()
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
