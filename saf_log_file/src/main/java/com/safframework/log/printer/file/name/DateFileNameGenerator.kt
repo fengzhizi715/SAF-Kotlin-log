@@ -20,17 +20,18 @@ class DateFileNameGenerator : FileNameGenerator {
 
     override fun isFileNameChangeable() = true
 
-    /**
-     * Generate a file name which represent a specific date.
-     */
     override fun generateFileName(logLevel: Int, timestamp: Long): String {
 
-        val sdf = mLocalDateFormat.get()
+        var sdf = mLocalDateFormat.get()
 
-        return sdf?.let {
+        if (sdf==null) {
+            sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        }
+
+        return sdf.let {
 
             it.timeZone = TimeZone.getDefault()
             it.format(Date(timestamp))
-        }?:""
+        }
     }
 }

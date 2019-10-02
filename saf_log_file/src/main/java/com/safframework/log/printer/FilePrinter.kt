@@ -42,7 +42,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
 
-        folderPath        = fileBuilder.folderPath?: "/sdcard/"
+        folderPath        = fileBuilder.folderPath?: "/sdcard/logs/"
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
         cleanStrategy     = fileBuilder.cleanStrategy?: NeverCleanStrategy()
 
