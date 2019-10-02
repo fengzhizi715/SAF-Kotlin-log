@@ -31,14 +31,14 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
                     msg = String.format(msg, simpleName, obj.size) + it.formatter.spliter()
 
                     val s = L.getMethodNames(it.formatter)
-                    it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + obj.toString()))
+                    it.printLog(LogLevel.INFO, this.logTag(),String.format(s, msg + obj.toString()))
                 }
                 return true
             }
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.println(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj,it.formatter)))
+                it.printLog(LogLevel.INFO, this.logTag(), String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

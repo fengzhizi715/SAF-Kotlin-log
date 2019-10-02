@@ -45,7 +45,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         writer = Writer(folderPath)
     }
 
-    override fun println(logLevel: LogLevel, tag: String, msg: String) {
+    override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 
         val timeMillis = System.currentTimeMillis()
 

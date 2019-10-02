@@ -23,7 +23,7 @@ class StringHandler:BaseHandler(), Parser<String> {
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(json,it.formatter)))
+                it.printLog(LogLevel.INFO, this.logTag(),String.format(s, parseString(json,it.formatter)))
             }
             return true
         }

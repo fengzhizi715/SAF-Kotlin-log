@@ -15,7 +15,7 @@ import com.safframework.log.formatter.Formatter
  */
 class ConsolePrinter(override val formatter: Formatter = BorderFormatter()):Printer {
 
-    override fun println(logLevel: LogLevel, tag: String, msg: String) {
+    override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 
         when(logLevel) {
 

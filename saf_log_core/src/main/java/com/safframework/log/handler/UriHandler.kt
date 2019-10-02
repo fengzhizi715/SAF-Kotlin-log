@@ -22,7 +22,7 @@ class UriHandler:BaseHandler(), Parser<Uri> {
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.println(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj,it.formatter)))
+                it.printLog(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

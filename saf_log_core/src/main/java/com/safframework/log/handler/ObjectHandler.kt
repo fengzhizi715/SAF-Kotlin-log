@@ -31,7 +31,7 @@ class ObjectHandler:BaseHandler() {
             }
 
             val s = L.getMethodNames(formatter)
-            it.println(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
+            it.printLog(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
         }
         return true
     }

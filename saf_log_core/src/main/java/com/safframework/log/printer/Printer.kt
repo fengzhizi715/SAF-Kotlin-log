@@ -15,5 +15,5 @@ interface Printer {
 
     val formatter: Formatter
 
-    fun println(logLevel: LogLevel, tag: String, msg: String)
+    fun printLog(logLevel: LogLevel, tag: String, msg: String)
 }
