@@ -13,11 +13,18 @@ import com.safframework.log.printer.FilePrinter
  * @date: 2019-08-31 21:53
  * @version: V1.0 <描述当前版本功能>
  */
-class FileBuilder(var folderPath: String) {
+class FileBuilder{
+
+    var folderPath: String? = null
 
     var fileNameGenerator: FileNameGenerator? = null // The file name generator for log file.
 
     var formatter:Formatter? = null
+
+    fun folderPath(folderPath: String): FileBuilder {
+        this.folderPath = folderPath
+        return this
+    }
 
     fun fileNameGenerator(fileNameGenerator: FileNameGenerator): FileBuilder {
         this.fileNameGenerator = fileNameGenerator

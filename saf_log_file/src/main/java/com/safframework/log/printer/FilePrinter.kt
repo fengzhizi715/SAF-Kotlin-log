@@ -3,6 +3,7 @@ package com.safframework.log.printer
 import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
+import com.safframework.log.printer.file.DateFileNameGenerator
 import com.safframework.log.printer.file.FileBuilder
 import com.safframework.log.printer.file.FileNameGenerator
 import kotlinx.coroutines.GlobalScope
@@ -38,8 +39,8 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
 
-        folderPath = fileBuilder.folderPath
-        fileNameGenerator = fileBuilder.fileNameGenerator!!
+        folderPath = fileBuilder.folderPath?:"/sdcard/"
+        fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
 
         writer = Writer(folderPath)
     }
