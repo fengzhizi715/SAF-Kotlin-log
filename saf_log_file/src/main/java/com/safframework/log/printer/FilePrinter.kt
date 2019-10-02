@@ -50,19 +50,16 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     }
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
-
-        val timeMillis = System.currentTimeMillis()
-
+        
         GlobalScope.launch {
-            channel.send(LogItem(timeMillis, logLevel, tag, msg))
+            channel.send(LogItem(System.currentTimeMillis(), logLevel, tag, msg))
         }
     }
 
     private fun doWrite(logItem:LogItem) {
 
         var lastFileName = writer.lastFileName
-        println("lastFileName = " +lastFileName)
-        println("fileNameGenerator.isFileNameChangeable() = " +fileNameGenerator.isFileNameChangeable())
+
         if (lastFileName == null || fileNameGenerator.isFileNameChangeable()) {
 
             val newFileName = fileNameGenerator.generateFileName(logItem.level.value, System.currentTimeMillis())
