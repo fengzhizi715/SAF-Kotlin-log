@@ -17,7 +17,7 @@ object L {
     private var header: String? = ""
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private val printers = LinkedHashSet<Printer>()
+    private val printers = mutableSetOf<Printer>()
     private var enableDisplayThreadInfo:Boolean = true
     private var enableDisplayClassInfo:Boolean  = true
 

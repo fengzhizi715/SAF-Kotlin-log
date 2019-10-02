@@ -28,5 +28,4 @@ class ConsolePrinter(override val formatter: Formatter = BorderFormatter()):Prin
             LogLevel.DEBUG -> Log.d(tag, msg)
         }
     }
-
 }
