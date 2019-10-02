@@ -34,25 +34,25 @@ implementation 'com.safframework.log:saf-log-file:2.0.0'
 
 # 使用方法：
 
-它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。如果您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
+它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
 
 ## 1.tag使用
 
-如果不考虑显示日志的tag，可以直接使用，L会提供默认的tag。
+如果不考虑显示日志的tag，可以直接使用，L 会提供默认的tag。
 
 ```java
 String s = "abcd";
 L.i(s);
 ```
 
-如果需要使用tag，可以在Activity的onCreate()中添加如下的代码，类名则对应是tag的名称
+如果需要使用 tag，可以在 Activity 的 onCreate() 中添加如下的代码，类名则对应是tag的名称
 
 ```java
 L.init(this.getClass());
 
 ```
 
-当然，init()除了支持传递Class对象，还支持传String对象。
+当然，init() 除了支持传递 Class 对象，还支持传 String 对象。
 
 ## 2.日志级别
 
