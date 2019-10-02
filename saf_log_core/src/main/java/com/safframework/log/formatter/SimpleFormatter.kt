@@ -8,7 +8,7 @@ import com.safframework.log.LoggerPrinter
  *          com.safframework.log.formatter.SimpleFormatter
  * @author: Tony Shen
  * @date: 2019-09-15 16:28
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.0 <描述当前版本功能>
  */
 class SimpleFormatter:Formatter {
 
