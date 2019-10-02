@@ -61,6 +61,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             if (newFileName == null || newFileName.trim { it <= ' ' }.length == 0) {
                 throw IllegalArgumentException("File name should not be empty.")
             }
+
             if (newFileName != lastFileName) {
                 if (writer.isOpened) {
                     writer.close()
@@ -96,31 +97,37 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             lastFileName = newFileName
             file = File(folderPath, newFileName)
 
-            if (!file!!.exists()) {
-                try {
-                    val parent = file!!.parentFile
-                    if (!parent.exists()) {
-                        parent.mkdirs()
+            file?.let {
+
+                if (!it.exists()) {
+
+                    try {
+                        val parent = it.parentFile
+                        if (!parent.exists()) {
+                            parent.mkdirs()
+                        }
+                        it.createNewFile()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                        lastFileName = null
+                        file = null
+                        return false
                     }
-                    file!!.createNewFile()
-                } catch (e: IOException) {
+                }
+
+                try {
+                    bufferedWriter = BufferedWriter(FileWriter(it, true))
+                } catch (e: Exception) {
                     e.printStackTrace()
                     lastFileName = null
                     file = null
                     return false
                 }
+
+                return true
             }
 
-            try {
-                bufferedWriter = BufferedWriter(FileWriter(file, true))
-            } catch (e: Exception) {
-                e.printStackTrace()
-                lastFileName = null
-                file = null
-                return false
-            }
-
-            return true
+            return false
         }
 
         fun close(): Boolean {
@@ -143,11 +150,11 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
 
         fun appendLog(log: String) {
 
-            bufferedWriter?.run {
+            bufferedWriter?.let {
                 try {
-                    write(log)
-                    newLine()
-                    flush()
+                    it.write(log)
+                    it.newLine()
+                    it.flush()
                 } catch (e: IOException) {
                 }
             }

@@ -24,6 +24,7 @@ class DateFileNameGenerator : FileNameGenerator {
      * Generate a file name which represent a specific date.
      */
     override fun generateFileName(logLevel: Int, timestamp: Long): String {
+
         val sdf = mLocalDateFormat.get()
 
         return sdf?.let {
