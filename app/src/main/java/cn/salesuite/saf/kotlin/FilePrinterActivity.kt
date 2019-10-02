@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import com.safframework.log.L
+import com.safframework.log.printer.FilePrinter
 import com.safframework.log.printer.file.FileBuilder
 
 /**
@@ -19,6 +20,8 @@ import com.safframework.log.printer.file.FileBuilder
  */
 class FilePrinterActivity : Activity() {
 
+    private lateinit var filePrinter:FilePrinter
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +29,7 @@ class FilePrinterActivity : Activity() {
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         } else {
-            val filePrinter = FileBuilder().folderPath("/storage/emulated/0/logs").build()
+            filePrinter = FileBuilder().folderPath("/storage/emulated/0/logs").build()
             L.addPrinter(filePrinter);
         }
 
@@ -56,9 +59,15 @@ class FilePrinterActivity : Activity() {
 
         if (requestCode==0) {
 
-            val filePrinter = FileBuilder().folderPath("/storage/emulated/0/logs").build()
+            filePrinter = FileBuilder().folderPath("/storage/emulated/0/logs").build()
             L.addPrinter(filePrinter);
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        L.removePrinter(filePrinter)
     }
 
 }
