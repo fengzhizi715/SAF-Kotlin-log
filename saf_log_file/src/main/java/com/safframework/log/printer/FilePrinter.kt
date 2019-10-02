@@ -3,9 +3,9 @@ package com.safframework.log.printer
 import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.printer.file.DateFileNameGenerator
+import com.safframework.log.printer.file.name.DateFileNameGenerator
 import com.safframework.log.printer.file.FileBuilder
-import com.safframework.log.printer.file.FileNameGenerator
+import com.safframework.log.printer.file.name.FileNameGenerator
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
