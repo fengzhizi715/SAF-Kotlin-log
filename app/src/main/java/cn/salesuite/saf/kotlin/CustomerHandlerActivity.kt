@@ -23,6 +23,6 @@ class CustomerHandlerActivity : Activity() {
         u.password = "123456"
 
         L.addCustomerHandler(UserHandler())
-        L.json(u);
+        L.json(u)
     }
 }

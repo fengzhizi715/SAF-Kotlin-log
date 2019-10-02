@@ -3,9 +3,7 @@ package cn.salesuite.saf.kotlin
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.safframework.log.L
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.HashMap
 
 /**
  *
@@ -39,25 +37,11 @@ class MainActivity : Activity() {
             startActivity(intent)
         }
 
-        //        int permissionCheck = ContextCompat.checkSelfPermission(this,
-        //                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        //        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-        //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-        //        } else {
-        //            FilePrinter filePrinter = new FileBuilder().folderPath("/storage/emulated/0/logs").fileNameGenerator(new DateWithLevelFileNameGenerator()).build();
-        //            L.addPrinter(filePrinter);
-        //        }
+        text4.setOnClickListener {
 
+            val intent = Intent(this@MainActivity,FilePrinterActivity::class.java)
+            startActivity(intent)
+        }
 
     }
-
-    //    @Override
-    //    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-    //
-    //        if (requestCode==0) {
-    //
-    //            FilePrinter filePrinter = new FileBuilder().folderPath("/storage/emulated/0/logs").fileNameGenerator(new DateWithLevelFileNameGenerator()).build();
-    //            L.addPrinter(filePrinter);
-    //        }
-    //    }
 }
