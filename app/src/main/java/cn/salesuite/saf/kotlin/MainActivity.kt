@@ -27,6 +27,18 @@ class MainActivity : Activity() {
             startActivity(intent)
         }
 
+        text2.setOnClickListener {
+
+            val intent = Intent(this@MainActivity,CustomerHandlerActivity::class.java)
+            startActivity(intent)
+        }
+
+        text3.setOnClickListener {
+
+            val intent = Intent(this@MainActivity,KotlinStyleActivity::class.java)
+            startActivity(intent)
+        }
+
         //        int permissionCheck = ContextCompat.checkSelfPermission(this,
         //                Manifest.permission.WRITE_EXTERNAL_STORAGE);
         //        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {

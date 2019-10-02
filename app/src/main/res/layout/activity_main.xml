@@ -20,6 +20,24 @@
         android:layout_margin="10dp"
         android:background="@drawable/textview_border"
         android:gravity="center"
+        android:text="自定义 Handler"/>
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="Kotlin 风格的日志"/>
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
         android:text="添加 FilePrinter"/>
 
 </LinearLayout>

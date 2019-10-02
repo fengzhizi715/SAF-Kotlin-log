@@ -39,21 +39,17 @@ class BasicActivity : Activity() {
         map3["tt"] = false
         L.json(map3)
 
-
         val list = listOf<User>(u,u)
-        L.json(list);
+        L.json(list)
 
         val ids = listOf<String>("123","456")
-        L.json(ids);
+        L.json(ids)
 
         val idd = listOf<Double>(123.toDouble(),456.toDouble())
-        L.json(idd);
+        L.json(idd)
 
-        val uri = Uri.parse ("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic");
-        L.json(uri);
-
-        L.addCustomerHandler(UserHandler())
-        L.json(u);
+        val uri = Uri.parse ("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic")
+        L.json(uri)
     }
 
 }
