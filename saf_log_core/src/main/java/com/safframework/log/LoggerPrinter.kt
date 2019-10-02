@@ -28,6 +28,7 @@ object LoggerPrinter {
     val BR                 = System.getProperty("line.separator")     // 换行符
     val HORIZONTAL_DOUBLE_LINE     = "║ "
     val BLANK                      = " "
+    val COMMA                      = ","
 
     fun getStackOffset(trace: Array<StackTraceElement>): Int {
         var i = MIN_STACK_OFFSET
