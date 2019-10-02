@@ -43,6 +43,8 @@ class StringHandler:BaseHandler(), Parser<String> {
                 val jsonArray = JSONArray(json)
                 message = jsonArray.formatJSON()
                 message = message.replace("\n", "\n${formatter.spliter()}")
+            } else { // 普通的字符串
+                message = json
             }
         } catch (e: JSONException) {
             L.e("Invalid Json: $json")
