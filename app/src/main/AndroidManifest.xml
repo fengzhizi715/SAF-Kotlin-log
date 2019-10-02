@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="cn.salesuite.saf.kotlin.BasicActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
