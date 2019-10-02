@@ -6,7 +6,7 @@ package com.safframework.log.printer.file.name
  *          com.safframework.log.printer.file.name.FileNameGenerator
  * @author: Tony Shen
  * @date: 2019-08-31 22:38
- * @version: V2.0 文件命名/生成策略
+ * @since: V2.0 文件命名/生成策略
  */
 interface FileNameGenerator {
 

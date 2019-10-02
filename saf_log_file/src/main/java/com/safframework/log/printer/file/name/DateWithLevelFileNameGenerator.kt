@@ -9,7 +9,7 @@ import java.util.*
  *          com.safframework.log.printer.file.name.DateWithLevelFileNameGenerator
  * @author: Tony Shen
  * @date: 2019-10-02 21:45
- * @version: V2.1 <描述当前版本功能>
+ * @since: V2.1 基于 yyyy-MM-dd 的日期格式和日志的 Level 生成文件
  */
 class DateWithLevelFileNameGenerator : FileNameGenerator {
 

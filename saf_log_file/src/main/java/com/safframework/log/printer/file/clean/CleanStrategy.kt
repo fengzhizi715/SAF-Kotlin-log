@@ -8,7 +8,7 @@ import java.io.File
  *          com.safframework.log.printer.file.clean.CleanStrategy
  * @author: Tony Shen
  * @date: 2019-10-02 18:51
- * @version: V2.1 文件清空策略
+ * @since: V2.1 文件清空策略
  */
 interface CleanStrategy {
 

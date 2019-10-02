@@ -6,9 +6,10 @@ package com.safframework.log
  *          com.safframework.log.LogLevel
  * @author: Tony Shen
  * @date: 2019-08-15 01:02
- * @version: V1.0 <描述当前版本功能>
+ * @since: V2.0
  */
 enum class LogLevel {
+
     ERROR {
         override val value: Int
             get() = 0

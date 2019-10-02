@@ -11,7 +11,7 @@ import com.safframework.log.formatter.Formatter
  *          com.safframework.log.printer.ConsolePrinter
  * @author: Tony Shen
  * @date: 2019-08-15 00:51
- * @version: V2.0 打印到控制台的Printer
+ * @since: V2.0 打印到控制台的Printer
  */
 class ConsolePrinter(override val formatter: Formatter = BorderFormatter()):Printer {
 

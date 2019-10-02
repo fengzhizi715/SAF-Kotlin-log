@@ -24,7 +24,7 @@ import com.safframework.log.printer.file.clean.NeverCleanStrategy
  *          com.safframework.log.printer.FilePrinter
  * @author: Tony Shen
  * @date: 2019-08-31 10:58
- * @version: V2.0 打印到文件的Printer，默认的 formatter 使用 SimpleFormatter
+ * @since: V2.0 打印到文件的Printer，默认的 formatter 使用 SimpleFormatter
  */
 class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Printer{
 

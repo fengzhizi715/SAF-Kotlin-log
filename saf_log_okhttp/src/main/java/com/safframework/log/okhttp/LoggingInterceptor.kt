@@ -15,7 +15,7 @@ import java.nio.charset.Charset
  *          com.safframework.log.okhttp.LoggingInterceptor
  * @author: Tony Shen
  * @date: 2019-09-21 12:36
- * @version: V1.0 <描述当前版本功能>
+ * @since: V2.0 OkHttp 的日志拦截器
  */
 class LoggingInterceptor: Interceptor {
 

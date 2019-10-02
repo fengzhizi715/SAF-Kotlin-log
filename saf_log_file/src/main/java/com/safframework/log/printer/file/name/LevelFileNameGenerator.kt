@@ -7,7 +7,7 @@ package com.safframework.log.printer.file.name
  *          com.safframework.log.printer.file.name.LevelFileNameGenerator
  * @author: Tony Shen
  * @date: 2019-10-02 13:54
- * @version: V2.0 基于日志的 Level 生成文件
+ * @since: V2.0 基于日志的 Level 生成文件
  */
 class LevelFileNameGenerator : FileNameGenerator {
 

@@ -8,7 +8,7 @@ import com.safframework.log.LoggerPrinter
  *          com.safframework.log.formatter.BorderFormatter
  * @author: Tony Shen
  * @date: 2019-09-15 15:14
- * @version: V2.0 <描述当前版本功能>
+ * @since: V2.0 <描述当前版本功能>
  */
 class BorderFormatter:Formatter {
 

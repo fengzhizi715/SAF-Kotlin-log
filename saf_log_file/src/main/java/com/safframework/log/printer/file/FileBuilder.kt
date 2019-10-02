@@ -13,7 +13,7 @@ import com.safframework.log.printer.file.name.FileNameGenerator
  *          com.safframework.log.printer.file.FileBuilder
  * @author: Tony Shen
  * @date: 2019-08-31 21:53
- * @version: V2.0 生成文件的 Builder
+ * @since: V2.0 生成文件的 Builder
  */
 class FileBuilder{
 
