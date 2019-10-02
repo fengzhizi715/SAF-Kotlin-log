@@ -50,7 +50,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     }
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
-        
+
         GlobalScope.launch {
             channel.send(LogItem(System.currentTimeMillis(), logLevel, tag, msg))
         }
@@ -172,6 +172,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         fun appendLog(log: String) {
 
             bufferedWriter?.let {
+
                 try {
                     it.write(log)
                     it.newLine()
