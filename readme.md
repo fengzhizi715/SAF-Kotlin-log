@@ -6,7 +6,8 @@
 
 ![](logo.JPG)
 
-完全基于 Kotlin 开发的 Android 日志框架，提供极简的 API，不仅能够打印出漂亮的日志格式，还支持高度定制日志格式。
+它不仅能够打印出漂亮的日志格式，还支持高度定制日志格式。它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
+
 
 
 # 下载安装
@@ -33,8 +34,6 @@ implementation 'com.safframework.log:saf-log-file:2.1.0'
 * 支持自定义日志格式
 
 # 使用方法：
-
-它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
 
 ## 1.tag使用
 
