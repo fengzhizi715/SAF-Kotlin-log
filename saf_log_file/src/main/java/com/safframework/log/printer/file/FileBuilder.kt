@@ -15,10 +15,7 @@ import com.safframework.log.printer.FilePrinter
  */
 class FileBuilder(var folderPath: String) {
 
-    /**
-     * The file name generator for log file.
-     */
-    var fileNameGenerator: FileNameGenerator? = null
+    var fileNameGenerator: FileNameGenerator? = null // The file name generator for log file.
 
     var formatter:Formatter? = null
 

@@ -13,7 +13,7 @@ import java.util.*
  */
 class DateFileNameGenerator : FileNameGenerator {
 
-    var mLocalDateFormat: ThreadLocal<SimpleDateFormat> = object : ThreadLocal<SimpleDateFormat>() {
+    val mLocalDateFormat: ThreadLocal<SimpleDateFormat> = object : ThreadLocal<SimpleDateFormat>() {
 
         override fun initialValue() = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
     }
