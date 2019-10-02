@@ -18,6 +18,8 @@ object L {
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
     private val printers = LinkedHashSet<Printer>()
+    private var enableDisplayThreadInfo:Boolean = true
+    private var enableDisplayClassInfo:Boolean  = true
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
@@ -124,6 +126,26 @@ object L {
     fun removePrinter(printer: Printer): L {
 
         this.printers.remove(printer)
+        return this
+    }
+
+    /**
+     * 是否打印线程信息
+     */
+    @JvmStatic
+    fun enableDisplayThreadInfo(displayThreadInfo:Boolean): L {
+
+        this.enableDisplayThreadInfo = displayThreadInfo
+        return this
+    }
+
+    /**
+     * 是否打印类的信息
+     */
+    @JvmStatic
+    fun enableDisplayClassInfo(displayClassInfo:Boolean): L {
+
+        this.enableDisplayClassInfo = displayClassInfo
         return this
     }
 
@@ -255,31 +277,37 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                   append("Header: $header")
-                            .append(formatter.middle())
+                   append("Header: $header").append(formatter.middle())
                 }
             }
         }.apply {
 
-            // 添加当前线程名
-            append("Thread: ${Thread.currentThread().name}")
-                    .append(formatter.middle())
-                    // 添加类名、方法名、行数
-                    .append(formatter.spliter())
-                    .append(sElements[stackOffset].className)
-                    .append(".")
-                    .append(sElements[stackOffset].methodName)
-                    .append(" ")
-                    .append("(")
-                    .append(sElements[stackOffset].fileName)
-                    .append(":")
-                    .append(sElements[stackOffset].lineNumber)
-                    .append(")")
-                    .append(formatter.middle())
-                    // 添加打印的日志信息
-                    .append(formatter.spliter())
-                    .append("%s")
-                    .append(formatter.bottom())
+            if (enableDisplayThreadInfo) {
+                // 添加当前线程名
+                append("Thread: ${Thread.currentThread().name}")
+                        .append(formatter.middle())
+                        .append(formatter.spliter())
+            }
+
+            if (enableDisplayClassInfo) {
+
+                // 添加类名、方法名、行数
+                append(sElements[stackOffset].className)
+                        .append(".")
+                        .append(sElements[stackOffset].methodName)
+                        .append(" ")
+                        .append("(")
+                        .append(sElements[stackOffset].fileName)
+                        .append(":")
+                        .append(sElements[stackOffset].lineNumber)
+                        .append(")")
+                        .append(formatter.middle())
+                        // 添加打印的日志信息
+                        .append(formatter.spliter())
+            }
+
+            append("%s").append(formatter.bottom())
+
         }.toString()
     }
 
