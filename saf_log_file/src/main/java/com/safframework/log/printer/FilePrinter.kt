@@ -42,11 +42,11 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
 
-        folderPath = fileBuilder.folderPath?:"/sdcard/"
+        folderPath        = fileBuilder.folderPath?: "/sdcard/"
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
-        cleanStrategy = fileBuilder.cleanStrategy?: NeverCleanStrategy()
+        cleanStrategy     = fileBuilder.cleanStrategy?: NeverCleanStrategy()
 
-        writer = Writer(folderPath)
+        writer            = Writer(folderPath)
     }
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
@@ -99,7 +99,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
     }
-    
+
 
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
