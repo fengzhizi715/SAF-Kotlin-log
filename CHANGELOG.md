@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.1.1
+---
+2019-10-03
+* 优化 StringHandler
+* 增加日志中显示线程信息、类信息的开关
+
 Version 2.1.0
 ---
 2019-10-02
