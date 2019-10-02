@@ -3,6 +3,7 @@ package com.safframework.log.printer.file
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.formatter.SimpleFormatter
 import com.safframework.log.printer.FilePrinter
+import com.safframework.log.printer.file.clean.CleanStrategy
 import com.safframework.log.printer.file.name.FileNameGenerator
 
 
@@ -22,6 +23,8 @@ class FileBuilder{
 
     var formatter:Formatter? = null
 
+    var cleanStrategy:CleanStrategy? = null
+
     fun folderPath(folderPath: String): FileBuilder {
         this.folderPath = folderPath
         return this
@@ -34,6 +37,11 @@ class FileBuilder{
 
     fun formatter(formatter:Formatter): FileBuilder {
         this.formatter = formatter
+        return this
+    }
+
+    fun cleanStrategy(cleanStrategy:CleanStrategy): FileBuilder {
+        this.cleanStrategy = cleanStrategy
         return this
     }
 
