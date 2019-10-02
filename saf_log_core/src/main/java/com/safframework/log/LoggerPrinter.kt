@@ -8,6 +8,11 @@ object LoggerPrinter {
     private val MIN_STACK_OFFSET = 3
 
     /**
+     * It is used for json pretty print
+     */
+    val JSON_INDENT = 2
+
+    /**
      * Drawing toolbox
      */
     private val TOP_LEFT_CORNER    = '╔'
@@ -23,11 +28,6 @@ object LoggerPrinter {
     val BR                 = System.getProperty("line.separator")     // 换行符
     val HORIZONTAL_DOUBLE_LINE     = "║ "
     val BLANK                      = " "
-
-    /**
-     * It is used for json pretty print
-     */
-    val JSON_INDENT = 2
 
     fun getStackOffset(trace: Array<StackTraceElement>): Int {
         var i = MIN_STACK_OFFSET

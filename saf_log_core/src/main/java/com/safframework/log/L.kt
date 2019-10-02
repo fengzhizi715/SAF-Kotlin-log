@@ -69,7 +69,7 @@ object L {
     }
 
     /**
-     * header 是自定义的内容，可以放App的信息版本号等，方便查找和调试
+     * header 是 L 自定义的内容，可以放 App 的信息版本号等，方便查找和调试
      * @param tag
      */
     @JvmStatic
@@ -130,7 +130,7 @@ object L {
 
     /******************* L 的配置方法 End *******************/
 
-    /******************* L 打印的方法 Start *******************/
+    /******************* L 提供打印的方法 Start *******************/
 
     @JvmStatic
     fun e(msg: String?) = e(TAG,msg)
@@ -235,7 +235,7 @@ object L {
         firstHandler.handleObject(obj)
     }
 
-    /******************* L 打印的方法 End *******************/
+    /******************* L 提供打印的方法 End *******************/
 
     @JvmOverloads
     @JvmStatic
