@@ -88,7 +88,7 @@ class LoggingInterceptor: Interceptor {
 
                 }.toString()
 
-                L.i(responseString)
+                L.json(responseString)
             }
         }
 

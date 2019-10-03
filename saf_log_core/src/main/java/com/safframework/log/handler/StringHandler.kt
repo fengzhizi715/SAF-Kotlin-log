@@ -44,7 +44,7 @@ class StringHandler:BaseHandler(), Parser<String> {
                 message = jsonArray.formatJSON()
                 message = message.replace("\n", "\n${formatter.spliter()}")
             } else { // 普通的字符串
-                message = json
+                message = json.replace("\n", "\n${formatter.spliter()}")
             }
         } catch (e: JSONException) {
             L.e("Invalid Json: $json")
