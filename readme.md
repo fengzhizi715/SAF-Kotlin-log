@@ -6,8 +6,9 @@
 
 ![](logo.JPG)
 
-它不仅能够打印出漂亮的日志格式，还支持高度定制日志格式。它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
+它不仅能够打印出漂亮的日志格式，还支持高度定制日志格式。
 
+它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
 
 
 # 下载安装
@@ -30,12 +31,14 @@ implementation 'com.safframework.log:saf-log-okhttp:2.1.3'
 
 * 支持自定义tag
 * 支持多种日志级别
-* 支持显示当前线程名称
-* 支持自定义Header
+* 支持显示当前线程信息
+* 支持自定义 Header，可以用于标识手机、App 等版本信息
 * 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
+* 使用 json() 打印字符串时，支持超长日志的打印，解决了Logcat 4K字符截断的问题。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
 * 支持保存日志到文件，底层基于 Kotlin Coroutines
-* 支持自定义日志格式
+* 支持自定义日志格式存储
+* 提供基于 OkHttp 的拦截器，便于打印 request、response
 
 # 使用方法：
 
