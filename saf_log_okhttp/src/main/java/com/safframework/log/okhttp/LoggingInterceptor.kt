@@ -21,11 +21,6 @@ import java.util.concurrent.TimeUnit
  */
 class LoggingInterceptor: Interceptor {
 
-    companion object {
-
-        private const val JSON_INDENT = 3
-    }
-
     override fun intercept(chain: Interceptor.Chain): Response {
 
         var request = chain.request()
@@ -39,7 +34,7 @@ class LoggingInterceptor: Interceptor {
                     .append("Method: @${request.method}")
 
             if (header.isNullOrEmpty()) {
-                append("")
+                append(LoggerPrinter.BR)
             } else {
                 append(LoggerPrinter.BR)
                     .append(LoggerPrinter.BR)
@@ -117,10 +112,10 @@ class LoggingInterceptor: Interceptor {
         try {
             if (msg.startsWith("{")) {
                 val jsonObject = JSONObject(msg)
-                message = jsonObject.toString(JSON_INDENT)
+                message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
             } else if (msg.startsWith("[")) {
                 val jsonArray = JSONArray(msg)
-                message = jsonArray.toString(JSON_INDENT)
+                message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
             } else {
                 message = msg
             }

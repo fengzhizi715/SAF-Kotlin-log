@@ -10,7 +10,7 @@ object LoggerPrinter {
     /**
      * It is used for json pretty print
      */
-    val JSON_INDENT = 2
+    val JSON_INDENT = 3
 
     /**
      * Drawing toolbox
