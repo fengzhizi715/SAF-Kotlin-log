@@ -21,9 +21,9 @@ class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printe
 
             LogLevel.ERROR -> Log.e(tag, msg)
 
-            LogLevel.WARN -> Log.w(tag, msg)
+            LogLevel.WARN  -> Log.w(tag, msg)
 
-            LogLevel.INFO -> Log.i(tag, msg)
+            LogLevel.INFO  -> Log.i(tag, msg)
 
             LogLevel.DEBUG -> Log.d(tag, msg)
         }

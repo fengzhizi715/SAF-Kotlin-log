@@ -208,6 +208,4 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
     }
-
-
 }
