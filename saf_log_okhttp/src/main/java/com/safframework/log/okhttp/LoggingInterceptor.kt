@@ -1,5 +1,6 @@
 package com.safframework.log.okhttp
 
+import android.text.TextUtils
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import okhttp3.Interceptor
@@ -8,6 +9,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.nio.charset.Charset
+import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -37,8 +39,14 @@ class LoggingInterceptor: Interceptor {
 
         L.i(requestLog)
 
+        val st = System.nanoTime()
+
         val response = chain.proceed(request)
 
+        val chainMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - st)
+        val code = response.code
+        val segmentList = request.url.encodedPathSegments
+        val isSuccessful = response.isSuccessful
         val responseBody = response.body
         val contentType = responseBody?.contentType()
 
@@ -58,11 +66,34 @@ class LoggingInterceptor: Interceptor {
 
                 val bodyString = getJsonString(buffer.clone().readString(Charset.forName("UTF-8")))
 
-                L.i(bodyString)
+                val segmentString = slashSegments(segmentList)
+
+                val responseString = StringBuilder().apply {
+
+                    append(if (!TextUtils.isEmpty(segmentString)) segmentString + " - " else "")
+                            .append("is success : $isSuccessful Received in: $chainMs ms")
+                            .append(LoggerPrinter.BR)
+                            .append(LoggerPrinter.BR)
+                            .append("Status Code: $code")
+                            .append(LoggerPrinter.BR)
+                            .append(LoggerPrinter.BR)
+                            .append(bodyString)
+
+                }.toString()
+
+                L.i(responseString)
             }
         }
 
         return response
+    }
+
+    private fun slashSegments(segments: List<String>): String {
+        val segmentString = StringBuilder()
+        for (segment in segments) {
+            segmentString.append("/").append(segment)
+        }
+        return segmentString.toString()
     }
 
     private fun subtypeIsNotFile(subtype: String?): Boolean = subtype != null && (subtype.contains("json")
