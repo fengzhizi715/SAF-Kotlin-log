@@ -71,7 +71,7 @@ publish{
     userOrg = 'fengzhizi715'
     groupId = 'com.safframework.log'
     artifactId = 'saf-log-file'
-    publishVersion = '2.1.2'
+    publishVersion = "$l_version"
     desc = 'this is a log library for android,written by kotlin'
     website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
 }
