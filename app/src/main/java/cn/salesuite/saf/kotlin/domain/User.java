@@ -1,4 +1,4 @@
-package cn.salesuite.saf.kotlin;
+package cn.salesuite.saf.kotlin.domain;
 
 import java.io.Serializable;
 

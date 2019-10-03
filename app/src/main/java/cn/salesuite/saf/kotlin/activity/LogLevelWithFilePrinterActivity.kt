@@ -1,4 +1,4 @@
-package cn.salesuite.saf.kotlin
+package cn.salesuite.saf.kotlin.activity
 
 import android.Manifest
 import android.app.Activity
@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import cn.salesuite.saf.kotlin.domain.User
 import com.safframework.log.L
 import com.safframework.log.printer.FilePrinter
 import com.safframework.log.printer.file.FileBuilder
@@ -14,7 +15,7 @@ import com.safframework.log.printer.file.name.LevelFileNameGenerator
 /**
  *
  * @FileName:
- *          cn.salesuite.saf.kotlin.LogLevelWithFilePrinterActivity
+ *          cn.salesuite.saf.kotlin.activity.LogLevelWithFilePrinterActivity
  * @author: Tony Shen
  * @date: 2019-10-03 09:59
  * @version: V1.0 <描述当前版本功能>

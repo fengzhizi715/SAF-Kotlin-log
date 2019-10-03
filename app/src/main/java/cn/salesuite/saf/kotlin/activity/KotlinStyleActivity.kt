@@ -1,4 +1,4 @@
-package cn.salesuite.saf.kotlin
+package cn.salesuite.saf.kotlin.activity
 
 import android.app.Activity
 import android.os.Bundle
@@ -8,7 +8,7 @@ import com.safframework.log.i
 /**
  *
  * @FileName:
- *          cn.salesuite.saf.kotlin.KotlinStyleActivity
+ *          cn.salesuite.saf.kotlin.activity.KotlinStyleActivity
  * @author: Tony Shen
  * @date: 2019-10-03 01:33
  * @version: V1.0 <描述当前版本功能>

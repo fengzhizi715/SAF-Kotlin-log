@@ -1,9 +1,11 @@
-package cn.salesuite.saf.kotlin;
+package cn.salesuite.saf.kotlin.handler;
 
 import com.safframework.log.L;
 import com.safframework.log.LogLevel;
 import com.safframework.log.handler.BaseHandler;
 import com.safframework.log.printer.Printer;
+
+import cn.salesuite.saf.kotlin.domain.User;
 
 
 /**
