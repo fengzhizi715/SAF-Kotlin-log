@@ -45,9 +45,15 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name="cn.salesuite.saf.kotlin.activity.LoggingInterceptorActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
