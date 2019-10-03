@@ -45,5 +45,5 @@ class FileBuilder{
         return this
     }
 
-    fun build() = FilePrinter(this,this.formatter?: SimpleFormatter())
+    fun build() = FilePrinter(this,this.formatter?: SimpleFormatter)
 }

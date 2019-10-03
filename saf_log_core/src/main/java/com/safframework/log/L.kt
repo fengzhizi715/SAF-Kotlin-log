@@ -18,8 +18,8 @@ object L {
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
     private val printers = mutableSetOf<Printer>()
-    private var enableDisplayThreadInfo:Boolean = true
-    private var enableDisplayClassInfo:Boolean  = true
+    private var displayThreadInfo:Boolean  = true
+    private var displayClassInfo:Boolean   = true
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
@@ -133,9 +133,9 @@ object L {
      * 是否打印线程信息
      */
     @JvmStatic
-    fun enableDisplayThreadInfo(displayThreadInfo:Boolean): L {
+    fun displayThreadInfo(displayThreadInfo:Boolean): L {
 
-        this.enableDisplayThreadInfo = displayThreadInfo
+        this.displayThreadInfo = displayThreadInfo
         return this
     }
 
@@ -143,9 +143,9 @@ object L {
      * 是否打印类的信息
      */
     @JvmStatic
-    fun enableDisplayClassInfo(displayClassInfo:Boolean): L {
+    fun displayClassInfo(displayClassInfo:Boolean): L {
 
-        this.enableDisplayClassInfo = displayClassInfo
+        this.displayClassInfo = displayClassInfo
         return this
     }
 
@@ -260,7 +260,7 @@ object L {
 
     @JvmOverloads
     @JvmStatic
-    fun getMethodNames(formatter: Formatter = BorderFormatter()): String {
+    fun getMethodNames(formatter: Formatter = BorderFormatter): String {
 
         val sElements = Thread.currentThread().stackTrace
 
@@ -282,14 +282,14 @@ object L {
             }
         }.apply {
 
-            if (enableDisplayThreadInfo) {
+            if (displayThreadInfo) {
                 // 添加当前线程名
                 append("Thread: ${Thread.currentThread().name}")
                         .append(formatter.middle())
                         .append(formatter.spliter())
             }
 
-            if (enableDisplayClassInfo) {
+            if (displayClassInfo) {
 
                 // 添加类名、方法名、行数
                 append(sElements[stackOffset].className)

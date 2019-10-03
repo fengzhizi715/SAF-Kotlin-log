@@ -13,7 +13,7 @@ import com.safframework.log.formatter.Formatter
  * @date: 2019-08-15 00:51
  * @since: V2.0 打印到控制台的Printer
  */
-class ConsolePrinter(override val formatter: Formatter = BorderFormatter()):Printer {
+class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printer {
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 

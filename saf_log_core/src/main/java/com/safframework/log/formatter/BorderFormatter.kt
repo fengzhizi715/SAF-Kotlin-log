@@ -10,7 +10,7 @@ import com.safframework.log.LoggerPrinter
  * @date: 2019-09-15 15:14
  * @since: V2.0 <描述当前版本功能>
  */
-class BorderFormatter:Formatter {
+object BorderFormatter:Formatter {
 
     override fun top()    = LoggerPrinter.BR + LoggerPrinter.TOP_BORDER + LoggerPrinter.BR + LoggerPrinter.HORIZONTAL_DOUBLE_LINE
 
