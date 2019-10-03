@@ -71,7 +71,7 @@ class LoggingInterceptor: Interceptor {
 
                 val responseString = StringBuilder().apply {
 
-                    append(if (!TextUtils.isEmpty(segmentString)) segmentString + " - " else "")
+                    append(if (!TextUtils.isEmpty(segmentString)) "$segmentString - " else "")
                             .append("is success : $isSuccessful Received in: $chainMs ms")
                             .append(LoggerPrinter.BR)
                             .append(LoggerPrinter.BR)
@@ -95,7 +95,7 @@ class LoggingInterceptor: Interceptor {
         return response
     }
 
-    private fun subtypeIsNotFile(subtype: String?): Boolean = subtype != null && (subtype.contains("json")
+    private fun subtypeIsNotFile(subtype: String?)= subtype != null && (subtype.contains("json")
             || subtype.contains("xml")
             || subtype.contains("plain")
             || subtype.contains("html"))
