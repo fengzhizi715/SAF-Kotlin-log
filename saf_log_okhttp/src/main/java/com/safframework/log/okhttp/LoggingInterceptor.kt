@@ -47,6 +47,7 @@ class LoggingInterceptor: Interceptor {
         val code = response.code
         val segmentList = request.url.encodedPathSegments
         val isSuccessful = response.isSuccessful
+        val responseHeader = response.headers.toString()
         val responseBody = response.body
         val contentType = responseBody?.contentType()
 
@@ -77,6 +78,12 @@ class LoggingInterceptor: Interceptor {
                             .append("Status Code: $code")
                             .append(LoggerPrinter.BR)
                             .append(LoggerPrinter.BR)
+                            .append("Headers:")
+                            .append(LoggerPrinter.BR)
+                            .append(dotHeaders(responseHeader))
+                            .append(LoggerPrinter.BR)
+                            .append("Body:")
+                            .append(LoggerPrinter.BR)
                             .append(bodyString)
 
                 }.toString()
@@ -86,14 +93,6 @@ class LoggingInterceptor: Interceptor {
         }
 
         return response
-    }
-
-    private fun slashSegments(segments: List<String>): String {
-        val segmentString = StringBuilder()
-        for (segment in segments) {
-            segmentString.append("/").append(segment)
-        }
-        return segmentString.toString()
     }
 
     private fun subtypeIsNotFile(subtype: String?): Boolean = subtype != null && (subtype.contains("json")
@@ -119,5 +118,30 @@ class LoggingInterceptor: Interceptor {
         }
 
         return message
+    }
+
+    private fun slashSegments(segments: List<String>): String {
+        val segmentString = StringBuilder()
+        for (segment in segments) {
+            segmentString.append("/").append(segment)
+        }
+        return segmentString.toString()
+    }
+
+    private fun dotHeaders(header: String): String {
+        val headers = header.split(LoggerPrinter.BR).dropLastWhile { it.isEmpty() }.toTypedArray()
+        val builder = StringBuilder()
+
+        if (headers != null && headers.isNotEmpty()) {
+            for (item in headers) {
+
+                builder.append(" - ").append(item).append("\n")
+            }
+        } else {
+
+            builder.append(LoggerPrinter.BR)
+        }
+
+        return builder.toString()
     }
 }
