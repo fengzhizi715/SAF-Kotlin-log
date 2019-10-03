@@ -31,11 +31,24 @@ class LoggingInterceptor: Interceptor {
         var request = chain.request()
         val header = request.headers.toString()
 
-        val requestLog = " URL: " + request.url  + LoggerPrinter.BR +
-                " Method: @" + request.method  + LoggerPrinter.BR +
-                if (header.isNullOrEmpty()) "" else " Headers: " + header + LoggerPrinter.BR
+        val requestString = StringBuilder().apply {
 
-        L.i(requestLog)
+            append("URL: ${request.url}")
+                    .append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BR)
+                    .append("Method: @${request.method}")
+
+            if (header.isNullOrEmpty()) {
+                append("")
+            } else {
+                append(LoggerPrinter.BR)
+                    .append(LoggerPrinter.BR)
+                    .append("Headers: " + LoggerPrinter.BR + dotHeaders(header))
+            }
+
+        }.toString()
+
+        L.i(requestString)
 
         val st = System.nanoTime()
 
