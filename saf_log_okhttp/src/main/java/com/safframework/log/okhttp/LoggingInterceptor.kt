@@ -4,10 +4,13 @@ import android.text.TextUtils
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import okhttp3.Interceptor
+import okhttp3.Request
 import okhttp3.Response
+import okio.Buffer
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.IOException
 import java.nio.charset.Charset
 import java.util.concurrent.TimeUnit
 
@@ -21,10 +24,15 @@ import java.util.concurrent.TimeUnit
  */
 class LoggingInterceptor: Interceptor {
 
+    companion object {
+        private const val MAX_LONG_SIZE = 120
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
 
         var request = chain.request()
         val header = request.headers.toString()
+        val requestBody = request.body
 
         val requestString = StringBuilder().apply {
 
@@ -39,6 +47,16 @@ class LoggingInterceptor: Interceptor {
                 append(LoggerPrinter.BR)
                     .append(LoggerPrinter.BR)
                     .append("Headers: " + LoggerPrinter.BR + dotHeaders(header))
+            }
+
+            requestBody?.let {
+
+                val bodyString = bodyToString(request).split(LoggerPrinter.BR).dropLastWhile { it.isEmpty() }.toTypedArray()
+
+                append(LoggerPrinter.BR)
+                        .append("Body: ")
+                        .append(LoggerPrinter.BR)
+                        .append(logLines(bodyString))
             }
 
         }.toString()
@@ -99,6 +117,35 @@ class LoggingInterceptor: Interceptor {
         }
 
         return response
+    }
+
+    private fun bodyToString(request: Request): String {
+        try {
+            val copy = request.newBuilder().build()
+            val buffer = Buffer()
+            if (copy.body == null) return ""
+
+            copy.body?.writeTo(buffer)
+            return getJsonString(buffer.readUtf8())
+        } catch (e: IOException) {
+            return "{\"err\": \"" + e.message + "\"}"
+        }
+    }
+
+    private fun logLines(lines: Array<String>): String {
+        val sb = StringBuilder()
+        for (line in lines) {
+            val lineLength = line.length
+            for (i in 0..lineLength / MAX_LONG_SIZE) {
+                val start = i * MAX_LONG_SIZE
+                var end = (i + 1) * MAX_LONG_SIZE
+                end = if (end > line.length) line.length else end
+
+                sb.append(" " + line.substring(start, end)).append(LoggerPrinter.BR)
+            }
+        }
+
+        return sb.toString()
     }
 
     private fun subtypeIsNotFile(subtype: String?)= subtype != null && (subtype.contains("json")
