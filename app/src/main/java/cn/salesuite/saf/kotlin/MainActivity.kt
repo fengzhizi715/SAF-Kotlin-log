@@ -43,5 +43,11 @@ class MainActivity : Activity() {
             startActivity(intent)
         }
 
+        text5.setOnClickListener {
+
+            val intent = Intent(this@MainActivity,LogLevelWithFilePrinterActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
