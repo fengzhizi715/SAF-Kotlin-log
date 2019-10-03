@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.1.3
+---
+2019-10-03
+* 优化 StringHandler
+* 增加 saf-log-okhttp 模块，用于打印 okhttp 的 request、response
+
 Version 2.1.2
 ---
 2019-10-03
