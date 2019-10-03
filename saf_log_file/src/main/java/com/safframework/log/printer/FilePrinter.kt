@@ -97,6 +97,32 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as FilePrinter
+
+        if (formatter != other.formatter) return false
+        if (channel != other.channel) return false
+        if (folderPath != other.folderPath) return false
+        if (fileNameGenerator != other.fileNameGenerator) return false
+        if (cleanStrategy != other.cleanStrategy) return false
+        if (writer != other.writer) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = formatter.hashCode()
+        result = 31 * result + channel.hashCode()
+        result = 31 * result + folderPath.hashCode()
+        result = 31 * result + fileNameGenerator.hashCode()
+        result = 31 * result + cleanStrategy.hashCode()
+        result = 31 * result + writer.hashCode()
+        return result
+    }
+
 
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
@@ -182,4 +208,6 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
             }
         }
     }
+
+
 }

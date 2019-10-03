@@ -60,7 +60,7 @@ class FilePrinterActivity : Activity() {
         if (requestCode==0) {
 
             filePrinter = FileBuilder().folderPath("/storage/emulated/0/logs").build()
-            L.addPrinter(filePrinter);
+            L.addPrinter(filePrinter)
         }
     }
 
@@ -69,5 +69,4 @@ class FilePrinterActivity : Activity() {
 
         L.removePrinter(filePrinter)
     }
-
 }
