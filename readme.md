@@ -35,13 +35,11 @@ implementation 'com.safframework.log:saf-log-okhttp:2.1.3'
 * 支持显示/关闭当前线程信息
 * 支持自定义 Header，可以用于标识手机、App 等版本信息
 * 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
-* 使用 json() 打印字符串时，支持超长日志的打印，解决了 Logcat 4K 字符截断的问题。
+* 使用 json() 方法打印字符串时，支持超长日志的打印，解决了 Logcat 4K 字符截断的问题。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
 * 支持保存日志到文件，底层基于 Kotlin Coroutines
-* 支持自定义日志格式存储
+* 支持自定义日志格式存储到文件
 * 提供基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
-
-![](images/L.png)
 
 # 使用方法：
 
