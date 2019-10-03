@@ -24,9 +24,7 @@ class LoggingInterceptor: Interceptor {
     companion object {
 
         private const val JSON_INDENT = 3
-        private const val MAX_STRING_LENGTH = 4000
     }
-
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
