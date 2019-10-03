@@ -11,7 +11,7 @@ ext {
             supportVersion            : "28.0.0",
 
             rxandroid                 : "2.0.1",
-            rxjava                    : "2.2.4",
+            rxjava                    : "2.2.10",
 
             retrofit                  : "2.3.0",
             okhttp3                   : "3.11.0",
@@ -55,4 +55,3 @@ task clean(type: Delete) {
 
 tasks.getByPath(":saf_log_core:releaseAndroidJavadocs").enabled = false
 tasks.getByPath(":saf_log_file:releaseAndroidJavadocs").enabled = false
-//tasks.getByPath(":saf-log:bintrayUpload").enabled = true
