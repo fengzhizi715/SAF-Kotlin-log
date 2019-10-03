@@ -40,7 +40,7 @@ class LoggingInterceptor: Interceptor {
         val response = chain.proceed(request)
 
         val responseBody = response.body
-        val contentType = responseBody!!.contentType()
+        val contentType = responseBody?.contentType()
 
         var subtype: String? = null
 
@@ -50,13 +50,16 @@ class LoggingInterceptor: Interceptor {
 
         if (subtypeIsNotFile(subtype)) {
 
-            val source = responseBody.source()
-            source.request(Long.MAX_VALUE)
-            val buffer = source.buffer()
+            responseBody?.let {
 
-            val bodyString = getJsonString(buffer.clone().readString(Charset.forName("UTF-8")))
+                val source = it.source()
+                source.request(Long.MAX_VALUE)
+                val buffer = source.buffer()
 
-            L.i(bodyString)
+                val bodyString = getJsonString(buffer.clone().readString(Charset.forName("UTF-8")))
+
+                L.i(bodyString)
+            }
         }
 
         return response

@@ -3,8 +3,6 @@ package cn.salesuite.saf.kotlin.activity
 import android.app.Activity
 import android.os.Bundle
 import cn.salesuite.saf.kotlin.http.RetrofitManager
-import com.safframework.log.L
-import com.safframework.log.i
 import com.safframework.utils.RxJavaUtils
 
 /**

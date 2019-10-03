@@ -31,14 +31,6 @@ class RetrofitManager private constructor() {
         builder.readTimeout((5 * 1000).toLong(), TimeUnit.MILLISECONDS)
         builder.connectTimeout((5 * 1000).toLong(), TimeUnit.MILLISECONDS)
 
-//        val loggingInterceptor = LoggingInterceptor.Builder()
-//                .loggable(true) // TODO: 发布到生产环境需要改成false
-//                .request()
-//                .requestTag("Request")
-//                .response()
-//                .responseTag("Response")
-//                .build()
-
         //设置拦截器
         builder.addInterceptor(LoggingInterceptor())
 
