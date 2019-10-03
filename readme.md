@@ -41,6 +41,8 @@ implementation 'com.safframework.log:saf-log-okhttp:2.1.3'
 * 支持自定义日志格式存储
 * 提供基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
 
+![](images/L.png)
+
 # 使用方法：
 
 ## 1.tag使用
