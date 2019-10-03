@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.1.2
+---
+2019-10-03
+* Printers 增加equals、hashcode方法
+
 Version 2.1.1
 ---
 2019-10-03

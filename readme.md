@@ -15,11 +15,11 @@
 Gradle:
 
 ```groovy
-implementation 'com.safframework.log:saf-log-core:2.1.1'
+implementation 'com.safframework.log:saf-log-core:2.1.2'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-file:2.1.1'
+implementation 'com.safframework.log:saf-log-file:2.1.2'
 ```
 
 # 功能：
