@@ -23,6 +23,8 @@
 * 支持自定义日志格式存储到文件
 * 提供基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
 
+## 更详细的功能请查看[wiki](https://github.com/fengzhizi715/SAF-Kotlin-log/wiki)
+
 # 最新版本
 
 模块|最新版本
