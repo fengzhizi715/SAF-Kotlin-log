@@ -1,7 +1,6 @@
 # SAF-Kotlin-log
 
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
-[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-core/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-core/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ![](logo.JPG)
@@ -10,21 +9,29 @@
 
 它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。
 
+# 最新版本
+
+模块|最新版本
+---|:-------------:
+saf-log-core|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-core/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-core/_latestVersion)
+saf-log-file|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-file/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-file/_latestVersion)
+saf-log-okhttp|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-okhttp/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-okhttp/_latestVersion)
+
 
 # 下载安装
 
 Gradle:
 
 ```groovy
-implementation 'com.safframework.log:saf-log-core:2.1.3'
+implementation 'com.safframework.log:saf-log-core:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-file:2.1.3'
+implementation 'com.safframework.log:saf-log-file:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-okhttp:2.1.3'
+implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
 ```
 
 # 功能：
