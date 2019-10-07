@@ -132,8 +132,7 @@ class LoggingInterceptor: Interceptor {
         }
     }
 
-    private fun logLines(lines: Array<String>): String {
-        val sb = StringBuilder()
+    private fun logLines(lines: Array<String>) = StringBuilder().apply {
         for (line in lines) {
             val lineLength = line.length
             for (i in 0..lineLength / MAX_LONG_SIZE) {
@@ -141,12 +140,10 @@ class LoggingInterceptor: Interceptor {
                 var end = (i + 1) * MAX_LONG_SIZE
                 end = if (end > line.length) line.length else end
 
-                sb.append(" " + line.substring(start, end)).append(LoggerPrinter.BR)
+                append(" " + line.substring(start, end)).append(LoggerPrinter.BR)
             }
         }
-
-        return sb.toString()
-    }
+    }.toString()
 
     private fun subtypeIsNotFile(subtype: String?)= subtype != null && (subtype.contains("json")
             || subtype.contains("xml")
