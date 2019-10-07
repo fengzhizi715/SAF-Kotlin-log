@@ -87,7 +87,7 @@ class LoggingInterceptor: Interceptor {
 
                 val source = it.source()
                 source.request(Long.MAX_VALUE)
-                val buffer = source.buffer()
+                val buffer = source.buffer
 
                 val bodyString = getJsonString(buffer.clone().readString(Charset.forName("UTF-8")))
 
