@@ -173,13 +173,11 @@ class LoggingInterceptor: Interceptor {
         return message
     }
 
-    private fun slashSegments(segments: List<String>): String {
-        val segmentString = StringBuilder()
+    private fun slashSegments(segments: List<String>) = StringBuilder().apply {
         for (segment in segments) {
-            segmentString.append("/").append(segment)
+            append("/").append(segment)
         }
-        return segmentString.toString()
-    }
+    }.toString()
 
     private fun dotHeaders(header: String): String {
         val headers = header.split(LoggerPrinter.BR).dropLastWhile { it.isEmpty() }.toTypedArray()
