@@ -181,18 +181,15 @@ class LoggingInterceptor: Interceptor {
 
     private fun dotHeaders(header: String): String {
         val headers = header.split(LoggerPrinter.BR).dropLastWhile { it.isEmpty() }.toTypedArray()
-        val builder = StringBuilder()
 
-        if (headers != null && headers.isNotEmpty()) {
-            for (item in headers) {
-
-                builder.append(" - ").append(item).append("\n")
+        return StringBuilder().apply {
+            if (headers != null && headers.isNotEmpty()) {
+                for (item in headers) {
+                    append(" - ").append(item).append("\n")
+                }
+            } else {
+                append(LoggerPrinter.BR)
             }
-        } else {
-
-            builder.append(LoggerPrinter.BR)
-        }
-
-        return builder.toString()
+        }.toString()
     }
 }
