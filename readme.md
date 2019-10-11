@@ -54,6 +54,7 @@ implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
 # TODO List：
 
 * 迁移到 androidX
+* 提供日志文件备份、压缩功能
 
 
 联系方式
