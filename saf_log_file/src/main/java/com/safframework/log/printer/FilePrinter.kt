@@ -86,10 +86,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
 
     private fun cleanLogFilesIfNecessary() {
 
-        val logDir = File(folderPath)
-        val files = logDir.listFiles() ?: return
-
-        files.map {
+        File(folderPath).listFiles().map {
 
             if (cleanStrategy.shouldClean(it)) {
                 it.delete()
@@ -124,10 +121,9 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     }
 
     /**
-     * 每次文件写入的内容
+     * 每次写入文件的内容，记录了当前时间、LogLevel、tag、msg
      */
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
-
 
     /**
      * 文件写入
