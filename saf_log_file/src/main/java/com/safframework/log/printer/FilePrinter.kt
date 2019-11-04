@@ -3,6 +3,7 @@ package com.safframework.log.printer
 import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
+import com.safframework.log.printer.coroutines.ioScope
 import com.safframework.log.printer.file.FileBuilder
 import com.safframework.log.printer.file.FileWriter
 import com.safframework.log.printer.file.bean.LogItem
@@ -88,7 +89,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
      */
     private fun cleanLogFilesIfNecessary() {
 
-        File(folderPath).listFiles().map {
+        File(folderPath).listFiles()?.map {
 
             if (cleanStrategy.shouldClean(it)) {
                 it.delete()
