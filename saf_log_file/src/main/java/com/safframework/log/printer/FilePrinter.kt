@@ -11,7 +11,6 @@ import com.safframework.log.printer.file.clean.CleanStrategy
 import com.safframework.log.printer.file.clean.NeverCleanStrategy
 import com.safframework.log.printer.file.name.DateFileNameGenerator
 import com.safframework.log.printer.file.name.FileNameGenerator
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
@@ -35,7 +34,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     private val writer: FileWriter
 
     init {
-        GlobalScope.launch {
+        ioScope().launch {
             channel.consumeEach {
 
                 doWrite(it)
@@ -51,7 +50,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 
-        GlobalScope.launch {
+        ioScope().launch {
             channel.send(LogItem(System.currentTimeMillis(), logLevel, tag, msg))
         }
     }
