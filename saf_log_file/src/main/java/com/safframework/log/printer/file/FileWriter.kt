@@ -11,7 +11,7 @@ import java.io.IOException
  *          com.safframework.log.printer.file.FileWriter
  * @author: Tony Shen
  * @date: 2019-11-04 17:11
- * @version: V1.0 文件写入
+ * @version: V2.0 文件写入
  */
 class FileWriter(var folderPath:String) {
 

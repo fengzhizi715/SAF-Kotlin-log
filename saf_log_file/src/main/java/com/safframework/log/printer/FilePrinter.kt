@@ -83,6 +83,9 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         writer.appendLog(JSON.toJSONString(logItem))
     }
 
+    /**
+     * 判断是否需要删除日志文件
+     */
     private fun cleanLogFilesIfNecessary() {
 
         File(folderPath).listFiles().map {
