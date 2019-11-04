@@ -3,19 +3,18 @@ package com.safframework.log.printer
 import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.printer.file.name.DateFileNameGenerator
 import com.safframework.log.printer.file.FileBuilder
+import com.safframework.log.printer.file.FileWriter
+import com.safframework.log.printer.file.bean.LogItem
+import com.safframework.log.printer.file.clean.CleanStrategy
+import com.safframework.log.printer.file.clean.NeverCleanStrategy
+import com.safframework.log.printer.file.name.DateFileNameGenerator
 import com.safframework.log.printer.file.name.FileNameGenerator
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
-import java.io.BufferedWriter
 import java.io.File
-import java.io.FileWriter
-import java.io.IOException
-import com.safframework.log.printer.file.clean.CleanStrategy
-import com.safframework.log.printer.file.clean.NeverCleanStrategy
 
 
 /**
@@ -32,7 +31,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     private val folderPath:String
     private val fileNameGenerator: FileNameGenerator
     private val cleanStrategy: CleanStrategy
-    private val writer: Writer
+    private val writer: FileWriter
 
     init {
         GlobalScope.launch {
@@ -46,7 +45,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
         cleanStrategy     = fileBuilder.cleanStrategy?: NeverCleanStrategy()
 
-        writer            = Writer(folderPath)
+        writer            = FileWriter(folderPath)
     }
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
@@ -118,95 +117,5 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         result = 31 * result + cleanStrategy.hashCode()
         result = 31 * result + writer.hashCode()
         return result
-    }
-
-    /**
-     * 每次写入文件的内容，记录了当前时间、LogLevel、tag、msg
-     */
-    private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
-
-    /**
-     * 文件写入
-     */
-    private class Writer(var folderPath:String) {
-
-        var lastFileName: String? = null
-            private set
-
-        var file: File? = null
-            private set
-
-        var bufferedWriter: BufferedWriter?=null
-
-        val isOpened: Boolean
-            get() = bufferedWriter != null
-
-        fun open(newFileName: String): Boolean {
-            lastFileName = newFileName
-            file = File(folderPath, newFileName)
-
-            file?.let {
-
-                if (!it.exists()) {
-
-                    try {
-                        val parent = it.parentFile
-                        if (!parent.exists()) {
-                            parent.mkdirs()
-                        }
-                        it.createNewFile()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                        lastFileName = null
-                        file = null
-                        return false
-                    }
-                }
-
-                try {
-                    bufferedWriter = BufferedWriter(FileWriter(it, true))
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    lastFileName = null
-                    file = null
-                    return false
-                }
-
-                return true
-            }
-
-            return false
-        }
-
-        fun close(): Boolean {
-
-            bufferedWriter?.let {
-
-                try {
-                    it.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    return false
-                } finally {
-                    lastFileName = null
-                    file = null
-                }
-            }
-
-            return true
-        }
-
-        fun appendLog(log: String) {
-
-            bufferedWriter?.let {
-
-                try {
-                    it.write(log)
-                    it.newLine()
-                    it.flush()
-                } catch (e: IOException) {
-                }
-            }
-        }
     }
 }
