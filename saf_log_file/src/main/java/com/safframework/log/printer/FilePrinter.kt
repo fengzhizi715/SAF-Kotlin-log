@@ -123,10 +123,15 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         return result
     }
 
-
+    /**
+     * 每次文件写入的内容
+     */
     private class LogItem internal constructor(internal var timeMillis: Long, internal var level: LogLevel, internal var tag: String, internal var msg: String)
 
 
+    /**
+     * 文件写入
+     */
     private class Writer(var folderPath:String) {
 
         var lastFileName: String? = null
