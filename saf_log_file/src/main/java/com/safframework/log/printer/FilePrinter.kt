@@ -63,7 +63,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
 
             val newFileName = fileNameGenerator.generateFileName(logItem.level.value, System.currentTimeMillis())
 
-            if (newFileName == null || newFileName.trim { it <= ' ' }.length == 0) {
+            if (newFileName.trim { it <= ' ' }.isEmpty()) {
                 throw IllegalArgumentException("File name should not be empty.")
             }
 
