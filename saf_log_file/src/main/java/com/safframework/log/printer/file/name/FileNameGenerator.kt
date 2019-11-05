@@ -12,5 +12,5 @@ interface FileNameGenerator {
 
     fun isFileNameChangeable(): Boolean
 
-    fun generateFileName(logLevel: Int, timestamp: Long): String
+    fun generateFileName(logLevel: Int, tag:String, timestamp: Long): String
 }

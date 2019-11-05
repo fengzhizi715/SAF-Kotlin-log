@@ -13,7 +13,7 @@ class LevelFileNameGenerator : FileNameGenerator {
 
     override fun isFileNameChangeable() = true
 
-    override fun generateFileName(logLevel: Int, timestamp: Long): String {
+    override fun generateFileName(logLevel: Int, tag:String, timestamp: Long): String {
 
         return when(logLevel) {
 
