@@ -222,7 +222,7 @@ object L {
     }
 
     /**
-     * 使用特定的 printer 进行打印
+     * 使用多个特定的 printer 进行打印
      */
     @JvmStatic
     fun print(logLevel: LogLevel, tag: String?, msg: String?,vararg printers: Printer) {
