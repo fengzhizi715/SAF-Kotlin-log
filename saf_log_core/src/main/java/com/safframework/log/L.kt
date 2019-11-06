@@ -201,13 +201,46 @@ object L {
     @JvmStatic
     fun d(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,tag,msg,tr)
 
+    /**
+     * 使用特定的 printer 进行打印
+     */
     @JvmStatic
     fun print(logLevel: LogLevel, tag: String?, msg: String?,printer: Printer) {
 
         if (logLevel.value <= L.logLevel.value) {
             if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-                val s = getMethodNames(printer.formatter)
-                printer.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${printer.formatter.spliter()}")))
+
+                if (msg.contains("\n")) {
+                    val s = getMethodNames(printer.formatter)
+                    printer.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${printer.formatter.spliter()}")))
+                } else {
+                    val s = getMethodNames(printer.formatter)
+                    printer.printLog(logLevel, tag, String.format(s, msg))
+                }
+            }
+        }
+    }
+
+    /**
+     * 使用特定的 printer 进行打印
+     */
+    @JvmStatic
+    fun print(logLevel: LogLevel, tag: String?, msg: String?,vararg printers: Printer) {
+
+        if (logLevel.value <= L.logLevel.value) {
+            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
+
+                if (msg.contains("\n")) {
+                    printers.map {
+                        val s = getMethodNames(it.formatter)
+                        it.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${it.formatter.spliter()}")))
+                    }
+                } else {
+                    printers.map {
+                        val s = getMethodNames(it.formatter)
+                        it.printLog(logLevel, tag, String.format(s, msg))
+                    }
+                }
             }
         }
     }
