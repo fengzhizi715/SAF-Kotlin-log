@@ -202,27 +202,7 @@ object L {
     fun d(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,tag,msg,tr)
 
     /**
-     * 使用特定的 printer 进行打印
-     */
-    @JvmStatic
-    fun print(logLevel: LogLevel, tag: String?, msg: String?,printer: Printer) {
-
-        if (logLevel.value <= L.logLevel.value) {
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                if (msg.contains("\n")) {
-                    val s = getMethodNames(printer.formatter)
-                    printer.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${printer.formatter.spliter()}")))
-                } else {
-                    val s = getMethodNames(printer.formatter)
-                    printer.printLog(logLevel, tag, String.format(s, msg))
-                }
-            }
-        }
-    }
-
-    /**
-     * 使用多个特定的 printer 进行打印
+     * 使用特定的 printer 进行打印日志
      */
     @JvmStatic
     fun print(logLevel: LogLevel, tag: String?, msg: String?,vararg printers: Printer) {
