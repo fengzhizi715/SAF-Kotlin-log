@@ -27,6 +27,7 @@ class FileWriter(var folderPath:String) {
         get() = bufferedWriter != null
 
     fun open(newFileName: String): Boolean {
+
         lastFileName = newFileName
         file = File(folderPath, newFileName)
 

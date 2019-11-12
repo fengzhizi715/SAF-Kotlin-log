@@ -22,11 +22,7 @@ class DateFileNameGenerator : FileNameGenerator {
 
     override fun generateFileName(logLevel: Int, tag:String, timestamp: Long): String {
 
-        var sdf = mLocalDateFormat.get()
-
-        if (sdf==null) {
-            sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
-        }
+        var sdf = mLocalDateFormat.get()?:SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
 
         return sdf.let {
 

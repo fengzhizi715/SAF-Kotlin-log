@@ -23,7 +23,7 @@ import java.io.File
  *          com.safframework.log.printer.FilePrinter
  * @author: Tony Shen
  * @date: 2019-08-31 10:58
- * @since: V2.0 打印到文件的Printer，默认的 formatter 使用 SimpleFormatter
+ * @since: V2.0 打印到文件的 Printer，默认的 formatter 使用 SimpleFormatter
  */
 class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Printer{
 
@@ -82,7 +82,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
     }
 
     /**
-     * 判断是否需要删除日志文件
+     * 判断是否需要删除日志文件，需要则删除
      */
     private fun cleanLogFilesIfNecessary() {
 
