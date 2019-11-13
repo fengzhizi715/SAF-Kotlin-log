@@ -55,7 +55,7 @@ implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
 
 * 迁移到 androidX
 * 提供日志文件备份、压缩功能
-* 支持 mmap
+* 支持 mmap 存储
 
 
 联系方式
