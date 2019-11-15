@@ -301,7 +301,7 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                   append("Header: $it").append(formatter.middle())
+                   append("Header: $it").append(formatter.middle()).append(formatter.spliter())
                 }
             }
         }.apply {
