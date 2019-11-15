@@ -297,13 +297,11 @@ object L {
             append("  ").append(formatter.top())
         }.apply {
 
-            header?.let {
-
-                if (it.isNotEmpty()) {
-                    // 添加 Header
-                   append("Header: $it").append(formatter.middle()).append(formatter.spliter())
-                }
+            header?.takeIf { it.isNotEmpty() }?.let {
+                // 添加 Header
+                append("Header: $it").append(formatter.middle()).append(formatter.spliter())
             }
+
         }.apply {
 
             if (displayThreadInfo) {
