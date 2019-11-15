@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.2.0
+---
+2019-11-16
+* 增加使用特定的 Printer 进行打印日志
+* saf-log-file 模块使用 SafeCoroutineScope 创建协程
+
 Version 2.1.3
 ---
 2019-10-03
