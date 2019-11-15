@@ -205,39 +205,21 @@ object L {
      * 使用特定的 printer 进行打印日志
      */
     @JvmStatic
-    fun print(logLevel: LogLevel, tag: String?, msg: String?,vararg printers: Printer) {
+    fun print(logLevel: LogLevel, tag: String?, msg: String?,vararg printers: Printer)  = printLog(logLevel,tag,msg, printers.toMutableSet())
 
-        if (logLevel.value <= L.logLevel.value) {
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                if (msg.contains("\n")) {
-                    printers.map {
-                        val s = getMethodNames(it.formatter)
-                        it.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${it.formatter.spliter()}")))
-                    }
-                } else {
-                    printers.map {
-                        val s = getMethodNames(it.formatter)
-                        it.printLog(logLevel, tag, String.format(s, msg))
-                    }
-                }
-            }
-        }
-    }
-
-    private fun printLog(logLevel: LogLevel, tag: String?, msg: String?) {
+    private fun printLog(logLevel: LogLevel, tag: String?, msg: String?,set: MutableSet<Printer> = printers) {
 
         if (logLevel.value <= L.logLevel.value) {
 
             if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
                 if (msg.contains("\n")) {
-                    printers.map {
+                    set.map {
                         val s = getMethodNames(it.formatter)
                         it.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${it.formatter.spliter()}")))
                     }
                 } else {
-                    printers.map {
+                    set.map {
                         val s = getMethodNames(it.formatter)
                         it.printLog(logLevel, tag, String.format(s, msg))
                     }
@@ -312,7 +294,6 @@ object L {
             }
 
             if (displayClassInfo) {
-
                 // 添加类名、方法名、行数
                 append(sElements[stackOffset].className)
                         .append(".")
