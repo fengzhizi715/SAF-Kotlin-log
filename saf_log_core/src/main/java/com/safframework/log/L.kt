@@ -301,7 +301,7 @@ object L {
 
                 if (it.isNotEmpty()) {
                     // 添加 Header
-                   append("Header: $header").append(formatter.middle())
+                   append("Header: $it").append(formatter.middle())
                 }
             }
         }.apply {
@@ -326,7 +326,6 @@ object L {
                         .append(sElements[stackOffset].lineNumber)
                         .append(")")
                         .append(formatter.middle())
-                        // 添加打印的日志信息
                         .append(formatter.spliter())
             }
 
