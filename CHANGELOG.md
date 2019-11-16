@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.2.1
+---
+2019-11-16
+* 优化 saf-log-core 模块
+* 优化 saf-log-file 模块
+
 Version 2.2.0
 ---
 2019-11-16
