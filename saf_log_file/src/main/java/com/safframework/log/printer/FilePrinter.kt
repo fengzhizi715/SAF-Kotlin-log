@@ -3,6 +3,7 @@ package com.safframework.log.printer
 import com.alibaba.fastjson.JSON
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
+import com.safframework.log.formatter.SimpleFormatter
 import com.safframework.log.printer.coroutines.ioScope
 import com.safframework.log.printer.file.FileBuilder
 import com.safframework.log.printer.file.FileWriter
@@ -25,7 +26,9 @@ import java.io.File
  * @date: 2019-08-31 10:58
  * @since: V2.0 打印到文件的 Printer，默认的 formatter 使用 SimpleFormatter
  */
-class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Printer{
+class FilePrinter(fileBuilder: FileBuilder):Printer{
+
+    override val formatter: Formatter
 
     private val channel = Channel<LogItem>()
     private val folderPath:String
@@ -44,6 +47,7 @@ class FilePrinter(fileBuilder: FileBuilder,override val formatter: Formatter):Pr
         folderPath        = fileBuilder.folderPath?: "/sdcard/logs/"
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
         cleanStrategy     = fileBuilder.cleanStrategy?: NeverCleanStrategy()
+        formatter         = fileBuilder.formatter?: SimpleFormatter
 
         writer            = FileWriter(folderPath)
     }

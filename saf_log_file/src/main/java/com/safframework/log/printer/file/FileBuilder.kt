@@ -1,7 +1,6 @@
 package com.safframework.log.printer.file
 
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.formatter.SimpleFormatter
 import com.safframework.log.printer.FilePrinter
 import com.safframework.log.printer.file.clean.CleanStrategy
 import com.safframework.log.printer.file.name.FileNameGenerator
@@ -45,5 +44,5 @@ class FileBuilder{
         return this
     }
 
-    fun build() = FilePrinter(this,this.formatter?: SimpleFormatter)
+    fun build() = FilePrinter(this)
 }
