@@ -213,14 +213,13 @@ object L {
 
             if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
 
-                if (msg.contains("\n")) {
-                    set.map {
-                        val s = getMethodNames(it.formatter)
+                set.map {
+
+                    val s = getMethodNames(it.formatter)
+
+                    if (msg.contains("\n")) {
                         it.printLog(logLevel, tag, String.format(s, msg.replace("\n", "\n${it.formatter.spliter()}")))
-                    }
-                } else {
-                    set.map {
-                        val s = getMethodNames(it.formatter)
+                    } else {
                         it.printLog(logLevel, tag, String.format(s, msg))
                     }
                 }
