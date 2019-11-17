@@ -15,7 +15,7 @@ import java.util.zip.ZipOutputStream
  * @date: 2019-11-17 10:46
  * @version: V2.2 <描述当前版本功能>
  */
-private const val BUFFER_SIZE = 2048
+private const val BUFFER_SIZE = 4096
 
 /**
  * <code>
@@ -46,8 +46,6 @@ suspend fun zip(filesToSend: List<File>, outputPath: String){
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }.collect{
-
     }
 }
 
