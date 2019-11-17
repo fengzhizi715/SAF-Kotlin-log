@@ -10,7 +10,7 @@ import kotlin.coroutines.CoroutineContext
  *          com.safframework.log.printer.coroutines.UncaughtCoroutineExceptionHandler
  * @author: Tony Shen
  * @date: 2019-11-04 17:44
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 class UncaughtCoroutineExceptionHandler(val errorHandler: CoroutineErrorListener?=null)  :
         CoroutineExceptionHandler, AbstractCoroutineContextElement(CoroutineExceptionHandler.Key) {
