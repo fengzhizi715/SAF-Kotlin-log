@@ -17,7 +17,6 @@ import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import java.io.File
 
-
 /**
  *
  * @FileName:
@@ -44,10 +43,10 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
             }
         }
 
-        folderPath        = fileBuilder.folderPath?: "/sdcard/logs/"
+        folderPath        = fileBuilder.folderPath       ?: "/sdcard/logs/"
         fileNameGenerator = fileBuilder.fileNameGenerator?: DateFileNameGenerator()
-        cleanStrategy     = fileBuilder.cleanStrategy?: NeverCleanStrategy()
-        formatter         = fileBuilder.formatter?: SimpleFormatter
+        cleanStrategy     = fileBuilder.cleanStrategy    ?: NeverCleanStrategy()
+        formatter         = fileBuilder.formatter        ?: SimpleFormatter
 
         writer            = FileWriter(folderPath)
     }

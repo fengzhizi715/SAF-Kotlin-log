@@ -12,9 +12,5 @@ class TagFileNameGenerator : FileNameGenerator {
 
     override fun isFileNameChangeable() = true
 
-    override fun generateFileName(logLevel: Int, tag: String, timestamp: Long): String {
-
-        return tag
-    }
-
+    override fun generateFileName(logLevel: Int, tag: String, timestamp: Long) = tag
 }
