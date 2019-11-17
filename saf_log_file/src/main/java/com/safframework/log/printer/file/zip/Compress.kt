@@ -26,16 +26,17 @@ private const val BUFFER_SIZE = 4096
  *         zip(result,"/sdcard/test.zip")
  *      }
  * </code>
- *
+ * @param files      文件列表
+ * @param outputPath zip 打包输出的目录
  */
-suspend fun zip(filesToSend: List<File>, outputPath: String){
+suspend fun zip(files: List<File>, outputPath: String){
 
     flow<Boolean> {
 
         try {
             ZipOutputStream(BufferedOutputStream(FileOutputStream(outputPath))).use { zos ->
 
-                for (f in filesToSend) {
+                for (f in files) {
                     if (f.exists() && !f.name.contains(".zip")) {
 
                         //Write file to zip
