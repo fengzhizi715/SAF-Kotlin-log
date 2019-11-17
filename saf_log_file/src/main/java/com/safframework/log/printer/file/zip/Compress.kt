@@ -18,6 +18,7 @@ import java.util.zip.ZipOutputStream
 private const val BUFFER_SIZE = 4096
 
 /**
+ * 使用时，需要先判断 Manifest.permission.WRITE_EXTERNAL_STORAGE 权限
  * <code>
  *     ioScope().launch {
  *
@@ -29,7 +30,7 @@ private const val BUFFER_SIZE = 4096
  */
 suspend fun zip(filesToSend: List<File>, outputPath: String){
 
-    flow<String> {
+    flow<Boolean> {
 
         try {
             ZipOutputStream(BufferedOutputStream(FileOutputStream(outputPath))).use { zos ->
@@ -46,10 +47,12 @@ suspend fun zip(filesToSend: List<File>, outputPath: String){
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }.collect{
+
     }
 }
 
-private fun createZipEntry(path: String, f: File) =    ZipEntry(path).apply {
+private fun createZipEntry(path: String, f: File) = ZipEntry(path).apply {
 
     time = f.lastModified()
     isDirectory
