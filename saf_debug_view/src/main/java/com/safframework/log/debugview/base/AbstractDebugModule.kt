@@ -18,13 +18,17 @@ abstract class AbstractDebugModule<T>(protected val dataModule: IDataModule<T>?,
     }
 
     fun start() {
-        dataModule?.bind(viewModule)
-        dataModule?.start()
+        dataModule?.apply {
+            bind(viewModule)
+            start()
+        }
     }
 
     fun stop() {
-        dataModule?.unBind(viewModule)
-        dataModule?.stop()
+        dataModule?.apply {
+            unBind(viewModule)
+            stop()
+        }
     }
 
     fun reset() {

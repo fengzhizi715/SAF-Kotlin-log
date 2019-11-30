@@ -116,31 +116,28 @@ internal class DebugViewManager(private val context: Context, private val config
         }
     }
 
-    private fun createRoot(): ViewGroup {
-
-        return LinearLayout(context).apply {
-            orientation = LinearLayout.VERTICAL
-            if (config.bgColor != Color.TRANSPARENT) {
-                setBackgroundColor(config.bgColor)
-            }
+    private fun createRoot() = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        if (config.bgColor != Color.TRANSPARENT) {
+            setBackgroundColor(config.bgColor)
         }
     }
 
-    private fun createDebugLayoutParams(width: Int) = WindowManager.LayoutParams().apply {
+    private fun createDebugLayoutParams(width: Int) = LayoutParams().apply {
         this.width = width
-        this.height = WindowManager.LayoutParams.WRAP_CONTENT
+        this.height = LayoutParams.WRAP_CONTENT
         this.type = windowTypeForOverlay
-        this.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        this.flags = LayoutParams.FLAG_NOT_FOCUSABLE or LayoutParams.FLAG_NOT_TOUCHABLE
         this.format = PixelFormat.TRANSLUCENT
         this.gravity = Gravity.TOP or Gravity.END
     }
 
-    private fun createControlLayoutParams(width: Int, height: Int) = WindowManager.LayoutParams().apply {
+    private fun createControlLayoutParams(width: Int, height: Int) = LayoutParams().apply {
         this.width = width
         this.height = height
         this.type = windowTypeForOverlay
         this.format = PixelFormat.TRANSLUCENT
-        this.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        this.flags = LayoutParams.FLAG_NOT_FOCUSABLE
         this.gravity = Gravity.BOTTOM or Gravity.START
     }
 }

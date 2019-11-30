@@ -43,9 +43,7 @@ internal class DebugViewService : Service() {
         debugViewManager?.hideDebugView()
     }
 
-    override fun onBind(intent: Intent): IBinder? {
-        return binder
-    }
+    override fun onBind(intent: Intent) = binder
 
     override fun onTaskRemoved(rootIntent: Intent) {
         L.i("service onTaskRemoved()")
