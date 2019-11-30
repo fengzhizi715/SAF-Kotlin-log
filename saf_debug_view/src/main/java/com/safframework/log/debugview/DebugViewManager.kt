@@ -27,6 +27,7 @@ import com.safframework.log.debugview.extension.dp2px
  * @version: V1.0 <描述当前版本功能>
  */
 internal class DebugViewManager(private val context: Context, private val config: DebugView.Config) {
+
     private val windowManager: WindowManager
     private var rootView: ViewGroup? = null
     private var controlView: View? = null
@@ -71,31 +72,34 @@ internal class DebugViewManager(private val context: Context, private val config
     }
 
     private fun initControlView() {
-        controlView = View(context)
-        controlView!!.setBackgroundColor(config.bgColor)
-        val d = context.dp2px(18)
-        windowManager.addView(controlView, createControlLayoutParams(d, d))
-        controlView!!.setOnClickListener {
-            for (debugModule in debugModules!!) {
-                debugModule.reset()
-            }
-        }
-        controlView!!.setOnLongClickListener {
-            if (rootView != null) {
-                if (rootView!!.visibility == View.GONE) {
-                    rootView!!.visibility = View.VISIBLE
-                    for (debugModule in debugModules!!) {
-                        debugModule.start()
-                    }
-                } else {
-                    rootView!!.visibility = View.GONE
-                    for (debugModule in debugModules!!) {
-                        debugModule.stop()
-                    }
+        controlView = View(context).apply {
+
+            setBackgroundColor(config.bgColor)
+            val d = context.dp2px(18)
+            windowManager.addView(this, createControlLayoutParams(d, d))
+            setOnClickListener {
+                for (debugModule in debugModules!!) {
+                    debugModule.reset()
                 }
             }
-            true
+            setOnLongClickListener {
+                rootView?.let {
+                    if (it.visibility == View.GONE) {
+                        it.visibility = View.VISIBLE
+                        for (debugModule in debugModules!!) {
+                            debugModule.start()
+                        }
+                    } else {
+                        it.visibility = View.GONE
+                        for (debugModule in debugModules!!) {
+                            debugModule.stop()
+                        }
+                    }
+                }
+                true
+            }
         }
+
     }
 
 
