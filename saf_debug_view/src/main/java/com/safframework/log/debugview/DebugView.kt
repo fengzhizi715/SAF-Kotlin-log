@@ -29,10 +29,11 @@ internal class DebugView(private val application: Application, private val debug
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             val binder = service as DebugViewService.LocalBinder
-            debugViewService = binder.service
-            debugViewService?.setDebugModules(debugModules)
-            debugViewService?.setDebugViewManager(debugViewManager)
-            debugViewService?.startModules()
+            debugViewService = binder.service.apply {
+                setDebugModules(debugModules)
+                setDebugViewManager(debugViewManager)
+                startModules()
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName) {}
@@ -54,8 +55,9 @@ internal class DebugView(private val application: Application, private val debug
                 application.startActivity(intent)
             }
         }
-        debugViewManager = DebugViewManager(application, config)
-        debugViewManager!!.setDebugModules(debugModules)
+        debugViewManager = DebugViewManager(application, config).apply {
+            setDebugModules(debugModules)
+        }
         startAndBindDebugService()
     }
 
@@ -79,7 +81,8 @@ internal class DebugView(private val application: Application, private val debug
     }
 
     private fun unbindFromDebugService() {
-        if (debugViewService != null) {
+
+        debugViewService?.let {
             application.unbindService(serviceConnection)
             debugViewService = null
         }

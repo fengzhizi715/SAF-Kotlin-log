@@ -101,11 +101,11 @@ internal class DebugViewManager(private val context: Context, private val config
 
     fun hideDebugView() {
         handler.post {
-            if (rootView != null) {
+            rootView?.let {
                 windowManager.removeView(rootView)
                 rootView = null
             }
-            if (controlView != null) {
+            controlView?.let{
                 windowManager.removeView(controlView)
                 controlView = null
             }
@@ -113,35 +113,30 @@ internal class DebugViewManager(private val context: Context, private val config
     }
 
     private fun createRoot(): ViewGroup {
-        val overlayRoot = LinearLayout(context)
-        overlayRoot.orientation = LinearLayout.VERTICAL
-        if (config.bgColor != Color.TRANSPARENT) {
-            overlayRoot.setBackgroundColor(config.bgColor)
+
+        return LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            if (config.bgColor != Color.TRANSPARENT) {
+                setBackgroundColor(config.bgColor)
+            }
         }
-        return overlayRoot
     }
 
-    private fun createDebugLayoutParams(width: Int): WindowManager.LayoutParams {
-        val layoutParams = WindowManager.LayoutParams()
-        layoutParams.width = width
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        layoutParams.type = windowTypeForOverlay
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-        layoutParams.format = PixelFormat.TRANSLUCENT
-        layoutParams.gravity = Gravity.TOP or Gravity.END
-        return layoutParams
+    private fun createDebugLayoutParams(width: Int) = WindowManager.LayoutParams().apply {
+        this.width = width
+        this.height = WindowManager.LayoutParams.WRAP_CONTENT
+        this.type = windowTypeForOverlay
+        this.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        this.format = PixelFormat.TRANSLUCENT
+        this.gravity = Gravity.TOP or Gravity.END
     }
 
-    private fun createControlLayoutParams(width: Int, height: Int): WindowManager.LayoutParams {
-        val layoutParams = WindowManager.LayoutParams()
-        layoutParams.width = width
-        layoutParams.height = height
-        layoutParams.type = windowTypeForOverlay
-        layoutParams.format = PixelFormat.TRANSLUCENT
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-        layoutParams.gravity = Gravity.BOTTOM or Gravity.START
-        return layoutParams
+    private fun createControlLayoutParams(width: Int, height: Int) = WindowManager.LayoutParams().apply {
+        this.width = width
+        this.height = height
+        this.type = windowTypeForOverlay
+        this.format = PixelFormat.TRANSLUCENT
+        this.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        this.gravity = Gravity.BOTTOM or Gravity.START
     }
-
-
 }
