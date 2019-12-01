@@ -107,10 +107,12 @@ class LogModule private constructor() : AbstractDebugModule<List<String>>(LogDat
         private var logAdapter: LogAdapter? = null
 
         override fun onCreateView(root: ViewGroup): View? {
-            listView = ListView(root.context)
-            listView?.visibility = View.VISIBLE
-            listView?.divider = null
-            listView?.dividerHeight = 0
+            listView = ListView(root.context).apply {
+                visibility = View.VISIBLE
+                divider = null
+                dividerHeight = 0
+            }
+
             return listView
         }
 

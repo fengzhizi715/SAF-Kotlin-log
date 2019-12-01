@@ -153,7 +153,7 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
         private var timerAdapter: TimerAdapter? = null
 
         override fun onCreateView(root: ViewGroup): View? {
-            listView = ListView(root.context)?.apply {
+            listView = ListView(root.context).apply {
                 divider = null
                 dividerHeight = 0
             }
