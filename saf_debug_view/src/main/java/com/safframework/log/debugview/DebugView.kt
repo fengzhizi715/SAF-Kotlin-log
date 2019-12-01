@@ -42,6 +42,7 @@ internal class DebugView(private val application: Application, private val debug
     fun show() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(application)) {
+
                 if (!config.isAlwaysShowOverlaySetting) {
                     val sp = application.getSharedPreferences("debug_view_config", Context.MODE_PRIVATE)
                     if (sp.getBoolean("is_showed_overlay_setting", false)) {
@@ -49,6 +50,7 @@ internal class DebugView(private val application: Application, private val debug
                     }
                     sp.edit().putBoolean("is_showed_overlay_setting", true).apply()
                 }
+
                 val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + application.packageName)).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 }
