@@ -49,9 +49,10 @@ internal class DebugView(private val application: Application, private val debug
                     }
                     sp.edit().putBoolean("is_showed_overlay_setting", true).apply()
                 }
-                val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:" + application.packageName))
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + application.packageName)).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+
                 application.startActivity(intent)
             }
         }
@@ -73,8 +74,7 @@ internal class DebugView(private val application: Application, private val debug
     }
 
     private fun bindToDebugViewService() {
-        val bound = application.bindService(DebugViewService.createIntent(application),
-                serviceConnection, Context.BIND_AUTO_CREATE)
+        val bound = application.bindService(DebugViewService.createIntent(application), serviceConnection, Context.BIND_AUTO_CREATE)
         if (!bound) {
             throw RuntimeException("Could not bind the DebugOverlayService")
         }
