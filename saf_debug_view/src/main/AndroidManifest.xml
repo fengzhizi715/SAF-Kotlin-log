@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.safframework.log.debugview" >
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <application>
+        <service
+            android:name=".DebugViewService"
+            android:exported="false" />
+    </application>
+</manifest>

@@ -71,4 +71,5 @@ dependencies {
     implementation project(":saf_log_core")
     implementation project(":saf_log_file")
     implementation project(":saf_log_okhttp")
+    implementation project(":saf_debug_view")
 }
