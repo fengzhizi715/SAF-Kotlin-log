@@ -95,10 +95,15 @@ class DebugViewWrapper {
 
         internal fun build(): DebugView {
             if (debugModules?.size == 0) {
-                debugModules?.add(MemInfoModule(application))
-                debugModules?.add(FpsModule())
-                debugModules?.add(TimerModule.instance)
-                debugModules?.add(LogModule.instance)
+
+                debugModules?.apply {
+
+                    add(MemInfoModule(application))
+                    add(FpsModule())
+                    add(TimerModule.instance)
+                    add(LogModule.instance)
+                }
+
                 LogModule.instance.setLogMaxLines(logMaxLines)
             }
             return DebugView(application, debugModules!!,
