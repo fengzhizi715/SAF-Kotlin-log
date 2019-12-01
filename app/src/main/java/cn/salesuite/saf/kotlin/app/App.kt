@@ -18,7 +18,7 @@ import com.safframework.log.debugview.modules.TimerModule
 @SuppressLint("StaticFieldLeak")
 var application: Application? = null
 
-class MyApplication : Application() {
+class App : Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)

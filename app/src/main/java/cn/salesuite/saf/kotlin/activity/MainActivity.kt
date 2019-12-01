@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import cn.salesuite.saf.kotlin.R
+import cn.salesuite.saf.kotlin.app.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * @date: 2019-10-03 01:02
  * @version: V1.0 <描述当前版本功能>
  */
-class MainActivity : Activity() {
+class MainActivity : BaseActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
