@@ -72,20 +72,21 @@ class MemInfoModule(context: Context) : AbstractDebugModule<MemInfo>(MemInfoData
 
         private var textView: TextView? = null
 
-
         override fun onUpdateView(data: MemInfo) {
-            val systemMemInfo = data.systemMemInfo
-            val procMemInfo = data.processMemInfo
-            if (textView != null) {
-                val builder = StringBuilder()
-                builder.append("Mem:")
-                        .append(DECIMAL_FORMAT.format((systemMemInfo.availMem / 1048576f).toDouble()))
-                        .append(" Pss:")
-                        .append(DECIMAL_FORMAT.format((procMemInfo.totalPss / 1024f).toDouble()))
-                        .append(" PD:")
-                        .append(DECIMAL_FORMAT.format((procMemInfo.totalPrivateDirty / 1024f).toDouble()))
-                        .append(" (MB)")
-                textView!!.text = builder
+
+            textView?.let {
+                val builder = StringBuilder().apply{
+
+                    append("Mem:")
+                    append(DECIMAL_FORMAT.format((data.systemMemInfo.availMem / 1048576f).toDouble()))
+                    append(" Pss:")
+                    append(DECIMAL_FORMAT.format((data.processMemInfo.totalPss / 1024f).toDouble()))
+                    append(" PD:")
+                    append(DECIMAL_FORMAT.format((data.processMemInfo.totalPrivateDirty / 1024f).toDouble()))
+                    append(" (MB)")
+                }.toString()
+
+                it.text = builder
             }
         }
 
