@@ -26,7 +26,6 @@ import java.util.*
  */
 class MemInfoModule(context: Context) : AbstractDebugModule<MemInfo>(MemInfoDataModule(context, DEFAULT_INTERVAL), MemInfoViewModule()) {
 
-
     /*
     * mem info data
     * */
@@ -64,10 +63,9 @@ class MemInfoModule(context: Context) : AbstractDebugModule<MemInfo>(MemInfoData
         }
     }
 
-
-    /*
-   * mem info view
-   * */
+    /**
+     * mem info view
+     */
     private class MemInfoViewModule : IViewModule<MemInfo> {
 
         private var textView: TextView? = null
@@ -103,16 +101,12 @@ class MemInfoModule(context: Context) : AbstractDebugModule<MemInfo>(MemInfoData
                 it.visibility = visibility
             }
         }
-
-        companion object {
-            private val DECIMAL_FORMAT = DecimalFormat("0.0",
-                    DecimalFormatSymbols.getInstance(Locale.ENGLISH))
-        }
     }
 
     companion object {
 
         private val DEFAULT_INTERVAL = 3000
+        private val DECIMAL_FORMAT = DecimalFormat("0.0", DecimalFormatSymbols.getInstance(Locale.ENGLISH))
     }
 
 }

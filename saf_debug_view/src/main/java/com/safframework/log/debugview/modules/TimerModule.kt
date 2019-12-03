@@ -91,7 +91,7 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
 
         internal fun begin(obj: Any?) {
             if (obj == null) return
-            timerDataMap.put(ClassModel(obj), System.currentTimeMillis())
+            timerDataMap[ClassModel(obj)] = System.currentTimeMillis()
         }
 
         internal fun end(obj: Any?) {
@@ -111,7 +111,7 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
         }
 
         internal fun getCost(start: Long, end: Long): String? {
-            if (start in 1..(end - 1)) {
+            if (start in 1 until end) {
                 val cost = end - start
                 return cost.toString() + "ms"
             }
@@ -190,10 +190,14 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
             }
             val msg = data[position]
 
-            val textView = convertView as TextView?
-            textView!!.textSize = 10f
-            textView.maxLines = 2
-            textView.text = msg
+            val textView = convertView as? TextView
+
+            textView?.apply {
+                textSize = 10f
+                maxLines = 2
+                text = msg
+            }
+
             return convertView
         }
 
