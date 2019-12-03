@@ -146,7 +146,7 @@ class LogModule private constructor() : AbstractDebugModule<List<String>>(LogDat
             val msg = data[position]
 
             val textView = convertViewNew as? TextView
-            
+
             textView?.apply {
                 textSize = 9f
                 maxLines = 3

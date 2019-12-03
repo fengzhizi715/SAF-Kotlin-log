@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.safframework.log.debugview.base.AbstractDataModule
 import com.safframework.log.debugview.base.AbstractDebugModule
 import com.safframework.log.debugview.base.IViewModule
+import com.safframework.log.debugview.utils.support
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
@@ -43,11 +44,11 @@ class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), F
             get() = fps
 
         init {
-            handler.post {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                handler.post {
                     frameCallback = object : Choreographer.FrameCallback {
                         override fun doFrame(frameTimeNanos: Long) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            support(Build.VERSION_CODES.JELLY_BEAN) {
                                 val currentFrameTimeMillis = TimeUnit.NANOSECONDS.toMillis(frameTimeNanos)
 
                                 if (startFrameTimeMillis > 0) {
@@ -76,25 +77,22 @@ class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), F
 
 
         override fun start() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            support (Build.VERSION_CODES.JELLY_BEAN) {
                 handler.post {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         Choreographer.getInstance().postFrameCallback(frameCallback)
                     }
                 }
-
             }
         }
 
         override fun stop() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            support(Build.VERSION_CODES.JELLY_BEAN) {
                 handler.post {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         Choreographer.getInstance().removeFrameCallback(frameCallback)
                     }
                 }
-
-
             }
         }
 
