@@ -33,7 +33,7 @@ class App : Application() {
     }
 
     private fun initDebugView() {
-        DebugViewWrapper.instance.init(
+        DebugViewWrapper.init(
                 DebugViewWrapper.Builder(this)
                         .viewWidth(250) /* the width of debug-view */
                         .bgColor(0x6f677700) /* the color of debug-view */
@@ -41,7 +41,6 @@ class App : Application() {
                         .logMaxLines(20) /* the max lines of log */
         )
 
-
-        DebugViewWrapper.instance.show()
+        DebugViewWrapper.show()
     }
 }

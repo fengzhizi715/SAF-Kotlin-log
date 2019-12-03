@@ -210,6 +210,4 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
         val instance: TimerModule
             get() = SingletonHolder.instance
     }
-
-
 }
