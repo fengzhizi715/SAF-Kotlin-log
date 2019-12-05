@@ -89,6 +89,5 @@ internal class DebugView(private val application: Application, private val debug
         }
     }
 
-
     internal class Config(val bgColor: Int, val viewWidth: Int, val logMaxLines: Int, val isAlwaysShowOverlaySetting: Boolean)
 }

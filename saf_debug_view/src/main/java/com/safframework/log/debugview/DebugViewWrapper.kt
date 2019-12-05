@@ -49,23 +49,27 @@ object DebugViewWrapper {
             this.viewWidth = 200
             this.logMaxLines = 10
             this.alwaysShowOverlaySetting = true
-            this.debugModules = ArrayList<AbstractDebugModule<*>>()
+            this.debugModules = ArrayList()
         }
 
         fun modules(debugModules: MutableList<AbstractDebugModule<*>>): Builder {
             if (debugModules.size <= 0) {
-                throw IllegalArgumentException("Module list cat not be empty")
+                throw IllegalArgumentException("Module list can not be empty")
             }
             this.debugModules = debugModules
             return this
         }
 
         fun modules(debugModule: AbstractDebugModule<*>, vararg otherModule: AbstractDebugModule<*>): Builder {
-            this.debugModules?.clear()
-            this.debugModules?.add(debugModule)
-            for (module in otherModule) {
-                this.debugModules?.add(module)
+
+            this.debugModules?.apply {
+                clear()
+                add(debugModule)
+                for (module in otherModule) {
+                    add(module)
+                }
             }
+
             return this
         }
 
