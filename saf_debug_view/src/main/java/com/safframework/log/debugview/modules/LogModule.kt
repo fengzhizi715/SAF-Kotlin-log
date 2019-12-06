@@ -21,16 +21,13 @@ import com.safframework.log.debugview.base.IViewModule
  * @date: 2019-11-30 14:48
  * @version: V2.2 <描述当前版本功能>
  */
-class LogModule private constructor() : AbstractDebugModule<List<String>>(LogDataModule(LOG_MAX_LINES), LogViewModule()) {
+object LogModule : AbstractDebugModule<List<String>>(LogDataModule(), LogViewModule()) {
 
+    private val LOG_MAX_LINES = 10
     private val logDataModule: LogDataModule
 
     init {
         logDataModule = dataModule as LogDataModule
-    }
-
-    private object SingletonHolder {
-        val instance = LogModule()
     }
 
     fun setLogMaxLines(maxLines: Int) {
@@ -44,7 +41,7 @@ class LogModule private constructor() : AbstractDebugModule<List<String>>(LogDat
     /*
     * log data
     * */
-    private class LogDataModule internal constructor(private var maxLines: Int) : AbstractDataModule<List<String>>() {
+    private class LogDataModule internal constructor(private var maxLines: Int=LOG_MAX_LINES) : AbstractDataModule<List<String>>() {
 
         private val handler = Handler(Looper.getMainLooper())
 
@@ -153,14 +150,5 @@ class LogModule private constructor() : AbstractDebugModule<List<String>>(LogDat
             }
             return convertViewNew
         }
-
-    }
-
-    companion object {
-
-        private val LOG_MAX_LINES = 10
-
-        val instance: LogModule
-            get() = SingletonHolder.instance
     }
 }

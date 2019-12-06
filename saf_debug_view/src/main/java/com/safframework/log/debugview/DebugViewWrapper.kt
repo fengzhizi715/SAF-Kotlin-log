@@ -101,10 +101,10 @@ object DebugViewWrapper {
                     add(MemInfoModule(application))
                     add(FpsModule)
                     add(TimerModule)
-                    add(LogModule.instance)
+                    add(LogModule)
                 }
 
-                LogModule.instance.setLogMaxLines(logMaxLines)
+                LogModule.setLogMaxLines(logMaxLines)
             }
             return DebugView(application, debugModules!!,
                     DebugView.Config(bgColor, viewWidth, logMaxLines, alwaysShowOverlaySetting))
