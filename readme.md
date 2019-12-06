@@ -53,7 +53,7 @@ implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
 
 # TODO List：
 
-* debug view
+* 日志删除策略
 * 支持 mmap 存储日志文件
 
 
