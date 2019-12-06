@@ -3,6 +3,7 @@ package com.safframework.log.debugview.modules
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.support.annotation.RequiresApi
 import android.view.Choreographer
 import android.view.View
 import android.view.ViewGroup
@@ -45,9 +46,12 @@ class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), F
 
         init {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
                 handler.post {
+
                     frameCallback = object : Choreographer.FrameCallback {
                         override fun doFrame(frameTimeNanos: Long) {
+
                             support(Build.VERSION_CODES.JELLY_BEAN) {
                                 val currentFrameTimeMillis = TimeUnit.NANOSECONDS.toMillis(frameTimeNanos)
 
@@ -76,22 +80,22 @@ class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), F
         }
 
 
+        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun start() {
+
             support (Build.VERSION_CODES.JELLY_BEAN) {
                 handler.post {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        Choreographer.getInstance().postFrameCallback(frameCallback)
-                    }
+                    Choreographer.getInstance().postFrameCallback(frameCallback)
                 }
             }
         }
 
+        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun stop() {
+
             support(Build.VERSION_CODES.JELLY_BEAN) {
                 handler.post {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        Choreographer.getInstance().removeFrameCallback(frameCallback)
-                    }
+                    Choreographer.getInstance().removeFrameCallback(frameCallback)
                 }
             }
         }
