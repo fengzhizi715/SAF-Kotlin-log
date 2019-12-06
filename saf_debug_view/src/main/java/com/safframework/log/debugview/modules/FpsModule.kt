@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit
  *          com.safframework.log.debugview.modules.FpsModule
  * @author: Tony Shen
  * @date: 2019-11-30 14:09
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), FpsViewModule()) {
 

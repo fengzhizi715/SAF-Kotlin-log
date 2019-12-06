@@ -6,7 +6,7 @@ package com.safframework.log.debugview.base
  *          com.safframework.log.debugview.base.IDataModule
  * @author: Tony Shen
  * @date: 2019-11-30 13:58
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 interface IDataModule<T> {
 

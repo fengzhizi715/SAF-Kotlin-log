@@ -18,7 +18,7 @@ import com.safframework.log.debugview.base.IViewModule
  *          com.safframework.log.debugview.modules.TimerModule
  * @author: Tony Shen
  * @date: 2019-11-30 14:33
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 class TimerModule private constructor() : AbstractDebugModule<List<String>>(TimerDataModule(LOG_MAX_LINES), TimerViewModule()) {
 

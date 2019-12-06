@@ -8,7 +8,7 @@ import android.content.Context
  *          com.safframework.log.debugview.extension.`Context+Extension`
  * @author: Tony Shen
  * @date: 2019-11-30 15:34
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 
 /**

@@ -22,7 +22,7 @@ import java.util.*
  *          com.safframework.log.debugview.modules.MemInfoModule
  * @author: Tony Shen
  * @date: 2019-11-30 14:23
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 class MemInfoModule(context: Context) : AbstractDebugModule<MemInfo>(MemInfoDataModule(context, DEFAULT_INTERVAL), MemInfoViewModule()) {
 

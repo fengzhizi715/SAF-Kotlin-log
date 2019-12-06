@@ -8,7 +8,7 @@ import android.os.Build
  *          com.safframework.log.debugview.utils.Platform
  * @author: Tony Shen
  * @date: 2019-12-03 15:11
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 fun support(apiVersion:Int, block : () -> Unit) {
 

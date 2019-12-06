@@ -24,7 +24,7 @@ import com.safframework.log.debugview.extension.dp2px
  *          com.safframework.log.debugview.DebugViewManager
  * @author: Tony Shen
  * @date: 2019-11-30 15:23
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 internal class DebugViewManager(private val context: Context, private val config: DebugView.Config) {
 

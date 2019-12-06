@@ -14,7 +14,7 @@ import com.safframework.log.debugview.base.AbstractDebugModule
  *          com.safframework.log.debugview.DebugViewService
  * @author: Tony Shen
  * @date: 2019-11-30 15:18
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 internal class DebugViewService : Service() {
 

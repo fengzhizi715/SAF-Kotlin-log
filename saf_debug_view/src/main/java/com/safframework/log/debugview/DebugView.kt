@@ -17,7 +17,7 @@ import com.safframework.log.debugview.base.AbstractDebugModule
  *          com.safframework.log.debugview.DebugView
  * @author: Tony Shen
  * @date: 2019-11-30 15:13
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 internal class DebugView(private val application: Application, private val debugModules: List<AbstractDebugModule<*>>, private val config: Config) {
 

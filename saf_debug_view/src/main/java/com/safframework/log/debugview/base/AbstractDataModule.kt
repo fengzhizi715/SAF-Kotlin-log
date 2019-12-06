@@ -6,7 +6,7 @@ package com.safframework.log.debugview.base
  *          com.safframework.log.debugview.base.AbstractDataModule
  * @author: Tony Shen
  * @date: 2019-11-30 14:00
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 abstract class AbstractDataModule<T> : IDataModule<T> {
 

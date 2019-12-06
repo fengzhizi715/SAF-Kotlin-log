@@ -13,7 +13,7 @@ import com.safframework.log.debugview.modules.TimerModule
  *          com.safframework.log.debugview.DebugViewWrapper
  * @author: Tony Shen
  * @date: 2019-12-01 14:43
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 object DebugViewWrapper {
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup
  *          com.safframework.log.debugview.base.AbstractDebugModule
  * @author: Tony Shen
  * @date: 2019-11-30 13:58
- * @version: V1.0 <描述当前版本功能>
+ * @version: V2.2 <描述当前版本功能>
  */
 abstract class AbstractDebugModule<T>(protected val dataModule: IDataModule<T>?, private val viewModule: IViewModule<T>?) {
 
