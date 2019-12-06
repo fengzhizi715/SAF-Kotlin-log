@@ -25,12 +25,16 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-11-30 14:09
  * @version: V2.2 <描述当前版本功能>
  */
-class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), FpsViewModule()) {
+object FpsModule : AbstractDebugModule<Double>(FpsDataModule(), FpsViewModule()) {
+
+    private val DEFAULT_INTERVAL = 2000
+    private val DECIMAL_FORMAT = DecimalFormat("'FPS:' 0.0",
+            DecimalFormatSymbols.getInstance(Locale.ENGLISH))
 
     /*
     * fps data
     * */
-    private class FpsDataModule internal constructor(interval: Int) : AbstractDataModule<Double>() {
+    private class FpsDataModule internal constructor(interval: Int=DEFAULT_INTERVAL) : AbstractDataModule<Double>() {
 
         private val handler = Handler(Looper.getMainLooper())
 
@@ -132,14 +136,5 @@ class FpsModule : AbstractDebugModule<Double>(FpsDataModule(DEFAULT_INTERVAL), F
                 it.visibility = visibility
             }
         }
-
     }
-
-    companion object {
-
-        private val DEFAULT_INTERVAL = 2000
-        private val DECIMAL_FORMAT = DecimalFormat("'FPS:' 0.0",
-                DecimalFormatSymbols.getInstance(Locale.ENGLISH))
-    }
-
 }
