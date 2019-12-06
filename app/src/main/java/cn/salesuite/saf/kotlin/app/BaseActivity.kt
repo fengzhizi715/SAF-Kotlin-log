@@ -16,13 +16,13 @@ open class BaseActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TimerModule.instance.begin(this)
+        TimerModule.begin(this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if(hasFocus){
-            TimerModule.instance.end(this)
+            TimerModule.end(this)
         }
     }
 }

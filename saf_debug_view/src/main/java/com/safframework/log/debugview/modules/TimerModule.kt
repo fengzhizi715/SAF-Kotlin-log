@@ -20,16 +20,13 @@ import com.safframework.log.debugview.base.IViewModule
  * @date: 2019-11-30 14:33
  * @version: V2.2 <描述当前版本功能>
  */
-class TimerModule private constructor() : AbstractDebugModule<List<String>>(TimerDataModule(LOG_MAX_LINES), TimerViewModule()) {
+object TimerModule: AbstractDebugModule<List<String>>(TimerDataModule(), TimerViewModule()) {
 
+    private val LOG_MAX_LINES = 3
     private val timerDataModule: TimerDataModule
 
     init {
         timerDataModule = dataModule as TimerDataModule
-    }
-
-    private object SingletonHolder {
-        val instance = TimerModule()
     }
 
     fun setLogMaxLines(maxLines: Int) {
@@ -48,7 +45,7 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
     /*
     * Timer data
     * */
-    private class TimerDataModule internal constructor(private var maxLines: Int) : AbstractDataModule<List<String>>() {
+    private class TimerDataModule internal constructor(private var maxLines: Int = LOG_MAX_LINES) : AbstractDataModule<List<String>>() {
 
         private val handler = Handler(Looper.getMainLooper())
 
@@ -201,13 +198,5 @@ class TimerModule private constructor() : AbstractDebugModule<List<String>>(Time
             return convertView
         }
 
-    }
-
-    companion object {
-
-        private val LOG_MAX_LINES = 3
-
-        val instance: TimerModule
-            get() = SingletonHolder.instance
     }
 }

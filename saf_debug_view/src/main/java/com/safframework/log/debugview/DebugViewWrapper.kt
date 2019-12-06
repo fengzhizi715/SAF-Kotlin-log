@@ -100,7 +100,7 @@ object DebugViewWrapper {
 
                     add(MemInfoModule(application))
                     add(FpsModule)
-                    add(TimerModule.instance)
+                    add(TimerModule)
                     add(LogModule.instance)
                 }
 

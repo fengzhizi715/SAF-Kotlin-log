@@ -23,7 +23,7 @@ class App : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         application = this
-        TimerModule.instance.begin(this)
+        TimerModule.begin(this)
     }
 
     override fun onCreate() {
