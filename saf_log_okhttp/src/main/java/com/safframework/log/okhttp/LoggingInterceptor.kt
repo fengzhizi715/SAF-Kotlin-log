@@ -2,6 +2,7 @@ package com.safframework.log.okhttp
 
 import android.text.TextUtils
 import com.safframework.log.L
+import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-09-21 12:36
  * @since: V2.0 OkHttp 的日志拦截器
  */
-class LoggingInterceptor: Interceptor {
+class LoggingInterceptor(val logLevel: LogLevel=LogLevel.INFO, val tag: String="SAF_OKHttp"): Interceptor {
 
     companion object {
         private const val MAX_LONG_SIZE = 120
@@ -61,7 +62,7 @@ class LoggingInterceptor: Interceptor {
 
         }.toString()
 
-        L.json(requestString)
+        L.json(requestString,logLevel,tag)
 
         val st = System.nanoTime()
 
