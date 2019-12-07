@@ -113,7 +113,7 @@ class LoggingInterceptor(val logLevel: LogLevel=LogLevel.INFO, val tag: String="
 
                 }.toString()
 
-                L.json(responseString)
+                L.json(responseString,logLevel,tag)
             }
         }
 
