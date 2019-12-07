@@ -16,13 +16,13 @@ import org.json.JSONObject
  */
 class MapHandler:BaseHandler(),Parser<Map<*,*>>{
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is Map<*,*>) {
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.printLog(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj,it.formatter)))
+                it.printLog(LogLevel.INFO, this.logTag() ,String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

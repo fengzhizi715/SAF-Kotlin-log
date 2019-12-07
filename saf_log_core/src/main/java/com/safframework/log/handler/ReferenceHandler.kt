@@ -18,7 +18,7 @@ import java.lang.ref.Reference
  */
 class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is Reference<*>) {
 

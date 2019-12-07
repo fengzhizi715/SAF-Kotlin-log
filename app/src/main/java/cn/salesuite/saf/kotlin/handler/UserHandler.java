@@ -15,7 +15,7 @@ import cn.salesuite.saf.kotlin.domain.User;
 public class UserHandler extends BaseHandler {
 
     @Override
-    protected boolean handle(Object obj) {
+    protected boolean handle(Object obj, LogLevel logLevel, String tag) {
 
         if (obj instanceof User) {
 

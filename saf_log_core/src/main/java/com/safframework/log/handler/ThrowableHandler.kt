@@ -13,7 +13,7 @@ import java.io.StringWriter
  */
 class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is Throwable) {
 

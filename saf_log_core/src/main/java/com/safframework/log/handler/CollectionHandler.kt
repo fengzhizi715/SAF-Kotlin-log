@@ -16,7 +16,7 @@ import org.json.JSONArray
  */
 class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is Collection<*>) {
 

@@ -1,5 +1,7 @@
 package com.safframework.log.handler
 
+import com.safframework.log.LogLevel
+
 /**
  * Created by tony on 2017/11/27.
  */
@@ -9,15 +11,15 @@ abstract class BaseHandler {
     private var nextHandler: BaseHandler? = null
 
     // 捕获具体请求并进行处理，或是将请求传递到责任链的下一级别
-    fun handleObject(obj: Any) {
+    fun handleObject(obj: Any, logLevel: LogLevel, tag: String) {
 
         if (obj == null) {
             return
         }
 
-        if (!handle(obj)) {
+        if (!handle(obj,logLevel,tag)) {
             // 当前处理者不能胜任，则传递至责任链的下一节点
-            this.nextHandler?.handleObject(obj)
+            this.nextHandler?.handleObject(obj,logLevel,tag)
         }
     }
 
@@ -27,5 +29,5 @@ abstract class BaseHandler {
     }
 
     // 定义链中每个处理者具体的处理方式
-    protected abstract fun handle(obj: Any): Boolean
+    protected abstract fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean
 }

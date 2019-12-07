@@ -20,7 +20,7 @@ class StringHandler:BaseHandler(), Parser<String> {
         private const val MAX_STRING_LENGTH = 4000
     }
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is String) {
 

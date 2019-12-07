@@ -14,7 +14,7 @@ import org.json.JSONObject
  */
 class ObjectHandler:BaseHandler() {
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         L.printers().map {
 

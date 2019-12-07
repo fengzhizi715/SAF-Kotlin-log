@@ -18,7 +18,7 @@ import org.json.JSONObject
  */
 class IntentHandler:BaseHandler(), Parser<Intent> {
 
-    override fun handle(obj: Any): Boolean {
+    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
         if (obj is Intent) {
 
