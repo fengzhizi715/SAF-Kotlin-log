@@ -61,7 +61,7 @@ class LoggingInterceptor: Interceptor {
 
         }.toString()
 
-        L.i(requestString)
+        L.json(requestString)
 
         val st = System.nanoTime()
 

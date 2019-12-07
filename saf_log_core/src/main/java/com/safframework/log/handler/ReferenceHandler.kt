@@ -38,12 +38,12 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
 
         val isPrimitiveType = isPrimitiveType(actual)
 
-        if (isPrimitiveType) {
+        msg += if (isPrimitiveType) {
 
-            msg += "{$actual}"
+            "{$actual}"
         } else {
 
-            msg += JSONObject(JSON.toJSONString(actual))
+            JSONObject(JSON.toJSONString(actual))
                     .formatJSON()
                     .let {
                         it.replace("\n", "\n${formatter.spliter()}")
