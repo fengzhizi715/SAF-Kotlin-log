@@ -154,18 +154,18 @@ class LoggingInterceptor(val logLevel: LogLevel=LogLevel.INFO, val tag: String="
     private fun getJsonString(msg: String): String {
 
         var message: String
-        try {
+        message = try {
             if (msg.startsWith("{")) {
                 val jsonObject = JSONObject(msg)
-                message = jsonObject.toString(LoggerPrinter.JSON_INDENT)
+                jsonObject.toString(LoggerPrinter.JSON_INDENT)
             } else if (msg.startsWith("[")) {
                 val jsonArray = JSONArray(msg)
-                message = jsonArray.toString(LoggerPrinter.JSON_INDENT)
+                jsonArray.toString(LoggerPrinter.JSON_INDENT)
             } else {
-                message = msg
+                msg
             }
         } catch (e: JSONException) {
-            message = msg
+            msg
         }
 
         return message
