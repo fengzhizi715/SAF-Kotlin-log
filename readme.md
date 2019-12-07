@@ -21,7 +21,7 @@
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
 * 支持自定义日志格式存储到文件，底层基于 Kotlin Coroutines
 * 支持使用特定的 printer 进行打印日志
-* 提供基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
+* 提供单独的基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
 
 ## 更详细的功能请查看[wiki](https://github.com/fengzhizi715/SAF-Kotlin-log/wiki)
 
@@ -53,7 +53,6 @@ implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
 
 # TODO List：
 
-* 日志删除策略
 * 支持 mmap 存储日志文件
 
 
