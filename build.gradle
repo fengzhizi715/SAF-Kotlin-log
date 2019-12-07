@@ -54,7 +54,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-//tasks.getByPath(":saf_log_core:releaseAndroidJavadocs").enabled = true
-//tasks.getByPath(":saf_log_file:releaseAndroidJavadocs").enabled = true
-//tasks.getByPath(":saf_log_okhttp:releaseAndroidJavadocs").enabled = true
