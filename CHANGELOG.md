@@ -3,7 +3,7 @@ SAF-Kotlin-log
 
 Version 2.3.0
 ---
-2019-11-16
+2019-12-07
 * json() 增加LogLevel、Tag
 * 优化 saf_log_okhttp 模块
 * 升级Kotlin、Gradle插件版本
