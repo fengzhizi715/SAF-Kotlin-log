@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-09-21 12:36
  * @since: V2.0 OkHttp 的日志拦截器
  */
-class LoggingInterceptor(val logLevel: LogLevel=LogLevel.INFO, val tag: String="SAF_OKHttp"): Interceptor {
+class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private val tag: String="SAF_OKHttp"): Interceptor {
 
     companion object {
         private const val MAX_LONG_SIZE = 120
