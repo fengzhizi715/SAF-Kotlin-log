@@ -29,9 +29,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath 'com.novoda:bintray-release:0.9.2'
     }
 }
 
@@ -55,6 +55,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.getByPath(":saf_log_core:releaseAndroidJavadocs").enabled = false
-tasks.getByPath(":saf_log_file:releaseAndroidJavadocs").enabled = false
-tasks.getByPath(":saf_log_okhttp:releaseAndroidJavadocs").enabled = false
+//tasks.getByPath(":saf_log_core:releaseAndroidJavadocs").enabled = true
+//tasks.getByPath(":saf_log_file:releaseAndroidJavadocs").enabled = true
+//tasks.getByPath(":saf_log_okhttp:releaseAndroidJavadocs").enabled = true
