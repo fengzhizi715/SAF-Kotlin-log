@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
-import com.safframework.log.logTag
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -31,7 +30,7 @@ class ObjectHandler:BaseHandler() {
             }
 
             val s = L.getMethodNames(formatter)
-            it.printLog(LogLevel.INFO, this.logTag(),String.format(s, msg + message))
+            it.printLog(logLevel,tag,String.format(s, msg + message))
         }
         return true
     }

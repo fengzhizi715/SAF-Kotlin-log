@@ -3,7 +3,6 @@ package com.safframework.log.handler
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -19,7 +18,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.printLog(LogLevel.ERROR, this.logTag(),String.format(s, parseString(obj,it.formatter)))
+                it.printLog(logLevel,tag,String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

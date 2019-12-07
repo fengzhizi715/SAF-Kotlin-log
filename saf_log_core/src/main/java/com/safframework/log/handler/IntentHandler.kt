@@ -6,7 +6,6 @@ import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.utils.formatJSON
 import com.safframework.log.utils.parseBundle
@@ -24,7 +23,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.printLog(LogLevel.INFO, this.logTag(),String.format(s, parseString(obj,it.formatter)))
+                it.printLog(logLevel,tag,String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

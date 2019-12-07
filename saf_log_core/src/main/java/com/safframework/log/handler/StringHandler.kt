@@ -3,7 +3,6 @@ package com.safframework.log.handler
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
-import com.safframework.log.logTag
 import com.safframework.log.parser.Parser
 import com.safframework.log.printer.Printer
 import com.safframework.log.utils.formatJSON
@@ -29,7 +28,7 @@ class StringHandler:BaseHandler(), Parser<String> {
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
                 val logString = String.format(s, parseString(json,it.formatter))
-                printLongLog(LogLevel.INFO,this.logTag(),logString,it)
+                printLongLog(logLevel,tag,logString,it)
             }
             return true
         }
