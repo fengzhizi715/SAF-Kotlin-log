@@ -10,8 +10,8 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
         versionCode 1
         versionName "1.0"
 
