@@ -1,7 +1,6 @@
 package com.safframework.log.extension
 
 import android.os.Bundle
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.utils.isPrimitiveType
@@ -32,7 +31,7 @@ fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
             if (isPrimitiveType) {
                 this.put(it, bundle.get(it))
             } else {
-                this.put(it, JSONObject(JSON.toJSONString(L.getConverter().toJson(bundle.get(it)))))
+                this.put(it, JSONObject(L.getConverter().toJson(bundle.get(it))))
             }
         } catch (e: JSONException) {
             L.e("Invalid Json")
