@@ -1,6 +1,5 @@
 package com.safframework.log.extension
 
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import org.json.JSONArray
 import org.json.JSONException
@@ -23,12 +22,14 @@ fun Collection<*>.parseToJSONArray(jsonArray: JSONArray): JSONArray {
 
     this.map {
 
-        try {
-            val objStr = JSON.toJSONString(it)
-            val jsonObject = JSONObject(objStr)
-            jsonArray.put(jsonObject)
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
+        it?.let {
+            try {
+                val objStr = L.getConverter().toJson(it)
+                val jsonObject = JSONObject(objStr)
+                jsonArray.put(jsonObject)
+            } catch (e: JSONException) {
+                L.e("Invalid Json")
+            }
         }
     }
 
