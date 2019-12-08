@@ -3,7 +3,7 @@ package cn.salesuite.saf.kotlin.activity
 import android.app.Activity
 import android.os.Bundle
 import com.safframework.log.L
-import com.safframework.log.i
+import com.safframework.log.extension.i
 
 /**
  *
