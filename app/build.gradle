@@ -68,7 +68,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${libs.okhttp3}"
     implementation "com.google.code.gson:gson:${libs.gson}"
 
-    implementation project(":saf_log_core")
+    implementation project(':core')
     implementation project(":saf_log_file")
     implementation project(":saf_log_okhttp")
     implementation project(":saf_debug_view")

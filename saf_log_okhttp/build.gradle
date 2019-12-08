@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.71.android'
     implementation "com.squareup.okhttp3:okhttp:${libs.okhttp3}"
 
-    implementation project(":saf_log_core")
+    implementation project(':core')
 }
 
 repositories {
