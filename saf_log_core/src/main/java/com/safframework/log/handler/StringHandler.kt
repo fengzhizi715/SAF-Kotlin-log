@@ -69,12 +69,14 @@ class StringHandler:BaseHandler(), Parser<String> {
         try {
             if (json.startsWith("{")) {
                 val jsonObject = JSONObject(json)
-                message = jsonObject.formatJSON()
-                message = message.replace("\n", "\n${formatter.spliter()}")
+                message = jsonObject.formatJSON().run {
+                    replace("\n", "\n${formatter.spliter()}")
+                }
             } else if (json.startsWith("[")) {
                 val jsonArray = JSONArray(json)
-                message = jsonArray.formatJSON()
-                message = message.replace("\n", "\n${formatter.spliter()}")
+                message = jsonArray.formatJSON().run {
+                    replace("\n", "\n${formatter.spliter()}")
+                }
             } else { // 普通的字符串
                 message = json.replace("\n", "\n${formatter.spliter()}")
             }
