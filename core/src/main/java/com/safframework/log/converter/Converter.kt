@@ -19,12 +19,12 @@ interface Converter {
      * @param <T>
      * @return
     </T> */
-    fun <T> fromJson(json: String?, type: Type?): T
+    fun <T> fromJson(json: String, type: Type): T
 
     /**
      * 将对象序列化成字符串对象
      * @param data
      * @return
      */
-    fun toJson(data: Any?): String?
+    fun toJson(data: Any): String
 }
