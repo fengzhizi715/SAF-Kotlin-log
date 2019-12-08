@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
-import com.safframework.log.utils.formatJSON
+import com.safframework.log.extension.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
 

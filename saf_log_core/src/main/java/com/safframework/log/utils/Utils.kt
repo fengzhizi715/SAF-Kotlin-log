@@ -32,58 +32,7 @@ fun isPrimitiveType(value: Any?) = when(value){
 
 fun Any.toJavaClass()        = this.javaClass.toString()
 
-fun JSONObject.formatJSON() = this.toString(LoggerPrinter.JSON_INDENT)
-
 fun JSONArray.formatJSON()  = this.toString(LoggerPrinter.JSON_INDENT)
-
-/**
- * 解析 bundle ，并存储到 JSONObject
- */
-fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
-
-    bundle.keySet().map {
-
-        val isPrimitiveType = isPrimitiveType(bundle.get(it))
-
-        try {
-            if (isPrimitiveType) {
-                this.put(it, bundle.get(it))
-            } else {
-                this.put(it, JSONObject(JSON.toJSONString(bundle.get(it))))
-            }
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
-        }
-    }
-
-    return this
-}
-
-/**
- * 解析 map ，并存储到 JSONObject
- */
-fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
-
-    val keys = map.keys
-    val values = map.values
-    val value = values.firstOrNull()
-    val isPrimitiveType = isPrimitiveType(value)
-
-    keys.map {
-
-        try {
-            if (isPrimitiveType) {
-                this.put(it.toString(), map[it])
-            } else {
-                this.put(it.toString(), JSONObject(JSON.toJSONString(map[it])))
-            }
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
-        }
-    }
-
-    return this
-}
 
 /**
  * 解析 collection ，并存储到 JSONArray

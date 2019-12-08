@@ -2,6 +2,7 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.LogLevel
+import com.safframework.log.extension.formatJSON
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.parser.Parser
 import com.safframework.log.printer.Printer
