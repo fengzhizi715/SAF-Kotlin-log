@@ -24,6 +24,7 @@ class BasicActivity : Activity() {
         val u = User()
         u.userName = "tony"
         u.password = "123456"
+        L.json(u)
 
         val map = HashMap<String, User>()
         map["tony"] = u

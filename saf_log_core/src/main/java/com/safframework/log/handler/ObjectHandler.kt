@@ -25,8 +25,8 @@ class ObjectHandler:BaseHandler() {
                 JSONObject(this)
             }
             .formatJSON()
-            .let {
-                it.replace("\n", "\n${formatter.spliter()}")
+            .run {
+                replace("\n", "\n${formatter.spliter()}")
             }
 
             val s = L.getMethodNames(formatter)
