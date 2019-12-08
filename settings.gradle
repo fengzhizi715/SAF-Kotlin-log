@@ -1,6 +1,10 @@
 include ':app'
 include ':core'
+
 include ':converter'
+include ':converter:gson'
+findProject(':converter:gson')?.name = 'gson'
+
 include ':file'
 include ':okhttp'
 include ':debug_view'

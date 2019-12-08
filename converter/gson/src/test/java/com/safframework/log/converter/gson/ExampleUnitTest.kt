@@ -1,4 +1,4 @@
-package com.safframework.log.converter
+package com.safframework.log.converter.gson
 
 import org.junit.Test
 
