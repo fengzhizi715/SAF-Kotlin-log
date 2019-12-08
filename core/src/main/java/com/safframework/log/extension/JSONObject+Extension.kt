@@ -32,7 +32,7 @@ fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
             if (isPrimitiveType) {
                 this.put(it, bundle.get(it))
             } else {
-                this.put(it, JSONObject(JSON.toJSONString(bundle.get(it))))
+                this.put(it, JSONObject(JSON.toJSONString(L.getConverter().toJson(bundle.get(it)))))
             }
         } catch (e: JSONException) {
             L.e("Invalid Json")
@@ -54,14 +54,17 @@ fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
 
     keys.map {
 
-        try {
-            if (isPrimitiveType) {
-                this.put(it.toString(), map[it])
-            } else {
-                this.put(it.toString(), JSONObject(JSON.toJSONString(map[it])))
+        it?.let {
+
+            try {
+                if (isPrimitiveType) {
+                    this.put(it.toString(), map[it])
+                } else {
+                    this.put(it.toString(), JSONObject(L.getConverter().toJson(map[it]?:"")))
+                }
+            } catch (e: JSONException) {
+                L.e("Invalid Json")
             }
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
         }
     }
 
