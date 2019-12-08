@@ -6,7 +6,6 @@ import com.safframework.log.extension.formatJSON
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.parser.Parser
 import com.safframework.log.printer.Printer
-import com.safframework.log.utils.formatJSON
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

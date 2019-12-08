@@ -31,24 +31,3 @@ fun isPrimitiveType(value: Any?) = when(value){
 }
 
 fun Any.toJavaClass()        = this.javaClass.toString()
-
-fun JSONArray.formatJSON()  = this.toString(LoggerPrinter.JSON_INDENT)
-
-/**
- * 解析 collection ，并存储到 JSONArray
- */
-fun Collection<*>.parseToJSONArray(jsonArray: JSONArray):JSONArray {
-
-    this.map {
-
-        try {
-            val objStr = JSON.toJSONString(it)
-            val jsonObject = JSONObject(objStr)
-            jsonArray.put(jsonObject)
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
-        }
-    }
-
-    return jsonArray
-}
