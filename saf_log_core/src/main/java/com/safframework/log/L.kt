@@ -1,6 +1,7 @@
 package com.safframework.log
 
 import android.util.Log
+import com.safframework.log.converter.Converter
 import com.safframework.log.formatter.BorderFormatter
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
@@ -20,6 +21,7 @@ object L {
     private val printers = mutableSetOf<Printer>()
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
+    private var converter:Converter?=null
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
@@ -146,6 +148,16 @@ object L {
     fun displayClassInfo(displayClassInfo:Boolean): L {
 
         this.displayClassInfo = displayClassInfo
+        return this
+    }
+
+    /**
+     * 用于解析 json 的 Converter
+     */
+    @JvmStatic
+    fun converter(converter:Converter): L {
+
+        this.converter = converter
         return this
     }
 

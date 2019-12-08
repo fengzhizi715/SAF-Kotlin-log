@@ -1,4 +1,5 @@
-include ':app', ':saf_debug_view'
+include ':app', ':converter'
 include ':saf_log_file'
 include ':saf_log_core'
 include ':saf_log_okhttp'
+include ':saf_debug_view'
