@@ -72,4 +72,6 @@ dependencies {
     implementation project(':file')
     implementation project(':okhttp')
     implementation project(':debug_view')
+
+    implementation project(':converter:gson')
 }
