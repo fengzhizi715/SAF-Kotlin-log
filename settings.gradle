@@ -4,6 +4,8 @@ include ':core'
 include ':converter'
 include ':converter:gson'
 findProject(':converter:gson')?.name = 'gson'
+include ':converter:fastjson'
+findProject(':converter:fastjson')?.name = 'fastjson'
 
 include ':file'
 include ':okhttp'

@@ -27,6 +27,10 @@ class LoggingInterceptorActivity : Activity() {
                 .apiService()
                 .publicEvent("fengzhizi715")
                 .compose(RxJavaUtils.maybeToMain())
-                .subscribe()
+                .subscribe({
+
+                },{
+                    println(it.message)
+                })
     }
 }
