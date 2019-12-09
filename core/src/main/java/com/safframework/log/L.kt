@@ -2,7 +2,6 @@ package com.safframework.log
 
 import android.util.Log
 import com.safframework.log.converter.Converter
-import com.safframework.log.converter.FastJSONConverter
 import com.safframework.log.formatter.BorderFormatter
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
@@ -22,7 +21,7 @@ object L {
     private val printers = mutableSetOf<Printer>()
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
-    private var converter:Converter = FastJSONConverter()
+    private var converter:Converter?=null
 
     init {
         printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter

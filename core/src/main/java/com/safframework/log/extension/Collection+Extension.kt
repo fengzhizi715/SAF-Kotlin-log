@@ -23,12 +23,14 @@ fun Collection<*>.parseToJSONArray(jsonArray: JSONArray): JSONArray {
     this.map {
 
         it?.let {
-            try {
-                val objStr = L.getConverter().toJson(it)
-                val jsonObject = JSONObject(objStr)
-                jsonArray.put(jsonObject)
-            } catch (e: JSONException) {
-                L.e("Invalid Json")
+            val objStr = L.getConverter()?.toJson(it)
+            objStr?.run {
+                try {
+                    val jsonObject = JSONObject(this)
+                    jsonArray.put(jsonObject)
+                } catch (e: JSONException) {
+                    L.e("Invalid Json")
+                }
             }
         }
     }

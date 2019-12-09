@@ -81,7 +81,10 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
             }
         }
 
-        writer.appendLog(L.getConverter().toJson(logItem))
+        L.getConverter()?.let {
+            writer.appendLog(it.toJson(logItem))
+        }
+
     }
 
     /**
