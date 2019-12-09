@@ -41,7 +41,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.alibaba:fastjson:1.1.71.android'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.kotlinx_coroutines_core}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.kotlinx_coroutines_core}"
