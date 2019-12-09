@@ -30,6 +30,7 @@ class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printe
     }
 
     override fun equals(other: Any?): Boolean {
+
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
@@ -40,7 +41,5 @@ class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printe
         return true
     }
 
-    override fun hashCode(): Int {
-        return formatter.hashCode()
-    }
+    override fun hashCode() = formatter.hashCode()
 }

@@ -1,6 +1,6 @@
 package com.safframework.log.printer
 
-import com.alibaba.fastjson.JSON
+import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.formatter.SimpleFormatter
@@ -81,7 +81,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
             }
         }
 
-        writer.appendLog(JSON.toJSONString(logItem))
+        writer.appendLog(L.getConverter().toJson(logItem))
     }
 
     /**
