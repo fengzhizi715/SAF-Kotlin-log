@@ -16,7 +16,7 @@ ext {
 
             retrofit               : "2.3.0",
             okhttp3                : "4.2.2",
-            gson                   : "2.8.1"
+            gson                   : "2.8.6"
     ]
 }
 
