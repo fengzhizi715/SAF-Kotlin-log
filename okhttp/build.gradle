@@ -40,7 +40,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.alibaba:fastjson:1.1.71.android'
     implementation "com.squareup.okhttp3:okhttp:${libs.okhttp3}"
 
     implementation project(':core')
