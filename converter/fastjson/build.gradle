@@ -5,13 +5,12 @@ def cfg = rootProject.ext.configuration // 配置
 def libs = rootProject.ext.libraries // 库
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
+    compileSdkVersion cfg.compileVersion
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
         versionCode 1
         versionName "1.0"
 
