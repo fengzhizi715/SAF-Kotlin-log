@@ -25,7 +25,7 @@ import java.io.File
  * @date: 2019-08-31 10:58
  * @since: V2.0 打印到文件的 Printer，默认的 formatter 使用 SimpleFormatter
  */
-class FilePrinter(fileBuilder: FileBuilder):Printer{
+open class FilePrinter(fileBuilder: FileBuilder):Printer{
 
     override val formatter: Formatter
 
