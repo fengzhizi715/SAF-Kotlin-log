@@ -21,16 +21,16 @@ class LWrapper {
     var converter: Converter?=null
 }
 
-fun config(init: LWrapper.() -> Unit):L {
+fun configL(init: LWrapper.() -> Unit):L {
 
     val wrap = LWrapper()
 
     wrap.init()
 
-    return configL(wrap)
+    return configWrap(wrap)
 }
 
-internal fun configL(wrap:LWrapper):L {
+internal fun configWrap(wrap:LWrapper):L {
 
     L.logLevel = wrap.logLevel
 
