@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import com.safframework.log.L
+import com.safframework.log.config
 import com.safframework.log.converter.gson.GsonConverter
 import com.safframework.log.debugview.DebugViewWrapper
 import com.safframework.log.debugview.modules.TimerModule
@@ -31,7 +32,11 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        L.converter(GsonConverter())
+        config {
+
+            converter = GsonConverter()
+        }
+
         initDebugView()
     }
 

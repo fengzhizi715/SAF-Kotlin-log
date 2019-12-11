@@ -1,6 +1,5 @@
 package com.safframework.log.handler
 
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
@@ -15,23 +14,28 @@ class ObjectHandler:BaseHandler() {
 
     override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
 
-        L.printers().map {
+        if (L.getConverter()!=null) {
 
-            val formatter = it.formatter
+            L.printers().map {
 
-            var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+                val formatter = it.formatter
 
-            val message = JSON.toJSONString(obj).run {
-                JSONObject(this)
+                var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
+
+                val message = L.getConverter()!!.toJson(obj).run {
+                    JSONObject(this)
+                }
+                .formatJSON()
+                .run {
+                    replace("\n", "\n${formatter.spliter()}")
+                }
+
+                val s = L.getMethodNames(formatter)
+                it.printLog(logLevel,tag,String.format(s, msg + message))
             }
-            .formatJSON()
-            .run {
-                replace("\n", "\n${formatter.spliter()}")
-            }
-
-            val s = L.getMethodNames(formatter)
-            it.printLog(logLevel,tag,String.format(s, msg + message))
+            return true
         }
-        return true
+
+        return false
     }
 }

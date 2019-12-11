@@ -1,6 +1,5 @@
 package com.safframework.log.handler
 
-import com.alibaba.fastjson.JSON
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
@@ -43,11 +42,15 @@ class ReferenceHandler:BaseHandler(), Parser<Reference<*>> {
             "{$actual}"
         } else {
 
-            JSONObject(JSON.toJSONString(actual))
-                    .formatJSON()
-                    .let {
-                        it.replace("\n", "\n${formatter.spliter()}")
-                    }
+            L.getConverter()?.takeIf { actual != null }?.let {
+
+                JSONObject(it.toJson(actual!!))
+                        .formatJSON()
+                        .let {
+                            it.replace("\n", "\n${formatter.spliter()}")
+                        }
+
+            }?:""
         }
 
         return msg
