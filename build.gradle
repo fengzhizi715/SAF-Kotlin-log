@@ -23,7 +23,7 @@ ext {
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
     ext.kotlin_version = '1.3.61'
-    ext.l_version = '2.3.0'
+    ext.l_version = '2.4.0'
 
     repositories {
         google()
@@ -55,3 +55,5 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+tasks.getByPath(":app:lint").enabled = false

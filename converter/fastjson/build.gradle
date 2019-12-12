@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
 
 def cfg = rootProject.ext.configuration // 配置
 def libs = rootProject.ext.libraries // 库
@@ -38,4 +39,30 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.71.android'
 
     implementation project(':core')
+}
+
+repositories {
+    jcenter()
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    //加上这些
+    tasks.withType(Javadoc) {
+        options{ encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+
+publish{
+    userOrg = 'fengzhizi715'
+    groupId = 'com.safframework.log'
+    artifactId = 'saf-log-converter-fastjson'
+    publishVersion = "$l_version"
+    desc = 'this is a log library for android,written by kotlin'
+    website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
 }
