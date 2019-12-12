@@ -4,7 +4,7 @@ SAF-Kotlin-log
 Version 2.4.0
 ---
 2019-12-12
-* 修改各个模块的名称、增加 converter 相关的模块
+* 修改各个模块的名称、增加 converter 相关的模块用于解析对象成字符串
 * core 模块不再依赖 fastjson 库，L 可以根据项目的需要自己实现 converter
 * 提供基于 dsl 的方式配置 L
 * 优化相关的代码

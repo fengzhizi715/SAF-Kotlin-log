@@ -16,6 +16,7 @@
 * 支持多种日志级别
 * 支持显示/关闭当前线程信息
 * 支持自定义 Header，可以用于标识手机、App 等版本信息
+* 提供基于 DSL 的方式配置 L
 * 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
 * 使用 json() 方法打印字符串时，支持超长日志的打印，解决了 Logcat 4K 字符截断的问题。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
@@ -33,7 +34,8 @@
 saf-log-core|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-core/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-core/_latestVersion)
 saf-log-file|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-file/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-file/_latestVersion)
 saf-log-okhttp|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-okhttp/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-okhttp/_latestVersion)
-
+saf-log-converter-fastjson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-fastjson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-fastjson/_latestVersion)
+saf-log-converter-gson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-gson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-gson/_latestVersion)
 
 # 下载安装
 
@@ -49,6 +51,14 @@ implementation 'com.safframework.log:saf-log-file:<latest-version>'
 
 ```groovy
 implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
+```
+
+```groovy
+implementation 'com.safframework.log:saf-log-converter-fastjson:<latest-version>'
+```
+
+```groovy
+implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 ```
 
 
