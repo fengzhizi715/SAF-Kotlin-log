@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.1
+---
+2019-12-13
+* 更新 file 模块
+
 Version 2.4.0
 ---
 2019-12-12
