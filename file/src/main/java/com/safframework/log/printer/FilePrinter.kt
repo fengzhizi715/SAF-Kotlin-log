@@ -12,6 +12,7 @@ import com.safframework.log.printer.file.clean.CleanStrategy
 import com.safframework.log.printer.file.clean.NeverCleanStrategy
 import com.safframework.log.printer.file.name.DateFileNameGenerator
 import com.safframework.log.printer.file.name.FileNameGenerator
+import com.safframework.log.printer.utils.now
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
@@ -54,7 +55,7 @@ open class FilePrinter(fileBuilder: FileBuilder):Printer{
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 
         ioScope().launch {
-            channel.send(LogItem(System.currentTimeMillis(), logLevel, tag, msg))
+            channel.send(LogItem(now(), logLevel, tag, msg))
         }
     }
 
