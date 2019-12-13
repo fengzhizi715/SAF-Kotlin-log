@@ -64,6 +64,7 @@ implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 
 # TODO List：
 
+* 完善 debug view
 * 支持 mmap 存储日志文件
 
 
