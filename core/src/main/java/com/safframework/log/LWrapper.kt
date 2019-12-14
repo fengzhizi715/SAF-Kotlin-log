@@ -12,13 +12,17 @@ import com.safframework.log.converter.Converter
  */
 class LWrapper {
 
-    var logLevel:LogLevel = LogLevel.DEBUG
+    var logLevel:LogLevel          = LogLevel.DEBUG
 
-    var header:String? = null
+    var header:String?             = null
 
-    var tag:String = "SAF_L"
+    var tag:String                 = "SAF_L"
 
-    var converter: Converter?=null
+    var converter: Converter?      = null
+
+    var displayThreadInfo:Boolean  = true
+
+    var displayClassInfo:Boolean   = true
 }
 
 fun configL(init: LWrapper.() -> Unit):L {
@@ -45,6 +49,10 @@ internal fun configWrap(wrap:LWrapper):L {
     wrap.converter?.let {
         L.converter(it)
     }
+
+    L.displayClassInfo(wrap.displayClassInfo)
+
+    L.displayThreadInfo(wrap.displayThreadInfo)
 
     return L
 }
