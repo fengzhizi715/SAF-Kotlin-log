@@ -1,6 +1,7 @@
 package com.safframework.log
 
 import android.util.Log
+import com.safframework.log.bean.JSONConfig
 import com.safframework.log.converter.Converter
 import com.safframework.log.formatter.BorderFormatter
 import com.safframework.log.formatter.Formatter
@@ -263,14 +264,14 @@ object L {
      * 将任何对象转换成json字符串进行打印
      */
     @JvmStatic
-    fun json(obj: Any?, logLevel: LogLevel = LogLevel.INFO, tag: String = TAG) {
+    fun json(obj: Any?, jsonConfig: JSONConfig = JSONConfig(L.logLevel, TAG)) {
 
         if (obj == null) {
             e("object is null")
             return
         }
 
-        firstHandler.handleObject(obj,logLevel,tag)
+        firstHandler.handleObject(obj,jsonConfig)
     }
 
     /******************* L 提供打印的方法 End *******************/

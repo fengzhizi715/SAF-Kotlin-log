@@ -1,8 +1,8 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.bean.JSONConfig
 import com.safframework.log.extension.formatJSON
 import com.safframework.log.extension.parseToJSONArray
 import com.safframework.log.formatter.Formatter
@@ -15,7 +15,7 @@ import org.json.JSONArray
  */
 class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
 
-    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
+    override fun handle(obj: Any, jsonConfig:JSONConfig): Boolean {
 
         if (obj is Collection<*>) {
 
@@ -30,14 +30,14 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
                     msg = String.format(msg, simpleName, obj.size) + it.formatter.spliter()
 
                     val s = L.getMethodNames(it.formatter)
-                    it.printLog(logLevel,tag,String.format(s, msg + obj.toString()))
+                    it.printLog(jsonConfig.logLevel,jsonConfig.tag,String.format(s, msg + obj.toString()))
                 }
                 return true
             }
 
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
-                it.printLog(logLevel,tag, String.format(s, parseString(obj,it.formatter)))
+                it.printLog(jsonConfig.logLevel,jsonConfig.tag, String.format(s, parseString(obj,it.formatter)))
             }
             return true
         }

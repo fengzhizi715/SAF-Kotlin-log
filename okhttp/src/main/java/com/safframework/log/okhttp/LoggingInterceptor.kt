@@ -4,6 +4,7 @@ import android.text.TextUtils
 import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.bean.JSONConfig
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -62,7 +63,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
         }.toString()
 
-        L.json(requestString,logLevel,tag)
+        L.json(requestString,JSONConfig(logLevel,tag))
 
         val st = System.nanoTime()
 
@@ -113,7 +114,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
                 }.toString()
 
-                L.json(responseString,logLevel,tag)
+                L.json(responseString,JSONConfig(logLevel,tag))
             }
         }
 

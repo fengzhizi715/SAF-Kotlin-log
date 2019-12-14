@@ -1,8 +1,8 @@
 package com.safframework.log.handler
 
 import com.safframework.log.L
-import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
+import com.safframework.log.bean.JSONConfig
 import com.safframework.log.extension.formatJSON
 import com.safframework.log.utils.toJavaClass
 import org.json.JSONObject
@@ -12,7 +12,7 @@ import org.json.JSONObject
  */
 class ObjectHandler:BaseHandler() {
 
-    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
+    override fun handle(obj: Any, jsonConfig: JSONConfig): Boolean {
 
         if (L.getConverter()!=null) {
 
@@ -31,7 +31,7 @@ class ObjectHandler:BaseHandler() {
                 }
 
                 val s = L.getMethodNames(formatter)
-                it.printLog(logLevel,tag,String.format(s, msg + message))
+                it.printLog(jsonConfig.logLevel,jsonConfig.tag,String.format(s, msg + message))
             }
             return true
         }

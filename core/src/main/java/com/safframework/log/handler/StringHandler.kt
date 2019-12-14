@@ -2,6 +2,7 @@ package com.safframework.log.handler
 
 import com.safframework.log.L
 import com.safframework.log.LogLevel
+import com.safframework.log.bean.JSONConfig
 import com.safframework.log.extension.formatJSON
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.parser.Parser
@@ -19,7 +20,7 @@ class StringHandler:BaseHandler(), Parser<String> {
         private const val MAX_STRING_LENGTH = 4000
     }
 
-    override fun handle(obj: Any, logLevel: LogLevel, tag: String): Boolean {
+    override fun handle(obj: Any, jsonConfig: JSONConfig): Boolean {
 
         if (obj is String) {
 
@@ -28,7 +29,7 @@ class StringHandler:BaseHandler(), Parser<String> {
             L.printers().map {
                 val s = L.getMethodNames(it.formatter)
                 val logString = String.format(s, parseString(json,it.formatter))
-                printLongLog(logLevel,tag,logString,it)
+                printLongLog(jsonConfig.logLevel,jsonConfig.tag,logString,it)
             }
             return true
         }

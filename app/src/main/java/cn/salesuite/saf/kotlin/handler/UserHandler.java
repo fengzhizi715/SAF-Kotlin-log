@@ -2,6 +2,7 @@ package cn.salesuite.saf.kotlin.handler;
 
 import com.safframework.log.L;
 import com.safframework.log.LogLevel;
+import com.safframework.log.bean.JSONConfig;
 import com.safframework.log.handler.BaseHandler;
 import com.safframework.log.printer.Printer;
 
@@ -15,7 +16,7 @@ import cn.salesuite.saf.kotlin.domain.User;
 public class UserHandler extends BaseHandler {
 
     @Override
-    protected boolean handle(Object obj, LogLevel logLevel, String tag) {
+    protected boolean handle(Object obj, JSONConfig jsonConfig) {
 
         if (obj instanceof User) {
 
@@ -23,7 +24,7 @@ public class UserHandler extends BaseHandler {
 
             for(Printer printer:L.printers()) {
                 String s = L.getMethodNames(printer.getFormatter());
-                printer.printLog(LogLevel.INFO,"UserHandler",String.format(s, u.userName+":"+u.password));
+                printer.printLog(jsonConfig.getLogLevel(),jsonConfig.getTag(),String.format(s, u.userName+":"+u.password));
             }
 
             return true;
