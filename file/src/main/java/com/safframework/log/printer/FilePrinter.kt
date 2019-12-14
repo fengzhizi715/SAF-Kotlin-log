@@ -1,6 +1,5 @@
 package com.safframework.log.printer
 
-import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.formatter.SimpleFormatter
@@ -82,10 +81,7 @@ open class FilePrinter(fileBuilder: FileBuilder):Printer{
             }
         }
 
-        L.getConverter()?.let {
-            writer.appendLog(it.toJson(logItem))
-        }
-
+        writer.appendLog(logItem.toString())
     }
 
     /**
