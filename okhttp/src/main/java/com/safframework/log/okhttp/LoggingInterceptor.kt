@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-09-21 12:36
  * @since: V2.0 OkHttp 的日志拦截器
  */
-class LoggingInterceptor private constructor(private val builder: LoggingInterceptor.Builder): Interceptor {
+class LoggingInterceptor private constructor(private val builder: Builder): Interceptor {
 
     companion object {
         private const val MAX_LONG_SIZE = 120
@@ -219,68 +219,31 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
             }
         }
 
-        /**
-         * Set request log tag
-         *
-         * @param tag request log tag
-         *
-         * @return Builder
-         */
         fun requestTag(tag: String): Builder {
             this.requestTag = tag
             return this
         }
 
-        /**
-         * Set response log tag
-         *
-         * @param tag response log tag
-         *
-         * @return Builder
-         */
         fun responseTag(tag: String): Builder {
             this.responseTag = tag
             return this
         }
 
-        /**
-         * Set request log flag
-         *
-         *
-         * @return Builder
-         */
         fun request(): Builder {
             this.requestFlag = true
             return this
         }
 
-        /**
-         * Set response log flag
-         *
-         *
-         * @return Builder
-         */
         fun response(): Builder {
             this.responseFlag = true
             return this
         }
 
-        /**
-         * Set logLevel
-         *
-         *
-         * @return Builder
-         */
         fun logLevel(logLevel: LogLevel): Builder {
             this.logLevel = logLevel
             return this
         }
 
-        /**
-         * @param isDebug set can sending log output
-         *
-         * @return Builder
-         */
         fun loggable(isDebug: Boolean): Builder {
             this.isDebug = isDebug
             return this
