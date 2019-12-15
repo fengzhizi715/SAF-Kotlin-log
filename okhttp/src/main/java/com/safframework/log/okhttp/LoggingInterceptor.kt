@@ -64,7 +64,9 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
         }.toString()
 
-        L.json(requestString,JSONConfig(builder.logLevel,builder.getTag(true),builder.printers))
+        if (builder.isDebug) {
+            L.json(requestString,JSONConfig(builder.logLevel,builder.getTag(true),builder.printers))
+        }
 
         val st = System.nanoTime()
 
@@ -115,7 +117,9 @@ class LoggingInterceptor private constructor(private val builder: LoggingInterce
 
                 }.toString()
 
-                L.json(responseString,JSONConfig(builder.logLevel,builder.getTag(false),builder.printers))
+                if (builder.isDebug) {
+                    L.json(responseString,JSONConfig(builder.logLevel,builder.getTag(false),builder.printers))
+                }
             }
         }
 
