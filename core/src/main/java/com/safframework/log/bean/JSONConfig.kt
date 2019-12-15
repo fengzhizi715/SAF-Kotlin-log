@@ -11,4 +11,4 @@ import com.safframework.log.printer.Printer
  * @date: 2019-12-14 13:47
  * @version: V2.4 <描述当前版本功能>
  */
-data class JSONConfig(var logLevel: LogLevel = LogLevel.INFO, var tag:String, var printers:MutableSet<Printer>)
+data class JSONConfig(val logLevel: LogLevel = LogLevel.INFO, val tag:String, val printers:MutableSet<Printer>)
