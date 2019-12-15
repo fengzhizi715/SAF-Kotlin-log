@@ -66,6 +66,7 @@ implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 
 * 完善 debug view
 * 支持 mmap 存储日志文件
+* 尝试支持 Multiplatform
 
 
 联系方式
