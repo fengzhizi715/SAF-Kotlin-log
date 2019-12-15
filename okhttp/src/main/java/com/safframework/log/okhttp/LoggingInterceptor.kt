@@ -5,6 +5,7 @@ import com.safframework.log.L
 import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.bean.JSONConfig
+import com.safframework.log.printer.Printer
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-09-21 12:36
  * @since: V2.0 OkHttp 的日志拦截器
  */
-class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private val tag: String="SAF_OKHttp"): Interceptor {
+class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private val tag: String="SAF_OKHttp",private val printers:MutableSet<Printer> = L.printers()): Interceptor {
 
     companion object {
         private const val MAX_LONG_SIZE = 120
@@ -63,7 +64,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
         }.toString()
 
-        L.json(requestString,JSONConfig(logLevel,tag))
+        L.json(requestString,JSONConfig(logLevel,tag,printers))
 
         val st = System.nanoTime()
 
@@ -114,7 +115,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
                 }.toString()
 
-                L.json(responseString,JSONConfig(logLevel,tag))
+                L.json(responseString,JSONConfig(logLevel,tag,printers))
             }
         }
 
