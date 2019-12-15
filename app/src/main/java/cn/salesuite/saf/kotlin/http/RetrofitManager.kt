@@ -8,6 +8,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 /**
  *
  * @FileName:
@@ -32,7 +33,15 @@ class RetrofitManager private constructor() {
         builder.connectTimeout((5 * 1000).toLong(), TimeUnit.MILLISECONDS)
 
         //设置拦截器
-        builder.addInterceptor(LoggingInterceptor())
+        val loggingInterceptor = LoggingInterceptor.Builder()
+                .loggable(true) // TODO: 发布到生产环境需要改成false
+                .request()
+                .requestTag("Request")
+                .response()
+                .responseTag("Response")
+                .build()
+
+        builder.addInterceptor(loggingInterceptor)
 
         okhttpClient = builder.build()
 

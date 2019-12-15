@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
  * @date: 2019-09-21 12:36
  * @since: V2.0 OkHttp 的日志拦截器
  */
-class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private val tag: String="SAF_OKHttp",private val printers:MutableSet<Printer> = L.printers()): Interceptor {
+class LoggingInterceptor private constructor(private val builder: LoggingInterceptor.Builder): Interceptor {
 
     companion object {
         private const val MAX_LONG_SIZE = 120
@@ -64,7 +64,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
         }.toString()
 
-        L.json(requestString,JSONConfig(logLevel,tag,printers))
+        L.json(requestString,JSONConfig(builder.logLevel,builder.getTag(true),builder.printers))
 
         val st = System.nanoTime()
 
@@ -115,7 +115,7 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
 
                 }.toString()
 
-                L.json(responseString,JSONConfig(logLevel,tag,printers))
+                L.json(responseString,JSONConfig(builder.logLevel,builder.getTag(false),builder.printers))
             }
         }
 
@@ -191,5 +191,97 @@ class LoggingInterceptor(private val logLevel: LogLevel=LogLevel.INFO, private v
                 append(LoggerPrinter.BR)
             }
         }.toString()
+    }
+
+    class Builder {
+
+        var TAG = "SAF_OKHttp"
+
+        var isDebug: Boolean = false
+        var requestFlag: Boolean = false
+        var responseFlag: Boolean = false
+        var logLevel: LogLevel = LogLevel.INFO
+
+        private var requestTag: String?=null
+        private var responseTag: String?=null
+
+        var printers:MutableSet<Printer> = L.printers()
+
+        internal fun getTag(isRequest: Boolean): String {
+            if (isRequest) {
+                return if (requestTag.isNullOrBlank()) TAG else requestTag!!
+            } else {
+                return if (responseTag.isNullOrBlank()) TAG else responseTag!!
+            }
+        }
+
+        /**
+         * Set request log tag
+         *
+         * @param tag request log tag
+         *
+         * @return Builder
+         */
+        fun requestTag(tag: String): Builder {
+            this.requestTag = tag
+            return this
+        }
+
+        /**
+         * Set response log tag
+         *
+         * @param tag response log tag
+         *
+         * @return Builder
+         */
+        fun responseTag(tag: String): Builder {
+            this.responseTag = tag
+            return this
+        }
+
+        /**
+         * Set request log flag
+         *
+         *
+         * @return Builder
+         */
+        fun request(): Builder {
+            this.requestFlag = true
+            return this
+        }
+
+        /**
+         * Set response log flag
+         *
+         *
+         * @return Builder
+         */
+        fun response(): Builder {
+            this.responseFlag = true
+            return this
+        }
+
+        /**
+         * Set logLevel
+         *
+         *
+         * @return Builder
+         */
+        fun logLevel(logLevel: LogLevel): Builder {
+            this.logLevel = logLevel
+            return this
+        }
+
+        /**
+         * @param isDebug set can sending log output
+         *
+         * @return Builder
+         */
+        fun loggable(isDebug: Boolean): Builder {
+            this.isDebug = isDebug
+            return this
+        }
+
+        fun build() =  LoggingInterceptor(this)
     }
 }
