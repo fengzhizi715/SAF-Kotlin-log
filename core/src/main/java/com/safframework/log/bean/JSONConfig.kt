@@ -1,6 +1,7 @@
 package com.safframework.log.bean
 
 import com.safframework.log.LogLevel
+import com.safframework.log.printer.Printer
 
 /**
  *
@@ -10,4 +11,4 @@ import com.safframework.log.LogLevel
  * @date: 2019-12-14 13:47
  * @version: V2.4 <描述当前版本功能>
  */
-data class JSONConfig(var logLevel: LogLevel = LogLevel.INFO, var tag:String)
+data class JSONConfig(var logLevel: LogLevel = LogLevel.INFO, var tag:String, var printers:MutableSet<Printer>)

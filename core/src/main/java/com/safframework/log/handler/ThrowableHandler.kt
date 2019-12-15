@@ -16,7 +16,7 @@ class ThrowableHandler:BaseHandler(), Parser<Throwable> {
 
         if (obj is Throwable) {
 
-            L.printers().map {
+            jsonConfig.printers.map {
                 val s = L.getMethodNames(it.formatter)
                 it.printLog(jsonConfig.logLevel,jsonConfig.tag,String.format(s, parseString(obj,it.formatter)))
             }

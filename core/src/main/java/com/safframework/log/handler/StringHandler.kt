@@ -26,7 +26,7 @@ class StringHandler:BaseHandler(), Parser<String> {
 
             var json = obj.trim { it <= ' ' }
 
-            L.printers().map {
+            jsonConfig.printers.map {
                 val s = L.getMethodNames(it.formatter)
                 val logString = String.format(s, parseString(json,it.formatter))
                 printLongLog(jsonConfig.logLevel,jsonConfig.tag,logString,it)

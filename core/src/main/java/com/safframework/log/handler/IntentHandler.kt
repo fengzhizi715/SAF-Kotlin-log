@@ -21,7 +21,7 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
 
         if (obj is Intent) {
 
-            L.printers().map {
+            jsonConfig.printers.map {
                 val s = L.getMethodNames(it.formatter)
                 it.printLog(jsonConfig.logLevel,jsonConfig.tag,String.format(s, parseString(obj,it.formatter)))
             }

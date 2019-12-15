@@ -20,7 +20,7 @@ class BundleHandler:BaseHandler(), Parser<Bundle> {
 
         if (obj is Bundle) {
 
-            L.printers().map {
+            jsonConfig.printers.map {
                 val s = L.getMethodNames(it.formatter)
                 it.printLog(jsonConfig.logLevel, jsonConfig.tag, String.format(s, parseString(obj,it.formatter)))
             }

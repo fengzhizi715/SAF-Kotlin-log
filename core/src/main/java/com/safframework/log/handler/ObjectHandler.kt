@@ -16,7 +16,7 @@ class ObjectHandler:BaseHandler() {
 
         if (L.getConverter()!=null) {
 
-            L.printers().map {
+            jsonConfig.printers.map {
 
                 val formatter = it.formatter
 

@@ -22,7 +22,7 @@ public class UserHandler extends BaseHandler {
 
             User u = (User)obj;
 
-            for(Printer printer:L.printers()) {
+            for(Printer printer:jsonConfig.getPrinters()) {
                 String s = L.getMethodNames(printer.getFormatter());
                 printer.printLog(jsonConfig.getLogLevel(),jsonConfig.getTag(),String.format(s, u.userName+":"+u.password));
             }

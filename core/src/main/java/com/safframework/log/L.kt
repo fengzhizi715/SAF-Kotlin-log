@@ -264,7 +264,7 @@ object L {
      * 将任何对象转换成json字符串进行打印
      */
     @JvmStatic
-    fun json(obj: Any?, jsonConfig: JSONConfig = JSONConfig(L.logLevel, TAG)) {
+    fun json(obj: Any?, jsonConfig: JSONConfig = JSONConfig(L.logLevel, TAG, printers)) {
 
         if (obj == null) {
             e("object is null")

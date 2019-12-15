@@ -26,7 +26,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
                 val simpleName = obj.javaClass
                 var msg = "%s size = %d" + LoggerPrinter.BR
 
-                L.printers().map {
+                jsonConfig.printers.map {
                     msg = String.format(msg, simpleName, obj.size) + it.formatter.spliter()
 
                     val s = L.getMethodNames(it.formatter)
@@ -35,7 +35,7 @@ class CollectionHandler:BaseHandler(),Parser<Collection<*>>{
                 return true
             }
 
-            L.printers().map {
+            jsonConfig.printers.map {
                 val s = L.getMethodNames(it.formatter)
                 it.printLog(jsonConfig.logLevel,jsonConfig.tag, String.format(s, parseString(obj,it.formatter)))
             }
