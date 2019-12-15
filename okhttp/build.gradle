@@ -41,6 +41,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.squareup.okhttp3:okhttp:${libs.okhttp3}"
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
     implementation project(':core')
 }

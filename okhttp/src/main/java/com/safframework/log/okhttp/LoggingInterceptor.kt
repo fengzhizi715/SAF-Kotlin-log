@@ -211,12 +211,10 @@ class LoggingInterceptor private constructor(private val builder: Builder): Inte
 
         var printers:MutableSet<Printer> = L.printers()
 
-        internal fun getTag(isRequest: Boolean): String {
-            if (isRequest) {
-                return if (requestTag.isNullOrBlank()) TAG else requestTag!!
-            } else {
-                return if (responseTag.isNullOrBlank()) TAG else responseTag!!
-            }
+        internal fun getTag(isRequest: Boolean): String = if (isRequest) {
+            if (requestTag.isNullOrBlank()) TAG else requestTag!!
+        } else {
+            if (responseTag.isNullOrBlank()) TAG else responseTag!!
         }
 
         fun requestTag(tag: String): Builder {
