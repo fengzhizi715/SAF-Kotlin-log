@@ -1,11 +1,14 @@
 package com.safframework.log.extension
 
 import com.safframework.log.L
+import com.safframework.log.bean.JSONConfig
 
 /**
  * Created by Tony Shen on 2017/6/30.
  */
 typealias msgFunction = () -> String
+
+typealias anyFunction = () -> Any
 
 
 inline fun <reified T> T.logTag() = T::class.java.simpleName
@@ -55,3 +58,7 @@ inline fun L.d(tag: String?, msg: msgFunction) = d(tag, msg.invoke())
 inline fun L.d(msg: msgFunction, tr: Throwable)  = d(msg.invoke(), tr)
 
 inline fun L.d(tag: String?, msg: msgFunction, tr: Throwable)  = d(tag, msg.invoke(), tr)
+
+inline fun L.json(any:anyFunction)  = json(any.invoke())
+
+inline fun L.json(any:anyFunction,jsonConfig: JSONConfig)  = json(any.invoke(),jsonConfig)
