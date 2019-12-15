@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.3
+---
+2019-12-15
+* 更新 Okhttp 模块
+* 完善 json() 方法
+
 Version 2.4.2
 ---
 2019-12-14
