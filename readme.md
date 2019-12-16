@@ -17,13 +17,13 @@
 * 支持显示/关闭当前线程信息
 * 支持自定义 Header，可以用于标识手机、App 等版本信息
 * 提供基于 DSL 的方式配置 L
-* 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、集合、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
+* 基于责任链模式来打造对象的打印，将对象打印成json风格，方便阅读。默认支持JSON字符串、Collection、Map、Bundle、Intent、Reference、Throwable、Uri等类型的打印，分别做了特别的格式化处理。
 * 使用 json() 方法打印字符串时，支持超长日志的打印，解决了 Logcat 4K 字符截断的问题。
 * 支持自定义对象的解析处理，将其打印成自己想要的风格。
 * 支持自定义日志格式存储到文件，底层基于 Kotlin Coroutines
 * 支持使用特定的 Printer 进行打印日志
 * 提供日志的打包功能
-* 提供单独的基于 OkHttp 的日志拦截器，能够打印 request、response 信息，便于网络接口的调试。
+* 提供单独的基于 OkHttp 的日志拦截器，能够打印 Request、Response 信息，便于网络接口的调试。
 
 ## 更详细的功能请查看[wiki](https://github.com/fengzhizi715/SAF-Kotlin-log/wiki)
 
@@ -64,7 +64,7 @@ implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 
 # TODO List：
 
-* 完善 debug view
+* 完善 debug view 模块
 * 支持 mmap 存储日志文件
 * 尝试支持 Multiplatform
 
