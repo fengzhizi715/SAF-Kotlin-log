@@ -53,6 +53,27 @@ suspend fun zip(files: List<File>, outputPath: String){
     }
 }
 
+fun zip(files: List<File>, outputPath: String, action:()->Unit) {
+
+    try {
+        ZipOutputStream(BufferedOutputStream(FileOutputStream(outputPath))).use { zos ->
+
+            for (f in files) {
+                if (f.exists() && !f.name.contains(".zip")) {
+
+                    //Write file to zip
+                    writeToZip(f, zos, createZipEntry(f.name, f))
+                }
+            }
+        }
+
+        action.invoke()
+
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
 private fun createZipEntry(path: String, f: File) = ZipEntry(path).apply {
 
     time = f.lastModified()
