@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.4
+---
+2019-12-15
+* 升级 Kotlin Coroutines 版本
+* 完善 file 模块 compress() 方法
+
 Version 2.4.3
 ---
 2019-12-15
