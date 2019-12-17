@@ -1,6 +1,5 @@
 package cn.salesuite.saf.kotlin.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import cn.salesuite.saf.kotlin.R

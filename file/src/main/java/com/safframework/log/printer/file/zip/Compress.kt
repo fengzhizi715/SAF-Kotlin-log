@@ -53,6 +53,20 @@ suspend fun zip(files: List<File>, outputPath: String){
     }
 }
 
+/**
+ * 使用时，需要先判断 Manifest.permission.WRITE_EXTERNAL_STORAGE 权限
+ *
+ * 耗时操作，尽量放在子线程
+ *  <code>
+ *       val result =  File("/sdcard/logs").listFiles().asList()
+ *       zip(result,"/sdcard/test.zip") {
+ *          ......
+ *       }
+ * </code>
+ * @param files      文件列表
+ * @param outputPath zip 打包输出的目录
+ * @param action     打包后的动作，例如可以上传
+ */
 fun zip(files: List<File>, outputPath: String, action:()->Unit) {
 
     try {
