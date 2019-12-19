@@ -88,7 +88,6 @@ class FileWriter(var folderPath:String) {
 
             try {
                 it.write(log)
-                it.newLine()
                 it.flush()
             } catch (e: IOException) {
             }
