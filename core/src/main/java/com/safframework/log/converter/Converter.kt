@@ -18,7 +18,7 @@ interface Converter {
      * @param type
      * @param <T>
      * @return
-    </T> */
+     */
     fun <T> fromJson(json: String, type: Type): T
 
     /**
