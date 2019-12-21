@@ -2,7 +2,6 @@ package com.safframework.log.handler
 
 import android.net.Uri
 import com.safframework.log.L
-import com.safframework.log.LogLevel
 import com.safframework.log.LoggerPrinter
 import com.safframework.log.bean.JSONConfig
 import com.safframework.log.extension.formatJSON

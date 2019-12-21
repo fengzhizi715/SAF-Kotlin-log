@@ -38,7 +38,7 @@ class StringHandler:BaseHandler(), Parser<String> {
     }
 
     /**
-     * 打印超过4000行的日志
+     * 打印超过 4000 行的日志
      */
     private fun printLongLog(logLevel: LogLevel,tag: String, logString: String, printer:Printer) {
 
