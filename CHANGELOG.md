@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.5
+---
+2019-12-15
+* 完善 file 模块 FileWriter 的 appendLog() 方法
+
 Version 2.4.4
 ---
 2019-12-15
