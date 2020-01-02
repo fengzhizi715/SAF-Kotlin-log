@@ -1,4 +1,4 @@
-include ':app', ':ndklog'
+include ':app'
 include ':core'
 
 include ':converter'
@@ -10,3 +10,4 @@ findProject(':converter:fastjson')?.name = 'fastjson'
 include ':file'
 include ':okhttp'
 include ':debug_view'
+include ':ndklog'
