@@ -8,12 +8,12 @@ import com.safframework.log.formatter.Formatter
 /**
  *
  * @FileName:
- *          com.safframework.log.printer.ConsolePrinter
+ *          com.safframework.log.printer.LogcatPrinter
  * @author: Tony Shen
  * @date: 2019-08-15 00:51
- * @since: V2.0 打印到控制台的Printer
+ * @since: V2.0 打印到 Logcat 的Printer
  */
-class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printer {
+class LogcatPrinter(override val formatter: Formatter = BorderFormatter):Printer {
 
     override fun printLog(logLevel: LogLevel, tag: String, msg: String) {
 
@@ -34,7 +34,7 @@ class ConsolePrinter(override val formatter: Formatter = BorderFormatter):Printe
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as ConsolePrinter
+        other as LogcatPrinter
 
         if (formatter != other.formatter) return false
 

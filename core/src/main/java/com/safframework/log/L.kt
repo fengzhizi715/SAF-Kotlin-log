@@ -6,7 +6,7 @@ import com.safframework.log.converter.Converter
 import com.safframework.log.formatter.BorderFormatter
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
-import com.safframework.log.printer.ConsolePrinter
+import com.safframework.log.printer.LogcatPrinter
 import com.safframework.log.printer.Printer
 import java.util.*
 
@@ -25,7 +25,7 @@ object L {
     private var converter:Converter?=null
 
     init {
-        printers.add(ConsolePrinter()) // 默认添加 ConsolePrinter
+        printers.add(LogcatPrinter()) // 默认添加 LogcatPrinter
 
         handlers.apply {
 
