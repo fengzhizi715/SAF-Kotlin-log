@@ -11,7 +11,7 @@ import com.safframework.log.formatter.Formatter
  *          com.safframework.log.printer.LogcatPrinter
  * @author: Tony Shen
  * @date: 2019-08-15 00:51
- * @since: V2.0 打印到 Logcat 的Printer
+ * @since: V2.0 打印到 Logcat 的 Printer
  */
 class LogcatPrinter(override val formatter: Formatter = BorderFormatter):Printer {
 
