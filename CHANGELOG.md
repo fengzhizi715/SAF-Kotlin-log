@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.6
+---
+2020-01-04
+* 优化代码
+* 增加 DateWithHourFileNameGenerator 类，用于按照日期和小时进行分割日志文件
+
 Version 2.4.5
 ---
 2019-12-15

@@ -23,7 +23,7 @@ ext {
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
     ext.kotlin_version = '1.3.61'
-    ext.l_version = '2.4.5'
+    ext.l_version = '2.4.6'
 
     repositories {
         google()
@@ -57,3 +57,5 @@ task clean(type: Delete) {
 }
 
 tasks.getByPath(":app:lint").enabled = false
+//tasks.getByPath(":ndklog:externalNativeBuildCleanDebug").enabled = false
+//tasks.getByPath(":ndklog:externalNativeBuildCleanRelease").enabled = false
