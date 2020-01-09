@@ -6,7 +6,7 @@ import com.safframework.log.bean.JSONConfig
 /**
  * Created by Tony Shen on 2017/6/30.
  */
-inline fun <reified T> T.logTag() = T::class.java.simpleName
+inline fun <reified T> T.logTag() = T::class.javaClass.name
 
 inline fun <reified T> Class<T>.logTag() = simpleName
 
