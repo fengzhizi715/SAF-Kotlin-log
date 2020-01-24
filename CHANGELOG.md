@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.7
+---
+2020-01-24
+* file 模块使用的 Coroutines 使用 Kotlin-Coroutines-Utils 库替换
+
 Version 2.4.6
 ---
 2020-01-04
