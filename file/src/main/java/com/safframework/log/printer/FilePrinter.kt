@@ -1,9 +1,9 @@
 package com.safframework.log.printer
 
+import com.safframework.kotlin.coroutines.ioScope
 import com.safframework.log.LogLevel
 import com.safframework.log.formatter.Formatter
 import com.safframework.log.formatter.SimpleFormatter
-import com.safframework.log.printer.coroutines.ioScope
 import com.safframework.log.printer.file.FileBuilder
 import com.safframework.log.printer.file.FileWriter
 import com.safframework.log.printer.file.bean.LogItem

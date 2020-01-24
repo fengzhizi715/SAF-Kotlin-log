@@ -16,7 +16,9 @@ ext {
 
             retrofit               : "2.3.0",
             okhttp3                : "4.2.2",
-            gson                   : "2.8.6"
+            gson                   : "2.8.6",
+
+            coroutines_utils       : "1.0.0"
     ]
 }
 
