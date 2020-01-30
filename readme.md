@@ -5,7 +5,7 @@
 
 ![](logo.JPG)
 
-它不仅能够打印出漂亮的日志格式，还支持定制的日志格式。
+它不仅能够打印出漂亮的日志格式，还支持定制的日志格式输出，日志分片等。
 
 它可以在任何使用 Java、Kotlin 开发的 Android 项目中使用。（即使在您的项目中只使用 Java，也无需额外添加 Kotlin 的配置。）
 
@@ -64,9 +64,9 @@ implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 
 # TODO List：
 
-* 完善 debug view 模块
 * 支持 ndk 的日志存储到文件
 * 支持 mmap 存储日志文件
+* 完善 debug view 模块
 * 尝试支持 Multiplatform
 
 
