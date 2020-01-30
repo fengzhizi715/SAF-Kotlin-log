@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.8
+---
+2020-01-30
+* 更新 Kotlin-Coroutines-Utils 库
+
+
 Version 2.4.7
 ---
 2020-01-24
