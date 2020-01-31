@@ -44,7 +44,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.kotlinx_coroutines_core}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.kotlinx_coroutines_core}"
-    implementation "com.safframework.kotlin.coroutines:coroutines-utils:${libs.coroutines_utils}"
+    api "com.safframework.kotlin.coroutines:coroutines-utils:${libs.coroutines_utils}"
 
     implementation project(':core')
 }
