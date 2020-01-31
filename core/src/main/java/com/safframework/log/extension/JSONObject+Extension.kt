@@ -25,16 +25,20 @@ fun JSONObject.parseBundle(bundle: Bundle):JSONObject {
 
     bundle.keySet().map {
 
-        val isPrimitiveType = isPrimitiveType(bundle.get(it))
+        val value = bundle.get(it)
 
-        try {
-            if (isPrimitiveType) {
-                this.put(it, bundle.get(it))
-            } else {
-                this.put(it, JSONObject(L.getConverter()?.toJson(bundle.get(it))?:"{}"))
+        value?.run {
+            val isPrimitiveType = isPrimitiveType(this)
+
+            try {
+                if (isPrimitiveType) {
+                    put(it, bundle.get(it))
+                } else {
+                    put(it, JSONObject(L.getConverter()?.toJson(this)?:"{}"))
+                }
+            } catch (e: JSONException) {
+                L.e("Invalid Json")
             }
-        } catch (e: JSONException) {
-            L.e("Invalid Json")
         }
     }
 
@@ -57,9 +61,9 @@ fun JSONObject.parseMap(map: Map<*, *>):JSONObject {
 
             try {
                 if (isPrimitiveType) {
-                    this.put(it.toString(), map[it])
+                    put(it.toString(), map[it])
                 } else {
-                    this.put(it.toString(), JSONObject(L.getConverter()?.toJson(map[it]?:"{}")?:"{}"))
+                    put(it.toString(), JSONObject(L.getConverter()?.toJson(map[it]?:"{}")?:"{}"))
                 }
             } catch (e: JSONException) {
                 L.e("Invalid Json")
