@@ -51,7 +51,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.kotlinx_coroutines_core}"
@@ -60,7 +61,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
     implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
 
-    implementation 'com.safframework.utils:saf-kotlin-utils:0.1.1'
+    implementation 'com.safframework.utils:saf-kotlin-utils:0.2.0'
 
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"

@@ -3,11 +3,11 @@ package com.safframework.log.debugview.modules
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.RequiresApi
 import android.view.Choreographer
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.safframework.log.debugview.base.AbstractDataModule
 import com.safframework.log.debugview.base.AbstractDebugModule
 import com.safframework.log.debugview.base.IViewModule
