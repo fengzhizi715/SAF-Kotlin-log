@@ -44,8 +44,9 @@ class IntentHandler:BaseHandler(), Parser<Intent> {
             put("Package", intent.`package`)
             put("ComponentInfo", intent.component)
             put("Categories", intent.categories)
-            if (intent.extras!=null) {
-                put("Extras", JSONObject(parseBundleString(intent.extras)))
+
+            intent.extras?.let {
+                put("Extras", JSONObject(parseBundleString(it)))
             }
         }
         .formatJSON()

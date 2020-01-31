@@ -25,7 +25,7 @@ object LoggerPrinter {
     val BOTTOM_BORDER            = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
     val MIDDLE_BORDER            = MIDDLE_CORNER + SINGLE_DIVIDER + SINGLE_DIVIDER
 
-    val BR                       = System.getProperty("line.separator")     // 换行符
+    val BR                       = System.getProperty("line.separator")!!     // 换行符
     const val HORIZONTAL_DOUBLE_LINE     = "║ "
     const val BLANK                      = " "
     const val COMMA                      = ","
