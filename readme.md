@@ -64,9 +64,9 @@ implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
 
 # TODO List：
 
+* file 模块适配 Android 10
 * 支持 ndk 的日志存储到文件
 * 支持 mmap 存储日志文件
-* 完善 debug view 模块
 * 尝试支持 Multiplatform
 
 
