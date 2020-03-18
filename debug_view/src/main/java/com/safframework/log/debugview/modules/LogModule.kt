@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import com.safframework.log.L
 import com.safframework.log.debugview.base.AbstractDataModule
 import com.safframework.log.debugview.base.AbstractDebugModule
 import com.safframework.log.debugview.base.IViewModule
@@ -36,6 +37,12 @@ object LogModule : AbstractDebugModule<List<String>>(LogDataModule(), LogViewMod
 
     fun log(msg: String) {
         logDataModule.log(msg)
+    }
+
+    fun logAny(any:Any) {
+        L.getConverter()?.toJson(any)?.let {
+            logDataModule.log(it)
+        }
     }
 
     /*
