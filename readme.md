@@ -36,6 +36,7 @@ saf-log-file|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/s
 saf-log-okhttp|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-okhttp/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-okhttp/_latestVersion)
 saf-log-converter-fastjson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-fastjson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-fastjson/_latestVersion)
 saf-log-converter-gson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-gson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-gson/_latestVersion)
+saf-log-debug-view|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-debug-view/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-debug-view/_latestVersion)
 
 # 下载安装
 
@@ -59,6 +60,10 @@ implementation 'com.safframework.log:saf-log-converter-fastjson:<latest-version>
 
 ```groovy
 implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
+```
+
+```groovy
+implementation 'com.safframework.log:saf-log-debug-view:<latest-version>'
 ```
 
 
