@@ -45,7 +45,7 @@ class App : Application() {
                         .viewWidth(250) /* the width of debug-view */
                         .bgColor(0x6f677700) /* the color of debug-view */
                         .alwaysShowOverlaySetting(true) /* the flag for always showing Overlay Setting */
-                        .logMaxLines(20) /* the max lines of log */
+                        .logMaxLines(50) /* the max lines of log */
         )
 
         DebugViewWrapper.show()
