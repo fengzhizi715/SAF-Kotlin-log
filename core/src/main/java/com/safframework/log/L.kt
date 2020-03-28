@@ -22,7 +22,7 @@ object L {
     private val printers = mutableSetOf<Printer>()
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
-    private var converter:Converter?=null
+    private var converter: Converter?=null
 
     init {
         printers.add(LogcatPrinter()) // 默认添加 LogcatPrinter
