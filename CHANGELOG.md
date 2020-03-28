@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.4.10
+---
+2020-03-09
+* core 模块去掉 Converter 接口，converter-fastjson、converter-gson 不再依赖 core 模块
+
 Version 2.4.9
 ---
 2020-03-09
