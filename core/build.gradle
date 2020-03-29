@@ -39,8 +39,6 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    api project(":converter:converter")
 }
 
 repositories {
