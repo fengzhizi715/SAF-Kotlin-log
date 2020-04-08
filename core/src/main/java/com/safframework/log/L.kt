@@ -264,6 +264,7 @@ object L {
      * 将任何对象转换成json字符串进行打印
      */
     @JvmStatic
+    @JvmOverloads
     fun json(obj: Any?, jsonConfig: JSONConfig = JSONConfig(L.logLevel, TAG, printers)) {
 
         if (obj == null) {
@@ -276,8 +277,8 @@ object L {
 
     /******************* L 提供打印的方法 End *******************/
 
-    @JvmOverloads
     @JvmStatic
+    @JvmOverloads
     fun getMethodNames(formatter: Formatter = BorderFormatter): String {
 
         val sElements = Thread.currentThread().stackTrace
