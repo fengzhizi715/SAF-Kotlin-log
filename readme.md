@@ -69,7 +69,7 @@ implementation 'com.safframework.log:saf-log-debug-view:<latest-version>'
 
 # TODO List：
 
-* 增加注释
+* Debug View 增加属性
 * 支持 ndk 的日志存储到文件
 * 支持 mmap 存储日志文件
 * 尝试支持 Multiplatform
