@@ -55,5 +55,11 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this@MainActivity, LoggingInterceptorActivity::class.java)
             startActivity(intent)
         }
+
+        text7.setOnClickListener {
+
+            val intent = Intent(this@MainActivity, UseJavaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

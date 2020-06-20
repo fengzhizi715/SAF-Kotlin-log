@@ -31,7 +31,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        configL {
+        configL { // 使用自定义的 DSL 来配置 L
 
             converter = GsonConverter()
         }
@@ -39,6 +39,7 @@ class App : Application() {
         initDebugView()
     }
 
+    // 方便调试的时候，将产生的日志展示到一个特定控件上，看是否有必要使用
     private fun initDebugView() {
         DebugViewWrapper.init(
                 DebugViewWrapper.Builder(this)
