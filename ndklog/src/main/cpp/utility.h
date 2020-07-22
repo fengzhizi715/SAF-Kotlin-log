@@ -21,16 +21,32 @@ namespace utility
         LOGE("%s", message);
     }
 
+    void logError(const char *tag, const char *message) {
+        __android_log_print(ANDROID_LOG_ERROR,tag,"%s", message);
+    }
+
     void logWarn(const char *message) {
         LOGW("%s", message);
+    }
+
+    void logWarn(const char *tag, const char *message) {
+        __android_log_print(ANDROID_LOG_WARN,tag,"%s", message);
     }
 
     void logDebug(const char *message) {
         LOGD("%s", message);
     }
 
+    void logDebug(const char *tag, const char *message) {
+        __android_log_print(ANDROID_LOG_DEBUG,tag,"%s", message);
+    }
+
     void logInfo(const char *message) {
         LOGI("%s", message);
+    }
+
+    void logInfo(const char *tag, const char *message) {
+        __android_log_print(ANDROID_LOG_INFO,tag,"%s", message);
     }
 }
 
