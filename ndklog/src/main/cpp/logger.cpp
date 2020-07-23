@@ -70,7 +70,7 @@ void Log(LogLevel logLevel, const char *tag, const char *msg) {
     }
     env->DeleteLocalRef(clazzLogLevel);
 
-    if (env->IsInstanceOf(filePrinter_ref, clazz)) {
+    if (env->IsInstanceOf(filePrinter_ref, clazz)) { // 判断 filePrinter_ref 是否为 FilePrinter 类
         jmethodID methodId = env->GetMethodID(clazz, "printLog","(Lcom/safframework/log/LogLevel;Ljava/lang/String;Ljava/lang/String;)V");
         env->CallVoidMethod(filePrinter_ref, methodId, objLogLevel,env->NewStringUTF(tag), env->NewStringUTF(msg));
     }
