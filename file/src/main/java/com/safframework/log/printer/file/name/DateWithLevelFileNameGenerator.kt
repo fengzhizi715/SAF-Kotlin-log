@@ -20,7 +20,7 @@ class DateWithLevelFileNameGenerator : FileNameGenerator {
 
     override fun isFileNameChangeable() = true
 
-    override fun generateFileName(logLevel: Int, tag:String, timestamp: Long): String {
+    override fun generateFileName(logLevel: Int, tag:String, timestamp: Long, lastFileName: String): String {
 
         var sdf = mLocalDateFormat.get()
 

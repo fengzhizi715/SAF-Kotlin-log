@@ -64,7 +64,7 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
 
         if (lastFileName == null || fileNameGenerator.isFileNameChangeable()) {
 
-            val newFileName = fileNameGenerator.generateFileName(logItem.level.value, logItem.tag ,System.currentTimeMillis())
+            val newFileName = fileNameGenerator.generateFileName(logItem.level.value, logItem.tag ,System.currentTimeMillis(), lastFileName?:"")
 
             require(newFileName.trim { it <= ' ' }.isNotEmpty()) { "File name should not be empty." }
 

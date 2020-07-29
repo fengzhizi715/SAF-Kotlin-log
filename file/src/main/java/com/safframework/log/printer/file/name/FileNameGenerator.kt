@@ -12,5 +12,12 @@ interface FileNameGenerator {
 
     fun isFileNameChangeable(): Boolean
 
-    fun generateFileName(logLevel: Int, tag:String, timestamp: Long): String
+    /**
+     * 生成文件的名称
+     * @param logLevel  日志的等级
+     * @param tag       日志的 tag
+     * @param timestamp 时间戳
+     * @param lastFileName 上一个日志分片的名称
+     */
+    fun generateFileName(logLevel: Int, tag:String, timestamp: Long, lastFileName: String): String
 }
