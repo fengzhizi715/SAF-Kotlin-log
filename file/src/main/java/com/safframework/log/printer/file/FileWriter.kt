@@ -28,8 +28,9 @@ class FileWriter(var folderPath:String) {
 
     fun open(newFileName: String): Boolean {
 
-        lastFileName = newFileName
+//        lastFileName = newFileName
         file = File(folderPath, newFileName)
+        lastFileName = file?.absolutePath
 
         file?.let {
 
