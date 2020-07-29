@@ -19,6 +19,6 @@ public class JNIActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ToastUtilsKt.showLong(this, JNIUtils.stringFromJNI());
+//        ToastUtilsKt.showLong(this, JNIUtils.stringFromJNI());
     }
 }

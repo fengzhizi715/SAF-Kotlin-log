@@ -12,5 +12,5 @@ public class JNIUtils {
         System.loadLibrary("test");
     }
 
-    public static native String stringFromJNI();
+//    public static native String stringFromJNI();
 }

@@ -18,18 +18,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        externalNativeBuild {
-            cmake {
-                arguments '-DANDROID_PLATFORM=android-21',
-                        '-DANDROID_TOOLCHAIN=clang',
-                        '-DANDROID_STL=c++_static'
-                cppFlags "-std=c++11 -frtti -fexceptions"
-            }
-        }
-        ndk{
-            moduleName "libtest"
-            abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
-        }
     }
     sourceSets {
         main {
@@ -60,12 +48,6 @@ android {
 
     packagingOptions {
         exclude 'META-INF/proguard/coroutines.pro'
-    }
-
-    externalNativeBuild {
-        cmake {
-            path file('CMakeLists.txt')
-        }
     }
 }
 
