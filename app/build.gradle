@@ -19,6 +19,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -44,7 +49,6 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/coroutines.pro'
     }
-
 }
 
 dependencies {

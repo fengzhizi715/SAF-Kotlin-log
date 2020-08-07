@@ -61,5 +61,11 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this@MainActivity, UseJavaActivity::class.java)
             startActivity(intent)
         }
+
+//        text8.setOnClickListener {
+//
+//            val intent = Intent(this@MainActivity, JNIActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 }
