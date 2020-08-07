@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.5.1
+---
+2020-07-30
+* 修复 FileWriter 的 bug
+
 Version 2.5.0
 ---
 2020-07-29
