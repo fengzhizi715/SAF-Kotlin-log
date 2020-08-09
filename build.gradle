@@ -15,8 +15,8 @@ ext {
             rxandroid              : "2.1.1",
             rxjava                 : "2.2.19",
 
-            retrofit               : "2.3.0",
-            okhttp3                : "4.2.2",
+            retrofit               : "2.9.0",
+            okhttp3                : "4.8.0",
             gson                   : "2.8.6",
 
             coroutines_utils       : "1.1.1"
