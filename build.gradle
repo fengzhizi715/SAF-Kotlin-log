@@ -60,5 +60,6 @@ task clean(type: Delete) {
 }
 
 tasks.getByPath(":app:lint").enabled = false
+//tasks.getByPath(":app:mergeDexDebug ").enabled = false
 tasks.getByPath(":ndklog:externalNativeBuildCleanDebug").enabled = false
 tasks.getByPath(":ndklog:externalNativeBuildCleanRelease").enabled = false
