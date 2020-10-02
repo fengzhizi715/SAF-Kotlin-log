@@ -99,7 +99,7 @@ object TimerModule: AbstractDebugModule<List<String>>(TimerDataModule(), TimerVi
                 val begin = timerDataMap[model] as Long
                 timerDataMap.remove(model)
                 val msg = getCost(begin, end) ?: return
-                while (timerList.size >= maxLines) {
+                while (timerList.size>0 && timerList.size >= maxLines) {
                     timerList.removeAt(0)
                 }
                 timerList.add(obj.javaClass.simpleName + ":" + msg)
