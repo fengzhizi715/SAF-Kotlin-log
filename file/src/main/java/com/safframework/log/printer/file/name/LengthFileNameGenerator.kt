@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong
  *          com.safframework.log.printer.file.name.LengthFileNameGenerator
  * @author: Tony Shen
  * @date: 2020-07-29 10:44
- * @version: V2.5 基于文件大小生成文件(默认情况下，超过1M会对日志进行分片)
+ * @since: V2.5 基于文件大小生成文件(默认情况下，超过1M会对日志进行分片)
  */
 class LengthFileNameGenerator(val prefix:String, val length:Long = 1024*1024)  : FileNameGenerator {
 

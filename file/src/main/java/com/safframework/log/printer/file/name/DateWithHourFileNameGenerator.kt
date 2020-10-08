@@ -9,7 +9,7 @@ import java.util.*
  *          com.safframework.log.printer.file.name.DateWithHourFileNameGenerator
  * @author: Tony Shen
  * @date: 2020-01-04 00:17
- * @version: V2.4 <描述当前版本功能>
+ * @since: V2.4 每隔一定的小时数对日志进行分片
  */
 class DateWithHourFileNameGenerator(val divider:Int) : FileNameGenerator {
 

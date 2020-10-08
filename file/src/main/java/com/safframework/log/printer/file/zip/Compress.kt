@@ -13,7 +13,7 @@ import java.util.zip.ZipOutputStream
  *          com.safframework.log.printer.file.zip.Compress
  * @author: Tony Shen
  * @date: 2019-11-17 10:46
- * @version: V2.2 <描述当前版本功能>
+ * @since: V2.2 对日志进行压缩打包成 zip 文件
  */
 private const val BUFFER_SIZE = 4096
 
