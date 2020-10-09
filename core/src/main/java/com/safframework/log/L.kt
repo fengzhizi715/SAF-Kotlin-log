@@ -19,7 +19,7 @@ object L {
     private var header: String? = ""
     private val handlers = LinkedList<BaseHandler>()
     private var firstHandler: BaseHandler
-    private val printers = mutableSetOf<Printer>()
+    private val printers = Collections.synchronizedSet(mutableSetOf<Printer>())
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
     private var converter: Converter?=null

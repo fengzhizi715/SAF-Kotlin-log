@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.5.3
+---
+2020-10-09
+* L 的 printers 使用线程安全的 Set
+
 Version 2.5.2
 ---
 2020-10-03
