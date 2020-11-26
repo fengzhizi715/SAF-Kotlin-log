@@ -11,6 +11,9 @@ import com.safframework.log.L
  * @date: 2020-11-26 21:25
  * @version: V1.0 <描述当前版本功能>
  */
+/**
+ * 将 byte 数组格式化输出
+ */
 fun L.bytes(bytes: ByteArray, separator: CharSequence = "-") {
     val hexString = ByteBufferBytes.create(bytes).toHexString()
     if (separator.isNotEmpty()) {

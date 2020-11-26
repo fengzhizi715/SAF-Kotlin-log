@@ -69,7 +69,6 @@ implementation 'com.safframework.log:saf-log-debug-view:<latest-version>'
 
 # TODO List：
 
-* 提供 byte 数组打印的支持
 * Debug View 增加属性
 * 支持 ndk 的日志存储到文件
 * 支持 mmap 存储日志文件
