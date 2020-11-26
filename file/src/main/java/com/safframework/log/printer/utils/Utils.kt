@@ -11,6 +11,8 @@ import java.util.*
  * @date: 2019-12-13 16:28
  * @version: V1.0 <描述当前版本功能>
  */
-val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+val sdf by lazy {
+    SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+}
 
 fun now() = sdf.format(Date())
