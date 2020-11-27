@@ -25,8 +25,8 @@ ext {
 
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
-    ext.kotlin_version = '1.4.10'
-    ext.l_version = '2.5.3'
+    ext.kotlin_version = '1.4.20'
+    ext.l_version = '2.5.4'
 
     repositories {
         google()
@@ -63,3 +63,4 @@ tasks.getByPath(":app:lint").enabled = false
 //tasks.getByPath(":app:mergeDexDebug ").enabled = false
 tasks.getByPath(":ndklog:externalNativeBuildCleanDebug").enabled = false
 tasks.getByPath(":ndklog:externalNativeBuildCleanRelease").enabled = false
+tasks.getByPath(":extension:verifyReleaseResources").enabled = false
