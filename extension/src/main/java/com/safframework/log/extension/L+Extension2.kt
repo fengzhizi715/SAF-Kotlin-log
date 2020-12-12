@@ -11,8 +11,9 @@ import com.safframework.log.L
  * @date: 2020-11-26 21:25
  * @version: V1.0 <描述当前版本功能>
  */
+
 /**
- * 将 byte 数组格式化输出
+ * 将 byte 数组格式化打印输出
  */
 fun L.bytes(bytes: ByteArray, separator: CharSequence = "-") {
     val hexString = ByteBufferBytes.create(bytes).toHexString()
@@ -23,7 +24,7 @@ fun L.bytes(bytes: ByteArray, separator: CharSequence = "-") {
         }
         val strs = arrayOfNulls<String>(m)
         var j = 0
-        for (i in 0 until hexString.length) {
+        for (i in hexString.indices) {
             if (i % 2 == 0) { //每隔两个
                 strs[j] = "" + hexString[i]
             } else {
