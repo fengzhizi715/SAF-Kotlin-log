@@ -75,7 +75,7 @@ implementation 'com.safframework.log:saf-log-extension:<latest-version>'
 
 # TODO List：
 
-* 提供一个 WebPrinter，支持日志打印到一个基于 Android 的 Web Server
+* 打算提供一个 WebPrinter，支持日志打印到一个基于 Android 的 Web Server
 * Debug View 增加属性
 * 支持 ndk 的日志存储到文件
 * 支持 mmap 存储日志文件
