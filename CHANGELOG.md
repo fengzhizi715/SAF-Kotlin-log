@@ -1,6 +1,13 @@
 SAF-Kotlin-log
 ===
 
+Version 2.5.5
+---
+2021-10-11
+* 更新 Kotlin 版本至 1.5.31
+* 以及其他的第三方库
+* 从 jcenter 迁移至 jitpack
+
 Version 2.5.4
 ---
 2020-11-27
