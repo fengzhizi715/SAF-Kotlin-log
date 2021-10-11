@@ -43,6 +43,17 @@ saf-log-extension|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](ht
 
 # 下载安装
 
+将它添加到项目的 root build.gradle 中：
+
+```groovy
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
 Gradle:
 
 ```groovy

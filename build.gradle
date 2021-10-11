@@ -26,7 +26,6 @@ ext {
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
     ext.kotlin_version = '1.5.31'
-    ext.l_version = '2.5.4'
 
     repositories {
         google()
