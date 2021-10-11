@@ -2,6 +2,7 @@
 
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
 
 ![](logo.JPG)
 
@@ -45,31 +46,31 @@ saf-log-extension|[ ![Download](https://api.bintray.com/packages/fengzhizi715/ma
 Gradle:
 
 ```groovy
-implementation 'com.safframework.log:saf-log-core:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:core:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-file:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:file:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-okhttp:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:okhttp:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-converter-fastjson:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:fastjson:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-converter-gson:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:gson:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-debug-view:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:debug_view:<latest-version>'
 ```
 
 ```groovy
-implementation 'com.safframework.log:saf-log-extension:<latest-version>'
+implementation 'com.github.fengzhizi715.SAF-Kotlin-log:extension:<latest-version>'
 ```
 
 
