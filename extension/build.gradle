@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-//apply plugin: 'com.novoda.bintray-release'
 
 def cfg = rootProject.ext.configuration // 配置
 def libs = rootProject.ext.libraries // 库
@@ -62,12 +61,3 @@ allprojects {
         }
     }
 }
-
-//publish{
-//    userOrg = 'fengzhizi715'
-//    groupId = 'com.safframework.log'
-//    artifactId = 'saf-log-extension'
-//    publishVersion = "$l_version"
-//    desc = 'this is a log library for android,written by kotlin'
-//    website = 'https://github.com/fengzhizi715/SAF-Kotlin-log'
-//}
