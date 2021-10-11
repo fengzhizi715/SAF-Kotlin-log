@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.safframework.bytekit:bytekit-core:1.2.6'
+    implementation 'com.github.fengzhizi715.bytekit:core:v1.3.0'
 
     implementation project(':core')
 }
