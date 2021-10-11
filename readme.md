@@ -33,13 +33,13 @@
 
 模块|最新版本
 ---|:-------------:
-saf-log-core|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-core/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-core/_latestVersion)
-saf-log-file|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-file/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-file/_latestVersion)
-saf-log-okhttp|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-okhttp/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-okhttp/_latestVersion)
-saf-log-converter-fastjson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-fastjson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-fastjson/_latestVersion)
-saf-log-converter-gson|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-converter-gson/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-converter-gson/_latestVersion)
-saf-log-debug-view|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-debug-view/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-debug-view/_latestVersion)
-saf-log-extension|[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/saf-log-extension/images/download.svg) ](https://bintray.com/fengzhizi715/maven/saf-log-extension/_latestVersion)
+saf-log-core|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-file|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-okhttp|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-converter-fastjson|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-converter-gson|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-debug-view|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
+saf-log-extension|[![](https://jitpack.io/v/fengzhizi715/SAF-Kotlin-log.svg)](https://jitpack.io/#fengzhizi715/SAF-Kotlin-log)
 
 # 下载安装
 
