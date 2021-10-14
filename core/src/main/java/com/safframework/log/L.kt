@@ -8,6 +8,7 @@ import com.safframework.log.formatter.Formatter
 import com.safframework.log.handler.*
 import com.safframework.log.printer.LogcatPrinter
 import com.safframework.log.printer.Printer
+import com.safframework.log.utils.getFullStackTrace
 import java.util.*
 
 /**
@@ -165,6 +166,9 @@ object L {
     /******************* L 的配置方法 End *******************/
 
     /******************* L 提供打印的方法 Start *******************/
+
+    @JvmStatic
+    fun e(throwable: Throwable?) = e(TAG, getFullStackTrace(throwable))
 
     @JvmStatic
     fun e(msg: String?) = e(TAG,msg)
