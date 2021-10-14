@@ -71,7 +71,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
     implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
 
-    implementation 'com.safframework.utils:saf-kotlin-utils:0.2.0'
+    implementation 'com.github.fengzhizi715.SAF-Kotlin-Utils:saf-kotlin-utils:v0.2.2'
 
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
