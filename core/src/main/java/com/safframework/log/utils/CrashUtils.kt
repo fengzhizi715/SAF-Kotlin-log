@@ -18,7 +18,7 @@ object CrashUtils {
 
     private val DEFAULT_UNCAUGHT_EXCEPTION_HANDLER: Thread.UncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler()
 
-    fun init(tag:String?, extraInfo:String?, printer: Printer, onCrashListener: OnCrashListener?) {
+    fun init(tag:String? = null, extraInfo:String? = null, printer: Printer, onCrashListener: OnCrashListener?) {
 
         Thread.setDefaultUncaughtExceptionHandler(
             getUncaughtExceptionHandler(tag, extraInfo, printer, onCrashListener)
