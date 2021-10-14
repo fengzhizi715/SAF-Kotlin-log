@@ -7,6 +7,9 @@ import com.safframework.log.configL
 import com.safframework.log.converter.gson.GsonConverter
 import com.safframework.log.debugview.DebugViewWrapper
 import com.safframework.log.debugview.modules.TimerModule
+import com.safframework.log.printer.FilePrinter
+import com.safframework.log.printer.file.FileBuilder
+import com.safframework.log.utils.CrashUtils
 
 /**
  *
@@ -22,6 +25,12 @@ var application: Application? = null
 
 class App : Application() {
 
+    private var crashPrinter: FilePrinter
+
+    init{
+        crashPrinter = FileBuilder().folderPath("/storage/emulated/0/crash_logs").build()
+    }
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         application = this
@@ -35,6 +44,12 @@ class App : Application() {
 
             converter = GsonConverter()
         }
+
+        CrashUtils.init(tag = "crashTag",printer = crashPrinter, onCrashListener = object : CrashUtils.OnCrashListener {
+            override fun onCrash(crashInfo: String, e: Throwable) {
+
+            }
+        })
 
         initDebugView()
     }

@@ -58,7 +58,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name="cn.salesuite.saf.kotlin.activity.JNIActivity"
+            android:name="cn.salesuite.saf.kotlin.activity.CrashActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"/>
 
