@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.6.1
+---
+2021-10-14
+* 增加打印 throwable 的方法
+
 Version 2.6.0
 ---
 2021-10-11
