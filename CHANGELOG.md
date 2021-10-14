@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.6.2
+---
+2021-10-14
+* 增加 CrashUtils 工具类
+
 Version 2.6.1
 ---
 2021-10-14
