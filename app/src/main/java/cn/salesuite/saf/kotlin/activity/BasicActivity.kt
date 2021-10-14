@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import cn.salesuite.saf.kotlin.domain.User
 import com.safframework.log.L
+import com.safframework.log.utils.getFullStackTrace
 
 
 /**
@@ -53,6 +54,8 @@ class BasicActivity : Activity() {
 
         val uri = Uri.parse ("http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic")
         L.json(uri)
+
+        L.e(NullPointerException())
     }
 
 }

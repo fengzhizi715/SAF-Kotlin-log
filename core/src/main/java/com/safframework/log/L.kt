@@ -1,6 +1,5 @@
 package com.safframework.log
 
-import android.util.Log
 import com.safframework.log.bean.JSONConfig
 import com.safframework.log.converter.Converter
 import com.safframework.log.formatter.BorderFormatter
@@ -171,16 +170,13 @@ object L {
     fun e(throwable: Throwable?) = e(TAG, getFullStackTrace(throwable))
 
     @JvmStatic
+    fun e(tag: String?, throwable: Throwable?) = e(tag, getFullStackTrace(throwable))
+
+    @JvmStatic
     fun e(msg: String?) = e(TAG,msg)
 
     @JvmStatic
     fun e(tag: String?, msg: String?) = printLog(LogLevel.ERROR,tag,msg)
-
-    @JvmStatic
-    fun e(msg: String?, tr: Throwable) = e(TAG,msg,tr)
-
-    @JvmStatic
-    fun e(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.ERROR,tag,msg,tr)
 
     @JvmStatic
     fun w(msg: String?) = w(TAG,msg)
@@ -189,34 +185,16 @@ object L {
     fun w(tag: String?, msg: String?) = printLog(LogLevel.WARN,tag,msg)
 
     @JvmStatic
-    fun w(msg: String?, tr: Throwable) = w(TAG,msg,tr)
-
-    @JvmStatic
-    fun w(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.WARN,tag,msg,tr)
-
-    @JvmStatic
     fun i(msg: String?) = i(TAG,msg)
 
     @JvmStatic
     fun i(tag: String?, msg: String?) = printLog(LogLevel.INFO,tag,msg)
 
     @JvmStatic
-    fun i(msg: String?, tr: Throwable) = i(TAG,msg,tr)
-
-    @JvmStatic
-    fun i(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.INFO,tag,msg,tr)
-
-    @JvmStatic
     fun d(msg: String?) = d(TAG,msg)
 
     @JvmStatic
     fun d(tag: String?, msg: String?) = printLog(LogLevel.DEBUG,tag,msg)
-
-    @JvmStatic
-    fun d(msg: String?, tr: Throwable) = d(TAG,msg,tr)
-
-    @JvmStatic
-    fun d(tag: String?, msg: String?, tr: Throwable) = printThrowable(LogLevel.DEBUG,tag,msg,tr)
 
     /**
      * 使用特定的 printer 进行打印日志
@@ -239,26 +217,6 @@ object L {
                     } else {
                         it.printLog(logLevel, tag, String.format(s, msg))
                     }
-                }
-            }
-        }
-    }
-
-    private fun printThrowable(logLevel: LogLevel, tag: String?, msg: String?, tr: Throwable) {
-
-        if (logLevel.value <= L.logLevel.value) {
-
-            if (tag != null && tag.isNotEmpty() && msg != null && msg.isNotEmpty()) {
-
-                when(logLevel) {
-
-                    LogLevel.ERROR -> Log.e(tag, msg, tr)
-
-                    LogLevel.WARN  -> Log.w(tag, msg, tr)
-
-                    LogLevel.INFO  -> Log.i(tag, msg, tr)
-
-                    LogLevel.DEBUG -> Log.d(tag, msg, tr)
                 }
             }
         }
