@@ -122,4 +122,6 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
         result = 31 * result + writer.hashCode()
         return result
     }
+
+    fun getFolderPath() = folderPath
 }
