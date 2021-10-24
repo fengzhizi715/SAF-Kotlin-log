@@ -1,6 +1,11 @@
 SAF-Kotlin-log
 ===
 
+Version 2.6.4
+---
+2021-10-24
+* FilePrinter 增加 getFolderPath() 获取文件保存的路径
+
 Version 2.6.2
 ---
 2021-10-14
