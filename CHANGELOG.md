@@ -1,6 +1,12 @@
 SAF-Kotlin-log
 ===
 
+Version 2.6.7
+---
+2022-1-29
+* 移除 jcenter() 相关内容
+* 升级 gradle 插件
+
 Version 2.6.4
 ---
 2021-10-24
