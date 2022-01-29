@@ -68,7 +68,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
     implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
 
-    implementation 'com.github.fengzhizi715.SAF-Kotlin-Utils:saf-kotlin-utils:v0.2.3'
+    implementation 'com.github.fengzhizi715.SAF-Kotlin-Utils:saf-kotlin-utils:v0.23'
 
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
@@ -82,4 +82,21 @@ dependencies {
     implementation project(':debug_view')
 
     implementation project(':converter:gson')
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+    //加上这些
+    tasks.withType(Javadoc) {
+        options{ encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
 }
