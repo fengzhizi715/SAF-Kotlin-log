@@ -38,8 +38,6 @@ android {
 
 dependencies {
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.github.fengzhizi715.bytekit:core:v1.3.0'
@@ -48,13 +46,11 @@ dependencies {
 }
 
 repositories {
-    jcenter()
     maven { url "https://jitpack.io" }
 }
 
 allprojects {
     repositories {
-        jcenter()
         maven { url "https://jitpack.io" }
     }
     //加上这些

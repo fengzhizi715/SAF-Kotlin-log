@@ -44,13 +44,11 @@ dependencies {
 }
 
 repositories {
-//    jcenter()
     maven { url "https://jitpack.io" }
 }
 
 allprojects {
     repositories {
-//        jcenter()
         maven { url "https://jitpack.io" }
     }
     //加上这些
