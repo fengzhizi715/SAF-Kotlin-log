@@ -14,7 +14,9 @@ class ObjectHandler:BaseHandler() {
 
     override fun handle(obj: Any, jsonConfig: JSONConfig): Boolean {
 
-        if (L.getConverter()!=null) {
+        val converter = L.getConverter()
+
+        if (converter!=null) {
 
             jsonConfig.printers.map {
 
@@ -22,7 +24,7 @@ class ObjectHandler:BaseHandler() {
 
                 var msg = obj.toJavaClass() + LoggerPrinter.BR + formatter.spliter()
 
-                val message = L.getConverter()!!.toJson(obj).run {
+                val message = converter.toJson(obj).run {
                     JSONObject(this)
                 }
                 .formatJSON()
