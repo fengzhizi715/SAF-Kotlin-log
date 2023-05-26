@@ -124,4 +124,6 @@ class FilePrinter(fileBuilder: FileBuilder):Printer{
     }
 
     fun getFolderPath() = folderPath
+
+    fun getCurrentFilePath():String? = writer.file?.absolutePath
 }
