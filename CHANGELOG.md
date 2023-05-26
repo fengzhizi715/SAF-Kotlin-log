@@ -3,6 +3,11 @@ SAF-Kotlin-log
 
 Version 2.6.8
 ---
+2023-5-26
+* FilePrinter 增加 getCurrentFilePath()
+
+Version 2.6.8
+---
 2022-2-10
 * 优化代码
 
